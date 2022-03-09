@@ -1,5 +1,33 @@
 {
   "name": "kronicle-app",
+  "description": "Kronicle - webapp for Kpop fans to buy and sell cards | Student project for RMIT University Vietnam, course COSC2634: Building IT Systems",
+  "contributors": [
+    {
+      "name": "Doan Yen Nhi",
+      "email": "nhiidoan@gmail.com",
+      "github": "https://github.com/doanyennhi"
+    },
+    {
+      "name": "Tran Ngoc Anh Thu",
+      "email": "",
+      "github": "https://github.com/tnathu-ai"
+    },
+    {
+      "name": "Nguyen Hoang Linh",
+      "email": "",
+      "github": "https://github.com/hlinh88"
+    },
+    {
+      "name": "Du Duc Manh",
+      "email": "",
+      "github": "https://github.com/rider3458"
+    },
+    {
+      "name": "Hua Minh Thu",
+      "email": "",
+      "github": "https://github.com/minhthuhua72"
+    }
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
