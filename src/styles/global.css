@@ -1,0 +1,37 @@
+:root {
+    /* Fonts */
+    --header-font: "Open Sans", sans-serif;
+    --body-font: "Montserrat", sans-serif;
+
+    /* Kronicle color palette */
+    --black: #181818;
+    --alt-black: #1f1f1f;
+    --light-black: #2a2a2a;
+    --lighter-black: #353535;
+    --dark-blue: #17619c;
+    --blue: #196bac;
+    --dark-cyan: #079edf;
+    --cyan: #00aeef;
+    --gray: #cccccc;
+    --light-gray: #e6e6e6;
+    --lighter-gray: #f2f2f2;
+    --dim-white: #fcfcfc;
+    --white: #ffffff;
+
+    /* Responsive sizing */
+    --viewport-small-phone: 400px;
+    --viewport-phone: 767px;
+    --viewport-tablet: 1023px;
+    --viewport-desktop: 1280px;
+    --viewport-large-desktop: 1900px;
+
+    /* Border radius */
+    --border-radius-xxs: 6px;
+    --border-radius-xs: 8px;
+    --border-radius-s: 12px;
+    --border-radius-m: 24px;
+    --border-radius-l: 32px;
+    --border-radius-xl: 42px;
+    --border-radius-xxl: 54px;
+
+}
