@@ -1,7 +1,10 @@
 import "./HomePage.css"
+import Layout from "../components/Layout";
 const HomePage = () => {
   return (
-  <h1>Go Junho</h1>
+      <Layout>
+        <h1>Go Junho</h1>
+      </Layout>
   )
 }
 
