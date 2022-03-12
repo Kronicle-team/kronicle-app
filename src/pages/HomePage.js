@@ -1,9 +1,13 @@
 import Layout from "../components/Layout";
+import ToggleButton from "../components/ToggleButton";
+import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 const HomePage = () => {
   return (
       <Layout>
         <h1>Go Junho</h1>
-        <a href="/">Han Sooyoung</a>
+        <ToggleButton icon={faChevronLeft} />
+        <ToggleButton icon={faChevronRight} />
+        <p>Han Sooyoung</p>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div><div>Lorem ipsum</div><div>Lorem ipsum</div>
