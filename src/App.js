@@ -1,18 +1,17 @@
 import './App.css';
 import HomePage from "./pages/HomePage";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+      <>
+      <Header />
         <p className="para">sss</p>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <HomePage />
-        <a href="/">Han Sooyoung</a>
-      </header>
-    </div>
+        </>
   );
 }
 

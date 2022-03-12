@@ -1,10 +1,29 @@
 import Layout from "../components/Layout";
-import Header from "../components/Header";
 const HomePage = () => {
   return (
       <Layout>
-        <Header />
         <h1>Go Junho</h1>
+        <a href="/">Han Sooyoung</a>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div><div>Lorem ipsum</div><div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div><div>Lorem ipsum</div><div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div><div>Lorem ipsum</div><div>Lorem ipsum</div>
+        v
+        <div>Lorem ipsum</div><div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div><div>Lorem ipsum</div><div>Lorem ipsum</div><div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        v<div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
       </Layout>
   )
 }

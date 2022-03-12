@@ -33,5 +33,8 @@
     --border-radius-l: 32px;
     --border-radius-xl: 42px;
     --border-radius-xxl: 54px;
+}
 
+main {
+    margin: 20px;
 }
