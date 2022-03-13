@@ -1,17 +1,15 @@
 import './App.module.css';
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
       <>
-      <Header />
-        <p className="para">sss</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
         <HomePage />
-        </>
+        <Footer />
+      </>
   );
 }
 
