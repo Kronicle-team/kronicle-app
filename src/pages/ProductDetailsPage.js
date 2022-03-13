@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 
 const ProductDetailsPage = () => {
   return (
-      <Layout header footer></Layout>
+      <Layout header footer>Product Details</Layout>
   )
 }
 

@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 
 const RegisterPage = () => {
   return (
-      <Layout></Layout>
+      <Layout>Register</Layout>
   )
 }
 
