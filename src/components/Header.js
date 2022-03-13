@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFilter, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import style from "./Header.module.css";
-import common from "../../styles/common.module.css"
+import common from "../styles/common.module.css"
 
 const Header = () => {
   return (
