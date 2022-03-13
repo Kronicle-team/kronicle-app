@@ -4,6 +4,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ListingPage from "./pages/ListingPage";
 import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import FaqPage from "./pages/FaqPage";
 
 const pages = {
   home: {
@@ -36,6 +37,11 @@ const pages = {
     link: "/product/:id",
     component: <ProductDetailsPage/>
   },
+  faq: {
+    name: "Frequently Asked Questions",
+    link: "/faq",
+    component: <FaqPage />
+  }
 
 }
 
