@@ -1,5 +1,6 @@
 import style from "./Footer.module.css";
 import common from "../styles/common.module.css";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,24 +10,24 @@ const Footer = () => {
         <div className={style["footer-nav"] + " " + common["flex"]}>
           <div>
             <h4>KRONICLE</h4>
-            <p><a href="">About Us</a></p>
-            <p><a href="">Contact Us</a></p>
-            <p><a href="">FAQs</a></p>
+            <Link to="/">About Us</Link>
+            <Link to="/">Contact Us</Link>
+            <Link to="/">FAQs</Link>
           </div>
 
           <div>
             <h4>CATEGORIES</h4>
-            <p><a href="">Artist</a></p>
-            <p><a href="">Album Photocards</a></p>
-            <p><a href="">Trading photocards</a></p>
+            <Link to="/">Artist</Link>
+            <Link to="/">Album Photocards</Link>
+            <Link to="/">Trading photocards</Link>
           </div>
 
           <div>
             <h4>CUSTOMER SERVICES</h4>
-            <p><a href="">Shipping Policy</a></p>
-            <p><a href="">Privacy Policy</a></p>
-            <p><a href="">Refund Policy</a></p>
-            <p><a href="">Terms of Service</a></p>
+            <Link to="/">Shipping Policy</Link>
+            <Link to="/">Privacy Policy</Link>
+            <Link to="/">Refund Policy</Link>
+            <Link to="/">Terms of Service</Link>
           </div>
         </div>
 
