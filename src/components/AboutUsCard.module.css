@@ -1,0 +1,9 @@
+.member-card {
+  background: var(--white);
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.member-card h4, .member-card p {
+  color: var(--black);
+}

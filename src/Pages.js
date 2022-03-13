@@ -5,6 +5,7 @@ import ListingPage from "./pages/ListingPage";
 import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import FaqPage from "./pages/FaqPage";
+import AboutUsPage from "./pages/AboutUsPage";
 
 const pages = {
   home: {
@@ -41,6 +42,11 @@ const pages = {
     name: "Frequently Asked Questions",
     link: "/faq",
     component: <FaqPage />
+  },
+  aboutUs: {
+    name: "About Us",
+    link: "/about-us",
+    component: <AboutUsPage />
   }
 
 }
