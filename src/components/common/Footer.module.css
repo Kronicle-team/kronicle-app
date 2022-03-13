@@ -1,0 +1,9 @@
+.footer-nav {
+    background: var(--dark-blue);
+    justify-content: space-around;
+    padding: 1.5rem;
+}
+
+.footer-nav a {
+    color: var(--dim-white);
+}

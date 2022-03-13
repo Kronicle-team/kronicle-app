@@ -46,15 +46,6 @@ h6 {
   font-size: 18px;
 }
 
-a {
-  color: var(--cyan);
-}
-
-a:hover {
-  color: var(--dark-cyan);
-  text-decoration: none;
-}
-
 p {
   line-height: 1.5;
 }
