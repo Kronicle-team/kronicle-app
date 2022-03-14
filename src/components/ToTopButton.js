@@ -7,7 +7,7 @@ const ToTopButton = () => {
     }
     return (
     <button>
-        <div onClick={scrollToTop()}>TO TOP</div>
+        <div onClick={scrollToTop}>TO TOP</div>
     </button>
     )
 }
