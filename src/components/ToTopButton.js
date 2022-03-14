@@ -1,7 +1,13 @@
 const ToTopButton = () => {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        })
+    }
     return (
-    <button onclick="scrollToTop()">
-        TO TOP
+    <button>
+        <div onClick={scrollToTop()}>TO TOP</div>
     </button>
     )
 }

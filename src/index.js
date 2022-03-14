@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import PrivacyPolicyPage from './pages/legal/PrivacyPolicyPage';
 import reportWebVitals from './reportWebVitals';
 
 import "./styles/global.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PrivacyPolicyPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
