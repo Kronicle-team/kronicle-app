@@ -4,7 +4,7 @@ const UserProfilePage = () => {
   return () => {
     <Layout>
       <article>
-        <ul class="my-account-info">
+        <ul>
           <li>
             <label>Username</label>
           </li>

@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
+import SubmitButton from "../../components/SubmitButton";
 
 const LoginPage = () => {
   return (
@@ -9,6 +10,7 @@ const LoginPage = () => {
           <input id="username" name="username" type="text"/>
           <label for="password">Password</label>
           <input id="password" name="password" type="password"/>
+          <SubmitButton/>
         </form>
       </Layout>
   )

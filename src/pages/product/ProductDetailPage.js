@@ -10,14 +10,14 @@ const ProductDetailPage = () => {
     </ul>
            
     <section id="product-info">
-      <span class="product-info-other-media flex-container flex-direction-column">
+      <span>
         <img src="" alt="another image of the product"/>
         <img src="" alt="another image of the product"/>
         <img src="" alt="another image of the product"/>
         <img src="" alt="another image of the product"/>
       </span>
 
-      <span class="product-info-main-img">
+      <span>
         <img src="" alt="main image of the product"/>
       </span>
 
@@ -37,7 +37,7 @@ const ProductDetailPage = () => {
     </section>
         
 
-    <section id="product-description" class="content-body">
+    <section id="product-description">
       <h3>Product Description</h3>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, aspernatur dolores magni,
         aliquam perferendis debitis ipsa necessitatibus nisi quisquam velit ex dolorem, facilis

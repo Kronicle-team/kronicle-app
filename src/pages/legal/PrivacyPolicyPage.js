@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import ToTopButton from "../../components/ToTopButton";
 
 const PrivacyPolicyPage = () => {
   return () => {
@@ -545,7 +546,6 @@ const PrivacyPolicyPage = () => {
         This{" "}
         <a
           href="https://policymaker.io/privacy-policy/"
-          class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-6"
         >
           Privacy Policy
         </a>{" "}
@@ -553,9 +553,7 @@ const PrivacyPolicyPage = () => {
         <a href="https://policymaker.io">PolicyMaker.io</a> on 2021-04-16.&nbsp;
         <br />
       </p>
-      <button class="content-nav-bttn float-left" onclick="scrollToTop()">
-        TO TOP
-      </button>
+      <ToTopButton/>
     </Layout>;
   };
 };

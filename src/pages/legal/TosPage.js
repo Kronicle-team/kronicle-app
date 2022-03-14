@@ -345,7 +345,6 @@ const Tos = () => {
         have been created using{" "}
         <a
           href="https://policymaker.io/"
-          class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2"
         >
           PolicyMaker.io
         </a>
@@ -353,7 +352,6 @@ const Tos = () => {
         PolicyMaker’s{" "}
         <a
           href="https://policymaker.io/terms-and-conditions/"
-          class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3"
         >
           Terms and Conditions generator
         </a>{" "}
@@ -493,23 +491,19 @@ const Tos = () => {
         These{" "}
         <a
           href="https://policymaker.io/terms-and-conditions/"
-          class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-4"
         >
           Terms of Service
         </a>{" "}
         were created for <b>yabe-online-mall.github.io</b> by{" "}
         <a
           href="https://policymaker.io"
-          class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-5"
         >
           PolicyMaker.io
         </a>{" "}
         on 2021-04-16.&nbsp;
         <br />
       </p>
-      <button class="content-nav-bttn float-left" onclick="scrollToTop()">
-        TO TOP
-      </button>
+      <ToTopButton/>
     </Layout>
   );
 };

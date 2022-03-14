@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import Layout from "../../components/Layout";
+import SubmitButton from "../../components/SubmitButton";
 
 const RegisterPage = () => {
   return (
@@ -268,7 +269,7 @@ const RegisterPage = () => {
           <option value="Zambia">Zambia</option>
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
-        <button>Submit</button>
+        <SubmitButton/>
       </form>
     </Layout>
   );

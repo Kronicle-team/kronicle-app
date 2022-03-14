@@ -41,9 +41,7 @@ const CopyrightPage = () => {
         TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       </p>
-      <button class="content-nav-bttn float-left" onclick="scrollToTop()">
-        TO TOP
-      </button>
+      <ToTopButton/>
     </Layout>;
   };
 };
