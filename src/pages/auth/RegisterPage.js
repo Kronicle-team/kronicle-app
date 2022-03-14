@@ -6,21 +6,21 @@ const RegisterPage = () => {
   return (
     <Layout>
       <form>
-        <label for="username">Username</label>
+        <label htmlFor={"username"}>Username</label>
         <input id="username" name="username" type="text" />
-        <label for="password">Password</label>
+        <label htmlFor={"password"}>Password</label>
         <input id="password" name="password" type="password" />
-        <label for="confirm-password">Confirm Password</label>
+        <label htmlFor={"confirm-password"}>Confirm Password</label>
         <input id="confirm-password" name="confirm-password" type="password" />
-        <label for="firstname">Firstname</label>
+        <label htmlFor={"firstname"}>Firstname</label>
         <input id="firstname" name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
+        <label htmlFor={"lastname"}>Lastname</label>
         <input id="lastname" name="lastname" type="text" />
-        <label for="dob">Date of Birth</label>
+        <label htmlFor={"dob"}>Date of Birth</label>
         <input id="dob" name="dob" type="date" />
-        <label for="country">Country</label>
+        <label htmlFor={"country"}>Country</label>
         <select id="country" name="country">
-          <option value="Afganistan">Afghanistan</option>
+          <option value="Afghanistan">Afghanistan</option>
           <option value="Albania">Albania</option>
           <option value="Algeria">Algeria</option>
           <option value="American Samoa">American Samoa</option>

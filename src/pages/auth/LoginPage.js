@@ -6,9 +6,9 @@ const LoginPage = () => {
   return (
       <Layout>
         <form>
-          <label for="username">Username</label>
+          <label htmlFor={"username"}>Username</label>
           <input id="username" name="username" type="text"/>
-          <label for="password">Password</label>
+          <label htmlFor={"password"}>Password</label>
           <input id="password" name="password" type="password"/>
           <SubmitButton/>
         </form>

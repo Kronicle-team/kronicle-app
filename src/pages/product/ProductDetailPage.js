@@ -21,17 +21,17 @@ const ProductDetailPage = () => {
         <img src="" alt="main image of the product"/>
       </span>
 
-      <div class="product-info-main">
-        <p class="product-detail-store-name"></p>
+      <div>
+        <p></p>
         <h2></h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div class="product-info-details">
-          <p class="product-info-price float-left"></p>
-          <p class="product-info-date float-left"></p>
+        <div>
+          <p></p>
+          <p></p>
         </div>
-        <div class="shop-bttn clear-both">
-          <button class="add-to-cart">ADD TO CART</button>
-          <button class="buy-now"></button>
+        <div>
+          <button>ADD TO CART</button>
+          <button></button>
         </div>
       </div>
     </section>
@@ -43,8 +43,8 @@ const ProductDetailPage = () => {
         aliquam perferendis debitis ipsa necessitatibus nisi quisquam velit ex dolorem, facilis
         et rerum quod blanditiis ducimus voluptatem adipisci.</p>
 
-      <h3 class="more-info">More information</h3>
-      <table class="product-info-table">
+      <h3>More information</h3>
+      <table>
         <tr>
           <th>Publisher</th>
           <td>Soph &amp; Eph Company</td>
