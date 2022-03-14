@@ -27,7 +27,7 @@ const ProductDetailPage = () => {
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div class="product-info-details">
           <p class="product-info-price float-left"></p>
-          <p class="product-info-date float-left"><</p>
+          <p class="product-info-date float-left"></p>
         </div>
         <div class="shop-bttn clear-both">
           <button class="add-to-cart">ADD TO CART</button>

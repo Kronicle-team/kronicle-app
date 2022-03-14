@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PrivacyPolicyPage from './pages/legal/PrivacyPolicyPage';
 import reportWebVitals from './reportWebVitals';
-
+import ProductDetailPage from './pages/product/ProductDetailPage'
 import "./styles/global.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <PrivacyPolicyPage />
+    <ProductDetailPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
