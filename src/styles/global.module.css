@@ -18,13 +18,6 @@
     --dim-white: #fcfcfc;
     --white: #ffffff;
 
-    /* Responsive sizing */
-    --viewport-small-phone: 400px;
-    --viewport-phone: 767px;
-    --viewport-tablet: 1023px;
-    --viewport-desktop: 1280px;
-    --viewport-large-desktop: 1900px;
-
     /* Border radius */
     --border-radius-xxs: 6px;
     --border-radius-xs: 8px;
@@ -33,5 +26,4 @@
     --border-radius-l: 32px;
     --border-radius-xl: 42px;
     --border-radius-xxl: 54px;
-
 }

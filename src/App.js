@@ -1,20 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import HomePage from "./pages/HomePage";
+import './App.module.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {allPages} from "./Pages";
 
 function App() {
+  const pages = allPages.all;
   return (
-    <div className="App">
-      <header className="App-header">
-        <p className="para">sss</p>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <HomePage />
-        <a href="/">Han Sooyoung</a>
-      </header>
-    </div>
+      <Router>
+        <Routes>
+          {pages.map((page, key) => (
+              <Route key={key} path={page.link} element={page.component} />
+          ))}
+        </Routes>
+      </Router>
   );
 }
 

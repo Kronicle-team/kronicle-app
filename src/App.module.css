@@ -5,6 +5,10 @@ html {
   font-family: var(--body-font);
 }
 
+main {
+  margin: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -40,15 +44,6 @@ h5 {
 h6 {
   font-weight: 400;
   font-size: 18px;
-}
-
-a {
-  color: var(--cyan);
-}
-
-a:hover {
-  color: var(--dark-cyan);
-  text-decoration: none;
 }
 
 p {

@@ -1,0 +1,38 @@
+.header {
+   background: var(--blue);
+   height: 4rem;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1.5rem 2rem;
+   position: -webkit-sticky;
+   position: sticky;
+   top: 0;
+   z-index: 99;
+}
+
+.header-left {
+   align-items: center;
+   width: 70%;
+   margin: 0;
+}
+
+.logo {
+   width: 4rem;
+   margin-right: 2rem;
+}
+
+.search-bar {
+   width: 50%;
+   height: 1.5rem;
+   background: var(--white);
+   color: var(--black);
+   align-items: center;
+   justify-content: end;
+   padding: 10px;
+   margin-right: 1.5rem;
+}
+
+.header-right a {
+   margin-left: 1.5rem;
+}
