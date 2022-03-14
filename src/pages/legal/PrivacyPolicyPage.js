@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import ToTopButton from "../../components/ToTopButton";
 
 const PrivacyPolicyPage = () => {
-  return () => {
+  return (
     <Layout>
       <ul>
         <li>
@@ -554,8 +554,8 @@ const PrivacyPolicyPage = () => {
         <br />
       </p>
       <ToTopButton/>
-    </Layout>;
-  };
-};
+    </Layout>
+  )
+}
 
 export default PrivacyPolicyPage;

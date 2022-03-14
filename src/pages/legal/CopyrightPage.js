@@ -1,7 +1,8 @@
 import Layout from "../../components/Layout";
+import ToTopButton from "../../components/ToTopButton";
 
 const CopyrightPage = () => {
-  return () => {
+  return (
     <Layout>
       <ul>
         <li>
@@ -42,8 +43,8 @@ const CopyrightPage = () => {
         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       </p>
       <ToTopButton/>
-    </Layout>;
-  };
+    </Layout>
+  )
 };
 
 export default CopyrightPage;

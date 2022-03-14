@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 
 const ProductDetailPage = () => {
-    return () => {
+    return (
     <Layout>
     <ul>
         <li><a>Home</a></li>
@@ -72,7 +72,7 @@ const ProductDetailPage = () => {
       </table>
     </section>
     </Layout>
-    }
+    )
 }
 
 export default ProductDetailPage;

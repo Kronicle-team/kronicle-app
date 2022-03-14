@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 
 const UserProfilePage = () => {
-  return () => {
+  return (
     <Layout>
       <article>
         <ul>
@@ -43,8 +43,8 @@ const UserProfilePage = () => {
           <img alt="profile picture" />
         </div>
       </article>
-    </Layout>;
-  };
-};
+    </Layout>
+  )
+}
 
 export default UserProfilePage;

@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
+import ToTopButton from "../../components/ToTopButton";
 
-const Tos = () => {
+const TosPage = () => {
   return (
     <Layout>
       <ul>
