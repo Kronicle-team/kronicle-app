@@ -1,0 +1,15 @@
+.footer-nav {
+    background: var(--dark-blue);
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+.footer-nav h4 {
+    margin-top: 0;
+}
+
+.footer-nav a {
+    color: var(--dim-white);
+    display: block;
+    margin-top: 5px;
+}
