@@ -1,11 +1,14 @@
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
-import ProfilePage from "./pages/ProfilePage";
-import ListingPage from "./pages/ListingPage";
+import ProfilePage from "./pages/user/ProfilePage";
+import ListingPage from "./pages/product/ListingPage";
 import HomePage from "./pages/HomePage";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
-import FaqPage from "./pages/FaqPage";
-import AboutUsPage from "./pages/AboutUsPage";
+import FaqPage from "./pages/support/FaqPage";
+import AboutUsPage from "./pages/support/AboutUsPage";
+import ProductDetailPage from "./pages/product/ProductDetailPage";
+import CopyrightPage from "./pages/legal/CopyrightPage";
+import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
+import TosPage from "./pages/legal/TosPage";
 
 const pages = {
   home: {
@@ -36,7 +39,7 @@ const pages = {
   productDetail: {
     name: "Product Details",
     link: "/product/:id",
-    component: <ProductDetailsPage/>
+    component: <ProductDetailPage />
   },
   faq: {
     name: "Frequently Asked Questions",
@@ -47,11 +50,26 @@ const pages = {
     name: "About Us",
     link: "/about-us",
     component: <AboutUsPage />
+  },
+  copyright: {
+    name: "Copyright",
+    link: "/copyright",
+    component: <CopyrightPage />
+  },
+  privacyPolicy: {
+    name: "Privacy Policy",
+    link: "/privacy-policy",
+    component: <PrivacyPolicyPage />
+  },
+  tos: {
+    name: "Terms of Service",
+    link: "/tos",
+    component: <TosPage />
   }
-
 }
 
 export const allPages = {
   all: Object.values(pages),
-  auth: [pages.login, pages.register]
+  auth: [pages.login, pages.register],
+  legal: [pages.copyright, pages.privacyPolicy, pages.tos]
 }

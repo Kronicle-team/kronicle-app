@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 
 const ProductDetailPage = () => {
     return (
-    <Layout>
+    <Layout header footer>
     <ul>
         <li><a>Home</a></li>
         <li><a></a></li>

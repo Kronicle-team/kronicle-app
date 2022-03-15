@@ -1,9 +1,8 @@
 import Layout from "../../components/Layout";
 
-const UserProfilePage = () => {
+const ProfilePage = () => {
   return (
-    <Layout>
-      <article>
+      <Layout header footer>
         <ul>
           <li>
             <label>Username</label>
@@ -37,14 +36,12 @@ const UserProfilePage = () => {
           </li>
         </ul>
         <button>Edit</button>
-      </article>
-      <article>
+
         <div>
-          <img alt="profile picture" />
+          <img alt="profile picture"/>
         </div>
-      </article>
-    </Layout>
+      </Layout>
   )
 }
 
-export default UserProfilePage;
+export default ProfilePage;
