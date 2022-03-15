@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import AboutUsCard from "../components/AboutUsCard";
+import Layout from "../../components/Layout";
+import AboutUsCard from "../../components/support/AboutUsCard";
 
 const AboutUsPage = () => {
   const members = [

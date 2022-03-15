@@ -2,8 +2,7 @@ import Layout from "../../components/Layout";
 
 const ProfilePage = () => {
   return (
-    <Layout>
-      <article>
+      <Layout header footer>
         <ul>
           <li>
             <label>Username</label>
@@ -37,13 +36,11 @@ const ProfilePage = () => {
           </li>
         </ul>
         <button>Edit</button>
-      </article>
-      <article>
+
         <div>
-          <img alt="profile picture" />
+          <img alt="profile picture"/>
         </div>
-      </article>
-    </Layout>
+      </Layout>
   )
 }
 

@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import SubmitButton from "../../components/SubmitButton";
+import SubmitButton from "../../components/auth/SubmitButton";
 
 const RegisterPage = () => {
   return (

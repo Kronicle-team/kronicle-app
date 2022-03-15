@@ -3,7 +3,7 @@ import ToTopButton from "../../components/ToTopButton";
 
 const TosPage = () => {
   return (
-    <Layout>
+    <Layout header footer>
       <ul>
         <li>
           <a>Home</a>

@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import FaqSection from "../components/FaqSection";
+import Layout from "../../components/Layout";
+import FaqSection from "../../components/support/FaqSection";
 
 const FaqPage = () => {
   const qna = [
