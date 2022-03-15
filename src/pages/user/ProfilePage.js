@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 
-const UserProfilePage = () => {
+const ProfilePage = () => {
   return (
     <Layout>
       <article>
@@ -47,4 +47,4 @@ const UserProfilePage = () => {
   )
 }
 
-export default UserProfilePage;
+export default ProfilePage;
