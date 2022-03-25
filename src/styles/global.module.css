@@ -1,22 +1,14 @@
 :root {
     /* Fonts */
-    --header-font: "Open Sans", sans-serif;
+    --header-font: "Montserrat", sans-serif;
     --body-font: "Montserrat", sans-serif;
 
     /* Kronicle color palette */
-    --black: #181818;
-    --alt-black: #1f1f1f;
-    --light-black: #2a2a2a;
-    --lighter-black: #353535;
-    --dark-blue: #17619c;
-    --blue: #196bac;
-    --dark-cyan: #079edf;
-    --cyan: #00aeef;
-    --gray: #cccccc;
-    --light-gray: #e6e6e6;
-    --lighter-gray: #f2f2f2;
-    --dim-white: #fcfcfc;
-    --white: #ffffff;
+    --orange: #FF7D1A;
+    --darker-orange: #EB6701;
+    --peach: #FEDBCD;
+    --background: #FFFAF8;
+    --light-beige: #F8ECE8;
 
     /* Border radius */
     --border-radius-xxs: 6px;
