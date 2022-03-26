@@ -35,6 +35,8 @@ const ProductDetailPage = () => {
         </div>
       </div>
     </section>
+
+      <p>kefkk</p>
         
 
     <section id="product-description">
