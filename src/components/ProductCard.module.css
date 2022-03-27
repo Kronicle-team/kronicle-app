@@ -1,8 +1,13 @@
 .card {
-    margin: auto;
+    margin: auto 10px;
 }
 
 .cardImg {
-    width: 225px;
+    aspect-ratio: 0.75;
     height: 300px;
+    width: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+
 }
