@@ -9,52 +9,52 @@ const HomePage = () => {
   const [latestBidsArray, setLatestBidsArray] = useState([
         {
               id: 1,
-              name: "Product Card",
+              name: "Product Card 1",
               img: "",
               price: "VND"
         },
         {
               id: 2,
-              name: "Product Card",
+              name: "Product Card 2",
               img: "",
               price: "VND"
         },
         {
               id: 3,
-              name: "Product Card",
+              name: "Product Card 3",
               img: "",
               price: "VND"
         },
         {
               id: 4,
-              name: "Product Card",
+              name: "Product Card 4",
               img: "",
               price: "VND"
         },
-        // {
-        //       id: 5,
-        //       name: "Product Card",
-        //       img: "",
-        //       price: "VND"
-        // },
-        // {
-        //       id: 6,
-        //       name: "Product Card",
-        //       img: "",
-        //       price: "VND"
-        // },
-        // {
-        //       id: 7,
-        //       name: "Product Card",
-        //       img: "",
-        //       price: "VND"
-        // },
-        // {
-        //       id: 8,
-        //       name: "Product Card",
-        //       img: "",
-        //       price: "VND"
-        // },
+        {
+              id: 5,
+              name: "Product Card 5",
+              img: "",
+              price: "VND"
+        },
+        {
+              id: 6,
+              name: "Product Card 6",
+              img: "",
+              price: "VND"
+        },
+        {
+              id: 7,
+              name: "Product Card 7",
+              img: "",
+              price: "VND"
+        },
+        {
+              id: 8,
+              name: "Product Card 8",
+              img: "",
+              price: "VND"
+        },
   ])
 
   const [latestProductsArray, setLatestProductsArray] = useState(latestBidsArray)
