@@ -1,6 +1,6 @@
 import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import ProductCard from "./ProductCard";
+import ProductCardHome from "./ProductCardHome";
 import ToggleButton from "./ToggleButton";
 import style from "./CardShowCase.module.css";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const CardShowCase = (props) => {
     let maxItemsPerPage = 4
- if (window.innerWidth < 1270) {
+ if (window.innerWidth < 1680) {
      maxItemsPerPage--
  }
  if (window.innerWidth < 962) {
@@ -24,10 +24,10 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
  return (
      <div className={style.cardShowCaseContainer}>
          <div className={style.cardShowCaseTitle}>
-             <h1>{props.name} <span><Link to={"/all"} className={style.seeMoreLink}>See more</Link></span></h1>
+             <h1>{props.name} <span><Link to={"/all"} className={style.seeMoreLink}>More</Link></span></h1>
          </div>
-         <div className={style.prevBtn}>
-           <button onClick={() => {setPage( (page - 1) % totalPage)}}><ToggleButton icon={faChevronLeft} /></button>
+         <div className={style.pagePrevBtnWrapper}>
+           <button onClick={() => {setPage( (page - 1) % totalPage)}} className={style.pageBtn}><ToggleButton icon={faChevronLeft} /></button>
          </div>
          <div className={style.cardWrapper}>
              {
@@ -35,12 +35,12 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
                      console.log("page: " + page)
                      console.log("card id: " + props.data.indexOf(card))
                      return (
-                        <ProductCard key={card.id} img={card.img} name={card.name} price={card.price}/>
+                        <ProductCardHome key={card.id} img={card.img} name={card.name} price={card.price}/>
                      )
              })}
          </div>
-         <div  className={style.forwardBtn}>
-            <button  onClick={() => {setPage( (page + 1) % totalPage)}}><ToggleButton icon={faChevronRight}/></button>
+         <div  className={style.pageForwardBtnWrapper}>
+            <button  onClick={() => {setPage( (page + 1) % totalPage)}} className={style.pageBtn + " " + style.pageForwardBtn}><ToggleButton icon={faChevronRight}/></button>
          </div>
      </div>
  )

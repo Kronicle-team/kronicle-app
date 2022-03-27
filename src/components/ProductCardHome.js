@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./ProductCard.module.css"
+import style from "./ProductCardHome.module.css"
 
-const ProductCard = (props) => {
+const ProductCardHome = (props) => {
     return (
         <div className={style.card}>
             <div key={props.id}>
@@ -13,4 +13,4 @@ const ProductCard = (props) => {
     )
 }
 
-export default ProductCard;
+export default ProductCardHome;

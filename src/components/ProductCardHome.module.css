@@ -1,4 +1,5 @@
 .card {
+    border-radius: 10px;
     margin: auto 10px;
 }
 
@@ -6,8 +7,4 @@
     aspect-ratio: 0.75;
     height: 300px;
     width: auto;
-}
-
-@media only screen and (max-width: 1200px) {
-
 }

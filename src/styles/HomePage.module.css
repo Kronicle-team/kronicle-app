@@ -1,9 +1,56 @@
 .banner {
+    height: 390px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.bannerBackground {
+    height: 390px;
+    width: 100%;
+    position: absolute;
 
 }
 
-.qrBanner {
+.bannerText {
+    color: #333333;
+    display: block;
+    font-size: 48px;
+    font-weight: lighter;
+    height: 300px;
+    position: relative;
+    margin: auto;
+    top: 20%;
+    bottom: auto;
+    text-align: center;
+    width: 75%;
+}
 
+.qr {
+    height: 100px;
+    margin: auto;
+    padding: 100px;
+    width: 100px;
+}
+
+.qrBanner {
+    background: #E5E5E5;
+    border-radius: 15px;
+    height: 300px;
+    margin: auto;
+    text-align: center;
+    width: 60%;
+}
+
+.qrBannerContainer {
+
+}
+
+.qrBannerText {
+    font-size: 36px;
+    font-family: "Montserrat Black";
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .latestBidsContainer {
@@ -11,5 +58,58 @@
 }
 
 .latestProductsContainer {
+
+}
+
+@media only screen and (max-width: 930px) {
+    .bannerText {
+        font-size: 36px;
+    }
+    .qrBannerText {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 687px) {
+    .banner {
+        height: 250px;
+    }
+    .bannerBackground {
+        height: 250px;
+    }
+    .bannerText {
+        font-size: 24px;
+    }
+    .qr {
+        height: 70px;
+        width: 70px;
+        padding: 70px;
+    }
+    .qrBanner {
+        height: 200px;
+    }
+}
+
+
+@media only screen and (max-width: 540px) {
+    .bannerText {
+        font-size: 18px;
+        top: 30%;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .bannerText {
+        top: 20%;
+    }
+    .qr {
+        height: 50px;
+        width: 50px;
+        padding: 50px;
+    }
+
+    .qrBanner {
+        height: 150px;
+    }
 
 }
