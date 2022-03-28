@@ -61,8 +61,10 @@ const HomePage = () => {
   return (
       <Layout header footer>
             <div className={style.banner}>
-                  <img src={"../media/images/banner.png"} alt={"banner"} className={style.bannerBackground}/>
-                  <h1 className={style.bannerText}>The First Official Website For Trading K-Pop Photocards In Vietnam</h1>
+                  <div className={style.bannerTextWrapper}>
+                      <img src={"../media/images/banner.png"} alt={"banner"} className={style.bannerBackground}/>
+                      <h1 className={style.bannerText}>The First Official Website For Trading K-Pop Photocards In Vietnam</h1>
+                  </div>
             </div>
             <div className={style.qrBannerContainer}>
                   <div className={style.qrBannerText}>TRY OUR CARD DETECTION WEB APP!</div>

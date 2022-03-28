@@ -14,36 +14,35 @@
 
 .bannerText {
     color: #333333;
-    display: block;
     font-size: 48px;
     font-weight: lighter;
-    height: 300px;
     position: relative;
-    margin: auto;
-    top: 20%;
-    bottom: auto;
     text-align: center;
     width: 75%;
 }
 
+.bannerTextWrapper {
+    align-items: center;
+    display: flex;
+    height: 390px;
+    justify-content: center;
+}
+
 .qr {
     height: 100px;
-    margin: auto;
-    padding: 100px;
     width: 100px;
 }
 
 .qrBanner {
+    align-items: center;
     background: #E5E5E5;
     border-radius: 15px;
+    display: flex;
     height: 300px;
+    justify-content: center;
     margin: auto;
     text-align: center;
     width: 60%;
-}
-
-.qrBannerContainer {
-
 }
 
 .qrBannerText {
@@ -53,13 +52,6 @@
     margin-bottom: 20px;
 }
 
-.latestBidsContainer {
-
-}
-
-.latestProductsContainer {
-
-}
 
 @media only screen and (max-width: 930px) {
     .bannerText {
@@ -71,7 +63,7 @@
 }
 
 @media only screen and (max-width: 687px) {
-    .banner {
+    .banner .bannerTextWrapper{
         height: 250px;
     }
     .bannerBackground {
@@ -83,7 +75,6 @@
     .qr {
         height: 70px;
         width: 70px;
-        padding: 70px;
     }
     .qrBanner {
         height: 200px;
@@ -94,14 +85,10 @@
 @media only screen and (max-width: 540px) {
     .bannerText {
         font-size: 18px;
-        top: 30%;
     }
 }
 
 @media only screen and (max-width: 370px) {
-    .bannerText {
-        top: 20%;
-    }
     .qr {
         height: 50px;
         width: 50px;
