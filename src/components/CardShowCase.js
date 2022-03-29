@@ -5,16 +5,13 @@ import style from "./CardShowCase.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ToggleButton from "./ToggleButton";
+import MaxItemsPerPage from "./MaxItemsPerPage";
 
 const CardShowCase = (props) => {
-    let maxItemsPerPage = 4
-    let cardWidth = 225.88
-    let margin = 5
-    for (let i = maxItemsPerPage; i > 0; i--) {
-        if ((cardWidth + margin) * maxItemsPerPage >= (window.innerWidth * 0.8)) {
-            maxItemsPerPage --
-        } else break
-    }
+let maxCards = 4
+let cardWidth = 225.88
+let margin = 5
+let maxItemsPerPage = MaxItemsPerPage(maxCards, cardWidth, margin)
 
 const [page, setPage] = useState(0)
 let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
