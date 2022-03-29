@@ -1,13 +1,13 @@
 html {
   font-size: 16px;
-  color: var(--white);
-  background: var(--black);
-  font-family: var(--body-font);
+  color: var(--black);
+  background: var(--background);
+  font-family: var(--font);
 }
 
-main {
-  margin: 20px;
-}
+/*main {*/
+/*  margin: 20px;*/
+/*}*/
 
 h1,
 h2,
@@ -16,29 +16,30 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  font-family: var(--header-font);
-  line-height: 1.6;
+  font-family: var(--font);
+  line-height: 1.8;
 }
 
 h1 {
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 32px;
+  font-weight: 800;
 }
 
 h2 {
-  font-size: 27px;
+  font-size: 28px;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 25px;
 }
 
 h4 {
-  font-size: 21px;
+  font-size: 22px;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 h6 {
