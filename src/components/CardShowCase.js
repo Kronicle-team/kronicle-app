@@ -1,17 +1,17 @@
 import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import ProductCardHome from "./ProductCardHome";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import style from "./CardShowCase.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import ToggleButton from "./ToggleButton";
 
 const CardShowCase = (props) => {
     let maxItemsPerPage = 4
-    let cardWitdh = 225.88
+    let cardWidth = 225.88
     let margin = 5
     for (let i = maxItemsPerPage; i > 0; i--) {
-        if ((cardWitdh + margin) * maxItemsPerPage >= (window.innerWidth * 0.8)) {
+        if ((cardWidth + margin) * maxItemsPerPage >= (window.innerWidth * 0.8)) {
             maxItemsPerPage --
         } else break
     }
@@ -26,13 +26,13 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
              <h1>{props.name} <span><Link to={"/all"} className={style.seeMoreLink}>More</Link></span></h1>
          </div>
          <div className={style.pagePrevBtnWrapper}>
-           <button onClick={() => {
+           <ToggleButton onClick={() => {
                if (page !== 0) {
                    setPage((page - 1) % totalPage)
                } else {
                    setPage(totalPage - 1)
                }}
-           } className={style.pageBtn}><FontAwesomeIcon icon={faChevronLeft}  className={style.pageBtnIcon}/></button>
+           } icon={faChevronLeft} />
          </div>
          <div className={style.cardWrapper}>
              {
@@ -43,7 +43,7 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
              })}
          </div>
          <div  className={style.pageForwardBtnWrapper}>
-            <button  onClick={() => {setPage( (page + 1) % totalPage)}} className={style.pageBtn}><FontAwesomeIcon icon={faChevronRight}  className={style.pageBtnIcon}/></button>
+            <ToggleButton  onClick={() => {setPage( (page + 1) % totalPage)}}  icon={faChevronRight} />
          </div>
      </div>
  )

@@ -45,6 +45,15 @@
     width: 60%;
 }
 
+.qrBannerContainer {
+    margin: 50px 0;
+}
+
+.latestBidsContainer, .latestProductsContainer {
+    margin: 100px 0;
+}
+
+
 .qrBannerText {
     font-size: 36px;
     font-family: "Montserrat Black";

@@ -1,4 +1,9 @@
-.btn {
-    color: var(--cyan);
-    width: 50px;
+.pageBtn {
+    background: none;
+    border: none;
+    color: var(--orange);
+}
+
+.pageBtnIcon {
+    font-size: 30px;
 }
