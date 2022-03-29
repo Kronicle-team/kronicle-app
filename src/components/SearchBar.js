@@ -17,7 +17,7 @@ const SearchBar = () => {
             className={style["search-input"]}
         />
         <button className={style["search-btn"]}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} className={style["search-icon"]} />
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
   )

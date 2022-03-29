@@ -5,7 +5,6 @@ import common from "../styles/common.module.css"
 import {Link} from "react-router-dom";
 import SearchBar from "./SearchBar";
 
-// TODO: Move search bar as component
 const Header = () => {
   return (
       <header className={[style["header"], common["flex"]].join(" ")}>
@@ -23,7 +22,7 @@ const Header = () => {
         <div className={[style["header-right"], common["flex"]].join(" ")}>
           <Link to="/login">Login</Link>
           <div className={style["vertical-line"]} />
-          <Link to="/listing">Register</Link>
+          <Link to="/register" className={style["register"]}>Register</Link>
         </div>
       </header>
   )

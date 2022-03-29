@@ -20,6 +20,7 @@
    text-decoration: underline;
 }
 
+/* Styling for elements on the left in header */
 .header-left {
    align-items: center;
    width: 70%;
@@ -35,13 +36,26 @@
    margin-right: 2.5rem;
 }
 
+/* Styling for elements on the right */
 .header-right {
    height: 100%;
    align-items: center;
+}
+
+.header-right a {
+   font-weight: 500;
 }
 
 .vertical-line {
    border-right: 1px solid var(--black);
    height: 70%;
    margin: 0 20px;
+}
+
+.header-right .register {
+   color: var(--darker-orange);
+}
+
+.header-right .register:hover {
+   text-decoration: underline;
 }
