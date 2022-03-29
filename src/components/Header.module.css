@@ -1,5 +1,5 @@
 .header {
-   background: var(--blue);
+   background: var(--peach);
    height: 4rem;
    flex-wrap: wrap;
    align-items: center;
@@ -14,7 +14,6 @@
 .header-left {
    align-items: center;
    width: 70%;
-   margin: 0;
 }
 
 .logo {
@@ -25,14 +24,28 @@
 .search-bar {
    width: 50%;
    height: 1.5rem;
-   background: var(--white);
+   background: var(--background);
    color: var(--black);
    align-items: center;
    justify-content: end;
-   padding: 10px;
-   margin-right: 1.5rem;
+   padding: 10px 30px;
+   border-radius: 20px;
+   border: 1px solid var(--black);
 }
 
+.search-icon {
+   color: var(--orange)
+}
+
+.header-right {
+   height: 100%;
+   align-items: center;
+}
 .header-right a {
    margin-left: 1.5rem;
+}
+
+.vertical-line {
+   border-right: 1px solid var(--black);
+   height: 70%;
 }
