@@ -1,8 +1,9 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowUpFromBracket, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faArrowUpFromBracket, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import style from "./Header.module.css";
 import common from "../styles/common.module.css"
 import {Link} from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 // TODO: Move search bar as component
 const Header = () => {
@@ -12,19 +13,17 @@ const Header = () => {
           <Link to="/">
             <img alt="Kronicle logo" src={"../media/icons/logo.png"} className={style["logo"]} />
           </Link>
-          <div className={[style["search-bar"], common["flex"]].join(" ")}>
-            <input name="search">
-            </input>
-            <FontAwesomeIcon icon={faMagnifyingGlass} className={style["search-icon"]} />
-          </div>
-          <Link to="/"><FontAwesomeIcon icon={faArrowUpFromBracket} /></Link>
-          <Link to="/"><FontAwesomeIcon icon={faShoppingCart} /></Link>
+
+          <SearchBar />
+
+          <Link to="/"><FontAwesomeIcon icon={faArrowUpFromBracket} className={style["icon"]} /></Link>
+          <Link to="/"><FontAwesomeIcon icon={faShoppingCart} className={style["icon"]} /></Link>
         </div>
 
         <div className={[style["header-right"], common["flex"]].join(" ")}>
           <Link to="/login">Login</Link>
           <div className={style["vertical-line"]} />
-          <Link to="/listing">Listing</Link>
+          <Link to="/listing">Register</Link>
         </div>
       </header>
   )

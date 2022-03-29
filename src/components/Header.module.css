@@ -3,12 +3,21 @@
    height: 4rem;
    flex-wrap: wrap;
    align-items: center;
-   justify-content: space-between;
-   padding: 1.5rem 2rem;
+   justify-content: space-around;
+   padding: 1.5rem 3rem;
    position: -webkit-sticky;
    position: sticky;
    top: 0;
    z-index: 99;
+}
+
+.header a {
+   text-decoration: none;
+   color: var(--black),
+}
+
+.header a:hover {
+   text-decoration: underline;
 }
 
 .header-left {
@@ -21,31 +30,18 @@
    margin-right: 2rem;
 }
 
-.search-bar {
-   width: 50%;
-   height: 1.5rem;
-   background: var(--background);
-   color: var(--black);
-   align-items: center;
-   justify-content: end;
-   padding: 10px 30px;
-   border-radius: 20px;
-   border: 1px solid var(--black);
-}
-
-.search-icon {
-   color: var(--orange)
+.icon {
+   font-size: 20px;
+   margin-right: 2.5rem;
 }
 
 .header-right {
    height: 100%;
    align-items: center;
 }
-.header-right a {
-   margin-left: 1.5rem;
-}
 
 .vertical-line {
    border-right: 1px solid var(--black);
    height: 70%;
+   margin: 0 20px;
 }
