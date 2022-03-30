@@ -9,12 +9,18 @@ import ProductDetailPage from "./pages/product/ProductDetailPage";
 import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
+import AllPage from "./pages/AllPage"
 
 const pages = {
   home: {
     name: "Home",
     link: "/",
     component: <HomePage />
+  },
+  all: {
+    name: "all",
+    link: "/all",
+    component: <AllPage />
   },
   login: {
     name: "Login",

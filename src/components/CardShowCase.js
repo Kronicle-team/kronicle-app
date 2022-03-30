@@ -11,7 +11,9 @@ const CardShowCase = (props) => {
 let maxCards = 4
 let cardWidth = 225.88
 let margin = 5
-let maxItemsPerPage = MaxItemsPerPage(maxCards, cardWidth, margin)
+let widthPercentage = 0.8
+let row = 1
+let maxItemsPerPage = MaxItemsPerPage(maxCards, cardWidth, margin, widthPercentage, row)
 
 const [page, setPage] = useState(0)
 let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
@@ -20,7 +22,7 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
  return (
      <div className={style.cardShowCaseContainer}>
          <div className={style.cardShowCaseTitle}>
-             <h1>{props.name} <span><Link to={"/all"} className={style.seeMoreLink}>More</Link></span></h1>
+             <h1>{props.name} <span><Link to={props.link} className={style.seeMoreLink}>More</Link></span></h1>
          </div>
          <div className={style.pagePrevBtnWrapper}>
            <ToggleButton onClick={() => {

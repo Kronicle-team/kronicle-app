@@ -73,10 +73,10 @@ const HomePage = () => {
                   </div>
             </div>
             <div className={style.latestBidsContainer}>
-                <CardShowCase name={"Latest Bids"} data={latestBidsArray}/>
+                <CardShowCase name={"Latest Bids"} data={latestBidsArray} link={""}/>
             </div>
             <div className={style.latestProductsContainer}>
-                <CardShowCase name={"Latest Products"} data={latestProductsArray}/>
+                <CardShowCase name={"Latest Products"} data={latestProductsArray} link={"/all"}/>
             </div>
       </Layout>
   )

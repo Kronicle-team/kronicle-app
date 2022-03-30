@@ -1,0 +1,30 @@
+.btnWrapper {
+    display: flex;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    width: 60vw;
+}
+
+.prevPageBtn {
+    margin-left: auto;
+}
+
+.nextPageBtn {
+    margin-right: auto;
+}
+
+.paginationBtn, .nextPageBtn, .prevPageBtn{
+    background: none;
+    border: none;
+    font-size: 14px;
+}
+
+.paginationBtnSelected {
+    ;
+}
