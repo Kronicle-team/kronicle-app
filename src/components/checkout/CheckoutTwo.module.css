@@ -1,0 +1,106 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    align-items: center;
+    justify-content: center;
+}
+.icon-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo-wrapper{
+    display: flex;
+
+}
+.logo{
+    width:70px;
+    height: 70px;
+}
+
+.logoTextMain{
+    color: #FF7D19;
+    font-size: 18px;
+}
+.logoText{
+    color: #858585;
+    font-size: 18px;
+}
+
+.payment-wrapper{
+    display: flex;
+}
+
+.payment-method-wrapper{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-method{
+    cursor: pointer;
+    border: 2px solid #C4C4C4;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.expDate-cvv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.form{
+    width: 70%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+}
+.input{
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.button-wrapper{
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.next-button{
+    padding: 10px 50px;
+    color: #FFFAF8;
+    background-color: #FF7D19;
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cancel-button{
+    padding: 10px 50px;
+    color: #FFFAF8;
+    background-color: #C4C4C4;
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px;
+    cursor: pointer;
+}
+

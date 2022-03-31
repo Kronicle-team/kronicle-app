@@ -45,42 +45,42 @@ const CheckoutOne = () => {
         </div>
 
         <form className={style["form"]}>
-          <label>First name</label>
+          <label>First Name</label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             className={style["input"]}
           />
-          <label>Middle name</label>
+          <label>Middle Name</label>
           <input
             type="text"
             value={middleName}
             onChange={(e) => setMiddleName(e.target.value)}
             className={style["input"]}
           />
-          <label>Last name</label>
+          <label>Last Name</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             className={style["input"]}
           />
-          <label>Phone number</label>
+          <label>Phone Number</label>
           <input
             type="text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className={style["input"]}
           />
-          <label>Shipping address</label>
+          <label>Shipping Address</label>
           <input
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             className={style["input"]}
           />
-          <label>Postal code</label>
+          <label>Postal Code</label>
           <input
             type="text"
             value={postal}

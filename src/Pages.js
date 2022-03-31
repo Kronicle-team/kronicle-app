@@ -10,6 +10,7 @@ import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
 import CheckoutPageOne from "./pages/checkout/CheckoutPageOne";
+import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
 
 const pages = {
   home: {
@@ -71,6 +72,11 @@ const pages = {
     name: "Checkout One",
     link: "/check-out-1",
     component: <CheckoutPageOne />,
+  },
+  checkOutTwo: {
+    name: "Checkout Two",
+    link: "/check-out-2",
+    component: <CheckoutPageTwo />,
   },
 };
 
