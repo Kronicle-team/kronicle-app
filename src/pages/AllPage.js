@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import style from "./AllPage.module.css";
 import ProductCardHome from "../components/ProductCardHome";
-import MaxItemsPerPage from "../components/MaxItemsPerPage";
 import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/Layout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -107,12 +106,7 @@ const AllPage = () => {
         },
     ])
 
-    let maxCards = 8
-    let cardWidth = 225.88
-    let margin = 5
-    let widthPercentage = 0.6
-    let row = 2
-    let maxItemsPerPage = MaxItemsPerPage(maxCards, cardWidth, margin, widthPercentage, row)
+    let maxItemsPerPage = 12
     const [page, setPage ] = useState(0)
     const [pageArray, setPageArray] = useState([]);
     let totalPage = Math.ceil(data.length / maxItemsPerPage)
@@ -130,7 +124,9 @@ const AllPage = () => {
             {
                 data.slice(page * maxItemsPerPage,(maxItemsPerPage * (page+1))).map((card) => {
                     return (
+                        <div className={style.cardSingleWrapper}>
                         <ProductCardHome key={card.id} img={card.img} name={card.name} price={card.price}/>
+                        </div>
                     )
                 })}
         </div>

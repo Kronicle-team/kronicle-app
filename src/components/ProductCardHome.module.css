@@ -5,5 +5,12 @@
 
 .cardImg {
     height: 300px;
-    width: 225px;
+    width: auto;
+    aspect-ratio: 0.75;
+}
+
+@media only screen and (max-width: 520px) {
+    .cardImg {
+        height: 180px;
+    }
 }

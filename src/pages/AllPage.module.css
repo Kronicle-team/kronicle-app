@@ -3,12 +3,15 @@
 }
 
 .cardWrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     margin: auto;
+    align-items: center;
     width: 60vw;
+}
+
+.cardSingleWrapper {
+    margin: auto;
 }
 
 .prevPageBtn {
@@ -22,9 +25,40 @@
 .paginationBtn, .nextPageBtn, .prevPageBtn{
     background: none;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
-.paginationBtnSelected {
-    ;
+.paginationBtn:hover, .nextPageBtn:hover, .prevPageBtn:hover {
+    background: #E5E5E5;
+}
+
+@media only screen and (max-width: 1610px) {
+    .cardWrapper {
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .cardWrapper {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .cardWrapper {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .cardWrapper {
+        grid-template-columns: 33% 33% 33%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cardWrapper {
+        grid-template-columns: 50% 50%;
+    }
 }

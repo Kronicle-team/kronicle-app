@@ -11,7 +11,7 @@ const CardShowCase = (props) => {
 let maxCards = 4
 let cardWidth = 225.88
 let margin = 5
-let widthPercentage = 0.8
+let widthPercentage = 0.75
 let row = 1
 let maxItemsPerPage = MaxItemsPerPage(maxCards, cardWidth, margin, widthPercentage, row)
 
