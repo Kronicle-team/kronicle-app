@@ -1,6 +1,24 @@
 .nav {
-    width: 60%;
+    width: 50%;
     justify-content: space-around;
     padding: 1.5rem 3rem;
 
+}
+
+.nav .active-link {
+    border-bottom: 3px solid var(--darker-orange);
+    color: var(--darker-orange);
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 1024px) {
+    .nav {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav {
+        width: 90%;
+    }
 }

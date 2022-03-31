@@ -2,12 +2,8 @@
     height: 4rem;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 1.5rem 3rem;
+    padding: 1rem 3rem;
     border-bottom: 2px solid var(--background);
-}
-
-.top-header a:hover {
-    text-decoration: underline;
 }
 
 /* Styling for elements on the left in top header */

@@ -1,7 +1,11 @@
-.footer-nav {
-    background: var(--dark-blue);
-    justify-content: space-around;
+.footer {
+    background: var(--light-beige);
     padding: 2rem;
+}
+
+.footer-nav {
+    justify-content: space-around;
+    padding-bottom: 2rem;
 }
 
 .footer-nav h4 {
@@ -9,7 +13,7 @@
 }
 
 .footer-nav a {
-    color: var(--dim-white);
+    color: var(--black);
     display: block;
     margin-top: 5px;
 }

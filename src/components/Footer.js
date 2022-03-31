@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-      <footer>
+      <footer className={style["footer"]}>
         <div className={style["footer-nav"] + " " + common["flex"]}>
           <div>
             <h4>KRONICLE</h4>
@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
 
         <div className={common["text-center"]}>
-          <p>&copy; {currentYear} We are Kronicle. All Rights Reserved.</p>
+          &copy; {currentYear} We are Kronicle. All Rights Reserved.
         </div>
       </footer>
   )
