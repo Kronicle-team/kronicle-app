@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className={[style["copyright"], common["flex"]].join(" ")}>
+        <div className={[style["copyright"], common["flex"], common["text-center"]].join(" ")}>
           &copy; {currentYear} We are Kronicle. All Rights Reserved.
         </div>
 

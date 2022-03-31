@@ -15,6 +15,18 @@
     border-bottom: 1px solid var(--light-grey);
 }
 
+@media only screen and (max-width: 950px) {
+    .footer-nav {
+        flex-direction: column;
+        padding-bottom: 3rem;
+    }
+
+    .footer-nav h5 {
+        margin-top: 3rem;
+        margin-bottom: 0;
+    }
+}
+
 .footer-nav a {
     color: var(--black);
     display: block;
