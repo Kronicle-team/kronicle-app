@@ -1,5 +1,5 @@
 import style from "./SearchBar.module.css";
-import common from "../styles/common.module.css";
+import common from "../../styles/common.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
