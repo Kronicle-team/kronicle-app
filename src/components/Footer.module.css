@@ -6,6 +6,7 @@
 .footer-nav {
     justify-content: space-around;
     padding-bottom: 2rem;
+    border-bottom: 1px solid var(--black);
 }
 
 .footer-nav h4 {
@@ -15,5 +16,10 @@
 .footer-nav a {
     color: var(--black);
     display: block;
-    margin-top: 5px;
+    margin-top: 0.5rem;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
 }
