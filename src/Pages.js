@@ -12,6 +12,8 @@ import TosPage from "./pages/legal/TosPage";
 import CheckoutPageOne from "./pages/checkout/CheckoutPageOne";
 import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
 import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
+import SellerProfilePage from "./pages/profile/SellerProfilePage";
+import MyAccount from "./components/profile/MyAccount";
 
 const pages = {
   home: {
@@ -83,6 +85,16 @@ const pages = {
     name: "Checkout Three",
     link: "/check-out-3",
     component: <CheckoutPageThree />,
+  },
+  sellerProfilePage: {
+    name: "Seller Profile",
+    link: "/seller-profile",
+    component: <SellerProfilePage />,
+  },
+  myAccount: {
+    name: "My Account",
+    link: "/my-account",
+    component: <MyAccount />,
   },
 };
 
