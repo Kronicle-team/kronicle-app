@@ -14,11 +14,11 @@ const CheckoutTwo = () => {
           <div className={style["icon-wrapper"]}>
             <a href={"check-out-1"}>
               <img
-                src={"../../media/icons/checkout/CheckoutIcon1Black.svg"}
-                className={style["logo"]}
+                src={"../../media/icons/checkout/Tick.svg"}
+                className={style["tick"]}
               />
             </a>
-            <h3 className={style["logoText"]}>SHIPPING DETAILS</h3>
+            <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} />
           <div className={style["icon-wrapper"]}>
