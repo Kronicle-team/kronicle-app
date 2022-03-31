@@ -45,3 +45,15 @@
 .top-header-right .register:hover {
     text-decoration: underline;
 }
+
+.avatar {
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.menu {
+    background: inherit;
+    font-size: 30px;
+    border: 0;
+}
+
