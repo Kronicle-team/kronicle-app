@@ -1,6 +1,7 @@
 .header {
    background: var(--peach);
    top: 0;
+   font-size: 16px;
 }
 
 .header a {

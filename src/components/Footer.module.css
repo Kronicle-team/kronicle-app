@@ -1,16 +1,18 @@
 .footer {
     background: var(--light-beige);
-    padding: 2rem;
+    padding: 3rem 5rem 1rem;
+    margin-top: 70px;
 }
 
 .footer-nav {
-    justify-content: space-around;
+    justify-content: space-between;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--black);
+    border-bottom: 1px solid var(--light-grey);
 }
 
-.footer-nav h4 {
+.footer-nav h5 {
     margin-top: 0;
+    border-bottom: 1px solid var(--light-grey);
 }
 
 .footer-nav a {
@@ -22,4 +24,31 @@
 
 .footer-nav a:hover {
     text-decoration: underline;
+}
+
+.contact h5 {
+    border-bottom: none;
+}
+
+.contact-btn {
+    border-radius: 10px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 0.75rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    transition: background 200ms ease-out 0s;
+}
+
+.contact-btn:hover {
+    background: var(--darker-orange);
+    cursor: pointer;
+}
+
+.copyright {
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
 }
