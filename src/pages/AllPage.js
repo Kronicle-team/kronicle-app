@@ -138,7 +138,7 @@ const AllPage = () => {
                     setPage(totalPage - 1)
                 }
                 console.log(page)}
-            }  className={style.prevPageBtn}><FontAwesomeIcon icon={faChevronLeft}/></button>
+            }  className={style.prevPageBtn} disabled={page===0}><FontAwesomeIcon icon={faChevronLeft}/></button>
             <div className={style.pagination}>
                 {
                     pageArray.map((pageNum) => {
@@ -162,7 +162,7 @@ const AllPage = () => {
                 }
             </div>
             <button onClick={() => {setPage((page + 1) % totalPage)}
-            }  className={style.nextPageBtn}><FontAwesomeIcon icon={faChevronRight}/></button>
+            }  className={style.nextPageBtn}><FontAwesomeIcon icon={faChevronRight} disabled={page === totalPage - 1}/></button>
         </div>
         </Layout>
     )

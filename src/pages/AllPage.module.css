@@ -2,6 +2,10 @@
     display: flex;
 }
 
+button:disabled:hover {
+    background: none;
+}
+
 .cardWrapper {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
