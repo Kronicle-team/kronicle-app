@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    align-items: center;
+    justify-content: center;
+}
+.icon-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo-wrapper{
+    display: flex;
+
+}
+.logo{
+    width:70px;
+    height: 70px;
+}
+
+.logoTextMain{
+    font-family: 'Montserrat', sans-serif;
+    color: #FF7D19;
+    font-size: 18px;
+}
+.logoText{
+    font-family: 'Montserrat', sans-serif;
+    color: #858585;
+    font-size: 18px;
+}

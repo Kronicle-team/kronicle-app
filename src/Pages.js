@@ -9,6 +9,7 @@ import ProductDetailPage from "./pages/product/ProductDetailPage";
 import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
+import CheckoutOne from "./pages/checkout/CheckoutOne";
 
 const pages = {
   home: {
@@ -65,7 +66,12 @@ const pages = {
     name: "Terms of Service",
     link: "/tos",
     component: <TosPage />
-  }
+  },
+    checkOutOne:{
+      name: "Checkout One",
+      link: "/check-out-1",
+      component: <CheckoutOne/>
+    }
 }
 
 export const allPages = {
