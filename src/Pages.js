@@ -11,6 +11,7 @@ import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
 import CheckoutPageOne from "./pages/checkout/CheckoutPageOne";
 import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
+import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 
 const pages = {
   home: {
@@ -77,6 +78,11 @@ const pages = {
     name: "Checkout Two",
     link: "/check-out-2",
     component: <CheckoutPageTwo />,
+  },
+  checkOutThree: {
+    name: "Checkout Three",
+    link: "/check-out-3",
+    component: <CheckoutPageThree />,
   },
 };
 

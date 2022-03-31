@@ -1,0 +1,65 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    align-items: center;
+    justify-content: center;
+
+}
+.icon-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.tick{
+    width:45px;
+    height: 45px;
+}
+
+.logoTextMain{
+    color: #FF7D19;
+    font-size: 18px;
+}
+.logoText{
+    color: #858585;
+    font-size: 18px;
+}
+
+.confirm-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text{
+    word-wrap: break-word;
+    width: 500px;
+    margin: 0 0 30px 0;
+}
+.back-button{
+    padding: 10px 50px;
+    color: #FFFAF8;
+    background-color: #FF7D19;
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px;
+    cursor: pointer;
+}
