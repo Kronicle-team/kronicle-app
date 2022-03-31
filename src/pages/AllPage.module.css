@@ -4,6 +4,7 @@
 
 button:disabled:hover {
     background: none;
+    cursor: none;
 }
 
 .cardWrapper {
@@ -36,6 +37,7 @@ button:disabled:hover {
 .paginationBtn:hover, .nextPageBtn:hover, .prevPageBtn:hover {
     background: #E5E5E5;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1610px) {
