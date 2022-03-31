@@ -11,7 +11,7 @@ export default function MaxItemsPerPage (maxItemsPerPage, itemWidth, leftAndRigh
         if ((itemWidth + leftAndRightMargin) * maxItemsPerPage >= (width * widthPercentage * row) && ((maxItemsPerPage - 1) !== 1)) {
             maxItemsPerPage -= row
             console.log(maxItemsPerPage)
-        } else if (maxItemsPerPage - row <= 1 || maxItemsPerPage === 1) {
+        } else if (maxItemsPerPage - row < 1 || maxItemsPerPage === 1) {
             maxItemsPerPage = 1
             console.log(maxItemsPerPage)
         } else break
