@@ -31,6 +31,7 @@
 
 .paginationBtn:hover, .nextPageBtn:hover, .prevPageBtn:hover {
     background: #E5E5E5;
+    border-radius: 20px;
 }
 
 @media only screen and (max-width: 1610px) {
