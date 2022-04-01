@@ -59,6 +59,16 @@
     margin: 10px 0;
 }
 
+.orange-border{
+    cursor: pointer;
+    border: 2px solid var(--orange);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
 .expDate-cvv{
     display: flex;
     flex-direction: row;

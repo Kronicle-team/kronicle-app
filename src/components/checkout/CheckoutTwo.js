@@ -7,6 +7,8 @@ const CheckoutTwo = () => {
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [holderName, setHolderName] = useState("");
+
+  const[visaSelected, setVisaSelected] = useState(false);
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
@@ -43,7 +45,7 @@ const CheckoutTwo = () => {
         </div>
         <div className={style["payment-wrapper"]}>
           <div className={style["payment-method-wrapper"]}>
-            <div className={style["payment-method"]}>
+            <div className={visaSelected ? style["payment-method"] : [style['orange-border']]} onClick={()=> {setVisaSelected(!visaSelected)}}>
               <img src={"../../media/images/checkout/visa.png"} />
             </div>
             <div className={style["payment-method"]}>
@@ -52,7 +54,7 @@ const CheckoutTwo = () => {
             <div className={style["payment-method"]}>
               <img src={"../../media/images/checkout/ae.png"} />
             </div>
-            <div className={style["payment-method"]}>
+            <div className={style["payment-method"]} >
               <img src={"../../media/images/checkout/mastercard.png"} />
             </div>
           </div>
