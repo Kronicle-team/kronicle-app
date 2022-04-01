@@ -24,6 +24,7 @@
     justify-content: center;
     flex-direction: column;
     width: 500px;
+
 }
 
 .avatar{
@@ -72,7 +73,8 @@ table tr td:last-child {
 }
 .info{
     width: 500px;
-
+    border-left: 2px solid #858585;
+    padding-left: 150px;
 }
 .button-wrapper{
     margin: 30px 0;
@@ -122,8 +124,10 @@ table tr td:last-child {
 }
 .input{
     width: 100%;
-    height: 30px;
-    border-radius: 10px;
+    padding: 15px 5px;
+    margin: 5px 0 20px;
+    border-radius: 15px;
+    border: 1px solid gray;
 }
 
 .about-me{
@@ -131,7 +135,7 @@ table tr td:last-child {
     border-radius: 10px;
     height: 30px;
     padding: 0 0 50px 5px;
-
+    border: 1px solid gray;
 }
 .logout-button{
     padding: 10px 30px;
@@ -142,5 +146,4 @@ table tr td:last-child {
     border-color: transparent;
     cursor: pointer;
 }
-
 

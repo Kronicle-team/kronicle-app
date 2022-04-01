@@ -13,34 +13,34 @@ const CheckoutOne = () => {
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
         <div className={style["logo-wrapper"]}>
-          <div className={style["icon-wrapper"]}>
-            <a href={"check-out-1"}>
+          <div>
+            <a href={"check-out-1"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon1Orange.svg"}
                 className={style["logo"]}
               />
+              <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
             </a>
-            <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} />
-          <div className={style["icon-wrapper"]}>
-            <a href={"check-out-2"}>
+          <div>
+            <a href={"check-out-2"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon2Black.svg"}
                 className={style["logo"]}
               />
+              <h3 className={style["logoText"]}>PAYMENT METHOD</h3>
             </a>
-            <h3 className={style["logoText"]}>PAYMENT METHOD</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} />
-          <div className={style["icon-wrapper"]}>
-            <a href={"check-out-3"}>
+          <div>
+            <a href={"check-out-3"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
                 className={style["logo"]}
               />
+              <h3 className={style["logoText"]}>CONFIRMATION</h3>
             </a>
-            <h3 className={style["logoText"]}>CONFIRMATION</h3>
           </div>
         </div>
 

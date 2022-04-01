@@ -28,18 +28,15 @@
     height: 70px;
 }
 
-.tick{
-    width:45px;
-    height: 45px;
-}
-
 .logoTextMain{
     color: #FF7D19;
     font-size: 18px;
+    text-decoration: none;
 }
 .logoText{
     color: #858585;
     font-size: 18px;
+    text-decoration: none;
 }
 
 .confirm-wrapper{
@@ -47,6 +44,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 50px;
 }
 
 .text{

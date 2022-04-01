@@ -71,7 +71,8 @@ table tr td:last-child {
 }
 
 .follow-button{
-    padding: 10px 50px;
+    width: 150px;
+    padding: 10px;
     color: #FFFAF8;
     background-color: #FF7D19;
     border-radius: 5px;
@@ -81,7 +82,8 @@ table tr td:last-child {
 }
 
 .message-button{
-    padding: 10px 50px;
+    width: 150px;
+    padding: 10px;
     color: #000000;
     background-color: transparent;
     border-radius: 5px;

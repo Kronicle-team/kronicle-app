@@ -11,7 +11,7 @@ const CheckoutThree = () => {
             <a href={"check-out-1"}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
-                className={style["tick"]}
+                className={style["logo"]}
               />
             </a>
             <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
@@ -21,7 +21,7 @@ const CheckoutThree = () => {
             <a href={"check-out-2"}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
-                className={style["tick"]}
+                className={style["logo"]}
               />
             </a>
             <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>

@@ -42,6 +42,8 @@ const MyAccount = () => {
             <button className={style["button"]}>Upload your avatar</button>
           </div>
 
+          <div className={style["vertical-line"]} />
+
           <div className={style["info"]}>
             <div
               style={{

@@ -8,44 +8,51 @@ const CheckoutTwo = () => {
   const [cvv, setCvv] = useState("");
   const [holderName, setHolderName] = useState("");
 
-  const[visaSelected, setVisaSelected] = useState(false);
+  const [visaSelected, setVisaSelected] = useState(false);
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
         <div className={style["logo-wrapper"]}>
-          <div className={style["icon-wrapper"]}>
-            <a href={"check-out-1"}>
+          <div>
+            <a href={"check-out-1"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
-                className={style["tick"]}
+                className={style["logo"]}
               />
+              <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
             </a>
-            <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} />
-          <div className={style["icon-wrapper"]}>
-            <a href={"check-out-2"}>
+          <div>
+            <a href={"check-out-2"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon2Orange.svg"}
                 className={style["logo"]}
               />
+              <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>
             </a>
-            <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} />
-          <div className={style["icon-wrapper"]}>
-            <a href={"check-out-3"}>
+          <div>
+            <a href={"check-out-3"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
                 className={style["logo"]}
               />
+              <h3 className={style["logoText"]}>CONFIRMATION</h3>
             </a>
-            <h3 className={style["logoText"]}>CONFIRMATION</h3>
           </div>
         </div>
         <div className={style["payment-wrapper"]}>
           <div className={style["payment-method-wrapper"]}>
-            <div className={visaSelected ? style["payment-method"] : [style['orange-border']]} onClick={()=> {setVisaSelected(!visaSelected)}}>
+            <div
+              className={
+                visaSelected ? style["orange-border"] : style["payment-method"]
+              }
+              onClick={() => {
+                setVisaSelected(!visaSelected);
+              }}
+            >
               <img src={"../../media/images/checkout/visa.png"} />
             </div>
             <div className={style["payment-method"]}>
@@ -54,7 +61,7 @@ const CheckoutTwo = () => {
             <div className={style["payment-method"]}>
               <img src={"../../media/images/checkout/ae.png"} />
             </div>
-            <div className={style["payment-method"]} >
+            <div className={style["payment-method"]}>
               <img src={"../../media/images/checkout/mastercard.png"} />
             </div>
           </div>
