@@ -1,5 +1,5 @@
 import LoginPage from "./pages/auth/LoginPage";
-import RegisterPage from "./pages/register/RegisterPage";
+import RegisterPage from "./pages/auth/RegisterPage";
 import ProfilePage from "./pages/user/ProfilePage";
 import ListingPage from "./pages/product/ListingPage";
 import HomePage from "./pages/HomePage";
