@@ -110,6 +110,7 @@ const AllPage = () => {
     const [page, setPage ] = useState(0)
     const [pageArray, setPageArray] = useState([]);
     let totalPage = Math.ceil(data.length / maxItemsPerPage)
+    let lastPage = totalPage - 1
     for (let i = 0; i < totalPage; i++) {
     }
     useEffect(() => {
@@ -137,7 +138,7 @@ const AllPage = () => {
                 } else {
                     setPage(totalPage - 1)
                 }
-                console.log(page)}
+                }
             }  className={style.prevPageBtn} disabled={page===0}><FontAwesomeIcon icon={faChevronLeft}/></button>
             <div className={style.pagination}>
                 {
@@ -146,7 +147,6 @@ const AllPage = () => {
                             return (
                                 <button className={style.paginationBtn} onClick={()=> {
                                     setPage(pageNum)
-                                    console.log(page)
                                 }}>
                                     {pageNum + 1}
                                 </button>
@@ -162,7 +162,7 @@ const AllPage = () => {
                 }
             </div>
             <button onClick={() => {setPage((page + 1) % totalPage)}
-            }  className={style.nextPageBtn}><FontAwesomeIcon icon={faChevronRight} disabled={page === totalPage - 1}/></button>
+            }  className={style.nextPageBtn} disabled={page === lastPage}><FontAwesomeIcon icon={faChevronRight}/></button>
         </div>
         </Layout>
     )

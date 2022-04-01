@@ -8,6 +8,7 @@
 
 .pageBtnIcon:hover {
     color: #ffffff;
+    cursor: pointer;
 }
 
 .btnWrapper {
@@ -20,4 +21,5 @@
 .btnWrapper:hover {
     background: var(--orange);
     border-radius: 20px;
+    cursor: pointer;
 }

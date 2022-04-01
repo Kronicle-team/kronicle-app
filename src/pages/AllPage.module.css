@@ -2,10 +2,15 @@
     display: flex;
 }
 
-button:disabled:hover {
+.paginationBtn:disabled:hover, .nextPageBtn:disabled:hover, .prevPageBtn:disabled:hover {
     background: none;
-    cursor: none;
+    cursor: pointer;
 }
+
+.paginationBtn:disabled, .nextPageBtn:disabled, .prevPageBtn:disabled {
+    color: #000000;
+}
+
 
 .cardWrapper {
     display: grid;
@@ -30,6 +35,7 @@ button:disabled:hover {
 .paginationBtn, .nextPageBtn, .prevPageBtn{
     background: none;
     border: none;
+    color: #AAAAAA;
     font-size: 18px;
     margin-top: 20px;
 }
