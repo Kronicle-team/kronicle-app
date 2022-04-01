@@ -11,7 +11,6 @@
 }
 
 form{
-    background-color: var(--light-beige);
     padding: 0 60px;
     border-radius: 15px;
 }
@@ -22,8 +21,32 @@ h1{
     text-align: center;
 }
 
+p {
+    text-align: center;
+    font-size: 24px;
+    color: #111113;
+    opacity: 60%;
+}
+
+a {
+    color: var(--darker-orange);
+}
+
+label {
+    display: flex;
+    font-size: 26px;
+    color: #212429;
+    margin-left: 10px;
+}
+
+input {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
 button{
-    width: 100%;
+    float: left;
+    width: 45%;
     height: 50px;
     padding: 10px;
     border: none;
@@ -35,4 +58,9 @@ button{
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 30px;
+}
+
+button:last-child {
+    background-color: #C4C4C4;
+    float: right;
 }

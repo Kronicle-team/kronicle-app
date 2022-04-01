@@ -6,8 +6,19 @@ require("./RegisterPage.css")
 
 
 const RegisterPage = () => {
+    const [checkedFirst, setCheckedFirst] = React.useState(false);
+    const [checkedSecond, setCheckedSecond] = React.useState(false);
+
+    const handleChangeFirst = () => {
+        setCheckedFirst(!checkedFirst);
+    };
+
+    const handleChangeSecond = () => {
+        setCheckedSecond(!checkedSecond);
+    };
+
     const [values, setValues] = useState({
-        username: "",
+        username: "", 
         email: "",
         birthday: "",
         password: "",
@@ -17,49 +28,42 @@ const RegisterPage = () => {
     const inputs = [
         {
             id: 1,
-            name: "username",
+            name: "EmailorPhoneNumber",
             type: "text",
-            placeholder: "Username",
+            placeholder: "mail@gmail.com",
             errorMessage:
                 "Username should be 3-16 characters and shouldn't include any special character!",
-            label: "Username",
+            label: "Email or Phone number*",
             pattern: "^[A-Za-z0-9]{3,16}$",
             required: true,
         },
         {
             id: 2,
-            name: "email",
+            name: "Full name",
             type: "email",
-            placeholder: "Email",
+            placeholder: "Enter your name",
             errorMessage: "It should be a valid email address!",
-            label: "Email",
+            label: "Email*",
             required: true,
         },
         {
-            id: 3,
-            name: "birthday",
-            type: "date",
-            placeholder: "Birthday",
-            label: "Birthday",
-        },
-        {
             id: 4,
-            name: "password",
+            name: "Password",
             type: "password",
-            placeholder: "Password",
+            placeholder: "Enter your password",
             errorMessage:
                 "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
-            label: "Password",
+            label: "Password*",
             pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
             required: true,
         },
         {
             id: 5,
-            name: "confirmPassword",
+            name: "verifyPassword",
             type: "password",
-            placeholder: "Confirm Password",
+            placeholder: "Re-enter your Password",
             errorMessage: "Passwords don't match!",
-            label: "Confirm Password",
+            label: "Verify Password",
             pattern: values.password,
             required: true,
         },
@@ -73,10 +77,20 @@ const RegisterPage = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const Checkbox = ({ label, value, onChange }) => {
+        return (
+          <label>
+            <input type="checkbox" checked={value} onChange={onChange} />
+            {label}
+          </label>
+        );
+      };
+
     return (
         <div className="app">
             <form onSubmit={handleSubmit}>
                 <h1>REGISTER</h1>
+                <p>Already a member? <a href="#">Sign in.</a></p>
                 {inputs.map((input) => (
                     <FormInput
                         key={input.id}
@@ -85,7 +99,23 @@ const RegisterPage = () => {
                         onChange={onChange}
                     />
                 ))}
-                <button>SUBMIT</button>
+                <div>
+                    <Checkbox
+                        label={<label>I agree to the &nbsp;<a href="#">terms and conditions.</a></label>}   
+                        value={checkedFirst}
+                        onChange={handleChangeFirst}
+                    />
+                    <Checkbox
+                        label={<label>Send me the latest deal.</label>}
+                        value={checkedSecond}
+                        onChange={handleChangeSecond}
+                    />
+                </div>
+            
+                <button>REGISTER</button>
+                <button>CLEAR</button>
+            
+            
             </form>
         </div>
     );
