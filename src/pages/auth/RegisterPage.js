@@ -18,11 +18,10 @@ const RegisterPage = () => {
     };
 
     const [values, setValues] = useState({
-        username: "", 
-        email: "",
-        birthday: "",
-        password: "",
-        confirmPassword: "",
+        EmailorPhoneNumber: "", 
+        Fullname: "",
+        Password: "",
+        verifyPassword: "",
     });
 
     const inputs = [
@@ -39,7 +38,7 @@ const RegisterPage = () => {
         },
         {
             id: 2,
-            name: "Full name",
+            name: "Fullname",
             type: "email",
             placeholder: "Enter your name",
             errorMessage: "It should be a valid email address!",
@@ -47,7 +46,7 @@ const RegisterPage = () => {
             required: true,
         },
         {
-            id: 4,
+            id: 3,
             name: "Password",
             type: "password",
             placeholder: "Enter your password",
@@ -58,7 +57,7 @@ const RegisterPage = () => {
             required: true,
         },
         {
-            id: 5,
+            id: 4,
             name: "verifyPassword",
             type: "password",
             placeholder: "Re-enter your Password",
