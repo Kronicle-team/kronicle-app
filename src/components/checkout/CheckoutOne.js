@@ -18,6 +18,7 @@ const CheckoutOne = () => {
               <img
                 src={"../../media/icons/checkout/CheckoutIcon1Orange.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
               <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
             </a>
@@ -28,16 +29,18 @@ const CheckoutOne = () => {
               <img
                 src={"../../media/icons/checkout/CheckoutIcon2Black.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
               <h3 className={style["logoText"]}>PAYMENT METHOD</h3>
             </a>
           </div>
-          <img src={"../../media/icons/checkout/Line.svg"} />
+          <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div>
             <a href={"check-out-3"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
               <h3 className={style["logoText"]}>CONFIRMATION</h3>
             </a>

@@ -18,6 +18,7 @@ const MyAccount = () => {
             <img
               src={"../../media/images/profile/gdragon.jpg"}
               className={style["avatar"]}
+              alt={"Avatar"}
             />
             <div className={style["name"]}>G-Dragon</div>
             <div>100% new authenticated cards</div>

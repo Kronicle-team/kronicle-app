@@ -12,33 +12,39 @@ const CheckoutThree = () => {
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
             </a>
             <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
           </div>
-          <img src={"../../media/icons/checkout/Line.svg"} />
+          <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div className={style["icon-wrapper"]}>
             <a href={"check-out-2"}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
             </a>
             <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>
           </div>
-          <img src={"../../media/icons/checkout/Line.svg"} />
+          <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div className={style["icon-wrapper"]}>
             <a href={"check-out-3"}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Orange.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
             </a>
             <h3 className={style["logoTextMain"]}>CONFIRMATION</h3>
           </div>
         </div>
         <div className={style["confirm-wrapper"]}>
-          <img src={"../../media/images/checkout/GreenTick.png"} />
+          <img
+            src={"../../media/images/checkout/GreenTick.png"}
+            alt={"Green tick"}
+          />
           <h2>Payment complete</h2>
           <div className={style["text"]}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse

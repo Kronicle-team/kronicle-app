@@ -18,26 +18,29 @@ const CheckoutTwo = () => {
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
               <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
             </a>
           </div>
-          <img src={"../../media/icons/checkout/Line.svg"} />
+          <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div>
             <a href={"check-out-2"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon2Orange.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
               <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>
             </a>
           </div>
-          <img src={"../../media/icons/checkout/Line.svg"} />
+          <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div>
             <a href={"check-out-3"} className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
                 className={style["logo"]}
+                alt={"Logo"}
               />
               <h3 className={style["logoText"]}>CONFIRMATION</h3>
             </a>
@@ -53,16 +56,25 @@ const CheckoutTwo = () => {
                 setVisaSelected(!visaSelected);
               }}
             >
-              <img src={"../../media/images/checkout/visa.png"} />
+              <img src={"../../media/images/checkout/visa.png"} alt={"Visa"} />
             </div>
             <div className={style["payment-method"]}>
-              <img src={"../../media/images/checkout/paypal.png"} />
+              <img
+                src={"../../media/images/checkout/paypal.png"}
+                alt={"Paypal"}
+              />
             </div>
             <div className={style["payment-method"]}>
-              <img src={"../../media/images/checkout/ae.png"} />
+              <img
+                src={"../../media/images/checkout/ae.png"}
+                alt={"American Express"}
+              />
             </div>
             <div className={style["payment-method"]}>
-              <img src={"../../media/images/checkout/mastercard.png"} />
+              <img
+                src={"../../media/images/checkout/mastercard.png"}
+                alt={"Mastercard"}
+              />
             </div>
           </div>
 
