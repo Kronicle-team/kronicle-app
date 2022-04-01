@@ -1,7 +1,0 @@
-.flex {
-    display: flex;
-}
-
-.flex > * {
-    flex: 1;
-}
