@@ -1,13 +1,13 @@
 html {
-  font-size: 16px;
-  color: var(--white);
-  background: var(--black);
+  font-size: 14px;
+  color: var(--black);
+  background: var(--background);
   font-family: var(--body-font);
 }
 
-main {
-  margin: 20px;
-}
+/*main {*/
+/*  margin: 20px;*/
+/*}*/
 
 h1,
 h2,
@@ -15,35 +15,37 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  font-family: var(--header-font);
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 h1 {
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 32px;
+  font-family: "Montserrat Black", sans-serif;
 }
 
 h2 {
-  font-size: 27px;
+  font-size: 28px;
+  font-family: "Montserrat ExtraBold", sans-serif;
 }
 
 h3 {
   font-size: 24px;
+  font-family: "Montserrat Bold", sans-serif;
 }
 
 h4 {
-  font-size: 21px;
+  font-size: 20px;
+  font-family: "Montserrat SemiBold", sans-serif;
 }
 
 h5 {
   font-size: 18px;
+  font-family: "Montserrat Medium", sans-serif;
 }
 
 h6 {
-  font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 p {

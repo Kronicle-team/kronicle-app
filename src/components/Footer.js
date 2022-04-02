@@ -6,34 +6,43 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-      <footer>
+      <footer className={style["footer"]}>
         <div className={style["footer-nav"] + " " + common["flex"]}>
           <div>
-            <h4>KRONICLE</h4>
-            <Link to="/">About Us</Link>
-            <Link to="/">Contact Us</Link>
-            <Link to="/">FAQs</Link>
+            <h5>CATEGORIES</h5>
+            <Link to="/cards/album-cards">Album cards</Link>
+            <Link to="/cards/trading-cards">Trading cards</Link>
+            <Link to="/cards/buy-now">Buy now</Link>
+            <Link to="/cards/bid">Bid</Link>
           </div>
 
           <div>
-            <h4>CATEGORIES</h4>
-            <Link to="/">Artist</Link>
-            <Link to="/">Album Photocards</Link>
-            <Link to="/">Trading photocards</Link>
-          </div>
-
-          <div>
-            <h4>CUSTOMER SERVICES</h4>
-            <Link to="/">Shipping Policy</Link>
+            <h5>CUSTOMER CARE</h5>
+            <Link to="/">Tracking My Order</Link>
             <Link to="/">Privacy Policy</Link>
+            <Link to="/">Shipping Policy</Link>
             <Link to="/">Refund Policy</Link>
-            <Link to="/">Terms of Service</Link>
+          </div>
+
+          <div>
+            <h5>INFO</h5>
+            <Link to="/">About Us</Link>
+            <Link to="/">FAQ</Link>
+            <Link to="/">Product Care</Link>
+            <Link to="/">Terms And Conditions</Link>
+          </div>
+
+          <div className={style["contact"]}>
+            <h5>HAVE ANY QUESTIONS?</h5>
+            <button className={style["contact-btn"]}>Contact Us</button>
           </div>
         </div>
 
-        <div className={common["text-center"]}>
-          <p>&copy; {currentYear} We are Kronicle. All Rights Reserved.</p>
+        <div className={[style["copyright"], common["flex"], common["text-center"]].join(" ")}>
+          &copy; {currentYear} We are Kronicle. All Rights Reserved.
         </div>
+
+
       </footer>
   )
 }

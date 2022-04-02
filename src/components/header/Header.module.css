@@ -1,0 +1,14 @@
+.header {
+   background: var(--peach);
+   top: 0;
+   font-size: 16px;
+}
+
+.header a {
+   text-decoration: none;
+   color: var(--black);
+}
+
+.header a:hover {
+   text-decoration: underline;
+}
