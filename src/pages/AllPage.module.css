@@ -7,7 +7,7 @@
     cursor: pointer;
 }
 
-.paginationBtn:disabled, .nextPageBtn:disabled, .prevPageBtn:disabled {
+.paginationBtn:disabled {
     color: #000000;
 }
 
@@ -32,12 +32,24 @@
     margin-right: auto;
 }
 
-.paginationBtn, .nextPageBtn, .prevPageBtn{
+.paginationBtn {
     background: none;
     border: none;
     color: #AAAAAA;
     font-size: 18px;
     margin-top: 20px;
+}
+
+.nextPageBtn, .prevPageBtn {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.nextPageBtn:disabled, .prevPageBtn:disabled {
+    color: #AAAAAA;
 }
 
 .paginationBtn:hover, .nextPageBtn:hover, .prevPageBtn:hover {
