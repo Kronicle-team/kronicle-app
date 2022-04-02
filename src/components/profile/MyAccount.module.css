@@ -93,6 +93,10 @@ table tr td:last-child {
     cursor: pointer;
 }
 
+.button:hover{
+    background: var(--darker-orange);
+}
+
 .save-button{
     padding: 10px 0;
     width: 70px;
@@ -103,6 +107,10 @@ table tr td:last-child {
     margin: 5px;
     cursor: pointer;
 }
+
+.save-button:hover{
+    background: var(--darker-orange);
+}
 .cancel-button{
     padding: 10px 0;
     width: 70px;
@@ -112,6 +120,10 @@ table tr td:last-child {
     border-color: #FF7D19;
     margin: 5px;
     cursor: pointer;
+}
+
+.cancel-button:hover{
+    background: var(--background);
 }
 
 .form{
@@ -147,3 +159,6 @@ table tr td:last-child {
     cursor: pointer;
 }
 
+.logout-button:hover{
+    background: var(--darker-orange);
+}

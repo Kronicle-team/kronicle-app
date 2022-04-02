@@ -81,6 +81,10 @@ table tr td:last-child {
     cursor: pointer;
 }
 
+.follow-button:hover{
+    background: var(--darker-orange);
+}
+
 .message-button{
     width: 150px;
     padding: 10px;
@@ -90,6 +94,10 @@ table tr td:last-child {
     border: 2px solid #FF7D19;
     margin: 5px;
     cursor: pointer;
+}
+
+.message-button:hover{
+    background: var(--background);
 }
 
 

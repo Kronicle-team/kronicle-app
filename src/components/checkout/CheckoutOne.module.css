@@ -70,9 +70,6 @@
     cursor: pointer;
 }
 
-.next-button:hover {
-    background: var(--darker-orange);
-}
 
 .cancel-button{
     width: 100px;
@@ -83,4 +80,12 @@
     border-color: transparent;
     margin: 5px;
     cursor: pointer;
+}
+
+.next-button:hover {
+    background: var(--darker-orange);
+}
+
+.cancel-button:hover{
+    background: var(--darker-grey);
 }

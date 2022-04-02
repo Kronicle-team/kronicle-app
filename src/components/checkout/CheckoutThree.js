@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutThree.module.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CheckoutThree = () => {
   return (
@@ -53,7 +54,9 @@ const CheckoutThree = () => {
             Donec eu malesuada dui, eget tincidunt orci. Quisque a metus quis
             augue semper lobortis. Etiam dignissim eget ante sed gravida.
           </div>
-          <button className={style["back-button"]}>BACK TO HOMEPAGE</button>
+          <Link to={"/"}>
+            <button className={style["back-button"]}>BACK TO HOMEPAGE</button>
+          </Link>
         </div>
       </div>
     </Layout>

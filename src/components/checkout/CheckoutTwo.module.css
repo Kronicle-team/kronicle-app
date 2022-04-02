@@ -119,3 +119,11 @@
     cursor: pointer;
 }
 
+.next-button:hover {
+    background: var(--darker-orange);
+}
+
+.cancel-button:hover{
+    background: var(--darker-grey);
+}
+

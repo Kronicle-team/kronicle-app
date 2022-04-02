@@ -61,3 +61,7 @@
     margin: 5px;
     cursor: pointer;
 }
+
+.back-button:hover {
+    background: var(--darker-orange);
+}

@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutOne.module.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CheckoutOne = () => {
   const [firstName, setFirstName] = useState("");
@@ -93,8 +94,12 @@ const CheckoutOne = () => {
         </form>
 
         <div className={style["button-wrapper"]}>
-          <button className={style["next-button"]}>NEXT</button>
-          <button className={style["cancel-button"]}>CANCEL</button>
+          <Link to={"/check-out-2"}>
+            <button className={style["next-button"]}>NEXT</button>
+          </Link>
+          <Link to={"/"}>
+            <button className={style["cancel-button"]}>CANCEL</button>
+          </Link>
         </div>
       </div>
     </Layout>
