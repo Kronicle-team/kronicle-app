@@ -2,7 +2,7 @@
  * Listing form.
  */
 import { useState } from "react";
-import "./ListingForm.module.css";
+import style from "./ListingForm.module.css";
 
 const FormInput = (props) => {
     const [focused, setFocused] = useState(false);
@@ -13,15 +13,13 @@ const FormInput = (props) => {
     };
 
     return (
-        <div className="formInput">
+        <div className={style["formInput"]}>
             <label>{label}</label>
             <input
                 {...inputProps}
                 onChange={onChange}
                 onBlur={handleFocus}
-                onFocus={() =>
-                    inputProps.name === "confirmPassword" && setFocused(true)
-                }
+                onFocus={() => setFocused(false)}
                 focused={focused.toString()}
             />
             <span>{errorMessage}</span>
