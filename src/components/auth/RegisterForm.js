@@ -43,6 +43,7 @@ const RegisterForm = () => {
 
     return (
         <Layout className={style["register-container"]} header footer>
+            <div className={style["container"]}>
             <form className={style["form"]} onSubmit={handleSubmit}>
                 <h1 className={style["h1"]}>Register</h1>
                 <img
@@ -80,7 +81,7 @@ const RegisterForm = () => {
                     className={style["input"]}
                 />
                 <Checkbox
-                    label={<label className={style["label"]}>I agree to the &nbsp;<a href="#">terms and conditions.</a></label>}
+                    label={<label className={style["label"]}>I agree to the &nbsp;<a href="#" className={style["a"]}>terms and conditions.</a></label>}
                     value={checkedFirst}
                     onChange={handleChangeFirst}
                 />
@@ -93,6 +94,7 @@ const RegisterForm = () => {
             <div className={style["button-wrapper"]}>
                 <button className={style["register-btn"]}>REGISTER</button>
                 <button type="submit" className={style["clear-btn"]} onClick={handleReset}>CLEAR</button>
+            </div>
             </div>
         </Layout>
     );
