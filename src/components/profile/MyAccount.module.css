@@ -42,7 +42,7 @@ table{
 
 }
 table td, table th {
-    border: 2px solid #858585;
+    border: 2px solid var(--darker-grey);
     text-align: center;
     padding: 10px;
 }
@@ -73,7 +73,7 @@ table tr td:last-child {
 }
 .info{
     width: 500px;
-    border-left: 2px solid #858585;
+    border-left: 2px solid var(--darker-grey);
     padding-left: 150px;
 }
 .button-wrapper{
@@ -85,8 +85,8 @@ table tr td:last-child {
 
 .button{
     padding: 10px 40px;
-    color: #FFFAF8;
-    background-color: #FF7D19;
+    color: var(--background);
+    background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
@@ -100,8 +100,8 @@ table tr td:last-child {
 .save-button{
     padding: 10px 0;
     width: 70px;
-    color: #FFFAF8;
-    background-color: #FF7D19;
+    color:  var(--background);
+    background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
@@ -117,7 +117,7 @@ table tr td:last-child {
     color: #000000;
     background-color: transparent;
     border-radius: 5px;
-    border-color: #FF7D19;
+    border-color: var(--orange);
     margin: 5px;
     cursor: pointer;
 }
@@ -139,7 +139,7 @@ table tr td:last-child {
     padding: 15px 5px;
     margin: 5px 0 20px;
     border-radius: 15px;
-    border: 1px solid gray;
+    border: 1px solid var(--darker-grey);
 }
 
 .about-me{
@@ -152,8 +152,8 @@ table tr td:last-child {
 .logout-button{
     padding: 10px 30px;
     margin: 10px 0;
-    color: #FFFAF8;
-    background-color: #FF7D19;
+    color: var(--background);
+    background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     cursor: pointer;

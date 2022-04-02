@@ -29,12 +29,12 @@
 }
 
 .logoTextMain{
-    color: #FF7D19;
+    color: var(--orange);
     font-size: 18px;
     text-decoration: none;
 }
 .logoText{
-    color: #858585;
+    color: var(--darker-grey);
     font-size: 18px;
     text-decoration: none;
 }
@@ -54,8 +54,8 @@
 }
 .back-button{
     padding: 10px 50px;
-    color: #FFFAF8;
-    background-color: #FF7D19;
+    color: var(--background);
+    background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;

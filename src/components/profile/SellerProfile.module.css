@@ -33,7 +33,7 @@ table{
 
 }
 table td, table th {
-    border: 2px solid #858585;
+    border: 2px solid var(--darker-grey);
     text-align: center;
     padding: 10px;
 }
@@ -73,8 +73,8 @@ table tr td:last-child {
 .follow-button{
     width: 150px;
     padding: 10px;
-    color: #FFFAF8;
-    background-color: #FF7D19;
+    color: var(--background);
+    background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
@@ -91,7 +91,7 @@ table tr td:last-child {
     color: #000000;
     background-color: transparent;
     border-radius: 5px;
-    border: 2px solid #FF7D19;
+    border: 2px solid var(--orange);
     margin: 5px;
     cursor: pointer;
 }

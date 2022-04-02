@@ -27,11 +27,11 @@
 }
 
 .logoTextMain{
-    color: #FF7D19;
+    color: var(--orange);
     font-size: 18px;
 }
 .logoText{
-    color: #858585;
+    color: var(--darker-grey);
     font-size: 18px;
 }
 
@@ -47,7 +47,7 @@
 
 .payment-method{
     cursor: pointer;
-    border: 2px solid #C4C4C4;
+    border: 2px solid var(--light-grey);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@
     padding: 15px 5px;
     margin: 10px 0 30px;
     border-radius: 15px;
-    border: 1px solid gray;
+    border: 1px solid var(--darker-grey);
 }
 
 .button-wrapper{
@@ -100,8 +100,8 @@
 .next-button{
     width: 100px;
     padding: 10px;
-    color: #FFFAF8;
-    background-color: #FF7D19;
+    color: var(--background);
+    background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
@@ -111,8 +111,8 @@
 .cancel-button{
     width: 100px;
     padding: 10px;
-    color: #FFFAF8;
-    background-color: #C4C4C4;
+    color: var(--background);
+    background-color: var(--light-grey);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
