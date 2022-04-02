@@ -1,0 +1,68 @@
+.cardShowCaseContainer {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 5% auto 5%;
+    grid-template-rows: auto;
+    position: relative;
+    width: 100%;
+}
+
+.cardShowCaseTitle {
+    display: inline-block;
+    font-family: var(--header-font);
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: left;
+    margin: auto;
+}
+
+.pageForwardBtnWrapper {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.pagePrevBtnWrapper {
+    grid-column: 1;
+    grid-row: 2;
+    margin-left: auto;
+}
+
+.h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.pageBtn {
+    background: none;
+    border: none;
+    color: var(--orange);
+}
+
+.pageBtnIcon {
+    font-size: 30px;
+}
+
+.seeMoreLink {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+@media only screen and  (max-width: 1100px) {
+    .cardShowCaseContainer{
+        grid-template-columns: 10% auto 10%;
+    }
+}
+
+@media only screen and  (min-width: 1200px) {
+    .cardShowCaseContainer {
+        grid-template-columns: 10% auto 10%;
+    }
+}

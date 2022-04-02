@@ -1,18 +1,7 @@
-import Layout from "../../components/Layout";
-import SubmitButton from "../../components/auth/SubmitButton";
+import LoginForm from "../../components/auth/LoginForm";
 
-const LoginPage = () => {
-  return (
-      <Layout>
-        <form>
-          <label htmlFor={"username"}>Username</label>
-          <input id="username" name="username" type="text"/>
-          <label htmlFor={"password"}>Password</label>
-          <input id="password" name="password" type="password"/>
-          <SubmitButton/>
-        </form>
-      </Layout>
-  )
-}
+const Login = () => {
+    return <LoginForm />;
+};
 
-export default LoginPage
+export default Login;

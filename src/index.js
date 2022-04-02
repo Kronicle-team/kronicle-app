@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import "./fonts/Montserrat-SemiBold.ttf";
 
 import "./styles/global.module.css";
+import "./index.css";
+
 
 ReactDOM.render(
   <React.StrictMode>

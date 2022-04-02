@@ -1,0 +1,59 @@
+.top-header {
+    height: 4rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    border-bottom: 1px solid var(--light-beige);
+}
+
+/* Styling for elements on the left in top header */
+.top-header-left {
+    align-items: center;
+    width: 70%;
+}
+
+.logo {
+    width: 4rem;
+    margin-right: 2rem;
+}
+
+.icon {
+    font-size: 20px;
+    margin-right: 2.5rem;
+}
+
+/* Styling for elements on the right */
+.top-header-right {
+    height: 100%;
+    align-items: center;
+}
+
+.top-header-right a {
+    font-weight: 500;
+}
+
+.vertical-line {
+    border-right: 1px solid var(--black);
+    height: 70%;
+    margin: 0 20px;
+}
+
+.top-header-right .register {
+    color: var(--darker-orange);
+}
+
+.top-header-right .register:hover {
+    text-decoration: underline;
+}
+
+.avatar {
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.menu {
+    background: inherit;
+    font-size: 30px;
+    border: 0;
+}
+

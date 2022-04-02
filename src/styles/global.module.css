@@ -1,7 +1,6 @@
 :root {
     /* Fonts */
-    --header-font: "Montserrat", sans-serif;
-    --body-font: "Montserrat", sans-serif;
+    --body-font: "Montserrat Regular";
 
     /* Kronicle color palette */
     --orange: #FF7D1A;
@@ -10,7 +9,10 @@
     --background: #FFFAF8;
     --light-beige: #F8ECE8;
     --darker-grey: #808080;
-    --light-grey:  #C4C4C4;
+    --lighter-grey:  #C4C4C4;
+    --black: #000000;
+    --light-grey: #858585;
+    --white: #ffffff;
 
     /* Border radius */
     --border-radius-xxs: 6px;

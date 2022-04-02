@@ -1,7 +1,7 @@
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ProfilePage from "./pages/user/ProfilePage";
-import ListingPage from "./pages/product/ListingPage";
+import ListingPage from "./pages/listing/ListingPage";
 import HomePage from "./pages/HomePage";
 import FaqPage from "./pages/support/FaqPage";
 import AboutUsPage from "./pages/support/AboutUsPage";
@@ -14,12 +14,18 @@ import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
 import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
+import AllPage from "./pages/AllPage"
 
 const pages = {
   home: {
     name: "Home",
     link: "/",
     component: <HomePage />,
+  },
+  all: {
+    name: "all",
+    link: "/all",
+    component: <AllPage />
   },
   login: {
     name: "Login",
