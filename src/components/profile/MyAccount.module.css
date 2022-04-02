@@ -117,7 +117,7 @@ table tr td:last-child {
     color: #000000;
     background-color: transparent;
     border-radius: 5px;
-    border-color: var(--orange);
+    border: 2px solid var(--orange);
     margin: 5px;
     cursor: pointer;
 }
