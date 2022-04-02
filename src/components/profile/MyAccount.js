@@ -42,10 +42,9 @@ const MyAccount = () => {
                 <td>Positive seller ratings</td>
               </tr>
             </table>
-
+            <button className={style["button"]}>Upload your avatar</button>
           </div>
 
-          <button className={style["button"]}>Upload your avatar</button>
           <div className={style["vertical-line"]} />
 
           <div className={style["info"]}>
