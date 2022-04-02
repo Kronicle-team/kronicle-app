@@ -1,9 +1,8 @@
+import Layout from "../../components/Layout"
 import {useState} from "react";
 import FormInput from "../../components/form/ListingForm";
-
-const React = require("react")
-require("../../components/form/ListingForm.js")
-require("./ListingPage.css");
+import style from "./ListingPage.module.css";
+import common from "../../styles/common.module.css";
 
 
 const ListingPage = () => {
@@ -67,20 +66,22 @@ const ListingPage = () => {
     };
 
     return (
-        <div className="app">
-            <form onSubmit={handleSubmit}>
-                <h1>SELLER LISTING</h1>
-                {inputs.map((input) => (
-                    <FormInput
-                        key={input.id}
-                        {...input}
-                        value={values[input.name]}
-                        onChange={onChange}
-                    />
-                ))}
-                <button>SUBMIT</button>
-            </form>
-        </div>
+        <Layout header footer>
+            <div className={[style["app"], common["flex"]].join(" ")}>
+                <form onSubmit={handleSubmit}>
+                    <h1>SELLER LISTING</h1>
+                    {inputs.map((input) => (
+                        <FormInput
+                            key={input.id}
+                            {...input}
+                            value={values[input.name]}
+                            onChange={onChange}
+                        />
+                    ))}
+                    <button>SUBMIT</button>
+                </form>
+            </div>
+        </Layout>
     );
 };
 

@@ -2,7 +2,7 @@
  * Listing form.
  */
 import { useState } from "react";
-import "./ListingForm.css";
+import "./ListingForm.module.css";
 
 const FormInput = (props) => {
     const [focused, setFocused] = useState(false);
