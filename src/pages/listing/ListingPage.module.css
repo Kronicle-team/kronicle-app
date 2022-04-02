@@ -22,17 +22,21 @@ input[type="file"] {
     background-color: white;
 }
 
-.listing-btn, button[type="file"]{
+.listing-btn{
     width: 40%;
     height: 50px;
     padding: 10px;
     border: none;
-    background-color: var(--darker-orange);
+    background-color: var(--orange);
     color: white;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.listing-btn:hover {
+    background: var(--darker-orange);
 }
 
