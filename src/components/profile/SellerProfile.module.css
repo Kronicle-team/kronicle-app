@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    margin: 60px 0 0;
     padding: 0;
 }
 
@@ -23,9 +23,23 @@
     height: 100px;
     border-radius: 50%;
 }
+
 .name{
-    font-weight: 800;
+    font-family: "Montserrat Bold", sans-serif;
     font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.info {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info p {
+    margin: 0;
 }
 
 table{
@@ -79,6 +93,7 @@ table tr td:last-child {
     border-color: transparent;
     margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .follow-button:hover{
@@ -94,10 +109,11 @@ table tr td:last-child {
     border: 2px solid var(--orange);
     margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .message-button:hover{
-    background: var(--background);
+    background: var(--white);
 }
 
 

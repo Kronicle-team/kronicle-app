@@ -13,8 +13,10 @@ const SellerProfile = () => {
             alt={"Avatar"}
           />
           <div className={style["name"]}>G-Dragon</div>
-          <div>100% new authenticated cards</div>
-          <div>I live in Korea</div>
+          <div className={style["info"]}>
+            <p>100% new authenticated cards</p>
+            <p>I live in Korea</p>
+          </div>
 
           <table className={style["statistics"]}>
             {data.map((val, key) => {

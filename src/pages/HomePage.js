@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import style from "../styles/HomePage.module.css";
+import style from "./HomePage.module.css";
 import { useState } from "react";
 import React from "react";
 import CardShowCase from "../components/CardShowCase";

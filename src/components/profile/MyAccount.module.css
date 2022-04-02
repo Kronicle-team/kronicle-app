@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    margin: 60px 0 0;
     padding: 0;
 }
 
@@ -33,8 +33,21 @@
     border-radius: 50%;
 }
 .name{
-    font-weight: 800;
+    font-family: "Montserrat Bold", sans-serif;
     font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.bio-p{
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bio-p p{
+    margin: 0;
 }
 
 table{
@@ -89,8 +102,9 @@ table tr td:last-child {
     background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
-    margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
+    margin: 30px 0 0;
 }
 
 .button:hover{
@@ -106,6 +120,7 @@ table tr td:last-child {
     border-color: transparent;
     margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .save-button:hover{
@@ -120,6 +135,7 @@ table tr td:last-child {
     border: 2px solid var(--orange);
     margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .cancel-button:hover{
@@ -151,12 +167,13 @@ table tr td:last-child {
 }
 .logout-button{
     padding: 10px 30px;
-    margin: 10px 0;
+    margin: 50px 0 0;
     color: var(--background);
     background-color: var(--orange);
     border-radius: 5px;
     border-color: transparent;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .logout-button:hover{
