@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import style from "./RegisterForm.module.css";
 import {useState} from "react";
 
-const RegisterForm = () => {
+const LoginForm = () => {
     const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
 
@@ -13,6 +13,7 @@ const RegisterForm = () => {
 
     return (
         <Layout className={style["register-container"]} header footer>
+            <div className={style["container"]}>
             <form className={style["form"]} onSubmit={handleSubmit}>
                 <h1 className={style["h1"]}>Login</h1>
                 <img
@@ -39,8 +40,9 @@ const RegisterForm = () => {
             <div className={style["button-wrapper"]}>
                 <button className={style["register-btn"]}>SIGN IN</button>
             </div>
+            </div>
         </Layout>
     );
 };
 
-export default RegisterForm;
+export default LoginForm;
