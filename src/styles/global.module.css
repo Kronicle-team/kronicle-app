@@ -1,6 +1,6 @@
 :root {
     /* Fonts */
-    --font: "Montserrat", sans-serif;
+    --body-font: "Montserrat Regular";
 
     /* Kronicle color palette */
     --orange: #FF7D1A;

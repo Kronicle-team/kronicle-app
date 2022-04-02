@@ -4,24 +4,7 @@ import App from "./App";
 import reportWebVitals from './reportWebVitals';
 
 import "./styles/global.module.css";
-
-// import font and font weight
-import "@fontsource/montserrat/200.css";
-import "@fontsource/montserrat/200-italic.css";
-import "@fontsource/montserrat/300.css";
-import "@fontsource/montserrat/300-italic.css";
-import "@fontsource/montserrat/400.css";
-import "@fontsource/montserrat/400-italic.css";
-import "@fontsource/montserrat/500.css";
-import "@fontsource/montserrat/500-italic.css";
-import "@fontsource/montserrat/600.css";
-import "@fontsource/montserrat/600-italic.css";
-import "@fontsource/montserrat/700.css";
-import "@fontsource/montserrat/700-italic.css";
-import "@fontsource/montserrat/800.css";
-import "@fontsource/montserrat/800-italic.css";
-import "@fontsource/montserrat/900.css";
-import "@fontsource/montserrat/900-italic.css";
+import "./index.css";
 
 
 ReactDOM.render(
