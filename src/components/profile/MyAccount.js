@@ -21,8 +21,10 @@ const MyAccount = () => {
               alt={"Avatar"}
             />
             <div className={style["name"]}>G-Dragon</div>
-            <div>100% new authenticated cards</div>
-            <div>I live in Korea</div>
+            <div className={style["info"]}>
+            <p>100% new authenticated cards</p>
+            <p>I live in Korea</p>
+          </div>
 
             <table className={style["statistics"]}>
               {data.map((val, key) => {
@@ -40,9 +42,10 @@ const MyAccount = () => {
                 <td>Positive seller ratings</td>
               </tr>
             </table>
-            <button className={style["button"]}>Upload your avatar</button>
+
           </div>
 
+          <button className={style["button"]}>Upload your avatar</button>
           <div className={style["vertical-line"]} />
 
           <div className={style["info"]}>

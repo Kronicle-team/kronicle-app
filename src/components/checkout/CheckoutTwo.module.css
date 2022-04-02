@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    margin: 60px 0 0;
     padding: 0;
 }
 
@@ -98,7 +98,7 @@
 }
 
 .next-button{
-    width: 100px;
+    width: 150px;
     padding: 10px;
     color: var(--background);
     background-color: var(--orange);
@@ -106,17 +106,19 @@
     border-color: transparent;
     margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .cancel-button{
-    width: 100px;
+    width: 150px;
     padding: 10px;
     color: var(--background);
-    background-color: var(--light-grey);
+    background-color: var(--lighter-grey);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
     cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
 }
 
 .next-button:hover {
