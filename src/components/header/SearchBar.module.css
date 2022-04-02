@@ -21,20 +21,24 @@
     font-size: 16px;
 }
 
+input[type="search"] {
+    font-family: var(--body-font);
+}
+
 /* change color and font of placeholder text */
 ::placeholder {
-    font-family: var(--font);
+    font-family: var(--body-font);
     color: var(--light-grey);
     opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
-    font-family: var(--font);
+    font-family: var(--body-font);
     color: var(--light-grey);
 }
 
 ::-ms-input-placeholder {
-    font-family: var(--font);
+    font-family: var(--body-font);
     color: var(--light-grey);
 }
 
