@@ -1,0 +1,149 @@
+/*.container{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.formInput{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*!*input{*!*/
+/*!*    padding: 15px;*!*/
+/*!*    margin: 10px 0;*!*/
+/*!*    border-radius: 15px;*!*/
+/*!*    border: 1px solid gray;*!*/
+/*!*}*!*/
+
+/*.input {*/
+/*    width: 100%;*/
+/*    padding: 15px 30px;*/
+/*    margin: 10px 0 30px;*/
+/*    border-radius: 15px;*/
+/*    border: 1px solid gray;*/
+/*}*/
+
+/*.label{*/
+/*    font-size: 12px;*/
+/*    color: gray;*/
+/*}*/
+
+/*.span{*/
+/*    font-size: 12px;*/
+/*    padding: 3px;*/
+/*    color: red;*/
+/*    display: none;*/
+/*}*/
+
+/*.input:invalid[focused="true"]{*/
+/*    width: 100%;*/
+/*    padding: 15px 30px;*/
+/*    margin: 10px 0 30px;*/
+/*    border-radius: 15px;*/
+/*    border: 1px solid red;*/
+/*}*/
+
+/*.input:invalid[focused="true"] ~ .span{*/
+/*    width: 100%;*/
+/*    padding: 15px 30px;*/
+/*    margin: 10px 0 30px;*/
+/*    border-radius: 15px;*/
+/*    display: block;*/
+/*}*/
+
+.register-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.h1 {
+    font-size: 2rem;
+    margin: auto;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.p{
+    font-size: 1rem;
+    margin: auto;
+    padding-bottom: 20px;
+    color: #111113;
+    opacity: 60%;
+}
+
+.a {
+    color: var(--orange);
+}
+
+.form{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    padding: 0 150px;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.input{
+    width: 100%;
+    padding: 15px 30px;
+    margin: 10px 0 30px;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+.button-wrapper{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-btn{
+    width: 150px;
+    padding: 10px;
+    color: #FFFAF8;
+    font-weight: 600;
+    background-color: #FF7D19;
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px 20px;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background: var(--darker-orange);
+}
+
+.clear-btn{
+    width: 150px;
+    padding: 10px;
+    color: #FFFAF8;
+    font-weight: 600;
+    background-color: #C4C4C4;
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px 20px;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background: #858585;
+}
