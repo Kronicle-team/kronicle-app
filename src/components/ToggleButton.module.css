@@ -1,4 +1,25 @@
-.btn {
-    color: var(--cyan);
-    width: 50px;
+.pageBtnIcon {
+    background: none;
+    border: none;
+    color: var(--orange);
+    font-size: 30px;
+    padding: 5px 10px;
+}
+
+.pageBtnIcon:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btnWrapper {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnWrapper:hover {
+    background: var(--orange);
+    border-radius: 20px;
+    cursor: pointer;
 }
