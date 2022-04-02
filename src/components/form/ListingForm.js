@@ -13,16 +13,16 @@ const FormInput = (props) => {
     };
 
     return (
-        <div className={style["formInput"]}>
-            <label>{label}</label>
-            <input
+        <div className={style["form-input"]}>
+            <label className={style["label-listing"]}>{label}</label>
+            <input className={style["input-listing"]}
                 {...inputProps}
                 onChange={onChange}
                 onBlur={handleFocus}
                 onFocus={() => setFocused(false)}
                 focused={focused.toString()}
             />
-            <span>{errorMessage}</span>
+            <span className={style["error-message"]}>{errorMessage}</span>
         </div>
     );
 };

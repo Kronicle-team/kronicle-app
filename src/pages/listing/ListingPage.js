@@ -68,8 +68,8 @@ const ListingPage = () => {
     return (
         <Layout header footer>
             <div className={[style["app"], common["flex"]].join(" ")}>
-                <form onSubmit={handleSubmit}>
-                    <h1>SELLER LISTING</h1>
+                <form onSubmit={handleSubmit} className={style["listing-form"]}>
+                    <h1 className={style["listing-title"]}>SELLER LISTING</h1>
                     {inputs.map((input) => (
                         <FormInput
                             key={input.id}
@@ -78,7 +78,7 @@ const ListingPage = () => {
                             onChange={onChange}
                         />
                     ))}
-                    <button>SUBMIT</button>
+                    <button className={style["listing-btn"]}>SUBMIT</button>
                 </form>
             </div>
         </Layout>

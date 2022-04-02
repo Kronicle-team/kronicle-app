@@ -1,33 +1,32 @@
-.formInput{
+.form-input{
     display: flex;
     flex-direction: column;
     width: 600px;
 }
 
-input{
+.label-listing{
+    font-size: 12px;
+    color: gray;
+}
+
+.input-listing{
     padding: 15px;
     margin: 10px 0;
     border-radius: 15px;
     border: 1px solid gray;
 }
 
-
-label{
-    font-size: 12px;
-    color: gray;
-}
-
-span{
+.error-message{
     font-size: 12px;
     padding: 3px;
     color: red;
     display: none;
 }
 
-input:invalid[focused="true"]{
+.input-listing:invalid[focused="true"]{
     border: 1px solid red;
 }
 
-input:invalid[focused="true"] ~ span{
+.input-listing:invalid[focused="true"] ~ span{
     display: block;
 }
