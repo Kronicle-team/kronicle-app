@@ -22,6 +22,13 @@ input[type="file"] {
     background-color: white;
 }
 
+.listing-btn-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .listing-btn{
     width: 40%;
     height: 50px;

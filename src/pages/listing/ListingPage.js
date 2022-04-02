@@ -94,13 +94,6 @@ const ListingPage = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
-    const [files, setFiles] = useState([])
-
-    const removeFile = (filename) => {
-        setFiles(files.filter(file => file.name !== filename))}
-
-
-    // console.log(values);
     return (
         <Layout header footer>
             <div className={[style["app"], common["flex"]].join(" ")}>
@@ -114,7 +107,9 @@ const ListingPage = () => {
                             onChange={onChange}
                         />
                         ))}
-                    <button className={style["listing-btn"]}>SUBMIT</button>
+                    <div className={style["listing-btn-container"]}>
+                        <button className={style["listing-btn"]}>SUBMIT</button>
+                    </div>
                 </form>
             </div>
         </Layout>
