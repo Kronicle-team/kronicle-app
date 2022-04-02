@@ -1,0 +1,131 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0 0;
+    padding: 0;
+}
+
+.wrapper{
+    align-items: center;
+    justify-content: center;
+}
+.icon-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.logo-wrapper{
+    display: flex;
+
+}
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.logoTextMain{
+    color: var(--orange);
+    font-size: 18px;
+}
+.logoText{
+    color: var(--darker-grey);
+    font-size: 18px;
+}
+
+.payment-wrapper{
+    display: flex;
+}
+
+.payment-method-wrapper{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-method{
+    cursor: pointer;
+    border: 2px solid var(--light-grey);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.orange-border{
+    cursor: pointer;
+    border: 2px solid var(--orange);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.expDate-cvv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.form{
+    width: 70%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+}
+.input{
+    width: 100%;
+    padding: 15px 5px;
+    margin: 10px 0 30px;
+    border-radius: 15px;
+    border: 1px solid var(--darker-grey);
+}
+
+.button-wrapper{
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.next-button{
+    width: 150px;
+    padding: 10px;
+    color: var(--background);
+    background-color: var(--orange);
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px;
+    cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
+}
+
+.cancel-button{
+    width: 150px;
+    padding: 10px;
+    color: var(--background);
+    background-color: var(--lighter-grey);
+    border-radius: 5px;
+    border-color: transparent;
+    margin: 5px;
+    cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
+}
+
+.next-button:hover {
+    background: var(--darker-orange);
+}
+
+.cancel-button:hover{
+    background: var(--darker-grey);
+}
+

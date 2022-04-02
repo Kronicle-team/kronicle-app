@@ -1,0 +1,89 @@
+.btnWrapper {
+    display: flex;
+}
+
+.paginationBtn:disabled:hover, .nextPageBtn:disabled:hover, .prevPageBtn:disabled:hover {
+    background: none;
+    cursor: pointer;
+}
+
+.paginationBtn:disabled {
+    color: #000000;
+}
+
+
+.cardWrapper {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin: auto;
+    align-items: center;
+    width: 60vw;
+}
+
+.cardSingleWrapper {
+    margin: auto;
+}
+
+.prevPageBtn {
+    margin-left: auto;
+}
+
+.nextPageBtn {
+    margin-right: auto;
+}
+
+.paginationBtn {
+    background: none;
+    border: none;
+    color: #AAAAAA;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.nextPageBtn, .prevPageBtn {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.nextPageBtn:disabled, .prevPageBtn:disabled {
+    color: #AAAAAA;
+}
+
+.paginationBtn:hover, .nextPageBtn:hover, .prevPageBtn:hover {
+    background: #E5E5E5;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1610px) {
+    .cardWrapper {
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .cardWrapper {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .cardWrapper {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .cardWrapper {
+        grid-template-columns: 33% 33% 33%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cardWrapper {
+        grid-template-columns: 50% 50%;
+    }
+}
