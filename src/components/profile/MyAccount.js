@@ -21,10 +21,10 @@ const MyAccount = () => {
               alt={"Avatar"}
             />
             <div className={style["name"]}>G-Dragon</div>
-            <div className={style["info"]}>
-            <p>100% new authenticated cards</p>
-            <p>I live in Korea</p>
-          </div>
+            <div className={style["bio-p"]}>
+              <p>100% new authenticated cards</p>
+              <p>I live in Korea</p>
+            </div>
 
             <table className={style["statistics"]}>
               {data.map((val, key) => {
