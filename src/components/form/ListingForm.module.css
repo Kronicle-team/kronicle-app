@@ -5,15 +5,16 @@
 }
 
 .label-listing{
-    font-size: 12px;
+    font-size: 1rem;
     color: gray;
+    margin-top:25px;
 }
 
 .input-listing{
     padding: 15px;
-    margin: 10px 0;
     border-radius: 15px;
     border: 1px solid gray;
+    margin: 10px 0;
 }
 
 .error-message{
@@ -24,6 +25,9 @@
 }
 
 .input-listing:invalid[focused="true"]{
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px 0;
     border: 1px solid red;
 }
 

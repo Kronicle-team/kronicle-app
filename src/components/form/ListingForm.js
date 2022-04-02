@@ -7,7 +7,6 @@ import style from "./ListingForm.module.css";
 const FormInput = (props) => {
     const [focused, setFocused] = useState(false);
     const { label, errorMessage, onChange, id, ...inputProps } = props;
-
     const handleFocus = (e) => {
         setFocused(true);
     };

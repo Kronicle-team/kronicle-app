@@ -1,19 +1,14 @@
 .app {
+    background-color: var(--background);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-size: cover;
-    background: linear-gradient(
-            lightskyblue,
-            var(--background),
-    ) center;
 }
 
 .listing-form{
-    background-color: var(--light-beige);
+    background-color: var(--background);
     padding: 0 60px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .listing-title{
@@ -22,8 +17,15 @@
     text-align: center;
 }
 
-.listing-btn{
-    width: 100%;
+input[type="file"] {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.listing-btn, button[type="file"]{
+    float: right;
+    width: 45%;
     height: 50px;
     padding: 10px;
     border: none;
@@ -36,3 +38,4 @@
     margin-top: 15px;
     margin-bottom: 30px;
 }
+
