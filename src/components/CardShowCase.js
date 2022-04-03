@@ -22,7 +22,10 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
  return (
      <div className={style.cardShowCaseContainer}>
          <div className={style.cardShowCaseTitle}>
-             <h1>{props.name} <span><Link to={props.link} className={style.seeMoreLink}>More</Link></span></h1>
+             <div><h1>{props.name}</h1></div>
+             <div>
+                 <h5 className={style.seeMoreLink}><Link to={props.link} className={style.seeMoreLink}>More</Link></h5>
+             </div>
          </div>
          <div className={style.pagePrevBtnWrapper}>
            <ToggleButton onClick={() => {

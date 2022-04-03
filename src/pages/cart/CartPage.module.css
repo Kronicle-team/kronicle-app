@@ -1,0 +1,73 @@
+.container {
+    margin: 0 100px;
+}
+
+.contentContainer {
+    display: grid;
+    grid-template-columns: 66% 34%;
+}
+
+.cartBtnWrapper {
+    margin-top: 70px
+}
+
+.cartBtn {
+    border-radius: 10px;
+    width: 180px;
+    height: 54px;
+    margin: 3px;
+    color: var(--white);
+}
+
+.btnContinueShopping {
+    background: var(--black);
+    border: solid 1px var(--black);
+}
+
+.btnContinueShopping:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.btnPlaceOrder {
+    background: var(--orange);
+    border: solid 1px var(--orange);
+}
+
+.btnPlaceOrder:hover {
+    background: var(--white);
+    color: var(--orange);
+}
+
+.cartListing {
+    grid-column: 1;
+}
+
+.cartSummary {
+    grid-column: 2;
+    width: 20vw;
+}
+
+.summaryTitle, .summaryRow, .summaryTotal {
+    border-bottom: 1px solid #B7B7B7;
+}
+
+.summaryField {
+    display: flex;
+}
+
+.summaryFieldHeading {
+    margin-right: auto;
+}
+
+.summaryFieldValue .summaryFieldValueAsInput {
+    margin-right: auto;
+}
+
+.summaryRow {
+    padding-top: 10px;
+}
+
+.summaryField {
+    padding-bottom: 10px;
+}

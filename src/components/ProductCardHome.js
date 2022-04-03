@@ -6,7 +6,7 @@ const ProductCardHome = (props) => {
         <div className={style.card}>
             <div key={props.id}>
                 <img src={("../media/images/product-card-placeholder.png")} alt={"product"} className={style.cardImg}/>
-                <div>{props.name}</div>
+                <h5>{props.name}</h5>
                 <div>{props.price}</div>
             </div>
         </div>

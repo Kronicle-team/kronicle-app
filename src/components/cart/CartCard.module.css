@@ -1,0 +1,58 @@
+.cardWrapper {
+    margin: 80px 0;
+    display: grid;
+    grid-template-columns: 30% 60%;
+}
+
+.cardWrapper:first-child {
+    margin-top: 20px;
+}
+
+.cardImgWrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+.cardImg {
+    width: 200px;
+    height: 200px;
+}
+
+
+.cardContentContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardContent {
+    height: 170px;
+}
+
+.cardName {
+    margin-top: 0;    margin-bottom: 5px;
+
+}
+
+.cardPrice {
+    font-size: 36px;
+    margin-top: 0;
+}
+
+.removeBtn {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    font-family: "Montserrat SemiBold";
+    font-size: 16px;
+    height: 40px;
+    width: 165px;
+}
+
+.removeBtn:hover {
+    background: var(--orange);
+    color: var(--white);
+}

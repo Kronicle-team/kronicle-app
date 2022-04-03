@@ -15,6 +15,7 @@ import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
 import AllPage from "./pages/AllPage"
+import CartPage from "./pages/cart/CartPage";
 
 const pages = {
   home: {
@@ -102,6 +103,11 @@ const pages = {
     link: "/my-account",
     component: <MyAccount />,
   },
+  cart: {
+    name: "Cart",
+    link: "/cart",
+    component: <CartPage />
+  }
 };
 
 export const allPages = {
