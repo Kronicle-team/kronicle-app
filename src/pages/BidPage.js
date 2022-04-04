@@ -37,6 +37,7 @@ const BidPage = () => {
             <div>225,000 VND</div>
           </div>
         </div>
+        <button className={style["bid-btn"]}>PLACE A BID</button>
       </Layout>
   )
 }
