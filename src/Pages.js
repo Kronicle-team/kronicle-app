@@ -1,6 +1,5 @@
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
-import ProfilePage from "./pages/user/ProfilePage";
 import ListingPage from "./pages/listing/ListingPage";
 import HomePage from "./pages/HomePage";
 import FaqPage from "./pages/support/FaqPage";
@@ -15,6 +14,7 @@ import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
 import AllPage from "./pages/AllPage"
+import BidPage from "./pages/BidPage";
 
 const pages = {
   home: {
@@ -37,10 +37,10 @@ const pages = {
     link: "/register",
     component: <RegisterPage />,
   },
-  profile: {
-    name: "Profile",
-    link: "/profile",
-    component: <ProfilePage />,
+  bid: {
+    name: "Bid",
+    link: "/product/bid/enter-price",
+    component: <BidPage />,
   },
   listing: {
     name: "Listing",

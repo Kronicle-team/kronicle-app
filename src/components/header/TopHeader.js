@@ -17,7 +17,7 @@ const TopHeader = () => {
       <div className={[style["top-header"], common["flex"]].join(" ")}>
         <div className={[style["top-header-left"], common["flex"]].join(" ")}>
           <Link to="/">
-            <img alt="Kronicle logo" src={"../media/icons/logo.png"} className={style["logo"]} />
+            <img alt="Kronicle logo" src={"../../media/icons/logo.png"} className={style["logo"]} />
           </Link>
 
           <SearchBar/>

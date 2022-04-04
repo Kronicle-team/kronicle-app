@@ -1,0 +1,17 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 80%;
+}
+
+.subtitle {
+    margin-top: 0;
+}
+
+.price {
+    font-family: "Montserrat Bold", sans-serif;
+    font-size: larger;
+    margin-left: 3px;
+}
