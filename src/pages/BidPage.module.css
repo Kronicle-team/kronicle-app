@@ -3,12 +3,12 @@
     justify-content: center;
     flex-direction: column;
     margin: 40px auto;
-    width: 50%;
+    width: 500px;
 
 }
 
 .subtitle {
-    margin-top: 0;
+    margin: 0 0 20px;
 }
 
 .price {
@@ -17,15 +17,32 @@
     margin-left: 3px;
 }
 
-.input {
+.input-container {
+    width: 100%;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--lighter-grey);
+    margin-bottom: 20px;
+}
 
+.input {
+    width: 100%;
+    border: 2px solid var(--white-grey);
+    border-radius: 10px;
+    padding: 0 20px;
+}
+
+input[type="text"] {
+    font-size: 18px;
 }
 
 .currency {
     background: var(--black);
     color: var(--white);
     font-family: "Montserrat Bold", sans-serif;
-    padding: 10px 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-left: -15px;
+    width: 15%;
 }
 
 .amount {
@@ -36,5 +53,6 @@
 .amount-row {
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 1rem;
 
 }
