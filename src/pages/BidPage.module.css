@@ -2,8 +2,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 40px;
-    width: 80%;
+    margin: 40px auto;
+    width: 50%;
+
 }
 
 .subtitle {
@@ -14,4 +15,26 @@
     font-family: "Montserrat Bold", sans-serif;
     font-size: larger;
     margin-left: 3px;
+}
+
+.input {
+
+}
+
+.currency {
+    background: var(--black);
+    color: var(--white);
+    font-family: "Montserrat Bold", sans-serif;
+    padding: 10px 20px;
+}
+
+.amount {
+    flex-direction: column;
+    width: 100%;
+}
+
+.amount-row {
+    width: 100%;
+    justify-content: space-between;
+
 }
