@@ -1,8 +1,12 @@
 import common from "../../../src/styles/common.module.css";
-import style from "./CardDetail.module.css"
+import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 
 const CardDetails = ({img, name, price, description, seller}) => {
+  const addToCart = () => {
+    alert("Item has been added to cart.")
+  }
+
   return (
       <section className={[common["flex"], style["container"]].join(" ")}>
         <img src={img} alt="card" className={style["img"]} />
@@ -22,7 +26,7 @@ const CardDetails = ({img, name, price, description, seller}) => {
           </div>
 
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
-            <button className={style["cart-btn"]}>ADD TO CART</button>
+            <button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button>
             <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
           </div>
         </div>

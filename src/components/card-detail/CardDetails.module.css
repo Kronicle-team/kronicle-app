@@ -1,10 +1,11 @@
 .container {
     width: 100%;
+    margin-bottom: 100px;
 }
 
 .img {
     max-width: 50%;
-    height: fit-content;
+    height: auto;
 }
 
 .details {
@@ -41,16 +42,6 @@
     align-items: center;
     padding: 2px 0;
     margin-bottom: 30px;
-}
-
-.seller-container a {
-    text-decoration: none;
-    color: var(--black);
-    margin: 0;
-}
-
-.seller-container a:hover {
-    text-decoration: underline;
 }
 
 .seller-ava {

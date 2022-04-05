@@ -1,12 +1,15 @@
 import Layout from "../../components/Layout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
+import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import CardDetails from "../../components/card-detail/CardDetails";
 import RecommendationCard from "../../components/card-detail/RecommendationCard";
 
 import style from "./ProductBuyNowPage.module.css";
+import common from "../../styles/common.module.css"
+import { useNavigate } from "react-router-dom";
 
 const ProductBuyNowPage = () => {
+  const navigate = useNavigate();
   const card = {
     name: "Han Sooyoung's fansign card",
     price: "110,000 VND",
@@ -59,17 +62,21 @@ const ProductBuyNowPage = () => {
 
     return (
     <Layout className={style["container"]} header footer>
-    <FontAwesomeIcon icon={faChevronLeft} />
-      <CardDetails name={card.name} price={card.price} img={card.img} description={card.description} seller={card.seller} />
-        
+      <FontAwesomeIcon icon={faChevronLeft} className={style["icon"]} onClick={() => navigate(-1)}/>
+      <CardDetails name={card.name} price={card.price} img={card.img} description={card.description}
+                   seller={card.seller}/>
 
-    <section className="recommendation">
-      <FontAwesomeIcon icon={faChevronLeft} />
-      {cards.map(card => {
-        return (<RecommendationCard key={card.id} img={card.img} name={card.name} price={card.price}/>)
-      })}
-      <FontAwesomeIcon icon={faChevronRight} />
-    </section>
+
+      <section className="recommendation">
+        <h3>RECOMMENDATION</h3>
+        <div className={[common["flex"], style["card-showcase"]].join(" ")}>
+          {cards.map(card => {
+            return (
+                <RecommendationCard key={card.id} img={card.img} name={card.name} price={card.price}/>
+            )
+          })}
+        </div>
+      </section>
     </Layout>
     )
 }

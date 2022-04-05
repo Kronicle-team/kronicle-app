@@ -55,3 +55,12 @@ p {
 input[type="text"] {
   font-family: var(--body-font);
 }
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+a:hover {
+  text-decoration: underline;
+}

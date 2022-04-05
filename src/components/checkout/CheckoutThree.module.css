@@ -17,6 +17,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.icon-wrapper:hover {
+    text-decoration: none;
+}
+
 .logo-wrapper{
     display: flex;
     align-items: center;
