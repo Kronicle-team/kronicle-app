@@ -4,7 +4,7 @@ import ListingPage from "./pages/listing/ListingPage";
 import HomePage from "./pages/HomePage";
 import FaqPage from "./pages/support/FaqPage";
 import AboutUsPage from "./pages/support/AboutUsPage";
-import ProductDetailPage from "./pages/product/ProductDetailPage";
+import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
 import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
@@ -15,6 +15,7 @@ import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
 import AllPage from "./pages/AllPage"
 import BidPage from "./pages/BidPage";
+import ProductBidPage from "./pages/product/ProductBidPage";
 
 const pages = {
   home: {
@@ -47,10 +48,15 @@ const pages = {
     link: "/listing",
     component: <ListingPage />,
   },
-  productDetail: {
-    name: "Product Details",
-    link: "/product/:id",
-    component: <ProductDetailPage />,
+  cardBuyNow: {
+    name: "Buy Now Card",
+    link: "/cards/buy-now/:id",
+    component: <ProductBuyNowPage />,
+  },
+  cardBid: {
+    name: "Bidding Card",
+    link: "/cards/bid/:id",
+    component: <ProductBidPage />,
   },
   faq: {
     name: "Frequently Asked Questions",
