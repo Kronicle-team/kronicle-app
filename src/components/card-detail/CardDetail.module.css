@@ -11,12 +11,13 @@
     margin-left: 5%;
 }
 
-.details h1 {
-    color: var(--orange)
+.details h1, .details h3 {
+    margin: 0;
 }
 
-.details h1, .details h3 {
-    margin: 0 0 10px;
+.details h1 {
+    color: var(--orange);
+    margin-bottom: 5px;
 }
 
 .details h3 {
@@ -25,18 +26,70 @@
 
 .details h4 {
     color: var(--light-grey);
-    margin: 0 0 2px;
+    margin: 2px 0;
     font-size: 18px;
 }
 
 .desc {
-    margin: 2px 0 17px;
+    margin: 2px 0 20px;
     text-align: justify;
+}
+
+.seller-container {
+    border-top: 1px solid var(--lighter-grey);
+    border-bottom: 1px solid var(--lighter-grey);
+    align-items: center;
+    padding: 2px 0;
+    margin-bottom: 30px;
+}
+
+.seller-container a {
+    text-decoration: none;
+    color: var(--black);
+    margin: 0;
+}
+
+.seller-container a:hover {
+    text-decoration: underline;
 }
 
 .seller-ava {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-right: 20px;
+}
 
+.btn-container {
+    justify-content: space-between;
+}
+
+.cart-btn, .buy-btn {
+    padding: 15px 20px;
+    outline: none;
+    border: none;
+    color: var(--white);
+    font-family: "Montserrat SemiBold", sans-serif;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.buy-btn:hover, .cart-btn:hover {
+    cursor: pointer;
+}
+
+.buy-btn {
+    background: var(--orange);
+}
+
+.buy-btn:hover {
+    background: var(--darker-orange);
+}
+
+.cart-btn {
+    background: var(--black);
+}
+
+.cart-btn:hover {
+    background: var(--lighter-black);
 }

@@ -1,5 +1,6 @@
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetail.module.css"
+import {Link} from "react-router-dom";
 
 const CardDetails = ({img, name, price, description, seller}) => {
   return (
@@ -13,14 +14,16 @@ const CardDetails = ({img, name, price, description, seller}) => {
           <div className={style["desc"]}>{description}</div>
 
           <h4>Seller</h4>
-          <div>
-            <img src={seller.avatar} alt="seller-avatar" className={style["seller-ava"]}/>
-            <p>{seller.name}</p>
+          <div className={[style["seller-container"], common["flex"]].join(" ")}>
+            <Link to="/seller-profile">
+              <img src={seller.avatar} alt="seller-avatar" className={[style["seller-ava"], common["flex"]].join(" ")}/>
+            </Link>
+            <Link to="/seller-profile"><p>{seller.name}</p></Link>
           </div>
 
-          <div>
-            <button>ADD TO CART</button>
-            <button>BUY NOW</button>
+          <div className={[common["flex"], style["btn-container"]].join(" ")}>
+            <button className={style["cart-btn"]}>ADD TO CART</button>
+            <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
           </div>
         </div>
       </section>
