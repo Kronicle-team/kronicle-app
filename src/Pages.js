@@ -4,7 +4,6 @@ import ListingPage from "./pages/listing/ListingPage";
 import HomePage from "./pages/HomePage";
 import FaqPage from "./pages/support/FaqPage";
 import AboutUsPage from "./pages/support/AboutUsPage";
-import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
 import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
@@ -16,6 +15,7 @@ import MyAccount from "./components/profile/MyAccount";
 import AllPage from "./pages/AllPage"
 import BidPage from "./pages/BidPage";
 import ProductBidPage from "./pages/product/ProductBidPage";
+import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
 
 const pages = {
   home: {

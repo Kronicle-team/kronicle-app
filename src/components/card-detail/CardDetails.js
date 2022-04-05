@@ -2,7 +2,7 @@ import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 
-const CardDetails = ({img, name, price, description, seller}) => {
+const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
   const addToCart = () => {
     alert("Item has been added to cart.")
   }
@@ -25,10 +25,13 @@ const CardDetails = ({img, name, price, description, seller}) => {
             <Link to="/seller-profile"><p>{seller.name}</p></Link>
           </div>
 
-          <div className={[common["flex"], style["btn-container"]].join(" ")}>
-            <button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button>
-            <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
-          </div>
+          {buy
+          ? <div className={[common["flex"], style["btn-container"]].join(" ")}>
+                <button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button>
+                <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
+              </div>
+          : null
+          }
         </div>
       </section>
   )
