@@ -8,15 +8,15 @@ const CardDetails = () => {
         <div>
           <p>Han Sooyoung's special card</p>
           <h1>100,000 VND</h1>
-          <h3>Product Description</h3>
+          <h4>Product Description</h4>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
 
-          <h3>Seller</h3>
+          <h4>Seller</h4>
           <div>
             <img src={"../../media/images/placeholder-612x612.jpg"} alt="seller-avatar"/>
-            <p>Go Junho</p>
+            <p>Neyra Elena Darcy</p>
           </div>
 
           <div>
