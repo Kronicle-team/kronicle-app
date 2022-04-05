@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./RegisterForm.module.css";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 const RegisterForm = () => {
     const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
@@ -51,7 +52,7 @@ const RegisterForm = () => {
                     className={style["logo"]}
                     alt={"Kronicle logo"}
                 />
-                <p className={style["p"]}>Already a member? <a href="#" className={style["a"]}>Sign in.</a></p>
+                <p className={style["p"]}>Already a member? <Link to="/login" className={style["a"]}>Sign in.</Link></p>
                 <label className={style["label"]}>Email or Phone number</label>
                 <input
                     type="text"
@@ -81,7 +82,7 @@ const RegisterForm = () => {
                     className={style["input"]}
                 />
                 <Checkbox
-                    label={<label className={style["label"]}>I agree to the &nbsp;<a href="#" className={style["a"]}>terms and conditions.</a></label>}
+                    label={<label className={style["label"]}>I agree to the &nbsp;<Link to="/tos" className={style["a"]}>terms and conditions.</Link></label>}
                     value={checkedFirst}
                     onChange={handleChangeFirst}
                 />
@@ -92,7 +93,7 @@ const RegisterForm = () => {
                 />
             </form>
             <div className={style["button-wrapper"]}>
-                <button className={style["register-btn"]}>REGISTER</button>
+                <Link to="/"><button className={style["register-btn"]}>REGISTER</button></Link>
                 <button type="submit" className={style["clear-btn"]} onClick={handleReset}>CLEAR</button>
             </div>
             </div>

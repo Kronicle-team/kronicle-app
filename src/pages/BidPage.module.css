@@ -31,10 +31,6 @@
     padding: 0 20px;
 }
 
-input[type="text"] {
-    font-size: 18px;
-}
-
 .currency {
     background: var(--black);
     color: var(--white);
