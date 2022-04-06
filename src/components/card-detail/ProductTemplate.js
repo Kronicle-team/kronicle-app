@@ -7,6 +7,8 @@ import RecommendationCard from "./RecommendationCard";
 import style from "./ProductTemplate.module.css";
 import common from "../../styles/common.module.css"
 import { useNavigate } from "react-router-dom";
+import CardShowCase from "../CardShowCase";
+import React from "react";
 
 const ProductTemplate = ({buy, bid}) => {
   const navigate = useNavigate();
@@ -15,9 +17,9 @@ const ProductTemplate = ({buy, bid}) => {
     price: "110,000 VND",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hahah ahahah Lorem ipsum dolor sit amet" +
         " consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    img: "../../media/images/placeholder-612x612.jpg",
+    img: "/media/images/placeholder-612x612.jpg",
     seller: {
-      avatar: "../../media/images/placeholder-612x612.jpg",
+      avatar: "/media/images/placeholder-612x612.jpg",
       name: "Neyra Elena Darcy"
     }
   }
@@ -26,37 +28,37 @@ const ProductTemplate = ({buy, bid}) => {
       id: 1,
       name: "Go Junho's special card",
       price: "120,000 VND",
-      img: "../../media/images/placeholder-612x612.jpg"
+      img: "/media/images/placeholder-612x612.jpg"
     },
     {
       id: 2,
       name: "Go Junho's special card",
       price: "120,000 VND",
-      img: "../../media/images/placeholder-612x612.jpg"
+      img: "/media/images/placeholder-612x612.jpg"
     },
     {
       id: 3,
       name: "Go Junho's special card",
       price: "120,000 VND",
-      img: "../../media/images/placeholder-612x612.jpg"
+      img: "/media/images/placeholder-612x612.jpg"
     },
     {
       id: 4,
       name: "Go Junho's special card",
       price: "120,000 VND",
-      img: "../../media/images/placeholder-612x612.jpg"
+      img: "/media/images/placeholder-612x612.jpg"
     },
     {
       id: 5,
       name: "Go Junho's special card",
       price: "120,000 VND",
-      img: "../../media/images/placeholder-612x612.jpg"
+      img: "/media/images/placeholder-612x612.jpg"
     },
     {
       id: 6,
       name: "Go Junho's special card",
       price: "120,000 VND",
-      img: "../../media/images/placeholder-612x612.jpg"
+      img: "/media/images/placeholder-612x612.jpg"
     }
   ]
 
@@ -70,11 +72,9 @@ const ProductTemplate = ({buy, bid}) => {
       <section className="recommendation">
         <h3>RECOMMENDATION</h3>
         <div className={[common["flex"], style["card-showcase"]].join(" ")}>
-          {cards.map(card => {
-            return (
-                <RecommendationCard key={card.id} img={card.img} name={card.name} price={card.price}/>
-            )
-          })}
+
+                <CardShowCase name={"Recommendation"} data={cards} link={""}/>
+
         </div>
       </section>
     </Layout>
