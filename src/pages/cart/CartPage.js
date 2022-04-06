@@ -16,10 +16,10 @@ const CartPage = () => {
                 <h1>Cart</h1>
                 <div className={style.bidOrBuyNowContainer}>
                     <div>
-                        <button className={setBid ? style.changeModeBtn : style.changeModeBtnSelected} onClick={() => {setBid(true)}}>Bid</button>
+                        <button className={!bid ? style.changeModeBtn : style.changeModeBtnSelected} disabled={bid} onClick={() => {setBid(true)}}>Bid</button>
                     </div>
                     <div>
-                        <button className={!setBid ? style.changeModeBtn : style.changeModeBtnSelected}  onClick={() => {setBid(false)}}>Buy Now</button>
+                        <button className={bid ? style.changeModeBtn : style.changeModeBtnSelected}  disabled={!bid} onClick={() => {setBid(false)}}>Buy Now</button>
                     </div>
                 </div>
                 <div className={style.contentContainer}>
