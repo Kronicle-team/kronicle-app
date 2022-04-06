@@ -13,7 +13,6 @@ import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
 import AllPage from "./pages/AllPage"
-import BidPage from "./pages/BidPage";
 import ProductBidPage from "./pages/product/ProductBidPage";
 import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
 
@@ -37,11 +36,6 @@ const pages = {
     name: "Register",
     link: "/register",
     component: <RegisterPage />,
-  },
-  bid: {
-    name: "Bid",
-    link: "/product/bid/enter-price",
-    component: <BidPage />,
   },
   listing: {
     name: "Listing",

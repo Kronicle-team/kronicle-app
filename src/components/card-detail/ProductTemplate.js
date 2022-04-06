@@ -2,7 +2,6 @@ import Layout from "../Layout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import CardDetails from "./CardDetails";
-import RecommendationCard from "./RecommendationCard";
 
 import style from "./ProductTemplate.module.css";
 import common from "../../styles/common.module.css"
@@ -72,9 +71,7 @@ const ProductTemplate = ({buy, bid}) => {
       <section className="recommendation">
         <h3>RECOMMENDATION</h3>
         <div className={[common["flex"], style["card-showcase"]].join(" ")}>
-
                 <CardShowCase name={"Recommendation"} data={cards} link={""}/>
-
         </div>
       </section>
     </Layout>
