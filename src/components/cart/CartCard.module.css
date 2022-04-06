@@ -1,7 +1,7 @@
 .cardWrapper {
     margin: 80px 0;
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 40% 60%;
 }
 
 .cardWrapper:first-child {
@@ -55,4 +55,16 @@
 .removeBtn:hover {
     background: var(--orange);
     color: var(--white);
+}
+
+.winningCard {
+    margin-top: -30px;
+    color: #66FF88;
+    font-weight: bold;
+}
+
+.overBiddenCard {
+    margin-top: -30px;
+    color: #FF0000;
+    font-weight: bold;
 }

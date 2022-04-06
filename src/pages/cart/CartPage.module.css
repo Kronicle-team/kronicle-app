@@ -9,12 +9,15 @@
 }
 
 .cartBtnWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 70px
 }
 
 .cartBtn {
     border-radius: 10px;
-    width: 180px;
+    width: 160px;
     height: 54px;
     margin: 3px;
     color: var(--white);
@@ -75,6 +78,7 @@
 
 .cartListing {
     grid-column: 1;
+    margin-left: 20px;
 }
 
 .cartSummary {
@@ -104,4 +108,26 @@
 
 .summaryField {
     padding-bottom: 10px;
+}
+
+.summaryFieldCouponInput {
+    width: 150px;
+    height: 19px;
+    padding: 2px;
+    border: solid 2px var(--black);
+}
+
+.summaryFieldCouponBtn {
+    border: solid 2px var(--black);
+    background: var(--black);
+    color: var(--white);
+    margin-left: 0;
+    height: 27px;
+    padding: 2px;
+}
+
+@media only screen and (max-width: 1290px){
+    .summaryFieldCouponInput {
+        width: 90px;
+    }
 }
