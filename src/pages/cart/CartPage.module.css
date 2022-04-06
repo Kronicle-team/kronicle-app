@@ -39,6 +39,14 @@
     color: var(--orange);
 }
 
+.bidOrBuyNowContainer {
+    display: flex;
+}
+
+.changeModeBtn {
+
+}
+
 .cartListing {
     grid-column: 1;
 }

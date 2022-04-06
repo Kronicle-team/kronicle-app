@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./CartPage.module.css";
 import CartCard from "../../components/cart/CartCard";
+import {useState} from "react";
 let temp = []
 for (let i = 0; i < 3; i ++) {
     temp.push("")
@@ -8,11 +9,20 @@ for (let i = 0; i < 3; i ++) {
 
 
 const CartPage = () => {
+    const [bid, setBid] = useState(true)
     return (
         <Layout header footer>
             <div className={style.container}>
                 <h1>Cart</h1>
                 <div className={style.contentContainer}>
+                    <div className={style.bidOrBuyNowContainer}>
+                        <div>
+                            <button className={style.changeModeBtn} onClick={() => {setBid(true); console.log(bid)}}>Bid</button>
+                        </div>
+                        <div>
+                            <button className={style.changeModeBtn}  onClick={() => {setBid(false) ; console.log(bid)}}>Buy Now</button>
+                        </div>
+                    </div>
                     <div className={style.cartListing}>
                         {
                             temp.map(() => {
@@ -41,6 +51,18 @@ const CartPage = () => {
                                 <div className={style.summaryFieldHeading}>Shipping charges</div>
                                 <div className={style.summaryFieldValue}></div>
                             </div>
+                            {bid ?
+                                <div className={style.summaryField}>
+                                    <div className={style.summaryFieldHeading}>Deposit</div>
+                                    <div className={style.summaryFieldValue}></div>
+                                </div>
+                            : null}
+                            {bid ?
+                                <div className={style.summaryField}>
+                                    <div className={style.summaryFieldHeading}>Service Fee</div>
+                                    <div className={style.summaryFieldValue}>5000</div>
+                                </div>
+                                : null}
                         </div>
                         <div className={style.summaryRow}>
                             <div className={style.summaryField}>
