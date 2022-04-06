@@ -3,6 +3,7 @@
 }
 
 .contentContainer {
+    border: var(--peach) 5px solid;
     display: grid;
     grid-template-columns: 66% 34%;
 }
@@ -44,7 +45,32 @@
 }
 
 .changeModeBtn {
+    height: 50px;
+    width: 300px;
+    border-radius: 0 30px 0 0;
+    color: var(--white);
+    font-family: "Montserrat";
+    font-size: 18px;
+    background: var(--black);
+    border: var(--peach) 3px solid;
+    border-bottom: none;
+}
 
+.changeModeBtn:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.changeModeBtnSelected {
+    height: 50px;
+    width: 300px;
+    border-radius: 0 30px 0 0;
+    background: var(--white);
+    color: var(--black);
+    font-family: "Montserrat";
+    font-size: 18px;
+    border: var(--peach) 3px solid;
+    border-bottom: none;
 }
 
 .cartListing {

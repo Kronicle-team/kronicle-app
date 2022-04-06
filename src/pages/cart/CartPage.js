@@ -14,15 +14,15 @@ const CartPage = () => {
         <Layout header footer>
             <div className={style.container}>
                 <h1>Cart</h1>
-                <div className={style.contentContainer}>
-                    <div className={style.bidOrBuyNowContainer}>
-                        <div>
-                            <button className={style.changeModeBtn} onClick={() => {setBid(true); console.log(bid)}}>Bid</button>
-                        </div>
-                        <div>
-                            <button className={style.changeModeBtn}  onClick={() => {setBid(false) ; console.log(bid)}}>Buy Now</button>
-                        </div>
+                <div className={style.bidOrBuyNowContainer}>
+                    <div>
+                        <button className={setBid ? style.changeModeBtn : style.changeModeBtnSelected} onClick={() => {setBid(true)}}>Bid</button>
                     </div>
+                    <div>
+                        <button className={!setBid ? style.changeModeBtn : style.changeModeBtnSelected}  onClick={() => {setBid(false)}}>Buy Now</button>
+                    </div>
+                </div>
+                <div className={style.contentContainer}>
                     <div className={style.cartListing}>
                         {
                             temp.map(() => {
