@@ -94,6 +94,11 @@ const ListingPage = () => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const [radio,setRadio] = useState('false')
+    const handleRadio = (e) => {
+        setRadio(e.target.value)
+    }
+
     return (
         <Layout header footer>
             <div className={[style["app"], common["flex"]].join(" ")}>
@@ -106,7 +111,10 @@ const ListingPage = () => {
                             value={values[input.name]}
                             onChange={onChange}
                         />
-                        ))}
+                    ))}
+                    <label>Selling Options</label>
+                    <Form.Radio label="BUYNOW" checked={radio === 'BUYNOW'} value="Male" onClick={() => setRadio('BUYNOW')} />
+                    <Form.Radio label="BID" checked={radio === 'BID'} value="Female" onClick={() => setRadio('BID')} />
                     <div className={style["listing-btn-container"]}>
                         <button className={style["listing-btn"]}>SUBMIT</button>
                     </div>
@@ -117,3 +125,5 @@ const ListingPage = () => {
 };
 
 export default ListingPage;
+
+
