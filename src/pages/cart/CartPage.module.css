@@ -86,6 +86,10 @@
     width: 20vw;
 }
 
+.summaryTitle {
+    text-align: center;
+}
+
 .summaryTitle, .summaryRow, .summaryTotal {
     border-bottom: 1px solid #B7B7B7;
 }
