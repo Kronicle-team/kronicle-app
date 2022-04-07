@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./CartPage.module.css";
 import CartCard from "../../components/cart/CartCard";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 const bid = [
     {
         "id": 0,
@@ -48,6 +48,19 @@ const buy = [
     },
 ]
 
+const coupon = [
+    {
+        "id": 0,
+        "name": "kronicle",
+        "value": 0.1,
+    },
+    {
+        "id": 1,
+        "name": "kronicle1",
+        "value": 0.2
+    },
+]
+
 const CartPage = () => {
     const [bidBtn, setBidBtn] = useState(true)
     const [temp, setTemp] = useState(bid)
@@ -56,6 +69,8 @@ const CartPage = () => {
     const [shippingFee, setShippingFee] = useState(15000)
     const [deposit, setDeposit] = useState(0)
     const [serviceFee, setServiceFee] = useState(5000)
+    const [couponValue, setCouponValue] = useState(0)
+    const couponInput = useRef()
 
     useEffect(() => {
         if (bidBtn === true) {
@@ -67,7 +82,7 @@ const CartPage = () => {
         })
         if (bidBtn) {
             setDeposit(subTotal * 0.1)
-            setTotal(subTotal + deposit + shippingFee + serviceFee)
+            setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal + shippingFee)
     })
 
@@ -130,8 +145,14 @@ const CartPage = () => {
                             <div className={style.summaryField}>
                                 <div className={style.summaryFieldHeading}>Coupon</div>
                                 <div className={style.summaryFieldValueAsInput}>
-                                    <input className={style.summaryFieldCouponInput} type={"text"} />
-                                    <button className={style.summaryFieldCouponBtn}>Apply</button>
+                                    <input className={style.summaryFieldCouponInput} type={"text"} ref={couponInput}/>
+                                    <button className={style.summaryFieldCouponBtn} onClick={() => {
+                                        coupon.map((coupon) => {
+                                            if (coupon.name === couponInput.current.value) {
+                                                setCouponValue(coupon.value)
+                                            } else setCouponValue(0)
+                                        })
+                                    }}>Apply</button>
                                 </div>
                             </div>
                         </div>

@@ -73,4 +73,9 @@
     .cardImgWrapper {
         width: 90%;
     }
+    .cardImg {
+        width: 175px;
+        height: 175px;
+    }
+
 }
