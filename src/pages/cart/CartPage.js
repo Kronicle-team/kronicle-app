@@ -48,7 +48,7 @@ const buy = [
     },
 ]
 
-const coupon = [
+const coupons = [
     {
         "id": 0,
         "name": "kronicle",
@@ -83,7 +83,7 @@ const CartPage = () => {
         if (bidBtn) {
             setDeposit(subTotal * 0.1)
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
-        } else setTotal(subTotal + shippingFee)
+        } else setTotal(subTotal * (1 - couponValue) + shippingFee)
     })
 
     return (
@@ -147,10 +147,16 @@ const CartPage = () => {
                                 <div className={style.summaryFieldValueAsInput}>
                                     <input className={style.summaryFieldCouponInput} type={"text"} ref={couponInput}/>
                                     <button className={style.summaryFieldCouponBtn} onClick={() => {
-                                        coupon.map((coupon) => {
-                                            if (coupon.name === couponInput.current.value) {
+                                        let count = 0
+                                        coupons.map((coupon) => {
+                                           console.log(coupons.indexOf(coupon) - coupons.length)
+                                            if (coupon.name === couponInput.current.value && count === 0) {
                                                 setCouponValue(coupon.value)
-                                            } else setCouponValue(0)
+                                                count = 1
+                                            }
+                                            if (count === 0 && coupons.indexOf(coupon) === coupons.length - 1 ) {
+                                                setCouponValue(0)
+                                            }
                                         })
                                     }}>Apply</button>
                                 </div>
