@@ -90,7 +90,7 @@
     border-bottom: 1px solid #B7B7B7;
 }
 
-.summaryField {
+.summaryField, .summaryTotal {
     display: flex;
 }
 
@@ -124,6 +124,11 @@
     margin-left: 0;
     height: 27px;
     padding: 2px;
+}
+
+.summaryFieldCouponBtn:hover {
+    background: var(--white);
+    color: var(--black);
 }
 
 @media only screen and (max-width: 1290px){

@@ -47,14 +47,28 @@ const buy = [
         "highestBid": null,
     },
 ]
+
 const CartPage = () => {
     const [bidBtn, setBidBtn] = useState(true)
     const [temp, setTemp] = useState(bid)
+    const [subTotal, setSubTotal] = useState(0)
+    const [total, setTotal] = useState(subTotal)
+    const [shippingFee, setShippingFee] = useState(15000)
+    const [deposit, setDeposit] = useState(0)
+    const [serviceFee, setServiceFee] = useState(5000)
 
     useEffect(() => {
         if (bidBtn === true) {
             setTemp(bid)
         } else {setTemp(buy)}
+        setSubTotal(0)
+        temp.map((card) => {
+            setSubTotal(prevState => prevState + parseInt(card.price))
+        })
+        if (bidBtn) {
+            setDeposit(subTotal * 0.1)
+            setTotal(subTotal + deposit + shippingFee + serviceFee)
+        } else setTotal(subTotal + shippingFee)
     })
 
     return (
@@ -63,7 +77,7 @@ const CartPage = () => {
                 <h1>Cart</h1>
                 <div className={style.bidOrBuyNowContainer}>
                     <div>
-                        <button className={!bidBtn ? style.changeModeBtn : style.changeModeBtnSelected} disabled={bidBtn} onClick={() => {setBidBtn(true)}}>bidBtn</button>
+                        <button className={!bidBtn ? style.changeModeBtn : style.changeModeBtnSelected} disabled={bidBtn} onClick={() => {setBidBtn(true)}}>Bid</button>
                     </div>
                     <div>
                         <button className={bidBtn ? style.changeModeBtn : style.changeModeBtnSelected}  disabled={!bidBtn} onClick={() => {setBidBtn(false)}}>Buy Now</button>
@@ -93,22 +107,22 @@ const CartPage = () => {
                         <div className={style.summaryRow}>
                             <div className={style.summaryField}>
                                 <div className={style.summaryFieldHeading}>Subtotal</div>
-                                <div className={style.summaryFieldValue}></div>
+                                <div className={style.summaryFieldValue}>{subTotal}</div>
                             </div>
                             <div className={style.summaryField}>
                                 <div className={style.summaryFieldHeading}>Shipping charges</div>
-                                <div className={style.summaryFieldValue}></div>
+                                <div className={style.summaryFieldValue}>{shippingFee}</div>
                             </div>
                             {bidBtn ?
                                 <div className={style.summaryField}>
                                     <div className={style.summaryFieldHeading}>Deposit</div>
-                                    <div className={style.summaryFieldValue}></div>
+                                    <div className={style.summaryFieldValue}>{deposit}</div>
                                 </div>
                             : null}
                             {bidBtn ?
                                 <div className={style.summaryField}>
                                     <div className={style.summaryFieldHeading}>Service Fee</div>
-                                    <div className={style.summaryFieldValue}>5000</div>
+                                    <div className={style.summaryFieldValue}>{serviceFee}</div>
                                 </div>
                                 : null}
                         </div>
@@ -122,8 +136,8 @@ const CartPage = () => {
                             </div>
                         </div>
                         <div className={style.summaryTotal}>
-                            <h3 className={style.summaryTotalHeading}>TOTAL</h3>
-                            <h3 className={style.summaryTotalValue}></h3>
+                            <h3 className={style.summaryFieldHeading}>TOTAL</h3>
+                            <h3 className={style.summaryFieldValue}>{total}</h3>
                         </div>
                         <div className={style.cartBtnWrapper}>
                             <button className={style.cartBtn + " " + style.btnContinueShopping}>CONTINUE SHOPPING</button>
