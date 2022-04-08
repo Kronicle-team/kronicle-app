@@ -3,6 +3,7 @@ import {useState} from "react";
 import FormInput from "../../components/form/ListingForm";
 import style from "./ListingPage.module.css";
 import common from "../../styles/common.module.css";
+import Radio from "../../components/radio/HideShowForm";
 
 
 const ListingPage = () => {
@@ -105,6 +106,11 @@ const ListingPage = () => {
                             key={input.id}
                             {...input}
                             value={values[input.name]}
+                            onChange={onChange}
+                        />))}
+                        <Radio
+                            name="radio"
+                            value={values.radio}
                             onChange={onChange}
                         />
                     ))}

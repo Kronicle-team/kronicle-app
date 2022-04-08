@@ -1,0 +1,11 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.form-control {
+  margin-bottom: 0;
+  /*hide form*/
+  display: none;
+}
