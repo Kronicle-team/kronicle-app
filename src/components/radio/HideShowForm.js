@@ -9,7 +9,6 @@ function Radio () {
         setStatus(status);
     };
 
-
     function displaySellingPrice() {
         if (status === 1) {
             return (
@@ -35,8 +34,17 @@ function Radio () {
 
     return (
         <>
-            <input type="radio" name="release" checked={status === 1} onClick={(e) => radioHandler(1)} />
-            <input type="radio" name="release" checked={status === 2} onClick={(e) => radioHandler(2)} />
+            <div className={style["form-input"]}>
+            <label className={style["label-listing"]}>Type of Pricing*</label>
+            <div>
+                <label className={style["label-listing"]}>Buy Now</label>
+                <input type="radio" name="release" checked={status === 1} onClick={(e) => radioHandler(1)} />
+            </div>
+            <div>
+                <label className={style["label-listing"]}>Bid</label>
+                <input type="radio" name="release" checked={status === 2} onClick={(e) => radioHandler(2)} />
+            </div>
+            </div>
             {status === 1 && displaySellingPrice()}
             {status === 2 && displayMinPrice()}
         </>
