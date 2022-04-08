@@ -10,9 +10,7 @@ const ListingPage = () => {
     const [values, setValues] = useState({
         productname: "",
         productsatus: "",
-        price: "",
-        minamount: "",
-        radio: "",
+        file: "",
     });
 
     const inputs = [
@@ -31,7 +29,7 @@ const ListingPage = () => {
             id: 2,
             name: "productsatus",
             type: "textarea",
-            placeholder: "Please describe your products, their status, and what users will receive more than 15 words",
+            placeholder: "Please describe product's status, and what users will receive more than 15 words",
             errorMessage: "It should be a meaningful description of your products!",
             label: "Product status*",
             pattern: "^[A-Za-z0-9]{15,}$",

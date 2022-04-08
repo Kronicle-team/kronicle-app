@@ -9,6 +9,11 @@ function Radio () {
         setStatus(status);
     };
 
+    const [focused, setFocused] = useState(false);
+    const handleFocus = (e) => {
+        setFocused(true);
+    }
+
     function displaySellingPrice() {
         if (status === 1) {
             return (
@@ -44,10 +49,12 @@ function Radio () {
                 <label className={style["label-listing"]}>Bid</label>
                 <input type="radio" name="release" checked={status === 2} onClick={(e) => radioHandler(2)} />
             </div>
+                <span className={style["error-message"]}>Please choose a type of pricing</span>
             </div>
             {status === 1 && displaySellingPrice()}
             {status === 2 && displayMinPrice()}
         </>
+
     );
 }
 

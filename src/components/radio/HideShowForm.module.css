@@ -35,10 +35,3 @@
 .input-listing:invalid[focused="true"] ~ span{
   display: block;
 }
-
-.form-input .label-listing:before{
-  content: "*";
-  color: red;
-  display: inline-block;
-  margin-right: 10px;
-}
