@@ -46,44 +46,6 @@ const ListingPage = () => {
             errorMessage: "Please input your product's image'",
             required: true,
         },
-        {
-            id: 4,
-            name: "radio",
-            type: "radio",
-            value: "BUYNOW", // value of the radio button
-            label: "Buy Now",
-            errorMessage: "Please choose a pricing type",
-            required: true,
-        },
-        {
-            id: 5,
-            name: "price",
-            type: "number",
-            placeholder: "Enter the selling price for the product",
-            label: "Price*",
-            errorMessage: "price should be a number!",
-            pattern: "^[0-9]{1,}$",
-            required: true,
-        },
-        {
-            id: 6,
-            name: "radio",
-            type: "radio",
-            value: "Bid", // value of the radio button
-            label: "Bid",
-            errorMessage: "Please choose a pricing type",
-            required: true,
-        },
-        {
-            id: 7,
-            name: "minprice",
-            type: "number",
-            placeholder: "Enter the selling price for the product",
-            label: "Min Price*",
-            errorMessage: "price should be a number!",
-            pattern: "^[0-9]{1,}$",
-            required: true,
-        },
     ];
 
     const handleSubmit = (e) => {
@@ -113,7 +75,6 @@ const ListingPage = () => {
                             value={values.radio}
                             onChange={onChange}
                         />
-                    ))}
                     <div className={style["listing-btn-container"]}>
                         <button className={style["listing-btn"]}>SUBMIT</button>
                     </div>
