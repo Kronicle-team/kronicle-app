@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "../form/ListingForm.module.css";
 
 // Use React Hook
@@ -13,9 +13,10 @@ function Radio () {
     function displaySellingPrice() {
         if (status === 1) {
             return (
-                <div className={style["form-group"]}>
-                    <label htmlFor="sellingPrice">Selling Price</label>
-                    <input type="number" className={style["form-control"]} id="sellingPrice" placeholder="Selling Price" />
+
+                <div className={style["form-input"]}>
+                    <label className={style["label-listing"]} htmlFor="sellingPrice">Selling Price</label>
+                    <input type="number" className={style["input-listing"]} id="sellingPrice" required={true} placeholder="Selling Price"/>
                 </div>
             );
         }
@@ -24,9 +25,9 @@ function Radio () {
     function displayMinPrice() {
         if (status === 2) {
             return (
-                <div className={style["form-group"]}>
-                    <label htmlFor="minPrice">Min Price</label>
-                    <input type="number" className={style["form-control"]} id="minPrice" placeholder="Min Price" />
+                <div className={style["form-input"]}>
+                    <label className={style["label-listing"]} htmlFor="minPrice">Min Price</label>
+                    <input type="number" className={style["input-listing"]} id="minPrice" required={true} placeholder="Min Price" />
                 </div>
             );
         }
