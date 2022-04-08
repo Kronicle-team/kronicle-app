@@ -70,7 +70,7 @@ const ListingPage = () => {
                             value={values[input.name]}
                             onChange={onChange}
                         />))}
-                    <label className={style["label-listing"]}>Type of Pricing</label>
+                    <label className={style["label-listing"]}>Type of Pricing*</label>
                         <Radio
                             name="radio"
                             value={values.radio}

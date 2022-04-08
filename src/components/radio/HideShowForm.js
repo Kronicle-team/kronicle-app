@@ -15,7 +15,7 @@ function Radio () {
             return (
 
                 <div className={style["form-input"]}>
-                    <label className={style["label-listing"]} htmlFor="sellingPrice">Selling Price</label>
+                    <label className={style["label-listing"]} htmlFor="sellingPrice">Selling Price*</label>
                     <input type="number" className={style["input-listing"]} id="sellingPrice" required={true} placeholder="Selling Price"/>
                 </div>
             );
@@ -26,7 +26,7 @@ function Radio () {
         if (status === 2) {
             return (
                 <div className={style["form-input"]}>
-                    <label className={style["label-listing"]} htmlFor="minPrice">Min Price</label>
+                    <label className={style["label-listing"]} htmlFor="minPrice">Min Price*</label>
                     <input type="number" className={style["input-listing"]} id="minPrice" required={true} placeholder="Min Price" />
                 </div>
             );
