@@ -163,8 +163,8 @@ const CartPage = () => {
                             </div>
                         </div>
                         <div className={style.summaryTotal}>
-                            <h3 className={style.summaryFieldHeading}>TOTAL</h3>
-                            <h3 className={style.summaryFieldValue}>{total}</h3>
+                            <h3 className={style.summaryFieldHeading + " " + style.summaryTotalHeading}>TOTAL</h3>
+                            <h3 className={style.summaryFieldValue + " " + style.summaryTotalValue}>{total}</h3>
                         </div>
                         <div className={style.cartBtnWrapper}>
                             <button className={style.cartBtn + " " + style.btnContinueShopping}>CONTINUE SHOPPING</button>

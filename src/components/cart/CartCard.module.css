@@ -55,6 +55,7 @@
 .removeBtn:hover {
     background: var(--orange);
     color: var(--white);
+    cursor: pointer;
 }
 
 .winningCard {

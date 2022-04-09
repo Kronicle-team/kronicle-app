@@ -1,5 +1,5 @@
 .container {
-    margin: 0 100px;
+    margin: 40px 100px 0;
 }
 
 .contentContainer {
@@ -17,9 +17,10 @@
 
 .cartBtn {
     border-radius: 10px;
-    width: 160px;
+    font-family: Montserrat;
+    width: 190px;
     height: 54px;
-    margin: 3px;
+    margin: 5px 2px;
     color: var(--white);
 }
 
@@ -31,6 +32,7 @@
 .btnContinueShopping:hover {
     background: var(--white);
     color: var(--black);
+    cursor: pointer;
 }
 
 .btnPlaceOrder {
@@ -41,6 +43,7 @@
 .btnPlaceOrder:hover {
     background: var(--white);
     color: var(--orange);
+    cursor: pointer;
 }
 
 .bidOrBuyNowContainer {
@@ -62,6 +65,7 @@
 .changeModeBtn:hover {
     background: var(--white);
     color: var(--black);
+    cursor: pointer;
 }
 
 .changeModeBtnSelected {
@@ -83,7 +87,7 @@
 
 .cartSummary {
     grid-column: 2;
-    width: 20vw;
+    width: 25vw;
 }
 
 .summaryTitle {
@@ -100,10 +104,23 @@
 
 .summaryFieldHeading {
     margin-right: auto;
+    font-size: 18px;
+}
+
+.summaryTotalHeading {
+    font-size: 25px;
 }
 
 .summaryFieldValue .summaryFieldValueAsInput {
     margin-right: auto;
+}
+
+.summaryFieldValue {
+    font-size: 20px;
+}
+
+.summaryTotalValue {
+    font-size: 25px;
 }
 
 .summaryRow {
@@ -125,6 +142,7 @@
     border: solid 2px var(--black);
     background: var(--black);
     color: var(--white);
+    font-family: Montserrat;
     margin-left: 0;
     height: 27px;
     padding: 2px;
@@ -133,6 +151,7 @@
 .summaryFieldCouponBtn:hover {
     background: var(--white);
     color: var(--black);
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1290px){
