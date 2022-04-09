@@ -16,7 +16,10 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
 
         <div className={style["details"]}>
           <h3>{name}</h3>
-          <h4>Minimum bid</h4>
+          {bid
+              ? <h4>Minimum bid</h4>
+              : null
+          }
           <h1>{price}</h1>
           <h4>Product Description</h4>
           <div className={style["desc"]}>{description}</div>

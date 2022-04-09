@@ -4,8 +4,8 @@
 }
 
 .img {
-    max-width: 50%;
-    height: auto;
+    width: 50%;
+    height: fit-content;
 }
 
 .details {
@@ -57,7 +57,7 @@
 }
 
 .btn-container {
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .cart-btn, .buy-btn {
@@ -66,7 +66,7 @@
     border: none;
     color: var(--white);
     font-family: "Montserrat SemiBold", sans-serif;
-    width: 150px;
+    width: 200px;
     border-radius: 10px;
 }
 
