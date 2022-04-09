@@ -41,14 +41,16 @@ function Radio () {
         <>
             <div className={style["form-input"]}>
             <label className={style["label-listing"]}>Type of Pricing*</label>
-            <div>
-                <label className={style["label-listing"]}>Buy Now</label>
+                <div className={style["radio-container-listing"]}>
+            <div className={style["radio-align"]}>
+                <label className={style["radio-label"]}>BUY NOW</label>
                 <input type="radio" name="release" checked={status === 1} onClick={(e) => radioHandler(1)} />
             </div>
-            <div>
-                <label className={style["label-listing"]}>Bid</label>
+            <div className={style["radio-align"]}>
+                <label className={style["radio-label"]}>BID NOW</label>
                 <input type="radio" name="release" checked={status === 2} onClick={(e) => radioHandler(2)} />
             </div>
+                </div>
                 <span className={style["error-message"]}>Please choose a type of pricing</span>
             </div>
             {status === 1 && displaySellingPrice()}
