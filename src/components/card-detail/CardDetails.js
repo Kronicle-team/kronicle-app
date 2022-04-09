@@ -42,7 +42,7 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
           {bid
               ? <>
                   <h6>Available until 23:59 April 1, 2022</h6>
-                  <h4>Place a bid</h4>
+                  <h4>Enter your bid amount</h4>
                 <div className={[common["flex"], style["input-container"]].join(" ")}>
                   <input type="number" className={style["input"]} onChange={e => setBidAmt(e.target.value)}/>
                   <div className={[style["currency"], common["text-center"]].join(" ")}>VND</div>
