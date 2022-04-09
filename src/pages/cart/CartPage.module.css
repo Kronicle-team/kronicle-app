@@ -17,7 +17,7 @@
 
 .cartBtn {
     border-radius: 10px;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     width: 190px;
     height: 54px;
     margin: 5px 2px;
@@ -55,7 +55,7 @@
     width: 300px;
     border-radius: 0 30px 0 0;
     color: var(--white);
-    font-family: "Montserrat";
+    font-family: Montserrat, sans-serif;
     font-size: 18px;
     background: var(--black);
     border: var(--peach) 3px solid;
@@ -74,7 +74,7 @@
     border-radius: 0 30px 0 0;
     background: var(--white);
     color: var(--black);
-    font-family: "Montserrat";
+    font-family: Montserrat, sans-serif;
     font-size: 18px;
     border: var(--peach) 3px solid;
     border-bottom: none;
@@ -142,7 +142,7 @@
     border: solid 2px var(--black);
     background: var(--black);
     color: var(--white);
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     margin-left: 0;
     height: 27px;
     padding: 2px;
