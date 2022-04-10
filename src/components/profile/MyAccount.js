@@ -26,22 +26,22 @@ const MyAccount = () => {
               <p>I live in Korea</p>
             </div>
 
-            <table className={style["statistics"]}>
-              {data.map((val, key) => {
-                return (
-                  <tr key={key}>
-                    <th>{val.cards}</th>
-                    <th>{val.followers}</th>
-                    <th>{val.rating}</th>
-                  </tr>
-                );
-              })}
-              <tr>
-                <td>cards</td>
-                <td>followers</td>
-                <td>Positive seller ratings</td>
-              </tr>
-            </table>
+            {/*<table className={style["statistics"]}>*/}
+            {/*  {data.map((val, key) => {*/}
+            {/*    return (*/}
+            {/*      <tr key={key}>*/}
+            {/*        <th>{val.cards}</th>*/}
+            {/*        <th>{val.followers}</th>*/}
+            {/*        <th>{val.rating}</th>*/}
+            {/*      </tr>*/}
+            {/*    );*/}
+            {/*  })}*/}
+            {/*  <tr>*/}
+            {/*    <td>cards</td>*/}
+            {/*    <td>followers</td>*/}
+            {/*    <td>Positive seller ratings</td>*/}
+            {/*  </tr>*/}
+            {/*</table>*/}
             <button className={style["button"]}>Upload your avatar</button>
           </div>
 
@@ -65,33 +65,13 @@ const MyAccount = () => {
             <hr style={{ border: "1px solid #858585" }} />
             <form className={style["form"]}>
               <label>First Name</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className={style["input"]}
-              />
+              <div className={style["input"]}>This is first name</div>
               <label>Last Name</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className={style["input"]}
-              />
+              <div className={style["input"]}>This is last name</div>
               <label>Title</label>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className={style["input"]}
-              />
+              <div className={style["input"]}>This is title</div>
               <label>Email</label>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={style["input"]}
-              />
+              <div className={style["input"]}>This is email</div>
             </form>
             <div
               style={{
@@ -103,13 +83,7 @@ const MyAccount = () => {
               <h4>ABOUT ME</h4>
             </div>
             <hr style={{ border: "1px solid #858585" }} />
-            <input
-              type="text"
-              value={aboutMe}
-              onChange={(e) => setAboutMe(e.target.value)}
-              className={style["about-me"]}
-              placeholder={"Hello"}
-            />
+            <div className={style["input"]}>This is about me</div>
             <div
               style={{
                 display: "flex",

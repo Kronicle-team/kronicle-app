@@ -18,22 +18,22 @@ const SellerProfile = () => {
             <p>I live in Korea</p>
           </div>
 
-          <table className={style["statistics"]}>
-            {data.map((val, key) => {
-              return (
-                <tr key={key}>
-                  <th>{val.cards}</th>
-                  <th>{val.followers}</th>
-                  <th>{val.rating}</th>
-                </tr>
-              );
-            })}
-            <tr>
-              <td>cards</td>
-              <td>followers</td>
-              <td>Positive seller ratings</td>
-            </tr>
-          </table>
+          {/*<table className={style["statistics"]}>*/}
+          {/*  {data.map((val, key) => {*/}
+          {/*    return (*/}
+          {/*      <tr key={key}>*/}
+          {/*        <th>{val.cards}</th>*/}
+          {/*        <th>{val.followers}</th>*/}
+          {/*        <th>{val.rating}</th>*/}
+          {/*      </tr>*/}
+          {/*    );*/}
+          {/*  })}*/}
+          {/*  <tr>*/}
+          {/*    <td>cards</td>*/}
+          {/*    <td>followers</td>*/}
+          {/*    <td>Positive seller ratings</td>*/}
+          {/*  </tr>*/}
+          {/*</table>*/}
 
           <div className={style["button-wrapper"]}>
             <button className={style["follow-button"]}>Follow</button>
