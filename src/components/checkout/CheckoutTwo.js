@@ -15,36 +15,36 @@ const CheckoutTwo = () => {
       <div className={style["wrapper"]}>
         <div className={style["logo-wrapper"]}>
           <div>
-            <a href={"check-out-1"} className={style["icon-wrapper"]}>
+            <Link to="/check-out-1" className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
               <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
-            </a>
+            </Link>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div>
-            <a href={"check-out-2"} className={style["icon-wrapper"]}>
+            <Link to="/check-out-2" className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon2Orange.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
               <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>
-            </a>
+            </Link>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div>
-            <a href={"check-out-3"} className={style["icon-wrapper"]}>
+            <div className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
               <h3 className={style["logoText"]}>CONFIRMATION</h3>
-            </a>
+            </div>
           </div>
         </div>
         <div className={style["payment-wrapper"]}>

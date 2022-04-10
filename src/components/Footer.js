@@ -19,17 +19,17 @@ const Footer = () => {
           <div>
             <h5>CUSTOMER CARE</h5>
             <Link to="/">Tracking My Order</Link>
-            <Link to="/">Privacy Policy</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/">Shipping Policy</Link>
             <Link to="/">Refund Policy</Link>
           </div>
 
           <div>
             <h5>INFO</h5>
-            <Link to="/">About Us</Link>
-            <Link to="/">FAQ</Link>
+            <Link to="/about-us">About Us</Link>
+            <Link to="/faq">FAQ</Link>
             <Link to="/">Product Care</Link>
-            <Link to="/">Terms And Conditions</Link>
+            <Link to="/tos">Terms And Conditions</Link>
           </div>
 
           <div className={style["contact"]}>

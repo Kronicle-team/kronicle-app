@@ -1,6 +1,5 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutThree.module.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const CheckoutThree = () => {
@@ -9,35 +8,31 @@ const CheckoutThree = () => {
       <div className={style["wrapper"]}>
         <div className={style["logo-wrapper"]}>
           <div className={style["icon-wrapper"]}>
-            <a href={"check-out-1"}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
-            </a>
             <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div className={style["icon-wrapper"]}>
-            <a href={"check-out-2"}>
               <img
                 src={"../../media/icons/checkout/Tick.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
-            </a>
             <h3 className={style["logoTextMain"]}>PAYMENT METHOD</h3>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div className={style["icon-wrapper"]}>
-            <a href={"check-out-3"}>
+            <Link to="/check-out-3">
               <img
                 src={"../../media/icons/checkout/CheckoutIcon3Orange.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
-            </a>
+            </Link>
             <h3 className={style["logoTextMain"]}>CONFIRMATION</h3>
           </div>
         </div>
@@ -54,7 +49,7 @@ const CheckoutThree = () => {
             Donec eu malesuada dui, eget tincidunt orci. Quisque a metus quis
             augue semper lobortis. Etiam dignissim eget ante sed gravida.
           </div>
-          <Link to={"/"}>
+          <Link to="/">
             <button className={style["back-button"]}>BACK TO HOMEPAGE</button>
           </Link>
         </div>
