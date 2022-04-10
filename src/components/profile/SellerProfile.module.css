@@ -113,7 +113,7 @@ table tr td:last-child {
 }
 
 .message-button:hover{
-    background: var(--white);
+    background: var(--background);
 }
 
 

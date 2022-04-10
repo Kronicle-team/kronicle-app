@@ -10,49 +10,49 @@ const HomePage = () => {
         {
               id: 1,
               name: "Product Card 1",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 2,
               name: "Product Card 2",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 3,
               name: "Product Card 3",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 4,
               name: "Product Card 4",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 5,
               name: "Product Card 5",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 6,
               name: "Product Card 6",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 7,
               name: "Product Card 7",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
         {
               id: 8,
               name: "Product Card 8",
-              img: "",
+              img: "../media/images/product-card-placeholder.png",
               price: "VND"
         },
   ])
@@ -73,10 +73,10 @@ const HomePage = () => {
                   </div>
             </div>
             <div className={style.latestBidsContainer}>
-                <CardShowCase name={"Latest Bids"} data={latestBidsArray} link={""}/>
+                <CardShowCase name={"Latest Bids"} data={latestBidsArray} link={""} useText={true}/>
             </div>
             <div className={style.latestProductsContainer}>
-                <CardShowCase name={"Latest Products"} data={latestProductsArray} link={"/all"}/>
+                <CardShowCase name={"Latest Products"} data={latestProductsArray} link={"/all"} useText={true}/>
             </div>
       </Layout>
   )

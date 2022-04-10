@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./RegisterForm.module.css";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 const LoginForm = () => {
     const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
@@ -21,7 +22,7 @@ const LoginForm = () => {
                     className={style["logo"]}
                     alt={"Kronicle logo"}
                 />
-                <p className={style["p"]}>Not a member? <a href="#" className={style["a"]}>Register.</a></p>
+                <p className={style["p"]}>Not a member? <Link to="/register" className={style["a"]}>Register.</Link></p>
                 <label className={style["label"]}>Email or Phone number</label>
                 <input
                     type="text"
@@ -38,7 +39,9 @@ const LoginForm = () => {
                 />
             </form>
             <div className={style["button-wrapper"]}>
+              <Link to="/">
                 <button className={style["register-btn"]}>SIGN IN</button>
+              </Link>
             </div>
             </div>
         </Layout>
