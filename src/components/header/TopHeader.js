@@ -22,7 +22,7 @@ const TopHeader = () => {
 
           <SearchBar/>
           <Link to="/listing"><FontAwesomeIcon icon={faArrowUpFromBracket} className={style["icon"]}/></Link>
-          <Link to="/"><FontAwesomeIcon icon={faShoppingCart} className={style["icon"]}/></Link>
+          <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} className={style["icon"]}/></Link>
         </div>
 
         <div className={[style["top-header-right"], common["flex"]].join(" ")}>

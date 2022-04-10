@@ -121,6 +121,7 @@ const AllPage = () => {
 
     return (
         <Layout header footer>
+        <h1 className={style.title}>All</h1>
         <div className={style.cardWrapper}>
             {
                 data.slice(page * maxItemsPerPage,(maxItemsPerPage * (page+1))).map((card) => {

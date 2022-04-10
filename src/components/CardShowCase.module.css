@@ -8,9 +8,11 @@
 }
 
 .cardShowCaseTitle {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     grid-column: 2;
     grid-row: 1;
+    justify-content: center;
     text-align: center;
 }
 
@@ -49,10 +51,15 @@
     font-size: 30px;
 }
 
+.seeMoreText {
+    margin-top: 35px;
+}
+
 .seeMoreLink {
     font-size: 20px;
     margin-left: 10px;
     font-family: "Montserrat Regular", sans-serif;
+    text-decoration: none;
     color: var(--black);
 }
 
