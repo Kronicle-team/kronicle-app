@@ -1,0 +1,37 @@
+.form-input{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+.label-listing{
+  font-size: 1rem;
+  color: gray;
+  margin-top:25px;
+}
+
+.input-listing{
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid gray;
+  margin: 10px 0;
+  display: none;
+}
+
+.error-message{
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+  display: none;
+}
+
+.input-listing:invalid[focused="true"]{
+  padding: 15px;
+  border-radius: 15px;
+  margin: 10px 0;
+  border: 1px solid red;
+}
+
+.input-listing:invalid[focused="true"] ~ span{
+  display: block;
+}

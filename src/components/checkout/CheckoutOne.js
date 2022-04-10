@@ -15,36 +15,36 @@ const CheckoutOne = () => {
       <div className={style["wrapper"]}>
         <div className={style["logo-wrapper"]}>
           <div>
-            <a href={"check-out-1"} className={style["icon-wrapper"]}>
+            <Link to="/check-out-1" className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon1Orange.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
               <h3 className={style["logoTextMain"]}>SHIPPING DETAILS</h3>
-            </a>
+            </Link>
           </div>
-          <img src={"../../media/icons/checkout/Line.svg"} />
+          <img src={"../../media/icons/checkout/Line.svg"} alt="line" />
           <div>
-            <a href={"check-out-2"} className={style["icon-wrapper"]}>
+            <div className={style["icon-wrapper"]}>
               <img
                 src={"../../media/icons/checkout/CheckoutIcon2Black.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
               <h3 className={style["logoText"]}>PAYMENT METHOD</h3>
-            </a>
+            </div>
           </div>
           <img src={"../../media/icons/checkout/Line.svg"} alt={"Line"} />
           <div>
-            <a href={"check-out-3"} className={style["icon-wrapper"]}>
+            <div className={style["icon-wrapper"]}>
               <img
-                src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
-                className={style["logo"]}
-                alt={"Logo"}
+                  src={"../../media/icons/checkout/CheckoutIcon3Black.svg"}
+                  className={style["logo"]}
+                  alt={"Logo"}
               />
               <h3 className={style["logoText"]}>CONFIRMATION</h3>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -94,10 +94,10 @@ const CheckoutOne = () => {
         </form>
 
         <div className={style["button-wrapper"]}>
-          <Link to={"/check-out-2"}>
+          <Link to="/check-out-2">
             <button className={style["next-button"]}>NEXT</button>
           </Link>
-          <Link to={"/"}>
+          <Link to="/">
             <button className={style["cancel-button"]}>CANCEL</button>
           </Link>
         </div>

@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
 import { useState } from "react";
+import {Link} from "react-router-dom";
 
 const MyAccount = () => {
   const [firstName, setFirstName] = useState("");
@@ -91,7 +92,9 @@ const MyAccount = () => {
                 alignItems: "center",
               }}
             >
-              <button className={style["logout-button"]}>LOG OUT</button>
+              <Link to="/login">
+                <button className={style["logout-button"]}>LOG OUT</button>
+              </Link>
             </div>
           </div>
         </div>
