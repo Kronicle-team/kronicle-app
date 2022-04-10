@@ -1,7 +1,8 @@
 .footer {
-    background: var(--light-beige);
+    background: var(--background);
     padding: 3rem 5rem 1rem;
-    margin-top: 100px;
+    margin-top: 150px;
+    border-top: 1px solid var(--black)
 }
 
 .footer-nav {
