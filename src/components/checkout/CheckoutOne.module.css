@@ -17,6 +17,11 @@
     justify-content: center;
     text-decoration: none;
 }
+
+.icon-wrapper:hover {
+    text-decoration: none;
+}
+
 .logo-wrapper{
     display: flex;
 

@@ -1,11 +1,9 @@
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
-import ProfilePage from "./pages/user/ProfilePage";
 import ListingPage from "./pages/listing/ListingPage";
 import HomePage from "./pages/HomePage";
 import FaqPage from "./pages/support/FaqPage";
 import AboutUsPage from "./pages/support/AboutUsPage";
-import ProductDetailPage from "./pages/product/ProductDetailPage";
 import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import TosPage from "./pages/legal/TosPage";
@@ -16,6 +14,8 @@ import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
 import AllPage from "./pages/AllPage"
 import CartPage from "./pages/cart/CartPage";
+import ProductBidPage from "./pages/product/ProductBidPage";
+import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
 
 const pages = {
   home: {
@@ -38,20 +38,20 @@ const pages = {
     link: "/register",
     component: <RegisterPage />,
   },
-  profile: {
-    name: "Profile",
-    link: "/profile",
-    component: <ProfilePage />,
-  },
   listing: {
     name: "Listing",
     link: "/listing",
     component: <ListingPage />,
   },
-  productDetail: {
-    name: "Product Details",
-    link: "/product/:id",
-    component: <ProductDetailPage />,
+  cardBuyNow: {
+    name: "Buy Now Card",
+    link: "/cards/buy-now/:id",
+    component: <ProductBuyNowPage />,
+  },
+  cardBid: {
+    name: "Bidding Card",
+    link: "/cards/bid/:id",
+    component: <ProductBidPage />,
   },
   faq: {
     name: "Frequently Asked Questions",

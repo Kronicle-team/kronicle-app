@@ -5,8 +5,8 @@ const ProductCardHome = (props) => {
     return (
         <div className={style.card}>
             <div key={props.id}>
-                <img src={("../media/images/product-card-placeholder.png")} alt={"product"} className={style.cardImg}/>
-                <h5>{props.name}</h5>
+                <img src={props.img} alt={"product"} className={style.cardImg}/>
+                <div>{props.name}</div>
                 <div>{props.price}</div>
             </div>
         </div>

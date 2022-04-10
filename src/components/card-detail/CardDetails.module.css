@@ -1,0 +1,155 @@
+.container {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.img {
+    width: 50%;
+    height: fit-content;
+}
+
+.details {
+    margin-left: 5%;
+}
+
+.details h1, .details h3 {
+    margin: 0;
+}
+
+.details h1 {
+    color: var(--orange);
+    margin: 0 0 5px;
+}
+
+.details h3 {
+    font-size: 20px;
+}
+
+.details h4 {
+    color: var(--light-grey);
+    margin: 2px 0;
+    font-size: 18px;
+}
+
+.details h6 {
+    color: var(--black);
+    margin: 0 0 25px;
+}
+
+.desc {
+    margin: 2px 0 20px;
+    text-align: justify;
+}
+
+.seller-container {
+    border-top: 1px solid var(--lighter-grey);
+    border-bottom: 1px solid var(--lighter-grey);
+    align-items: center;
+    padding: 2px 0;
+    margin-bottom: 30px;
+}
+
+.seller-ava {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.btn-container {
+    justify-content: space-evenly;
+}
+
+.cart-btn, .buy-btn {
+    padding: 15px 20px;
+    outline: none;
+    border: none;
+    color: var(--white);
+    font-family: "Montserrat SemiBold", sans-serif;
+    width: 10rem;
+    border-radius: 10px;
+}
+
+.buy-btn:hover, .cart-btn:hover {
+    cursor: pointer;
+}
+
+.buy-btn {
+    background: var(--orange);
+}
+
+.buy-btn:hover {
+    background: var(--darker-orange);
+}
+
+.cart-btn {
+    background: var(--black);
+}
+
+.cart-btn:hover {
+    background: var(--lighter-black);
+}
+
+.input-container {
+    width: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+    border: 2px solid var(--white-grey);
+    border-radius: 10px;
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.currency {
+    background: var(--black);
+    color: var(--white);
+    font-family: "Montserrat Bold", sans-serif;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-left: -15px;
+    width: 15%;
+}
+
+.bid-btn-container {
+    justify-content: center;
+}
+
+.bid-btn {
+    padding: 15px 60px;
+    border-radius: 10px;
+    background: var(--orange);
+    outline: none;
+    border: none;
+    color: var(--white);
+    font-family: "Montserrat SemiBold", sans-serif;
+}
+
+.bid-btn:hover {
+    cursor: pointer;
+    background: var(--darker-orange);
+}
+
+@media only screen and (min-width: 1500px) {
+    .cart-btn, .buy-btn, .bid-btn {
+        width: 15rem;
+    }
+
+    .input-container {
+        width: 80%;
+        margin: 10px auto 20px;
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+    .cart-btn, .buy-btn, .bid-btn {
+        width: 20rem;
+    }
+
+    .input-container {
+        width: 60%;
+    }
+}
