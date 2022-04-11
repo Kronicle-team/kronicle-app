@@ -39,8 +39,23 @@ function Radio () {
 
     return (
         <>
-            <div className={style["form-input"]}>
-            <label className={style["label-listing"]}>Type of Pricing*</label>
+          <div className={style["form-input"]}>
+            <label className={style["label-listing"]}>Category *</label>
+            <div className={style["radio-container-listing"]}>
+              <div className={style["radio-align"]}>
+                <label className={style["radio-label"]}>ALBUM CARD</label>
+                <input type="radio" name="category"/>
+              </div>
+              <div className={style["radio-align"]}>
+                <label className={style["radio-label"]}>TRADING CARD</label>
+                <input type="radio" name="category"/>
+              </div>
+            </div>
+            <span className={style["error-message"]}>Please choose a category</span>
+          </div>
+
+          <div className={style["form-input"]}>
+            <label className={style["label-listing"]}>Type of Pricing *</label>
                 <div className={style["radio-container-listing"]}>
             <div className={style["radio-align"]}>
                 <label className={style["radio-label"]}>BUY NOW</label>
