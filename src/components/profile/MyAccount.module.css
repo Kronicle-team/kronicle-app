@@ -155,7 +155,8 @@ table tr td:last-child {
     padding: 15px 5px;
     margin: 5px 0 20px;
     border-radius: 15px;
-    border: 1px solid var(--darker-grey);
+    font-family: "Montserrat Bold", sans-serif;
+    font-size: 20px;
 }
 
 .about-me{

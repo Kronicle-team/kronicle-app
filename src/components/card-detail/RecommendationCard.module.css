@@ -1,0 +1,14 @@
+.card {
+    margin-bottom: 40px;
+}
+
+.img {
+    width: 300px;
+    height: auto;
+}
+
+.card-name {
+    font-family: "Montserrat SemiBold", sans-serif;
+    margin: 7px 0;
+    font-size: 18px;
+}

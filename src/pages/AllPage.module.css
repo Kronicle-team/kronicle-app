@@ -48,6 +48,9 @@
     margin-top: 20px;
 }
 
+.title {
+    text-align: center;
+}
 .nextPageBtn:disabled, .prevPageBtn:disabled {
     color: #AAAAAA;
 }

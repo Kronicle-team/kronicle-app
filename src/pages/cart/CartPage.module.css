@@ -1,0 +1,161 @@
+.container {
+    margin: 40px 100px 0;
+}
+
+.contentContainer {
+    border: var(--peach) 5px solid;
+    display: grid;
+    grid-template-columns: 66% 34%;
+}
+
+.cartBtnWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 70px
+}
+
+.cartBtn {
+    border-radius: 10px;
+    font-family: "Montserrat SemiBold", sans-serif;
+    width: 190px;
+    height: 54px;
+    margin: 5px 2px;
+    color: var(--white);
+}
+
+.btnContinueShopping {
+    background: var(--black);
+    border: solid 1px var(--black);
+}
+
+.btnContinueShopping:hover {
+    background: var(--white);
+    color: var(--black);
+    cursor: pointer;
+}
+
+.btnPlaceOrder {
+    background: var(--orange);
+    border: solid 1px var(--orange);
+}
+
+.btnPlaceOrder:hover {
+    background: var(--white);
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.bidOrBuyNowContainer {
+    display: flex;
+}
+
+.changeModeBtn {
+    height: 50px;
+    width: 300px;
+    border-radius: 0 30px 0 0;
+    color: var(--white);
+    font-family: "Montserrat Regular", sans-serif;
+    font-size: 18px;
+    background: var(--black);
+    border: var(--peach) 3px solid;
+    border-bottom: none;
+}
+
+.changeModeBtn:hover {
+    background: var(--white);
+    color: var(--black);
+    cursor: pointer;
+}
+
+.changeModeBtnSelected {
+    height: 50px;
+    width: 300px;
+    border-radius: 0 30px 0 0;
+    background: var(--white);
+    color: var(--black);
+    font-family: "Montserrat Regular", sans-serif;
+    font-size: 18px;
+    border: var(--peach) 3px solid;
+    border-bottom: none;
+}
+
+.cartListing {
+    grid-column: 1;
+    margin-left: 20px;
+}
+
+.cartSummary {
+    grid-column: 2;
+    width: 25vw;
+}
+
+.summaryTitle {
+    text-align: center;
+}
+
+.summaryTitle, .summaryRow, .summaryTotal {
+    border-bottom: 1px solid #B7B7B7;
+}
+
+.summaryField, .summaryTotal {
+    display: flex;
+}
+
+.summaryFieldHeading {
+    margin-right: auto;
+    font-size: 18px;
+}
+
+.summaryTotalHeading {
+    font-size: 25px;
+}
+
+.summaryFieldValue .summaryFieldValueAsInput {
+    margin-right: auto;
+}
+
+.summaryFieldValue {
+    font-size: 20px;
+}
+
+.summaryTotalValue {
+    font-size: 25px;
+}
+
+.summaryRow {
+    padding-top: 10px;
+}
+
+.summaryField {
+    padding-bottom: 10px;
+}
+
+.summaryFieldCouponInput {
+    width: 150px;
+    height: 19px;
+    padding: 2px;
+    border: solid 2px var(--black);
+}
+
+.summaryFieldCouponBtn {
+    border: solid 2px var(--black);
+    background: var(--black);
+    color: var(--white);
+    font-family: "Montserrat Regular", sans-serif;
+    margin-left: 0;
+    height: 27px;
+    padding: 2px;
+}
+
+.summaryFieldCouponBtn:hover {
+    background: var(--white);
+    color: var(--black);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1290px){
+    .summaryFieldCouponInput {
+        width: 90px;
+    }
+}

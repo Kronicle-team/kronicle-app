@@ -11,97 +11,97 @@ const AllPage = () => {
         {
             id: 1,
             name: "Product Card 1",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 2,
             name: "Product Card 2",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 3,
             name: "Product Card 3",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 4,
             name: "Product Card 4",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 5,
             name: "Product Card 5",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 6,
             name: "Product Card 6",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 7,
             name: "Product Card 7",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 8,
             name: "Product Card 8",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 9,
             name: "Product Card 9",
-            img: "",
+            img:"../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 10,
             name: "Product Card 10",
-            img: "",
+            img:"../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 11,
             name: "Product Card 11",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 12,
             name: "Product Card 12",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 13,
             name: "Product Card 13",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 14,
             name: "Product Card 14",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 15,
             name: "Product Card 15",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
         {
             id: 16,
             name: "Product Card 16",
-            img: "",
+            img: "../media/images/product-card-placeholder.png",
             price: "VND"
         },
     ])
@@ -121,6 +121,7 @@ const AllPage = () => {
 
     return (
         <Layout header footer>
+        <h1 className={style.title}>All</h1>
         <div className={style.cardWrapper}>
             {
                 data.slice(page * maxItemsPerPage,(maxItemsPerPage * (page+1))).map((card) => {

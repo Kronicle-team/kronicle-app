@@ -49,3 +49,8 @@ input[type="file"] {
     background: var(--darker-orange);
 }
 
+.label-listing{
+    font-size: 1rem;
+    color: gray;
+    margin-top:25px;
+}

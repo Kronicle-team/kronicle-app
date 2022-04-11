@@ -3,15 +3,14 @@ import {useState} from "react";
 import FormInput from "../../components/form/ListingForm";
 import style from "./ListingPage.module.css";
 import common from "../../styles/common.module.css";
+import Radio from "../../components/radio/HideShowForm";
 
 
 const ListingPage = () => {
     const [values, setValues] = useState({
         productname: "",
         productsatus: "",
-        price: "",
-        minamount: "",
-        radio: "",
+        file: "",
     });
 
     const inputs = [
@@ -30,7 +29,7 @@ const ListingPage = () => {
             id: 2,
             name: "productsatus",
             type: "textarea",
-            placeholder: "Please describe your products, their status, and what users will receive more than 15 words",
+            placeholder: "Please describe product's status, and what users will receive more than 15 words",
             errorMessage: "It should be a meaningful description of your products!",
             label: "Product status*",
             pattern: "^[A-Za-z0-9]{15,}$",
@@ -45,44 +44,6 @@ const ListingPage = () => {
             errorMessage: "Please input your product's image'",
             required: true,
         },
-        {
-            id: 4,
-            name: "radio",
-            type: "radio",
-            value: "BUYNOW", // value of the radio button
-            label: "Buy Now",
-            errorMessage: "Please choose a pricing type",
-            required: true,
-        },
-        {
-            id: 5,
-            name: "price",
-            type: "number",
-            placeholder: "Enter the selling price for the product",
-            label: "Price*",
-            errorMessage: "price should be a number!",
-            pattern: "^[0-9]{1,}$",
-            required: true,
-        },
-        {
-            id: 6,
-            name: "radio",
-            type: "radio",
-            value: "Bid", // value of the radio button
-            label: "Bid",
-            errorMessage: "Please choose a pricing type",
-            required: true,
-        },
-        {
-            id: 7,
-            name: "minprice",
-            type: "number",
-            placeholder: "Enter the selling price for the product",
-            label: "Min Price*",
-            errorMessage: "price should be a number!",
-            pattern: "^[0-9]{1,}$",
-            required: true,
-        },
     ];
 
     const handleSubmit = (e) => {
@@ -93,6 +54,7 @@ const ListingPage = () => {
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
+
 
     return (
         <Layout header footer>
@@ -105,8 +67,12 @@ const ListingPage = () => {
                             {...input}
                             value={values[input.name]}
                             onChange={onChange}
+                        />))}
+                        <Radio
+                            name="radio"
+                            value={values.radio}
+                            onChange={onChange}
                         />
-                        ))}
                     <div className={style["listing-btn-container"]}>
                         <button className={style["listing-btn"]}>SUBMIT</button>
                     </div>
@@ -117,3 +83,5 @@ const ListingPage = () => {
 };
 
 export default ListingPage;
+
+
