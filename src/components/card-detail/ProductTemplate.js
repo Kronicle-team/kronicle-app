@@ -7,10 +7,22 @@ import style from "./ProductTemplate.module.css";
 import common from "../../styles/common.module.css"
 import { useNavigate } from "react-router-dom";
 import CardShowCase from "../CardShowCase";
-import React from "react";
+import {useEffect, useState} from "react";
+
+import {db} from "../../config/firebase";
+import { doc, onSnapshot } from "firebase/firestore";
 
 const ProductTemplate = ({buy, bid}) => {
   const navigate = useNavigate();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    onSnapshot(doc(db, "listing", "PLjR9uEgPGvEqtt1yQIm"), (doc) => {
+      setData(doc.data());
+      console.log(data)
+    });
+  }, [])
+
   const card = {
     name: "Han Sooyoung's fansign card",
     price: "110,000 VND",
@@ -61,10 +73,15 @@ const ProductTemplate = ({buy, bid}) => {
     }
   ]
 
-    return (
+  if (data === undefined) {
+    return <h1>Loading...</h1>
+  }
+
+
+  return (
     <Layout className={style["container"]} header footer>
       <FontAwesomeIcon icon={faChevronLeft} className={style["icon"]} onClick={() => navigate(-1)}/>
-      <CardDetails name={card.name} price={card.price} img={card.img} description={card.description}
+      <CardDetails name={data["product_name"]} price={data["min_price"] + " VND"} img={card.img} description={data["product_status"]}
                    seller={card.seller} buy={buy} bid={bid}/>
 
 
