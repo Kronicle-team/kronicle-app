@@ -8,8 +8,8 @@ const NavBar = () => {
           <Link to="/" className={style["active-link"]}>Home</Link>
           <Link to="/cards/album-cards">Album cards</Link>
           <Link to="/cards/trading-cards">Trading cards</Link>
-          <Link to="/cards/buy-now">Buy now</Link>
-          <Link to="/cards/bid">Bid</Link>
+          <Link to="/all-buy-now">Buy now</Link>
+          <Link to="/all-bid">Bid</Link>
       </nav>
   )
 }

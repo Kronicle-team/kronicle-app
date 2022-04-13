@@ -16,6 +16,8 @@ import AllPage from "./pages/AllPage"
 import CartPage from "./pages/cart/CartPage";
 import ProductBidPage from "./pages/product/ProductBidPage";
 import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
+import AllBidPage from "./pages/AllBidPage";
+import AllBuyNowPage from "./pages/AllBuyNowPage";
 
 const pages = {
   home: {
@@ -107,7 +109,18 @@ const pages = {
     name: "Cart",
     link: "/cart",
     component: <CartPage />
-  }
+  },
+  allBid: {
+    name: "All bid cards",
+    link: "/all-bid",
+    component: <AllBidPage />
+  },
+  allBuyNow: {
+    name: "All buy-now cards",
+    link: "/all-buy-now",
+    component: <AllBuyNowPage />
+  },
+
 };
 
 export const allPages = {
