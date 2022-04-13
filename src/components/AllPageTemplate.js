@@ -36,7 +36,7 @@ const AllPageTemplate = ({fetchedData, title}) => {
                     data.slice(page * maxItemsPerPage,(maxItemsPerPage * (page+1))).map((card) => {
                         return (
                             <div className={style.cardSingleWrapper}>
-                                <ProductCardHome key={card.id} img={card.product_image} name={card.product_name} price={card.selling_price}/>
+                                <ProductCardHome key={card.id} img={card.product_image} name={card.product_name} price={card.selling_price} productLink={card.product_pricing === "buy now" ? "/cards/buy-now/" + card.id :  "/cards/bid/" + card.id}/>
                             </div>
                         )
                     })}
