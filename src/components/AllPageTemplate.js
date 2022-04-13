@@ -7,6 +7,7 @@ import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 const AllPageTemplate = ({fetchedData, title}) => {
     const [data, setData] = useState(fetchedData)
+    console.log(fetchedData)
 
     let maxItemsPerPage = 12
     const [page, setPage ] = useState(0)
