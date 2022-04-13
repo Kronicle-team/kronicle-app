@@ -112,12 +112,12 @@ const pages = {
   },
   allBid: {
     name: "All bid cards",
-    link: "/all-bid",
+    link: "/cards/bid",
     component: <AllBidPage />
   },
   allBuyNow: {
     name: "All buy-now cards",
-    link: "/all-buy-now",
+    link: "/cards/buy-now",
     component: <AllBuyNowPage />
   },
 
