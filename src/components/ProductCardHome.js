@@ -11,11 +11,11 @@ const ProductCardHome = (props) => {
   }
 
   cardName = words.join(" ");
-  const path = props.bid ? "/cards/bid/:id" : "/cards/buy-now/"
+  const path = props.bid ? `/cards/bid/${props.id}` : `/cards/buy-now/${props.id}`
 
     return (
         <div className={style.card}>
-            <div key={props.id}>
+            <div>
               <Link to={path}>
                 <img src={props.img} alt={"product"} className={style.cardImg}/>
               </Link>

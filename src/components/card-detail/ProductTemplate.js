@@ -5,7 +5,7 @@ import CardDetails from "./CardDetails";
 
 import style from "./ProductTemplate.module.css";
 import common from "../../styles/common.module.css"
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import CardShowCase from "../CardShowCase";
 import {useEffect, useState} from "react";
 
@@ -14,10 +14,11 @@ import { doc, onSnapshot } from "firebase/firestore";
 
 const ProductTemplate = ({buy, bid}) => {
   const navigate = useNavigate();
+  const {id} = useParams();
   const [data, setData] = useState();
 
   useEffect(() => {
-    onSnapshot(doc(db, "listing", "N6QF6sJzbxQGE8J7Zou8"), (doc) => {
+    onSnapshot(doc(db, "listing", id), (doc) => {
       setData(doc.data());
       console.log(data)
     });
@@ -34,44 +35,6 @@ const ProductTemplate = ({buy, bid}) => {
       name: "Neyra Elena Darcy"
     }
   }
-  const cards = [
-    {
-      id: 1,
-      name: "Go Junho's special card 1",
-      price: "120,000 VND",
-      img: "/media/images/placeholder-612x612.jpg"
-    },
-    {
-      id: 2,
-      name: "Go Junho's special card 2",
-      price: "120,000 VND",
-      img: "/media/images/placeholder-612x612.jpg"
-    },
-    {
-      id: 3,
-      name: "Go Junho's special card 3",
-      price: "120,000 VND",
-      img: "/media/images/placeholder-612x612.jpg"
-    },
-    {
-      id: 4,
-      name: "Go Junho's special card 4",
-      price: "120,000 VND",
-      img: "/media/images/placeholder-612x612.jpg"
-    },
-    {
-      id: 5,
-      name: "Go Junho's special card 5",
-      price: "120,000 VND",
-      img: "/media/images/placeholder-612x612.jpg"
-    },
-    {
-      id: 6,
-      name: "Go Junho's special card 6",
-      price: "120,000 VND",
-      img: "/media/images/placeholder-612x612.jpg"
-    }
-  ]
 
   if (data === undefined) {
     return  <Layout className={style["container"]} header footer><h1>Loading...</h1></Layout>
@@ -84,14 +47,14 @@ const ProductTemplate = ({buy, bid}) => {
                    seller={card.seller} buy={buy} bid={bid}/>
 
 
-      <section className="recommendation">
-        <h3>RECOMMENDATION</h3>
-        <div className={[common["flex"], style["card-showcase"]].join(" ")}>
+      {/*<section className="recommendation">*/}
+      {/*  <h3>RECOMMENDATION</h3>*/}
+      {/*  <div className={[common["flex"], style["card-showcase"]].join(" ")}>*/}
 
-                <CardShowCase name={"Recommendation"} data={cards} link={""}/>
+      {/*          <CardShowCase name={"Recommendation"} data={cards} link={""}/>*/}
 
-        </div>
-      </section>
+      {/*  </div>*/}
+      {/*</section>*/}
     </Layout>
     )
 }

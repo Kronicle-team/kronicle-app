@@ -15,7 +15,7 @@ const HomePage = () => {
     onSnapshot(q, (querySnapshot) => {
       const cards = [];
       querySnapshot.forEach((doc) => {
-        cards.push(doc.data());
+        cards.push({...doc.data(), id: doc.id});
       });
       setLatestBuyNow(cards);
       console.log(latestBuyNow);
@@ -25,7 +25,7 @@ const HomePage = () => {
     onSnapshot(q2, (querySnapshot) => {
       const bidCards = [];
       querySnapshot.forEach((doc) => {
-        bidCards.push(doc.data());
+        bidCards.push({...doc.data(), id: doc.id});
       });
       setLatestBid(bidCards);
       console.log(latestBid);
