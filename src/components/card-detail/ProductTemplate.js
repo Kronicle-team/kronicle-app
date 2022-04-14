@@ -20,7 +20,6 @@ const ProductTemplate = ({buy, bid}) => {
   useEffect(() => {
     onSnapshot(doc(db, "listing", id), (doc) => {
       setData(doc.data());
-      console.log(data)
     });
   }, [])
 
@@ -43,7 +42,7 @@ const ProductTemplate = ({buy, bid}) => {
   return (
     <Layout className={style["container"]} header footer>
       <FontAwesomeIcon icon={faChevronLeft} className={style["icon"]} onClick={() => navigate(-1)}/>
-      <CardDetails name={data["product_name"]} price={data["min_price"] + " VND"} img={data["product_image"]} description={data["product_status"]}
+      <CardDetails name={data["product_name"]} price={data["price"]} img={data["product_image"]} description={data["product_status"]}
                    seller={card.seller} buy={buy} bid={bid}/>
 
 
