@@ -28,6 +28,7 @@ const signUp = async (
     if (password === vrfPassword) {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "users", auth.currentUser.uid), {
+        fullName: fname + lname,
         fname: fname,
         lname: lname,
         email: email,

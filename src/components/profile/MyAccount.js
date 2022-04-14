@@ -30,7 +30,7 @@ const MyAccount = () => {
               className={style["avatar"]}
               alt={"Avatar"}
             />
-            <div className={style["name"]}>G-Dragon</div>
+            <div className={style["name"]}>{data.fullName}</div>
             <div className={style["bio-p"]}>
               <p>100% new authenticated cards</p>
               <p>I live in Korea</p>
