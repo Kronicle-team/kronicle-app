@@ -5,7 +5,7 @@
 
 .cardImg {
     height: 300px;
-    width: auto;
+    width: 100%;
     aspect-ratio: 0.75;
 }
 

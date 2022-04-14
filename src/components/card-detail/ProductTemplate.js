@@ -17,7 +17,7 @@ const ProductTemplate = ({buy, bid}) => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    onSnapshot(doc(db, "listing", "PLjR9uEgPGvEqtt1yQIm"), (doc) => {
+    onSnapshot(doc(db, "listing", "N6QF6sJzbxQGE8J7Zou8"), (doc) => {
       setData(doc.data());
       console.log(data)
     });
@@ -74,14 +74,13 @@ const ProductTemplate = ({buy, bid}) => {
   ]
 
   if (data === undefined) {
-    return <h1>Loading...</h1>
+    return  <Layout className={style["container"]} header footer><h1>Loading...</h1></Layout>
   }
-
 
   return (
     <Layout className={style["container"]} header footer>
       <FontAwesomeIcon icon={faChevronLeft} className={style["icon"]} onClick={() => navigate(-1)}/>
-      <CardDetails name={data["product_name"]} price={data["min_price"] + " VND"} img={card.img} description={data["product_status"]}
+      <CardDetails name={data["product_name"]} price={data["min_price"] + " VND"} img={data["product_image"]} description={data["product_status"]}
                    seller={card.seller} buy={buy} bid={bid}/>
 
 

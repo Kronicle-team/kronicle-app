@@ -40,7 +40,7 @@ let totalPage = Math.ceil(props.data.length / maxItemsPerPage)
              {
                  props.data.slice(page * maxItemsPerPage,(maxItemsPerPage * (page+1))).map((card) => {
                      return (
-                        <ProductCardHome key={card.id} img={card.img} name={card.name} price={card.price}/>
+                        <ProductCardHome key={card.id} img={card["product_image"]} name={card["product_name"]} price={card["selling_price"]}/>
                      )
              })}
          </div>
