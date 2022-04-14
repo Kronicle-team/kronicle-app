@@ -50,11 +50,11 @@ const HomePage = () => {
                   </div>
             </div>
             <div className={style.latestBidsContainer}>
-                <CardShowCase name={"Latest Bids"} data={latestBid} link={""} useText={true}/>
+                <CardShowCase name={"Latest Bids"} data={latestBid} link={""} useText={true} bid/>
             </div>
 
         <div className={style.latestProductsContainer}>
-              <CardShowCase name={"Latest Products"} data={latestBuyNow} link={"/all"} useText={true}/>
+              <CardShowCase name={"Latest Products"} data={latestBuyNow} link={"/all"} useText={true} />
         </div>
       </Layout>
   )
