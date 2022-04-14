@@ -1,15 +1,24 @@
 import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
-import { useState } from "react";
-import {Link} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { db } from "../../config/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const MyAccount = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [title, setTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
-  const data = [{ cards: "21", followers: 238, rating: "97%" }];
+  const [data, setData] = useState({});
+  const fetchData = async () => {
+    getDoc(doc(db, "users", "5FrihL0CgOch4KffrjTvlKVKNOO2")).then((docSnap) => {
+      if (docSnap.exists()) {
+        setData(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
@@ -26,24 +35,14 @@ const MyAccount = () => {
               <p>100% new authenticated cards</p>
               <p>I live in Korea</p>
             </div>
-
-            {/*<table className={style["statistics"]}>*/}
-            {/*  {data.map((val, key) => {*/}
-            {/*    return (*/}
-            {/*      <tr key={key}>*/}
-            {/*        <th>{val.cards}</th>*/}
-            {/*        <th>{val.followers}</th>*/}
-            {/*        <th>{val.rating}</th>*/}
-            {/*      </tr>*/}
-            {/*    );*/}
-            {/*  })}*/}
-            {/*  <tr>*/}
-            {/*    <td>cards</td>*/}
-            {/*    <td>followers</td>*/}
-            {/*    <td>Positive seller ratings</td>*/}
-            {/*  </tr>*/}
-            {/*</table>*/}
-            <button className={style["button"]}>Upload your avatar</button>
+            <button
+              className={style["button"]}
+              onClick={() => {
+                fetchData();
+              }}
+            >
+              Upload your avatar
+            </button>
           </div>
 
           <div className={style["vertical-line"]} />
@@ -66,13 +65,13 @@ const MyAccount = () => {
             <hr style={{ border: "1px solid #858585" }} />
             <form className={style["form"]}>
               <label>First Name</label>
-              <div className={style["input"]}>This is first name</div>
+              <div className={style["input"]}>{data.fname}</div>
               <label>Last Name</label>
-              <div className={style["input"]}>This is last name</div>
+              <div className={style["input"]}>{data.lname}</div>
               <label>Title</label>
-              <div className={style["input"]}>This is title</div>
+              <div className={style["input"]}>{data.title}</div>
               <label>Email</label>
-              <div className={style["input"]}>This is email</div>
+              <div className={style["input"]}>{data.email}</div>
             </form>
             <div
               style={{
@@ -84,7 +83,7 @@ const MyAccount = () => {
               <h4>ABOUT ME</h4>
             </div>
             <hr style={{ border: "1px solid #858585" }} />
-            <div className={style["input"]}>This is about me</div>
+            <div className={style["input"]}>{data.aboutMe}</div>
             <div
               style={{
                 display: "flex",

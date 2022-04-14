@@ -38,6 +38,14 @@
     color: var(--orange);
 }
 
+.name-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .form{
     display: flex;
     align-items: flex-start;
@@ -57,6 +65,15 @@
     margin: 10px 0 30px;
     border-radius: 15px;
     border: 1px solid gray;
+}
+
+.input-aboutme{
+    width: 100%;
+    padding: 0 0 50px 10px;
+    margin: 10px 0 30px;
+    border-radius: 15px;
+    border: 1px solid gray;
+    height: 70px;
 }
 
 .button-wrapper{
