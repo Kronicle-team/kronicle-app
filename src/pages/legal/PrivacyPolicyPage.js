@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import style from "../../components/support/Policy.module.css";
+import ToTopButton from "../../components/ToTopButton"
 
 const PrivacyPolicyPage = () => {
     return (
@@ -141,6 +142,7 @@ const PrivacyPolicyPage = () => {
                     encourage you to contact us immediately and we will do our best efforts to promptly remove such
                     information from our records.</p>
             </div>
+            <ToTopButton/>
         </Layout>
     )
 }

@@ -6,3 +6,13 @@
     margin: 20px 100px;
     padding: 0;
 }
+
+.tos-container {
+    margin: 2em 10em 0 10em;
+}
+
+.tos-container p {
+    text-align: justify;
+}
+
+
