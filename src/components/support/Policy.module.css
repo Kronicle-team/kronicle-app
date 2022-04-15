@@ -1,0 +1,8 @@
+.policy-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 20px 100px;
+    padding: 0;
+}
