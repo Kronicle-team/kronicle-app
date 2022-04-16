@@ -1,52 +1,17 @@
 import Layout from "../../components/Layout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormInput from "../../components/form/ListingForm";
 import style from "./ListingPage.module.css";
 import common from "../../styles/common.module.css";
 import Radio from "../../components/radio/HideShowForm";
 import app from "../../App";
+import {db} from "../../config/firebase.js";
 
-
-const [fileUrl, setFileUrl] = React.useState(null);
-const [listing, setUsers] = React.useState([]);
-const db = app.firestore();
-
-const onFileChange = async (e) => {
-  const file = e.target.files[0];
-  const storageRef = app.storage().ref();
-  const fileRef = storageRef.child(file.name);
-  await fileRef.put(file);
-  setFileUrl(await fileRef.getDownloadURL());
-};
-
-const onSubmit = async (e) => {
-  e.preventDefault();
-  const values = e.target.values.value;
-  if (!values || !fileUrl) {
-    return;
-  }
-  await db.collection("listing").doc(values).set({
-    name: values,
-    avatar: fileUrl
-  });
-};
 
 // const handleSubmit = (e) => {
 //     e.preventDefault();
 //     console.log(values);
 // };
-
-useEffect(() => {
-  const fetchUsers = async () => {
-    const listingCollection = await db.collection("listing").get();
-    setUsers(
-      listingCollection.docs.map((doc) => {
-        return doc.data();
-      })
-    );
-  };
-  fetchUsers();
-}, []);
 
 
 const ListingPage = () => {
@@ -55,6 +20,30 @@ const ListingPage = () => {
     productsatus: "",
     file: ""
   });
+
+  const [fileUrl, setFileUrl] = useState(null);
+  const [listing, setUsers] = useState([]);
+  const db = app.firestore();
+
+  const onFileChange = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = app.storage().ref();
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file);
+    setFileUrl(await fileRef.getDownloadURL());
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const values = e.target.values.value;
+    if (!values || !fileUrl) {
+      return;
+    }
+    await db.collection("listing").doc(values).set({
+      name: values,
+      avatar: fileUrl
+    });
+  };
 
   const inputs = [
     {
@@ -100,7 +89,7 @@ const ListingPage = () => {
       <div className={[style["app"], common["flex"]].join(" ")}>
         <form onSubmit={onSubmit} className={style["listing-form"]} onChange={onFileChange}>
           <h1 className={style["listing-title"]}>SELLER LISTING</h1>
-          {inputs.map((input) => (
+          {listing.inputs.map((input) => (
             <FormInput
               key={input.id}
               {...input}
