@@ -14,7 +14,7 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
       alert("Please bid a higher price.");
       e.preventDefault();
     } else {
-      alert("Bid successfully. You will be redirect to the checkout page.")
+      alert("Bid successfully. You will be redirect to your cart.")
     }
   }
 
@@ -65,7 +65,7 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
                 </div>
 
                 <div className={[common["flex"], style["bid-btn-container"]].join(" ")}>
-                  <Link to="/check-out-1">
+                  <Link to="/cart">
                     <button className={style["bid-btn"]} onClick={e => handleBid(e)}>PLACE A BID</button>
                   </Link>
                 </div>

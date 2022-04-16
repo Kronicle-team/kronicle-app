@@ -1,13 +1,12 @@
 .card {
     border-radius: 10px;
-    height: 400px;
-    width: 225px;
     margin: 20px 10px;
 }
 
 .cardImg {
     height: 300px;
     width: 100%;
+    object-fit: cover;
 }
 
 .imgWrapper {
