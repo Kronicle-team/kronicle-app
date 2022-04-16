@@ -1,13 +1,32 @@
-import React from "react";
+import React, {useEffect} from "react";
 import style from "./ProductCardHome.module.css"
+import {Link} from "react-router-dom";
 
 const ProductCardHome = (props) => {
+  let cardName = props.name;
+  const words = cardName.split(" ");
+
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+  }
+
+  cardName = words.join(" ");
+  const path = props.productLink
+
     return (
         <div className={style.card}>
-            <div key={props.id}>
+            <div>
+              <Link to={path}>
+                 <div className={style.imgWrapper}>
                 <img src={props.img} alt={"product"} className={style.cardImg}/>
-                <div>{props.name}</div>
-                <div>{props.price}</div>
+                  </div>
+              </Link>
+
+              <Link to={path}>
+                <h6 className={style.cardName}>{cardName}</h6>
+              </Link>
+                <div>{props.price.toLocaleString() + " VND"}</div>
+
             </div>
         </div>
     )

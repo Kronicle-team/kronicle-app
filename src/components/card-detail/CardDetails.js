@@ -4,23 +4,39 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 
 const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
+  const [bidAmt, setBidAmt] = useState();
   const addToCart = () => {
     alert("Item has been added to cart.")
   }
 
-  const [bidAmt, setBidAmt] = useState("");
+  const handleBid = (e) => {
+    if (bidAmt <= price) {
+      alert("Please bid a higher price.");
+      e.preventDefault();
+    } else {
+      alert("Bid successfully. You will be redirect to your cart.")
+    }
+  }
+
+  let cardName = name;
+  const words = cardName.split(" ");
+
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+  }
+  cardName = words.join(" ");
 
   return (
       <section className={[common["flex"], style["container"]].join(" ")}>
         <img src={img} alt="card" className={style["img"]} />
 
         <div className={style["details"]}>
-          <h3>{name}</h3>
+          <h3>{cardName}</h3>
           {bid
               ? <h4>Minimum bid</h4>
               : null
           }
-          <h1>{price}</h1>
+          <h1>{price.toLocaleString() + " VND"}</h1>
           <h4>Product Description</h4>
           <div className={style["desc"]}>{description}</div>
 
@@ -49,7 +65,9 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
                 </div>
 
                 <div className={[common["flex"], style["bid-btn-container"]].join(" ")}>
-                  <button className={style["bid-btn"]}>PLACE A BID</button>
+                  <Link to="/cart">
+                    <button className={style["bid-btn"]} onClick={e => handleBid(e)}>PLACE A BID</button>
+                  </Link>
                 </div>
               </>
               : null

@@ -3,7 +3,7 @@ import { db } from "../config/firebase"
 import {collection, getDocs} from "firebase/firestore";
 import { useState, useEffect } from "react"
 
-const AllPage = () => {
+const AllAlbumCardsPage = () => {
     const listingRef = collection(db, "listing")
     const [listing, setListing] = useState([])
     const fetchedData = () => {
@@ -15,11 +15,15 @@ const AllPage = () => {
         fetchedData()
     }, [])
     if (listing !== []) {
+        let temp = []
+        listing.map((card) => {
+            if (card.category === "album photocard") temp.push(card)
+        })
         return (
-            <AllPageTemplate fetchedData={listing} title={"All"}/>
+            <AllPageTemplate fetchedData={temp} title={"Album photocards"}/>
         )
     }
 }
 
 
-export default AllPage
+export default AllAlbumCardsPage

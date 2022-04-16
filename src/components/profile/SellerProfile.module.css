@@ -25,9 +25,9 @@
 }
 
 .name{
-    font-family: "Montserrat Bold", sans-serif;
+    font-family: "Montserrat SemiBold", sans-serif;
     font-size: 30px;
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 
 .info {

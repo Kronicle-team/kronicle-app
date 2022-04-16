@@ -1,9 +1,57 @@
+.title {
+  text-align: center;
+}
+
+.kronicle-container {
+  margin: 0 10em;
+  text-align: justify;
+}
+
+.subtitle {
+  margin-bottom: 0;
+}
+
+.kronicle-container>p {
+  margin-top: 0;
+}
+
+.members-container {
+  margin: 0 10em;
+  display: flex;
+  justify-content: space-between;
+}
+
 .member-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   background: var(--white);
-  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--lighter-grey);
   width: fit-content;
+  padding: 1em 2em;
+  margin-top: 1em;
+}
+.member-img {
+  width: 5em;
+  height: fit-content;
+  margin: auto;
 }
 
 .member-card h4, .member-card p {
+  text-align: center;
   color: var(--black);
+  margin-bottom: 0;
 }
+
+
+.member-card a {
+  text-align: center;
+  color: var(--black);
+  background: var(--peach);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 50px;
+}
+

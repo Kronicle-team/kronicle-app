@@ -1,3 +1,5 @@
+import style from "./ToTopButton.module.css";
+
 const ToTopButton = () => {
     const scrollToTop = () => {
         window.scrollTo({
@@ -6,8 +8,8 @@ const ToTopButton = () => {
         })
     }
     return (
-    <button>
-        <div onClick={scrollToTop}>TO TOP</div>
+    <button className={style["btnWrapper"]}>
+        <div onClick={scrollToTop} className={style["pageBtnIcon"]}>TO TOP</div>
     </button>
     )
 }
