@@ -4,7 +4,7 @@ import style from "./AboutUsCard.module.css";
 const AboutUsCard = ({member}) => {
   return (
       <div className={style["member-card"]}>
-        <img src="" alt={member.name + "'s photo"} />
+        <img src={member.image} alt={member.name + "'s photo"} className={style["member-img"]} />
         <h4>{member.name}</h4>
         <p>{member.position}</p>
         <Link to={member.github}>Github</Link>
@@ -13,3 +13,4 @@ const AboutUsCard = ({member}) => {
 }
 
 export default AboutUsCard
+

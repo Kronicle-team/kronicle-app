@@ -1,8 +1,8 @@
 .card {
     border-radius: 10px;
-    margin: 20px 3px;
     height: 400px;
     width: 225px;
+    margin: 20px 10px;
 }
 
 .cardImg {
@@ -13,6 +13,10 @@
 .imgWrapper {
     height: 300px;
     width: 100%;
+}
+
+.cardName {
+    margin: 10px 0;
 }
 
 @media only screen and (max-width: 520px) {

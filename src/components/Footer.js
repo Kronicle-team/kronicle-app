@@ -20,8 +20,8 @@ const Footer = () => {
             <h5>CUSTOMER CARE</h5>
             <Link to="/">Tracking My Order</Link>
             <Link to="/privacy-policy">Privacy Policy</Link>
-            <Link to="/">Shipping Policy</Link>
-            <Link to="/">Refund Policy</Link>
+            <Link to="/shipping-policy">Shipping Policy</Link>
+            <Link to="/refund-policy">Refund Policy</Link>
           </div>
 
           <div>
