@@ -11,7 +11,7 @@ const ProductCardHome = (props) => {
   }
 
   cardName = words.join(" ");
-  const path = props.bid ? `/cards/bid/${props.id}` : `/cards/buy-now/${props.id}`
+  const path = props.productLink
 
     return (
         <div className={style.card}>
