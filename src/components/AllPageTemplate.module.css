@@ -49,6 +49,7 @@
 }
 
 .title {
+    margin-top: 80px;
     text-align: center;
 }
 .nextPageBtn:disabled, .prevPageBtn:disabled {
