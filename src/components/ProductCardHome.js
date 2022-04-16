@@ -7,9 +7,11 @@ const ProductCardHome = (props) => {
         <div className={style.card} >
             <div key={props.id}>
                 <Link to={props.productLink}>
-                    <img src={props.img} alt={"product"} className={style.cardImg}/>
+                    <div className={style.imgWrapper}>
+                        <img src={props.img} alt={"product"} className={style.cardImg}/>
+                    </div>
                     <div>{props.name}</div>
-                    <div>{props.price}</div>
+                    <div>{props.price} VND</div>
                 </Link>
             </div>
         </div>

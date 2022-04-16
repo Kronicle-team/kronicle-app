@@ -1,12 +1,18 @@
 .card {
     border-radius: 10px;
     margin: 20px 3px;
+    height: 400px;
+    width: 225px;
 }
 
 .cardImg {
     height: 300px;
-    width: auto;
-    aspect-ratio: 0.75;
+    width: 100%;
+}
+
+.imgWrapper {
+    height: 300px;
+    width: 100%;
 }
 
 @media only screen and (max-width: 520px) {
