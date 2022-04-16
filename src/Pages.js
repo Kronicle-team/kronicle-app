@@ -6,6 +6,8 @@ import FaqPage from "./pages/support/FaqPage";
 import AboutUsPage from "./pages/support/AboutUsPage";
 import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
+import ShippingPolicyPage from "./pages/legal/ShippingPolicyPage";
+import RefundPolicyPage from "./pages/legal/RefundPolicyPage";
 import TosPage from "./pages/legal/TosPage";
 import CheckoutPageOne from "./pages/checkout/CheckoutPageOne";
 import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
@@ -72,6 +74,16 @@ const pages = {
     name: "Privacy Policy",
     link: "/privacy-policy",
     component: <PrivacyPolicyPage />,
+  },
+  shippingPolicy: {
+    name: "Shipping Policy",
+    link: "/shipping-policy",
+    component: <ShippingPolicyPage />,
+  },
+  refundPolicy: {
+    name: "Refund Policy",
+    link: "/refund-policy",
+    component: <RefundPolicyPage />,
   },
   tos: {
     name: "Terms of Service",
