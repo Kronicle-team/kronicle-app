@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { addDoc, collection, setDoc, doc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 const signIn = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -14,14 +14,26 @@ const signIn = async (email, password) => {
   }
 };
 
-const signUp = async (email, name, password, vrfPassword) => {
+const signUp = async (
+  uid,
+  fname,
+  lname,
+  email,
+  title,
+  aboutMe,
+  password,
+  vrfPassword
+) => {
   try {
     if (password === vrfPassword) {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "users", auth.currentUser.uid), {
-        uid: auth.currentUser.uid,
-        name,
-        email,
+        fullName: fname + lname,
+        fname: fname,
+        lname: lname,
+        email: email,
+        title: title,
+        aboutMe: aboutMe,
       });
       alert("Sign Up success");
     }
