@@ -2,51 +2,53 @@ import Layout from "../../components/Layout";
 import style from "./CartPage.module.css";
 import CartCard from "../../components/cart/CartCard";
 import {useEffect, useRef, useState} from "react";
-const bid = [
-    {
-        "id": 0,
-        "name": "No. 0",
-        "img": "",
-        "price": 45000,
-        "bid": true,
-        "highestBid": 55000
-    },
-    {
-        "id": 1,
-        "name": "No. 1",
-        "img": "",
-        "price": 14000,
-        "bid": true,
-        "highestBid": 14000
-    },
-]
-
-const buy = [
-    {
-        "id": 2,
-        "name": "No. 2",
-        "img": "",
-        "price": 2000,
-        "bid": false,
-        "highestBid": null,
-    },
-    {
-        "id": 3,
-        "name": "No. 3",
-        "img": "",
-        "price": 24000,
-        "bid": false,
-        "highestBid": null,
-    },
-    {
-        "id": 4,
-        "name": "No. 4",
-        "img": "",
-        "price": 60000,
-        "bid": false,
-        "highestBid": null,
-    },
-]
+import {collection, doc, onSnapshot, query, where} from "firebase/firestore";
+import {db, auth} from "../../config/firebase";
+// const bid = [
+//     {
+//         "id": 0,
+//         "name": "No. 0",
+//         "img": "",
+//         "price": 45000,
+//         "bid": true,
+//         "highestBid": 55000
+//     },
+//     {
+//         "id": 1,
+//         "name": "No. 1",
+//         "img": "",
+//         "price": 14000,
+//         "bid": true,
+//         "highestBid": 14000
+//     },
+// ]
+//
+// const buy = [
+//     {
+//         "id": 2,
+//         "name": "No. 2",
+//         "img": "",
+//         "price": 2000,
+//         "bid": false,
+//         "highestBid": null,
+//     },
+//     {
+//         "id": 3,
+//         "name": "No. 3",
+//         "img": "",
+//         "price": 24000,
+//         "bid": false,
+//         "highestBid": null,
+//     },
+//     {
+//         "id": 4,
+//         "name": "No. 4",
+//         "img": "",
+//         "price": 60000,
+//         "bid": false,
+//         "highestBid": null,
+//     },
+// ]
 
 const coupons = [
     {
@@ -63,19 +65,23 @@ const coupons = [
 
 const CartPage = () => {
     const [bidBtn, setBidBtn] = useState(true)
-    const [temp, setTemp] = useState(bid)
     const [subTotal, setSubTotal] = useState(0)
     const [total, setTotal] = useState(subTotal)
     const [shippingFee, setShippingFee] = useState(15000)
     const [deposit, setDeposit] = useState(0)
     const [serviceFee, setServiceFee] = useState(5000)
     const [couponValue, setCouponValue] = useState(0)
+    const [currentCart, setCurrentCart] = useState([])
+    const [currentCartBid, setCurrentCartBid] = useState([])
+    const [currentCartBuyNow, setCurrentCartBuyNow] = useState([])
+    const [temp, setTemp] = useState(currentCartBid)
+    const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
     const couponInput = useRef()
 
     useEffect(() => {
         if (bidBtn === true) {
-            setTemp(bid)
-        } else {setTemp(buy)}
+            setTemp(currentCartBid)
+        } else {setTemp(currentCartBuyNow)}
         setSubTotal(0)
         temp.map((card) => {
             setSubTotal(prevState => prevState + parseInt(card.price))
@@ -85,6 +91,36 @@ const CartPage = () => {
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
     })
+
+    useEffect(() => {
+        onSnapshot(doc(db, "users", documentID),(docSnapshot) => {
+            const cart = []
+            docSnapshot.data().cart.forEach((listing) => {
+                cart.push(listing)
+            })
+            setCurrentCart(cart)
+            console.log(currentCart);
+        });
+
+        const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"));
+        onSnapshot(q2, (querySnapshot) => {
+            const bidCards = [];
+            querySnapshot.forEach((doc) => {
+                if (currentCart.includes(doc.id)) bidCards.push({...doc.data(), id: doc.id});
+            });
+            setCurrentCartBid(bidCards)
+        });
+
+        const q3 = query(collection(db, "listing"), where("product_pricing", "==", "buy now"));
+        onSnapshot(q3, (querySnapshot) => {
+            const buyNowCards = [];
+            querySnapshot.forEach((doc) => {
+                if (currentCart.includes(doc.id)) buyNowCards.push({...doc.data(), id: doc.id});
+            });
+            setCurrentCartBuyNow(buyNowCards)
+        });
+
+    },[currentCart]);
 
     return (
         <Layout header footer>
@@ -104,8 +140,9 @@ const CartPage = () => {
                             temp.map((card) => {
                                 return (
                                     <CartCard
-                                        image={card.img}
-                                        name={card.name}
+                                        key={card.id}
+                                        image={card.product_image}
+                                        name={card.product_name}
                                         price={card.price}
                                         bid={card.bid}
                                         highestBid={card.highestBid}
