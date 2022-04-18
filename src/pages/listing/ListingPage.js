@@ -4,8 +4,8 @@ import FormInput from "../../components/form/ListingForm";
 import style from "./ListingPage.module.css";
 import common from "../../styles/common.module.css";
 import Radio from "../../components/radio/HideShowForm";
-import app from "../../App";
 import {db} from "../../config/firebase.js";
+import { collection, addDoc } from "firebase/firestore";
 
 
 // const handleSubmit = (e) => {
@@ -16,39 +16,29 @@ import {db} from "../../config/firebase.js";
 
 const ListingPage = () => {
   const [values, setValues] = useState({
-    productname: "",
-    productsatus: "",
-    file: ""
+    product_name: "",
+    product_status: "",
+    product_image: ""
   });
+
+  const pushProduct = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "listing"), {  product_name: values.product_name  ,  product_status: values.product_status, product_image: values.product_image });
+
+      window.alert("Your review has been submitted!", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
 
   const [fileUrl, setFileUrl] = useState(null);
   const [listing, setUsers] = useState([]);
-  const db = app.firestore();
 
-  const onFileChange = async (e) => {
-    const file = e.target.files[0];
-    const storageRef = app.storage().ref();
-    const fileRef = storageRef.child(file.name);
-    await fileRef.put(file);
-    setFileUrl(await fileRef.getDownloadURL());
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const values = e.target.values.value;
-    if (!values || !fileUrl) {
-      return;
-    }
-    await db.collection("listing").doc(values).set({
-      name: values,
-      avatar: fileUrl
-    });
-  };
 
   const inputs = [
     {
       id: 1,
-      name: "productname",
+      name: "product_name",
       type: "text",
       placeholder: "Please enter the product’s name",
       errorMessage:
@@ -64,12 +54,12 @@ const ListingPage = () => {
       placeholder: "Please describe product's status, and what users will receive more than 15 words",
       errorMessage: "It should be a meaningful description of your products!",
       label: "Product status*",
-      pattern: "^[A-Za-z0-9]{15,}$",
+      // pattern: "^[A-Za-z0-9]{15,}$",
       required: true
     },
     {
       id: 3,
-      name: "file",
+      name: "product_image",
       type: "file",
       placeholder: "Enter the selling price for the product",
       label: "Upload the product's image*",
@@ -87,9 +77,9 @@ const ListingPage = () => {
   return (
     <Layout header footer>
       <div className={[style["app"], common["flex"]].join(" ")}>
-        <form onSubmit={onSubmit} className={style["listing-form"]} onChange={onFileChange}>
+        <form  className={style["listing-form"]}>
           <h1 className={style["listing-title"]}>SELLER LISTING</h1>
-          {listing.inputs.map((input) => (
+          {inputs.map((input) => (
             <FormInput
               key={input.id}
               {...input}
@@ -102,7 +92,7 @@ const ListingPage = () => {
             onChange={onChange}
           />
           <div className={style["listing-btn-container"]}>
-            <button className={style["listing-btn"]}>SUBMIT</button>
+            <button className={style["listing-btn"]} onClick={()=> pushProduct()}>SUBMIT</button>
           </div>
         </form>
       </div>
@@ -111,6 +101,3 @@ const ListingPage = () => {
 };
 
 export default ListingPage;
-
-
-
