@@ -1,18 +1,21 @@
 import style from "./CartCard.module.css"
 import {useEffect, useState} from "react";
 import {db} from "../../config/firebase"
-import {doc, updateDoc,arrayRemove} from "firebase/firestore"
+import {doc, updateDoc} from "firebase/firestore"
 import {Link} from "react-router-dom";
 
-const CartCard = ({id, image, name, price, bid, highestBid}) => {
+const CartCard = ({cart, id, image, name, price, bid, highestBid}) => {
     const [winning, setWinning] = useState(true)
     const currency = "VND"
     const currentUser = "0UHcspYV2NOUc5yZTFkslMuYRD23"
     const productLink = bid === "bid now" ? "/cards/bid/" + id : "/cards/buy-now/" + id
     const removeItemFromCart = async () => {
         const userRef = doc(db, "users", currentUser)
+        const newCart = cart;
+        delete newCart[id];
+        console.log(newCart)
         await updateDoc(userRef, {
-            cart: arrayRemove(id)
+            cart: newCart
         })
     }
     useEffect(() => {
