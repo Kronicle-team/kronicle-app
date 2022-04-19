@@ -14,14 +14,14 @@ import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
 import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
-import AllPage from "./pages/AllPage"
+import AllPage from "./pages/product-display-pages/AllPage"
 import CartPage from "./pages/cart/CartPage";
 import ProductBidPage from "./pages/product/ProductBidPage";
 import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
-import AllBidPage from "./pages/AllBidPage";
-import AllBuyNowPage from "./pages/AllBuyNowPage";
-import AllAlbumCardsPage from "./pages/AllAlbumCardsPage";
-import AllTradingCardsPage from "./pages/AllTradingCardsPage";
+import AllBidPage from "./pages/product-display-pages/AllBidPage";
+import AllBuyNowPage from "./pages/product-display-pages/AllBuyNowPage";
+import AllAlbumCardsPage from "./pages/product-display-pages/AllAlbumCardsPage";
+import AllTradingCardsPage from "./pages/product-display-pages/AllTradingCardsPage";
 
 const pages = {
   home: {

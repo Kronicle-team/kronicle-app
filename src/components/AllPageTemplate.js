@@ -34,9 +34,10 @@ const AllPageTemplate = ({fetchedData, title}) => {
             <div className={style.cardWrapper}>
                 {
                     data.slice(page * maxItemsPerPage,(maxItemsPerPage * (page+1))).map((card) => {
+                        console.log(card.id)
                         return (
                             <div className={style.cardSingleWrapper}>
-                                <ProductCardHome key={card.id} img={card.product_image} name={card.product_name} price={card.price} productLink={card.product_pricing === "buy now" ? "/cards/buy-now/" + card.id :  "/cards/bid/" + card.id}/>
+                                <ProductCardHome id={card.id} key={card.id} img={card.product_image} name={card.product_name} price={card.price}/>
                             </div>
                         )
                     })}
@@ -55,7 +56,7 @@ const AllPageTemplate = ({fetchedData, title}) => {
                         pageArray.map((pageNum) => {
                             if (pageNum !== null && pageNum !== page) {
                                 return (
-                                    <button className={style.paginationBtn} onClick={()=> {
+                                    <button key={pageNum} className={style.paginationBtn} onClick={()=> {
                                         setPage(pageNum)
                                     }}>
                                         {pageNum + 1}
@@ -63,7 +64,7 @@ const AllPageTemplate = ({fetchedData, title}) => {
                                 )
                             } else if (pageNum === page) {
                                 return (
-                                    <button className={style.paginationBtn} disabled={true}>
+                                    <button key={pageNum} className={style.paginationBtn} disabled={true}>
                                         {pageNum + 1}
                                     </button>
                                 )

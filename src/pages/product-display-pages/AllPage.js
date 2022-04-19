@@ -1,9 +1,9 @@
-import AllPageTemplate from "../components/AllPageTemplate";
-import { db } from "../config/firebase"
+import AllPageTemplate from "../../components/AllPageTemplate";
+import { db } from "../../config/firebase"
 import {collection, getDocs} from "firebase/firestore";
 import { useState, useEffect } from "react"
 
-const AllBidPage = () => {
+const AllPage = () => {
     const listingRef = collection(db, "listing")
     const [listing, setListing] = useState([])
     const fetchedData = () => {
@@ -15,13 +15,11 @@ const AllBidPage = () => {
         fetchedData()
     }, [])
     if (listing !== []) {
-        let temp = []
-        listing.map((card) => {
-            if (card.product_pricing === "bid now") temp.push(card)
-        })
         return (
-            <AllPageTemplate fetchedData={temp} title={"Bid now"}/>
+            <AllPageTemplate fetchedData={listing} title={"All"}/>
         )
     }
 }
-export default AllBidPage
+
+
+export default AllPage
