@@ -25,7 +25,7 @@ const signUp = async (email, password, vrfPassword, navigate) => {
           const user = userCredentials.user;
           console.log("Create user: ", email);
           window.alert("Sign up successful!");
-          navigate("/form");
+          navigate("/login");
         }
       );
     }
