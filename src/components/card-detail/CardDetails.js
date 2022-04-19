@@ -3,10 +3,19 @@ import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import {postBid} from "../../api/handleBid";
-import {capitalizeAllWords, formatDescription} from "../../helper/formatData";
+import {capitalizeAllWords, formatDescription, formatTime} from "../../helper/formatData";
 
-const CardDetails = ({id, img, name, price, description, seller, buy, bid}) => {
+const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}) => {
   const [bidAmt, setBidAmt] = useState();
+
+  const uploadDate = new Date(date);
+  const period = 7;
+  const deadline = new Date(uploadDate.setDate(uploadDate.getDate() + period))
+  const datestring = formatTime(deadline.getHours(), deadline.getMinutes(), deadline.getSeconds())
+      + " - " + ("0" + deadline.getDate()).slice(-2) + " " +
+      (deadline.toLocaleString("en-us", { month: "short" })) + ", " +
+      deadline.getFullYear();
+
   const addToCart = () => {
     alert("Item has been added to cart.")
   }
@@ -55,7 +64,7 @@ const CardDetails = ({id, img, name, price, description, seller, buy, bid}) => {
           }
           {bid
               ? <>
-                  <h6>Available until 23:59 April 1, 2022</h6>
+                  <h6>Available until {datestring}</h6>
                   <h4>Enter your bid amount</h4>
                 <div className={[common["flex"], style["input-container"]].join(" ")}>
                   <input type="number" className={style["input"]} onChange={e => setBidAmt(e.target.value)}/>

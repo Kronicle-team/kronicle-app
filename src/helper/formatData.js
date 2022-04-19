@@ -17,4 +17,12 @@ const formatDescription = (str) => {
   }
 }
 
-export {capitalizeAllWords, formatDescription}
+const formatTime = (hr, min, sec) => {
+  let ampm = hr >= 12 ? 'pm' : 'am';
+  hr = hr % 12;
+  hr = hr ? hr : 12;
+  min = min.toString().padStart(2, '0');
+  return hr + ':' + min + ':' + sec + ' ' + ampm;
+}
+
+export {capitalizeAllWords, formatDescription, formatTime}
