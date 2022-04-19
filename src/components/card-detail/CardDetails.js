@@ -2,8 +2,9 @@ import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import {postBid} from "../../api/handleBid";
 
-const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
+const CardDetails = ({id, img, name, price, description, seller, buy, bid}) => {
   const [bidAmt, setBidAmt] = useState();
   const addToCart = () => {
     alert("Item has been added to cart.")
@@ -14,7 +15,8 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
       alert("Please bid a higher price.");
       e.preventDefault();
     } else {
-      alert("Bid successfully. You will be redirect to your cart.")
+      postBid(id, parseInt(bidAmt))
+      alert("Successful bid!")
     }
   }
 

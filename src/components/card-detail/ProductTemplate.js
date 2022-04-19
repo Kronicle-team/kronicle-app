@@ -42,7 +42,7 @@ const ProductTemplate = ({buy, bid}) => {
   return (
     <Layout className={style["container"]} header footer>
       <FontAwesomeIcon icon={faChevronLeft} className={style["icon"]} onClick={() => navigate(-1)}/>
-      <CardDetails name={data["product_name"]} price={data["price"]} img={data["product_image"]} description={data["product_status"]}
+      <CardDetails id={id} name={data["product_name"]} price={data["price"]} img={data["product_image"]} description={data["product_status"]}
                    seller={card.seller} buy={buy} bid={bid}/>
 
 
