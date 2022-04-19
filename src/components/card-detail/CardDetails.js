@@ -2,11 +2,25 @@ import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import {doc, onSnapshot, updateDoc} from "firebase/firestore";
+import {db} from "../../config/firebase";
 
-const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
+const CardDetails = ({cart, id, img, name, price, description, seller, buy, bid}) => {
   const [bidAmt, setBidAmt] = useState();
-  const addToCart = () => {
+  const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
+
+  const addItemToCart = async () => {
+    const userRef = doc(db, "users", documentID)
+    const newCart = cart;
+    newCart[id] = price
+    await updateDoc(userRef, {
+      cart: newCart
+    })
+  }
+
+  const addToCart = async () => {
     alert("Item has been added to cart.")
+   await addItemToCart()
   }
 
   const handleBid = (e) => {

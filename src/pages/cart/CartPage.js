@@ -4,6 +4,7 @@ import CartCard from "../../components/cart/CartCard";
 import {useEffect, useRef, useState} from "react";
 import {collection, doc, onSnapshot, query, where} from "firebase/firestore";
 import {db, auth} from "../../config/firebase";
+import {Link} from "react-router-dom";
 
 const coupons = [
     {
@@ -50,7 +51,7 @@ const CartPage = () => {
             setDeposit(Math.round(subTotal * 0.1))
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
-    },[bidBtn, temp, subTotal, couponValue, shippingFee, currentCartBid, currentCartBuyNow, deposit, serviceFee])
+    })
 
     onSnapshot(doc(db, "users", documentID),(docSnapshot) => {
         setCurrentCart(docSnapshot.data().cart)
@@ -158,8 +159,12 @@ const CartPage = () => {
                             <h3 className={style.summaryFieldValue + " " + style.summaryTotalValue}>{total}</h3>
                         </div>
                         <div className={style.cartBtnWrapper}>
-                            <button className={style.cartBtn + " " + style.btnContinueShopping}>CONTINUE SHOPPING</button>
-                            <button  className={style.cartBtn + " " + style.btnPlaceOrder}>PLACE ORDER</button>
+                            <Link to={"/"}>
+                                <button className={style.cartBtn + " " + style.btnContinueShopping}>CONTINUE SHOPPING</button>
+                            </Link>
+                            <Link to={"/check-out-1"}>
+                                <button  className={style.cartBtn + " " + style.btnPlaceOrder}>PLACE ORDER</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

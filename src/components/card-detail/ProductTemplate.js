@@ -16,6 +16,12 @@ const ProductTemplate = ({buy, bid}) => {
   const navigate = useNavigate();
   const {id} = useParams();
   const [data, setData] = useState();
+  const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
+  const [currentCart, setCurrentCart] = useState({})
+
+  onSnapshot(doc(db, "users", documentID),(docSnapshot) => {
+    setCurrentCart(docSnapshot.data().cart)
+  });
 
   useEffect(() => {
     onSnapshot(doc(db, "listing", id), (doc) => {
@@ -43,7 +49,7 @@ const ProductTemplate = ({buy, bid}) => {
     <Layout className={style["container"]} header footer>
       <FontAwesomeIcon icon={faChevronLeft} className={style["icon"]} onClick={() => navigate(-1)}/>
       <CardDetails name={data["product_name"]} price={data["price"]} img={data["product_image"]} description={data["product_status"]}
-                   seller={card.seller} buy={buy} bid={bid}/>
+                   seller={card.seller} buy={buy} bid={bid} id={id} cart={currentCart}/>
 
 
       {/*<section className="recommendation">*/}
