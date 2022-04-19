@@ -1,12 +1,13 @@
 import Layout from "../../components/Layout";
 import style from "./SellerProfile.module.css";
-import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { Link } from "react-router-dom";
 
 const SellerProfile = () => {
   const [data, setData] = useState({});
+  const [products, setProducts] = useState([]);
   const fetchData = async () => {
     getDoc(doc(db, "users", "HR6QlZUlyacmra6d3inTTrbw8sf2")).then((docSnap) => {
       if (docSnap.exists()) {
@@ -16,8 +17,27 @@ const SellerProfile = () => {
       }
     });
   };
+  const fetchProduct = async () => {
+    getDocs(collection(db, "listing"))
+      .then((querySnapshot) => {
+        const newUserDataArray = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setProducts(newUserDataArray);
+      })
+      .catch((err) => {
+        console.error("Failed to retrieve data", err);
+      });
+  };
+
   useEffect(() => {
-    fetchData();
+    fetchData().then(() => {});
+  }, []);
+
+  useEffect(() => {
+    fetchProduct().then(() => console.log(products));
   }, []);
   return (
     <Layout className={style["container"]} header footer>
@@ -41,12 +61,35 @@ const SellerProfile = () => {
         <div className={style["sell-container"]}>
           <nav className={style["nav"]}>
             <Link to="/" className={style["active-link"]}>
-              Sell
-            </Link>
-            <Link to="/" className={style["option"]}>
-              Bid
+              Products
             </Link>
           </nav>
+        </div>
+        <div className={style["product-wrapper"]}>
+          {products.map((product) => {
+            if (product.seller_id === "HR6QlZUlyacmra6d3inTTrbw8sf2") {
+              return (
+                <div className={style.card}>
+                  <div>
+                    <Link to={"/"}>
+                      <div className={style.imgWrapper}>
+                        <img
+                          src={product.product_image}
+                          alt={"product"}
+                          className={style.cardImg}
+                        />
+                      </div>
+                    </Link>
+
+                    <Link to={"/"}>
+                      <h6 className={style.cardName}>{product.product_name}</h6>
+                    </Link>
+                    <div>{product.price + " VND"}</div>
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </Layout>
