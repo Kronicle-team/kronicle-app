@@ -4,19 +4,17 @@ import { useState } from "react";
 import { signUp } from "../../api/authentication";
 import { Link } from "react-router-dom";
 import { auth } from "../../config/firebase";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [title, setTitle] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
 
   const [checkedFirst, setCheckedFirst] = useState(false);
   const [checkedSecond, setCheckedSecond] = useState(false);
 
+  let navigate = useNavigate();
   const handleChangeFirst = () => {
     setCheckedFirst(!checkedFirst);
   };
@@ -46,59 +44,24 @@ const RegisterForm = () => {
     <Layout className={style["register-container"]} header footer>
       <div className={style["container"]}>
         <form className={style["form"]}>
-          <h1 className={style["h1"]}>Register</h1>
           <img
             src={"../../media/icons/logo.png"}
             className={style["logo"]}
             alt={"Kronicle logo"}
           />
+          <h1 className={style["h1"]}>Register</h1>
+
           <p className={style["p"]}>
             Already a member?{" "}
             <Link to="/login" className={style["a"]}>
               Sign in.
             </Link>
           </p>
-
-          <div className={style["name-wrapper"]}>
-            <div>
-              <label className={style["label"]}>First Name</label>
-              <input
-                type="text"
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-                className={style["input"]}
-              />
-            </div>
-            <div>
-              <label className={style["label"]}>Last Name</label>
-              <input
-                type="text"
-                value={lname}
-                onChange={(e) => setLname(e.target.value)}
-                className={style["input"]}
-              />
-            </div>
-          </div>
-          <label className={style["label"]}>Title</label>
+          <label className={style["label"]}>Email</label>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className={style["input"]}
-          />
-          <label className={style["label"]}>About Me</label>
-          <input
-            type="text"
-            value={aboutMe}
-            onChange={(e) => setAboutMe(e.target.value)}
-            className={style["input-aboutme"]}
-          />
-
-          <label className={style["label"]}>Email or Phone number</label>
-          <input
-            type="text"
-            value={emailOrPhoneNumber}
-            onChange={(e) => setEmailOrPhoneNumber(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className={style["input"]}
           />
 
@@ -138,18 +101,11 @@ const RegisterForm = () => {
         </form>
         <div
           className={style["button-wrapper"]}
-          onClick={() =>
-            signUp(
-              auth.currentUser.uid,
-              fname,
-              lname,
-              emailOrPhoneNumber,
-              title,
-              aboutMe,
-              password,
-              verifyPassword
-            )
-          }
+          onClick={() => {
+            signUp(email, password, verifyPassword);
+
+            navigate("/login");
+          }}
         >
           <button className={style["register-btn"]}>REGISTER</button>
           <button

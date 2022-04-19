@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
+
 const signIn = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -13,28 +14,10 @@ const signIn = async (email, password) => {
     alert(err.message);
   }
 };
-
-const signUp = async (
-  uid,
-  fname,
-  lname,
-  email,
-  title,
-  aboutMe,
-  password,
-  vrfPassword
-) => {
+const signUp = async (email, password, vrfPassword) => {
   try {
     if (password === vrfPassword) {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "users", auth.currentUser.uid), {
-        fullName: fname + lname,
-        fname: fname,
-        lname: lname,
-        email: email,
-        title: title,
-        aboutMe: aboutMe,
-      });
+      await createUserWithEmailAndPassword(auth, email, password);
       alert("Sign Up success");
     }
   } catch (err) {
@@ -42,4 +25,17 @@ const signUp = async (
     alert(err.message);
   }
 };
-export { signIn, signUp };
+
+const pushData = async (fname, lname, phoneNum, aboutMe) => {
+  await setDoc(doc(db, "users", auth.currentUser.uid), {
+    fullName: fname + lname,
+    fname: fname,
+    lname: lname,
+    email: auth.currentUser.email,
+    phoneNum: phoneNum,
+    aboutMe: aboutMe,
+    cart: [],
+    selling_product: "",
+  });
+};
+export { signIn, signUp, pushData };
