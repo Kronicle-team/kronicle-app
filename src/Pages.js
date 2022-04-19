@@ -14,7 +14,7 @@ import CheckoutPageTwo from "./pages/checkout/CheckoutPageTwo";
 import CheckoutPageThree from "./pages/checkout/CheckoutPageThree";
 import SellerProfilePage from "./pages/profile/SellerProfilePage";
 import MyAccount from "./components/profile/MyAccount";
-import AllPage from "./pages/AllPage"
+import AllPage from "./pages/AllPage";
 import CartPage from "./pages/cart/CartPage";
 import ProductBidPage from "./pages/product/ProductBidPage";
 import ProductBuyNowPage from "./pages/product/ProductBuyNowPage";
@@ -22,6 +22,7 @@ import AllBidPage from "./pages/AllBidPage";
 import AllBuyNowPage from "./pages/AllBuyNowPage";
 import AllAlbumCardsPage from "./pages/AllAlbumCardsPage";
 import AllTradingCardsPage from "./pages/AllTradingCardsPage";
+import Form from "./components/auth/Form";
 
 const pages = {
   home: {
@@ -32,7 +33,7 @@ const pages = {
   all: {
     name: "all",
     link: "/all",
-    component: <AllPage />
+    component: <AllPage />,
   },
   login: {
     name: "Login",
@@ -43,6 +44,11 @@ const pages = {
     name: "Register",
     link: "/register",
     component: <RegisterPage />,
+  },
+  form: {
+    name: "Form",
+    link: "/form",
+    component: <Form />,
   },
   listing: {
     name: "Listing",
@@ -122,29 +128,28 @@ const pages = {
   cart: {
     name: "Cart",
     link: "/cart",
-    component: <CartPage />
+    component: <CartPage />,
   },
   allBid: {
     name: "All bid cards",
     link: "/cards/bid",
-    component: <AllBidPage />
+    component: <AllBidPage />,
   },
   allBuyNow: {
     name: "All buy-now cards",
     link: "/cards/buy-now",
-    component: <AllBuyNowPage />
+    component: <AllBuyNowPage />,
   },
   allAlbumCards: {
     name: "All album cards",
     link: "/cards/album-cards",
-    component: <AllAlbumCardsPage/>
+    component: <AllAlbumCardsPage />,
   },
   allTradingCards: {
     name: "All trading cards",
     link: "/cards/trading-cards",
-    component: <AllTradingCardsPage/>
-  }
-
+    component: <AllTradingCardsPage />,
+  },
 };
 
 export const allPages = {

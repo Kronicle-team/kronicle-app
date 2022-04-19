@@ -102,9 +102,7 @@ const RegisterForm = () => {
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            signUp(email, password, verifyPassword);
-
-            navigate("/login");
+            signUp(email, password, verifyPassword, navigate);
           }}
         >
           <button className={style["register-btn"]}>REGISTER</button>

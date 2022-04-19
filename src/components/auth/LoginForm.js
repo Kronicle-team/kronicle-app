@@ -50,13 +50,10 @@ const LoginForm = () => {
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            signIn(emailOrPhoneNumber, password);
-            navigate("/Form");
+            signIn(emailOrPhoneNumber, password, navigate);
           }}
         >
-          <Link to="/">
-            <button className={style["register-btn"]}>SIGN IN</button>
-          </Link>
+          <button className={style["register-btn"]}>SIGN IN</button>
         </div>
       </div>
     </Layout>

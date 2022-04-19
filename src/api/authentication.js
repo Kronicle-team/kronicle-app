@@ -5,30 +5,38 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 
-const signIn = async (email, password) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.alert("Sign In success");
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
+const signIn = async (email, password, navigate) => {
+  await signInWithEmailAndPassword(auth, email, password)
+    .then((userCredentials) => {
+      const user = userCredentials.user;
+      console.log("SignIn success");
+      navigate("/form");
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 };
-const signUp = async (email, password, vrfPassword) => {
+
+const signUp = async (email, password, vrfPassword, navigate) => {
   try {
     if (password === vrfPassword) {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("Sign Up success");
+      await createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredentials) => {
+          const user = userCredentials.user;
+          console.log("Create user: ", email);
+          window.alert("Sign up successful!");
+          navigate("/form");
+        }
+      );
     }
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
 
-const pushData = async (fname, lname, phoneNum, aboutMe) => {
+const pushData = async (fname, lname, phoneNum, aboutMe, navigate) => {
   await setDoc(doc(db, "users", auth.currentUser.uid), {
-    fullName: fname + lname,
+    fullName: fname + " " + lname,
     fname: fname,
     lname: lname,
     email: auth.currentUser.email,
@@ -36,6 +44,8 @@ const pushData = async (fname, lname, phoneNum, aboutMe) => {
     aboutMe: aboutMe,
     cart: [],
     selling_product: "",
+  }).then(() => {
+    navigate("/");
   });
 };
 export { signIn, signUp, pushData };

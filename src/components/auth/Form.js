@@ -70,8 +70,7 @@ const Form = () => {
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            pushData(fname, lname, phoneNum, aboutMe);
-            navigate("/");
+            pushData(fname, lname, phoneNum, aboutMe, navigate);
           }}
         >
           <button className={style["register-btn"]}>SUBMIT</button>
