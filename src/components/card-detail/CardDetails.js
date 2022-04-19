@@ -3,6 +3,7 @@ import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import {postBid} from "../../api/handleBid";
+import {capitalizeAllWords, formatDescription} from "../../helper/formatData";
 
 const CardDetails = ({id, img, name, price, description, seller, buy, bid}) => {
   const [bidAmt, setBidAmt] = useState();
@@ -20,13 +21,8 @@ const CardDetails = ({id, img, name, price, description, seller, buy, bid}) => {
     }
   }
 
-  let cardName = name;
-  const words = cardName.split(" ");
-
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-  }
-  cardName = words.join(" ");
+  const cardName = capitalizeAllWords(name);
+  const desc = formatDescription(description)
 
   return (
       <section className={[common["flex"], style["container"]].join(" ")}>
@@ -40,7 +36,7 @@ const CardDetails = ({id, img, name, price, description, seller, buy, bid}) => {
           }
           <h1>{price.toLocaleString() + " VND"}</h1>
           <h4>Product Description</h4>
-          <div className={style["desc"]}>{description}</div>
+          <div className={style["desc"]}>{desc}</div>
 
           <h4>Seller</h4>
           <div className={[style["seller-container"], common["flex"]].join(" ")}>
