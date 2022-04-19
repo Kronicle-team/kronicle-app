@@ -1,9 +1,18 @@
 import style from "./CartCard.module.css"
 import {useEffect, useState} from "react";
+import {db} from "../../config/firebase"
+import {doc, updateDoc,arrayRemove} from "firebase/firestore"
 
-const CartCard = ({image, name, price, bid, highestBid}) => {
+const CartCard = ({cart, id, image, name, price, bid, highestBid}) => {
     const [winning, setWinning] = useState(true)
     const currency = "VND"
+    const currentUser = "0UHcspYV2NOUc5yZTFkslMuYRD23"
+    const removeItemFromCart = async () => {
+        const userRef = doc(db, "users", currentUser)
+        await updateDoc(userRef, {
+            cart: arrayRemove(id)
+        })
+    }
     useEffect(() => {
         if (highestBid > price) {
             setWinning(false)
@@ -32,7 +41,9 @@ const CartCard = ({image, name, price, bid, highestBid}) => {
                     : null}
                 </div>
                 <div className={style.removeBtnWrapper}>
-                    <button className={style.removeBtn}>REMOVE</button>
+                    <button className={style.removeBtn} onClick={async () => {
+                        await removeItemFromCart()
+                    }}>REMOVE</button>
                 </div>
             </div>
         </div>

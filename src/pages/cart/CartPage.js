@@ -87,7 +87,7 @@ const CartPage = () => {
             setSubTotal(prevState => prevState + parseInt(card.price))
         })
         if (bidBtn) {
-            setDeposit(subTotal * 0.1)
+            setDeposit(Math.round(subTotal * 0.1))
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
     })
@@ -140,7 +140,9 @@ const CartPage = () => {
                             temp.map((card) => {
                                 return (
                                     <CartCard
+                                        cart={currentCart}
                                         key={card.id}
+                                        id={card.id}
                                         image={card.product_image}
                                         name={card.product_name}
                                         price={card.price}
