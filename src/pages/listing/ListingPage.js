@@ -18,7 +18,10 @@ const ListingPage = () => {
   const [values, setValues] = useState({
     product_name: "",
     product_status: "",
-    product_image: ""
+    product_image: "",
+    category: "",
+    release: "",
+    price: ""
   });
 
   const pushProduct = async () => {
@@ -26,7 +29,10 @@ const ListingPage = () => {
       const docRef = await addDoc(collection(db, "listing"), {
         product_name: values.product_name,
         product_status: values.product_status,
-        product_image: values.product_image
+        product_image: values.product_image,
+        category: values.category,
+        release: values.release,
+        price: values.price
       });
       console.log("Your review has been submitted!", docRef.id);
     } catch (e) {
