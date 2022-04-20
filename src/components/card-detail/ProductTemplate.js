@@ -19,9 +19,11 @@ const ProductTemplate = ({buy, bid}) => {
   const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
   const [currentCart, setCurrentCart] = useState({})
 
-  onSnapshot(doc(db, "users", documentID),(docSnapshot) => {
-    setCurrentCart(docSnapshot.data().cart)
-  });
+  useEffect(() => {
+    onSnapshot(doc(db, "users", documentID),(docSnapshot) => {
+      setCurrentCart(docSnapshot.data().cart)
+    });
+  }, [currentCart])
 
   useEffect(() => {
     onSnapshot(doc(db, "listing", id), (doc) => {

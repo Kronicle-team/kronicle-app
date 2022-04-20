@@ -12,7 +12,7 @@ const CardDetails = ({cart, id, img, name, price, description, seller, buy, bid}
   const addItemToCart = async () => {
     const userRef = doc(db, "users", documentID)
     const newCart = cart;
-    newCart[id] = price
+    newCart[id] = price;
     await updateDoc(userRef, {
       cart: newCart
     })
