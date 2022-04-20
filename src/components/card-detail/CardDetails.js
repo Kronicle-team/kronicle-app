@@ -1,11 +1,12 @@
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {postBid} from "../../api/handleBid";
 import {capitalizeAllWords, formatDescription, formatTime} from "../../helper/formatData";
 
 const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}) => {
+  const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
 
   const uploadDate = new Date(date);
@@ -18,6 +19,10 @@ const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}
 
   const addToCart = () => {
     alert("Item has been added to cart.")
+  }
+
+  const handleBuyNow = () => {
+    navigate('/check-out-1', { state: { id: id } });
   }
 
   const handleBid = (e) => {
@@ -58,7 +63,7 @@ const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}
           {buy
           ? <div className={[common["flex"], style["btn-container"]].join(" ")}>
                 <button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button>
-                <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
+                <button className={style["buy-btn"]} onClick={() => handleBuyNow()}>BUY NOW</button>
               </div>
           : null
           }

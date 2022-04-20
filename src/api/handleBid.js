@@ -11,4 +11,14 @@ const postBid = async (id, bid) => {
   }
 }
 
-export {postBid}
+const updateAvailability = async (id, status) => {
+  try {
+    await updateDoc(doc(db, "listing", id), {
+      availability: status
+    });
+  } catch (e) {
+    console.log(e.message)
+  }
+}
+
+export {postBid, updateAvailability}
