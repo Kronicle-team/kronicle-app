@@ -13,7 +13,6 @@ const CheckoutTwo = () => {
 
   const {state} = useLocation();
   const { id } = state;
-  console.log(id)
   const handleCheckout = () => {
     updateAvailability(id, "sold");
   }

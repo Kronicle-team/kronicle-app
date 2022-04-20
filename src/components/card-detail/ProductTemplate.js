@@ -18,9 +18,13 @@ const ProductTemplate = ({buy, bid}) => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    onSnapshot(doc(db, "listing", id), (doc) => {
-      setData(doc.data());
-    });
+    const getData = () => {
+      onSnapshot(doc(db, "listing", id), (doc) => {
+        setData(doc.data());
+      });
+    }
+    getData()
+    return () => getData()
   }, [])
 
   const card = {

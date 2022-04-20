@@ -11,25 +11,39 @@ const HomePage = () => {
   const [latestBid, setLatestBid] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, "listing"), where("product_pricing", "==", "buy now"));
-    onSnapshot(q, (querySnapshot) => {
-      const cards = [];
-      querySnapshot.forEach((doc) => {
-        cards.push({...doc.data(), id: doc.id});
+    const getBuyNowCards = () => {
+      const q = query(collection(db, "listing"),
+          where("product_pricing", "==", "buy now"),
+          where("availability", "!=", "sold"));
+      onSnapshot(q, (querySnapshot) => {
+        const cards = [];
+        querySnapshot.forEach((doc) => {
+          cards.push({...doc.data(), id: doc.id});
+        });
+        setLatestBuyNow(cards);
       });
-      setLatestBuyNow(cards);
-      console.log(latestBuyNow);
-    });
+    }
 
-    const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"));
-    onSnapshot(q2, (querySnapshot) => {
-      const bidCards = [];
-      querySnapshot.forEach((doc) => {
-        bidCards.push({...doc.data(), id: doc.id});
+    const getBidCards = () => {
+      const q2 = query(collection(db, "listing"),
+          where("product_pricing", "==", "bid now"),
+          where("availability", "!=", "sold"));
+      onSnapshot(q2, (querySnapshot) => {
+        const bidCards = [];
+        querySnapshot.forEach((doc) => {
+          bidCards.push({...doc.data(), id: doc.id});
+        });
+        setLatestBid(bidCards);
       });
-      setLatestBid(bidCards);
-      console.log(latestBid);
-    });
+    }
+
+    getBuyNowCards()
+    getBidCards()
+
+    return () => {
+      getBuyNowCards()
+      getBidCards()
+    }
   }, []);
 
   if (latestBuyNow === undefined) {
