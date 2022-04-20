@@ -17,7 +17,7 @@ const AllBuyNowPage = () => {
     if (listing !== []) {
         let temp = []
         listing.map((card) => {
-            if (card.product_pricing === "buy now") temp.push(card)
+            if (card.product_pricing === "buy now" && card.availability !== "sold") temp.push(card)
         })
         return (
             <AllPageTemplate fetchedData={temp} title={"Buy Now"}/>

@@ -15,8 +15,12 @@ const AllPage = () => {
         fetchedData()
     }, [])
     if (listing !== []) {
+        let temp = []
+        listing.map((card) => {
+            if (card.availability !== "sold") temp.push(card)
+        })
         return (
-            <AllPageTemplate fetchedData={listing} title={"All"}/>
+            <AllPageTemplate fetchedData={temp} title={"All"}/>
         )
     }
 }
