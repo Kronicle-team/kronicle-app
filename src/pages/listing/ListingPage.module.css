@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 40px;
+    flex-direction: column;
 }
 
 .listing-form{
@@ -31,7 +32,7 @@ input[type="file"] {
 }
 
 .listing-btn{
-    width: 40%;
+    width: 20%;
     height: 50px;
     padding: 10px;
     border: none;

@@ -23,9 +23,12 @@ const ListingPage = () => {
 
   const pushProduct = async () => {
     try {
-      const docRef = await addDoc(collection(db, "listing"), {  product_name: values.product_name  ,  product_status: values.product_status, product_image: values.product_image });
-
-      window.alert("Your review has been submitted!", docRef.id);
+      const docRef = await addDoc(collection(db, "listing"), {
+        product_name: values.product_name,
+        product_status: values.product_status,
+        product_image: values.product_image
+      });
+      console.log("Your review has been submitted!", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -49,12 +52,12 @@ const ListingPage = () => {
     },
     {
       id: 2,
-      name: "productsatus",
+      name: "product_status",
       type: "textarea",
-      placeholder: "Please describe product's status, and what users will receive more than 15 words",
+      placeholder: "Please describe product's status, and what users will receive more than 15 characters",
       errorMessage: "It should be a meaningful description of your products!",
       label: "Product status*",
-      // pattern: "^[A-Za-z0-9]{15,}$",
+      pattern: "^.{15,}$",
       required: true
     },
     {
@@ -91,10 +94,10 @@ const ListingPage = () => {
             value={values.radio}
             onChange={onChange}
           />
-          <div className={style["listing-btn-container"]}>
-            <button className={style["listing-btn"]} onClick={()=> pushProduct()}>SUBMIT</button>
-          </div>
         </form>
+        <div className={style["listing-btn-container"]}>
+          <button className={style["listing-btn"]} onClick={()=> pushProduct()}>SUBMIT</button>
+        </div>
       </div>
     </Layout>
   );
