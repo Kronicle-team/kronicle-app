@@ -46,6 +46,7 @@
 .top-header-right .login
 {
     color: var(--background);
+    font-weight: 600;
 }
 
 .top-header-right .register:hover,
