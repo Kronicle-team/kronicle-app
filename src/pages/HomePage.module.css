@@ -31,13 +31,15 @@
 .qr {
     height: 100px;
     width: 100px;
+    cursor: pointer;
 }
 
-.qrBanner {
+.qrBanner{
+    background: var(--peach);
     align-items: center;
     border-radius: 15px;
     display: flex;
-    height: 300px;
+    height: 20em;
     justify-content: center;
     margin: auto;
     text-align: center;
@@ -58,7 +60,7 @@
     font-family: "Montserrat Black", sans-serif;
     text-align: center;
     margin-bottom: 20px;
-    color: var(--orange);
+    color: var(--black);
     font-weight: 400;
 }
 
