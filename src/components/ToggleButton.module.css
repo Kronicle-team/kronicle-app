@@ -1,7 +1,7 @@
 .pageBtnIcon {
     background: none;
     border: none;
-    color: var(--orange);
+    color: var(--darker-peach);
     font-size: 30px;
     padding: 5px 10px;
 }
@@ -19,7 +19,7 @@
 }
 
 .btnWrapper:hover {
-    background: var(--orange);
+    background: var(--darker-peach);
     border-radius: 20px;
     cursor: pointer;
 }
