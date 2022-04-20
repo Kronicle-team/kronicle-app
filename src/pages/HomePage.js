@@ -3,7 +3,7 @@ import style from "./HomePage.module.css";
 import {useEffect, useState} from "react";
 import React from "react";
 import CardShowCase from "../components/CardShowCase";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { collection, query, where, onSnapshot, orderBy, limit } from "firebase/firestore";
 import { db } from "../config/firebase"
 
 const HomePage = () => {
@@ -12,12 +12,15 @@ const HomePage = () => {
 
   useEffect(() => {
     const getBuyNowCards = () => {
-      const q = query(collection(db, "listing"),
+      let q = query(collection(db, "listing"),
           where("product_pricing", "==", "buy now"),
-          where("availability", "!=", "sold"));
+          where("availability", "!=", "sold"),
+          orderBy("availability"), orderBy("date_time"), limit(6));
+
       onSnapshot(q, (querySnapshot) => {
         const cards = [];
         querySnapshot.forEach((doc) => {
+
           cards.push({...doc.data(), id: doc.id});
         });
         setLatestBuyNow(cards);
@@ -27,7 +30,8 @@ const HomePage = () => {
     const getBidCards = () => {
       const q2 = query(collection(db, "listing"),
           where("product_pricing", "==", "bid now"),
-          where("availability", "!=", "sold"));
+          where("availability", "!=", "sold"),
+          orderBy("availability"), orderBy("date_time"), limit(6));
       onSnapshot(q2, (querySnapshot) => {
         const bidCards = [];
         querySnapshot.forEach((doc) => {
@@ -64,11 +68,11 @@ const HomePage = () => {
                   </div>
             </div>
             <div className={style.latestBidsContainer}>
-                <CardShowCase name={"Latest Bids"} data={latestBid} link={""} useText={true} bid/>
+                <CardShowCase name={"Latest Bids"} data={latestBid} link={"/cards/bid"} useText={true} bid/>
             </div>
 
         <div className={style.latestProductsContainer}>
-              <CardShowCase name={"Latest Products"} data={latestBuyNow} link={"/all"} useText={true} />
+              <CardShowCase name={"Latest Products"} data={latestBuyNow} link={"/cards/buy-now"} useText={true} />
         </div>
       </Layout>
   )

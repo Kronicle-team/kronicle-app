@@ -26,7 +26,10 @@ const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}
   }
 
   const handleBid = (e) => {
-    if (bidAmt <= price) {
+    if (!bidAmt) {
+      alert("Please enter a bid amount.");
+      e.preventDefault();
+    } else if (bidAmt <= price) {
       alert("Please bid a higher price.");
       e.preventDefault();
     } else {
@@ -72,7 +75,7 @@ const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}
                   <h6>Available until {datestring}</h6>
                   <h4>Enter your bid amount</h4>
                 <div className={[common["flex"], style["input-container"]].join(" ")}>
-                  <input type="number" className={style["input"]} onChange={e => setBidAmt(e.target.value)}/>
+                  <input type="number" className={style["input"]} onChange={e => setBidAmt(parseInt(e.target.value))}/>
                   <div className={[style["currency"], common["text-center"]].join(" ")}>VND</div>
                 </div>
 

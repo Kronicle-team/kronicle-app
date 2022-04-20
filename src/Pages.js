@@ -30,8 +30,8 @@ const pages = {
     component: <HomePage />,
   },
   all: {
-    name: "all",
-    link: "/all",
+    name: "All",
+    link: "/cards/all",
     component: <AllPage />
   },
   login: {
