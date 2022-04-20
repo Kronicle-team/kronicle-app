@@ -30,7 +30,7 @@ const pages = {
     component: <HomePage />,
   },
   all: {
-    name: "all",
+    name: "All",
     link: "/all",
     component: <AllPage />
   },
@@ -50,12 +50,12 @@ const pages = {
     component: <ListingPage />,
   },
   cardBuyNow: {
-    name: "Buy Now Card",
+    name: "Buy Now Card Detail",
     link: "/cards/buy-now/:id",
     component: <ProductBuyNowPage />,
   },
   cardBid: {
-    name: "Bidding Card",
+    name: "Bidding Card Detail",
     link: "/cards/bid/:id",
     component: <ProductBidPage />,
   },
@@ -125,22 +125,22 @@ const pages = {
     component: <CartPage />
   },
   allBid: {
-    name: "All bid cards",
+    name: "Bid",
     link: "/cards/bid",
     component: <AllBidPage />
   },
   allBuyNow: {
-    name: "All buy-now cards",
+    name: "Buy Now",
     link: "/cards/buy-now",
     component: <AllBuyNowPage />
   },
   allAlbumCards: {
-    name: "All album cards",
+    name: "Album Cards",
     link: "/cards/album-cards",
     component: <AllAlbumCardsPage/>
   },
   allTradingCards: {
-    name: "All trading cards",
+    name: "Trading Cards",
     link: "/cards/trading-cards",
     component: <AllTradingCardsPage/>
   }
@@ -151,4 +151,5 @@ export const allPages = {
   all: Object.values(pages),
   auth: [pages.login, pages.register],
   legal: [pages.copyright, pages.privacyPolicy, pages.tos],
+  navBar: [pages.home, pages.all, pages.allAlbumCards, pages.allTradingCards, pages.allBuyNow, pages.allBid]
 };
