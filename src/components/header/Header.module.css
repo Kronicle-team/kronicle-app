@@ -1,5 +1,5 @@
 .header {
-   background: #435892;
+   background: var(--blue);
    top: 0;
    font-size: 16px;
 }
