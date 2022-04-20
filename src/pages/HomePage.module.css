@@ -1,25 +1,25 @@
 .banner {
-    height: 390px;
     width: 100%;
     overflow: hidden;
     position: relative;
 }
 
 .bannerBackground {
-    height: 390px;
     width: 100%;
     position: absolute;
-
 }
 
+
 .bannerText {
-    color: var(--lighter-black);
+    color: var(--white);
     font-size: 48px;
-    font-family: "Montserrat Light", sans-serif;
+    font-family: "Montserrat SemiBold", sans-serif;
     position: relative;
     text-align: center;
     width: 74%;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
+
 
 .bannerTextWrapper {
     align-items: center;
