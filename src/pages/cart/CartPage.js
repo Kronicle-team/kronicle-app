@@ -53,12 +53,12 @@ const CartPage = () => {
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
     })
 
-    onSnapshot(doc(db, "users", documentID),(docSnapshot) => {
-        setCurrentCart(docSnapshot.data().cart)
-        setCurrentCartKeys(Object.keys(docSnapshot.data().cart))
-    });
-
-    const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"));
+    useEffect(() => {
+        onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
+            setCurrentCart(docSnapshot.data().cart)
+            setCurrentCartKeys(Object.keys(docSnapshot.data().cart))
+        });
+        const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"));
         onSnapshot(q2, (querySnapshot) => {
             const bidCards = [];
             querySnapshot.forEach((doc) => {
@@ -67,7 +67,7 @@ const CartPage = () => {
             setCurrentCartBid(bidCards)
         });
 
-    const q3 = query(collection(db, "listing"), where("product_pricing", "==", "buy now"));
+        const q3 = query(collection(db, "listing"), where("product_pricing", "==", "buy now"));
         onSnapshot(q3, (querySnapshot) => {
             const buyNowCards = [];
             querySnapshot.forEach((doc) => {
@@ -75,6 +75,7 @@ const CartPage = () => {
             });
             setCurrentCartBuyNow(buyNowCards)
         });
+    }, [currentCart])
 
     return (
         <Layout header footer>
@@ -92,18 +93,20 @@ const CartPage = () => {
                     <div className={style.cartListing}>
                         {
                             temp.map((card) => {
-                                return (
-                                    <CartCard
-                                        cart={currentCart}
-                                        key={card.id}
-                                        id={card.id}
-                                        image={card.product_image}
-                                        name={card.product_name}
-                                        price={currentCart[card.id]}
-                                        bid={card.product_pricing}
-                                        highestBid={card.price}
-                                    />
-                                )
+                                if (currentCart[card.id] !== undefined) {
+                                    return (
+                                        <CartCard
+                                            cart={currentCart}
+                                            key={card.id}
+                                            id={card.id}
+                                            image={card.product_image}
+                                            name={card.product_name}
+                                            price={currentCart[card.id]}
+                                            bid={card.product_pricing}
+                                            highestBid={card.price}
+                                        />
+                                    )
+                                }
                             })
                         }
 

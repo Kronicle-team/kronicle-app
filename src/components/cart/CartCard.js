@@ -11,7 +11,8 @@ const CartCard = ({cart, id, image, name, price, bid, highestBid}) => {
     const productLink = bid === "bid now" ? "/cards/bid/" + id : "/cards/buy-now/" + id
     const removeItemFromCart = async () => {
         const userRef = doc(db, "users", currentUser)
-        const newCart = cart;
+        const newCart = cart
+        console.log(newCart)
         delete newCart[id];
         console.log(newCart)
         await updateDoc(userRef, {
