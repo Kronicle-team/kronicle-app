@@ -59,11 +59,13 @@
 }
 
 .contact-btn:hover {
+    background: var(--darkest-peach);
     color: var(--white);
-    background: var(--darker-peach);
     cursor: pointer;
     font-weight: 600;
+
 }
+
 
 .copyright {
     align-items: center;

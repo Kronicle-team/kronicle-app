@@ -32,7 +32,7 @@
 }
 
 .logoTextMain{
-    color: var(--orange);
+    color: var(--darker-peach);
     font-size: 18px;
 }
 .logoText{
@@ -62,7 +62,7 @@
 
 .orange-border{
     cursor: pointer;
-    border: 2px solid var(--orange);
+    border: 2px solid var(--darker-peach);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
     width: 150px;
     padding: 10px;
     color: var(--background);
-    background-color: var(--orange);
+    background-color: var(--darker-peach);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
@@ -127,7 +127,7 @@
 }
 
 .next-button:hover {
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
 }
 
 .cancel-button:hover{

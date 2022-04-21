@@ -48,14 +48,20 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 15em;
-    width: 50%;
+    height: 10em;
+    width: 10em;
     margin: auto;
+    padding-top: 3em;
     text-align: center;
     border-radius: 10px;
-    background-color: var(--peach);
+    transition: transform .2s;
 }
 
+.qrBanner:hover {
+    -ms-transform: scale(2); /* IE 9 */
+    -webkit-transform: scale(2); /* Safari 3-8 */
+    transform: scale(2);
+}
 
 .qrBannerContainer {
     margin: 50px 0;

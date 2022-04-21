@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import style from "./RegisterForm.module.css";
+import style from "./Form.module.css";
 import { useState } from "react";
 import { signUp } from "../../api/authentication";
 import { Link } from "react-router-dom";
