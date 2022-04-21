@@ -67,22 +67,12 @@
     font-size: 1rem;
     font-weight: 500;
 }
-.input{
+.input {
     width: 100%;
     padding: 15px 30px;
     margin: 10px 0 30px;
     border-radius: 15px;
     border: 1px solid gray;
-    box-sizing: border-box;
-}
-
-.input-aboutme{
-    width: 100%;
-    padding: 0 30px 50px;
-    margin: 10px 0 30px;
-    border-radius: 15px;
-    border: 1px solid gray;
-    height: 70px;
     box-sizing: border-box;
 }
 

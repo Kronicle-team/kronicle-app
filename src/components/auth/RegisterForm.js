@@ -91,7 +91,7 @@ const RegisterForm = () => {
             type="text"
             value={aboutMe}
             onChange={(e) => setAboutMe(e.target.value)}
-            className={style["input-aboutme"]}
+            className={style["input"]}
           />
 
           <label className={style["label"]}>Email or Phone number</label>
