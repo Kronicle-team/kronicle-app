@@ -2,7 +2,7 @@ import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css"
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import {doc, onSnapshot, updateDoc} from "firebase/firestore";
+import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../config/firebase";
 
 const CardDetails = ({cart, id, img, name, price, description, seller, buy, bid}) => {
@@ -64,7 +64,7 @@ const CardDetails = ({cart, id, img, name, price, description, seller, buy, bid}
 
           {buy
           ? <div className={[common["flex"], style["btn-container"]].join(" ")}>
-                <button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button>
+                <Link to={"/cart"}><button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button></Link>
                 <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
               </div>
           : null

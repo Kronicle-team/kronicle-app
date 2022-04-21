@@ -1,4 +1,3 @@
-import React, {useEffect} from "react";
 import style from "./ProductCardHome.module.css"
 import {Link} from "react-router-dom";
 
@@ -18,7 +17,7 @@ const ProductCardHome = (props) => {
             <div>
               <Link to={path}>
                  <div className={style.imgWrapper}>
-                <img src={props.img} alt={"product"} className={style.cardImg}/>
+                <img src={props.img ? props.img : ("/public/media/images/product-card-placeholder.png")} alt={"product"} className={style.cardImg}/>
                   </div>
               </Link>
 

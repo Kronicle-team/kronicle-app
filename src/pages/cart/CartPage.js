@@ -34,11 +34,51 @@ const CartPage = () => {
     const [temp, setTemp] = useState(currentCartBid)
     const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
     const couponInput = useRef()
+    const fetchData = () => {
+        onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
+            const newCart = {}
+            const newCartKeys = []
+            Object.entries(docSnapshot.data().cart).map((item) => {
+                newCart[item[0]] = item[1]
+                newCartKeys.push(item[0])
+            })
+            setCurrentCart(newCart)
+            setCurrentCartKeys(newCartKeys)
+        });
+
+        const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"), where("availability", "==", "available"));
+        onSnapshot(q2, (querySnapshot) => {
+            const bidCards = [];
+            querySnapshot.forEach((doc) => {
+                if (currentCartKeys.includes(doc.id)) bidCards.push({...doc.data(), id: doc.id});
+            });
+            setCurrentCartBid(bidCards)
+            if (bidBtn === true) {
+                setTemp(currentCartBid)
+            }
+        });
+
+        const q3 = query(collection(db, "listing"), where("product_pricing", "==", "buy now"), where("availability", "==", "available"))
+        onSnapshot(q3, (querySnapshot) => {
+            const buyNowCards = [];
+            querySnapshot.forEach((doc) => {
+                if (currentCartKeys.includes(doc.id)) buyNowCards.push({...doc.data(), id: doc.id});
+            });
+            setCurrentCartBuyNow(buyNowCards)
+            if (bidBtn === false) {
+                setTemp(currentCartBuyNow)
+            }
+        });
+    }
 
     useEffect(() => {
+        fetchData()
         if (bidBtn === true) {
             setTemp(currentCartBid)
-        } else {setTemp(currentCartBuyNow)}
+        }
+        if (bidBtn === false) {
+            setTemp(currentCartBuyNow)
+        }
         setSubTotal(0)
         temp.map((card) => {
             setSubTotal(prevState => prevState + parseInt(card.price))
@@ -51,31 +91,7 @@ const CartPage = () => {
             setDeposit(Math.round(subTotal * 0.1))
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
-    })
-
-    useEffect(() => {
-        onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
-            setCurrentCart(docSnapshot.data().cart)
-            setCurrentCartKeys(Object.keys(docSnapshot.data().cart))
-        });
-        const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"));
-        onSnapshot(q2, (querySnapshot) => {
-            const bidCards = [];
-            querySnapshot.forEach((doc) => {
-                if (currentCartKeys.includes(doc.id)) bidCards.push({...doc.data(), id: doc.id});
-            });
-            setCurrentCartBid(bidCards)
-        });
-
-        const q3 = query(collection(db, "listing"), where("product_pricing", "==", "buy now"));
-        onSnapshot(q3, (querySnapshot) => {
-            const buyNowCards = [];
-            querySnapshot.forEach((doc) => {
-                if (currentCartKeys.includes(doc.id)) buyNowCards.push({...doc.data(), id: doc.id});
-            });
-            setCurrentCartBuyNow(buyNowCards)
-        });
-    }, [currentCart])
+    },[currentCart])
 
     return (
         <Layout header footer>
@@ -101,7 +117,7 @@ const CartPage = () => {
                                             id={card.id}
                                             image={card.product_image}
                                             name={card.product_name}
-                                            price={currentCart[card.id]}
+                                            price={currentCart[card.id].toLocaleString()}
                                             bid={card.product_pricing}
                                             highestBid={card.price}
                                         />
@@ -118,22 +134,22 @@ const CartPage = () => {
                         <div className={style.summaryRow}>
                             <div className={style.summaryField}>
                                 <div className={style.summaryFieldHeading}>Subtotal</div>
-                                <div className={style.summaryFieldValue}>{subTotal}</div>
+                                <div className={style.summaryFieldValue}>{subTotal.toLocaleString()}</div>
                             </div>
                             <div className={style.summaryField}>
                                 <div className={style.summaryFieldHeading}>Shipping charges</div>
-                                <div className={style.summaryFieldValue}>{shippingFee}</div>
+                                <div className={style.summaryFieldValue}>{shippingFee.toLocaleString()}</div>
                             </div>
                             {bidBtn ?
                                 <div className={style.summaryField}>
                                     <div className={style.summaryFieldHeading}>Deposit</div>
-                                    <div className={style.summaryFieldValue}>{deposit}</div>
+                                    <div className={style.summaryFieldValue}>{deposit.toLocaleString()}</div>
                                 </div>
                             : null}
                             {bidBtn ?
                                 <div className={style.summaryField}>
                                     <div className={style.summaryFieldHeading}>Service Fee</div>
-                                    <div className={style.summaryFieldValue}>{serviceFee}</div>
+                                    <div className={style.summaryFieldValue}>{serviceFee.toLocaleString()}</div>
                                 </div>
                                 : null}
                         </div>
@@ -159,7 +175,7 @@ const CartPage = () => {
                         </div>
                         <div className={style.summaryTotal}>
                             <h3 className={style.summaryFieldHeading + " " + style.summaryTotalHeading}>TOTAL</h3>
-                            <h3 className={style.summaryFieldValue + " " + style.summaryTotalValue}>{total}</h3>
+                            <h3 className={style.summaryFieldValue + " " + style.summaryTotalValue}>{total.toLocaleString()}</h3>
                         </div>
                         <div className={style.cartBtnWrapper}>
                             <Link to={"/"}>

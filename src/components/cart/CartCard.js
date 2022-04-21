@@ -12,12 +12,11 @@ const CartCard = ({cart, id, image, name, price, bid, highestBid}) => {
     const removeItemFromCart = async () => {
         const userRef = doc(db, "users", currentUser)
         const newCart = cart
-        console.log(newCart)
         delete newCart[id];
-        console.log(newCart)
         await updateDoc(userRef, {
             cart: newCart
         })
+        window.location.reload()
     }
     useEffect(() => {
         if (highestBid > price) {
