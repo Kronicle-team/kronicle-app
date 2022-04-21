@@ -29,9 +29,7 @@ const CartPage = () => {
     const [couponValue, setCouponValue] = useState(0)
     const [currentCart, setCurrentCart] = useState({})
     const [currentCartKeys, setCurrentCartKeys] = useState([])
-    const [currentCartBid, setCurrentCartBid] = useState([])
-    const [currentCartBuyNow, setCurrentCartBuyNow] = useState([])
-    const [temp, setTemp] = useState(currentCartBid)
+    const [temp, setTemp] = useState([])
     const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
     const couponInput = useRef()
     const fetchData = () => {
@@ -52,9 +50,8 @@ const CartPage = () => {
             querySnapshot.forEach((doc) => {
                 if (currentCartKeys.includes(doc.id)) bidCards.push({...doc.data(), id: doc.id});
             });
-            setCurrentCartBid(bidCards)
             if (bidBtn === true) {
-                setTemp(currentCartBid)
+                setTemp(bidCards)
             }
         }, (error) => console.log(error));
 
@@ -64,21 +61,14 @@ const CartPage = () => {
             querySnapshot.forEach((doc) => {
                 if (currentCartKeys.includes(doc.id)) buyNowCards.push({...doc.data(), id: doc.id});
             });
-            setCurrentCartBuyNow(buyNowCards)
             if (bidBtn === false) {
-                setTemp(currentCartBuyNow)
+                setTemp(buyNowCards)
             }
         }, (error) => console.log(error));
     }
 
     useEffect(() => {
         fetchData()
-        if (bidBtn === true) {
-            setTemp(currentCartBid)
-        }
-        if (bidBtn === false) {
-            setTemp(currentCartBuyNow)
-        }
         setSubTotal(0)
         temp.map((card) => {
             setSubTotal(prevState => prevState + parseInt(card.price))
@@ -92,7 +82,7 @@ const CartPage = () => {
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
     },[currentCart])
-
+    console.log("temp", temp)
     return (
         <Layout header footer>
             <div className={style.container}>
