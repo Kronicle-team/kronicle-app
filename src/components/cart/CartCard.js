@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 
 const CartCard = ({cart, id, image, name, price, bid, highestBid}) => {
     const [winning, setWinning] = useState(true)
+    const [source, setSource] = useState(image)
     const currency = "VND"
     const currentUser = "0UHcspYV2NOUc5yZTFkslMuYRD23"
     const productLink = bid === "bid now" ? "/cards/bid/" + id : "/cards/buy-now/" + id
@@ -27,7 +28,9 @@ const CartCard = ({cart, id, image, name, price, bid, highestBid}) => {
     return (
         <div className={style.cardWrapper}>
             <Link className={style.cardImgWrapper} to={productLink}>
-                <img src={image ? image : "../media/icons/logo.png"} className={style.cardImg} alt={"product"}/>
+                <img src={image ? image : "../media/icons/logo.png"} className={style.cardImg} alt={"product"} onError={() => {
+                    setSource(("/public/media/images/product-card-placeholder.png"))
+                }}/>
             </Link>
             <div className={style.cardContentContainer}>
                 <div className={style.cardContent}>

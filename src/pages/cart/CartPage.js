@@ -44,7 +44,7 @@ const CartPage = () => {
             })
             setCurrentCart(newCart)
             setCurrentCartKeys(newCartKeys)
-        });
+        }, (error) => console.log(error));
 
         const q2 = query(collection(db, "listing"), where("product_pricing", "==", "bid now"), where("availability", "==", "available"));
         onSnapshot(q2, (querySnapshot) => {
@@ -56,7 +56,7 @@ const CartPage = () => {
             if (bidBtn === true) {
                 setTemp(currentCartBid)
             }
-        });
+        }, (error) => console.log(error));
 
         const q3 = query(collection(db, "listing"), where("product_pricing", "==", "buy now"), where("availability", "==", "available"))
         onSnapshot(q3, (querySnapshot) => {
@@ -68,7 +68,7 @@ const CartPage = () => {
             if (bidBtn === false) {
                 setTemp(currentCartBuyNow)
             }
-        });
+        }, (error) => console.log(error));
     }
 
     useEffect(() => {

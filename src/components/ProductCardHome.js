@@ -1,7 +1,9 @@
 import style from "./ProductCardHome.module.css"
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 const ProductCardHome = (props) => {
+  const [source, setSource] = useState(props.img)
   let cardName = props.name;
   const words = cardName.split(" ");
 
@@ -17,7 +19,9 @@ const ProductCardHome = (props) => {
             <div>
               <Link to={path}>
                  <div className={style.imgWrapper}>
-                <img src={props.img ? props.img : ("/public/media/images/product-card-placeholder.png")} alt={"product"} className={style.cardImg}/>
+                <img src={source} alt={"product"} className={style.cardImg} onError={() => {
+                   setSource("/media/images/product-card-placeholder.png")
+                }}/>
                   </div>
               </Link>
 
