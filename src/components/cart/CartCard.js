@@ -18,6 +18,7 @@ const CartCard = ({ cart, id, image, name, price, bid, highestBid }) => {
     await updateDoc(userRef, {
       cart: newCart,
     });
+    console.log("remove item succesfully")
     window.location.reload();
   };
   useEffect(() => {

@@ -9,7 +9,7 @@ import {
   formatTime,
 } from "../../helper/formatData";
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 
 const CardDetails = ({
   cart,
@@ -42,15 +42,18 @@ const CardDetails = ({
     ", " +
     deadline.getFullYear();
 
-  const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23";
 
   const addItemToCart = async () => {
-    const userRef = doc(db, "users", documentID);
     const newCart = cart;
-    newCart[id] = price;
-    await updateDoc(userRef, {
-      cart: newCart,
-    });
+    if (buy) newCart[id] = price;
+    if (bid) newCart[id] = bidAmt;
+    if (auth.currentUser) {
+      const documentID = auth.currentUser.uid
+      const userRef = doc(db, "users", documentID);
+      await updateDoc(userRef, {
+        cart: newCart,
+      });
+    }
   };
 
   const addToCart = async () => {
@@ -62,15 +65,15 @@ const CardDetails = ({
     navigate("/check-out-1", { state: { id: id } });
   };
 
-  const handleBid = (e) => {
+  const handleBid = async (e) => {
     if (!bidAmt) {
       alert("Please enter a bid amount.");
       e.preventDefault();
     } else if (bidAmt <= price) {
       alert("Please bid a higher price.");
       e.preventDefault();
-    } else {
-      postBid(id, parseInt(bidAmt));
+    } else  if (auth.currentUser) {
+      await postBid(id, parseInt(bidAmt));
       alert("Successful bid!");
     }
   };
@@ -106,7 +109,12 @@ const CardDetails = ({
         {buy ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
-              <button className={style["cart-btn"]} onClick={() => addToCart()}>
+              <button className={style["cart-btn"]} onClick={async () => {
+                if (auth.currentUser) {
+                  console.log(auth.currentUser)
+                  await addToCart()
+                }
+              }}>
                 ADD TO CART
               </button>
             </Link>
@@ -140,7 +148,7 @@ const CardDetails = ({
               <Link to="/cart">
                 <button
                   className={style["bid-btn"]}
-                  onClick={(e) => handleBid(e)}
+                  onClick={(e) => handleBid(e).then(() => addItemToCart())}
                 >
                   PLACE A BID
                 </button>

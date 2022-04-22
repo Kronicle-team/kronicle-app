@@ -19,7 +19,7 @@ const coupons = [
   },
 ];
 
-const CartPage = () => {
+const CartPage =  () => {
   const [bidBtn, setBidBtn] = useState(
     localStorage.getItem("bidBtn") === "true" &&
       localStorage.getItem("bidBtn") !== undefined
@@ -33,10 +33,9 @@ const CartPage = () => {
   const [currentCart, setCurrentCart] = useState({});
   const [currentCartKeys, setCurrentCartKeys] = useState([]);
   const [temp, setTemp] = useState([]);
-  const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23";
   const couponInput = useRef();
 
-  const fetchData = () => {
+  const fetchData = (documentID) => {
     onSnapshot(
       doc(db, "users", documentID),
       (docSnapshot) => {
@@ -94,7 +93,10 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    if (auth.currentUser) {
+      const documentID = auth.currentUser.uid
+      fetchData(documentID);
+    }
     setSubTotal(0);
     temp.map((card) => {
       setSubTotal((prevState) => prevState + parseInt(card.price));
@@ -112,8 +114,6 @@ const CartPage = () => {
     const isBid = bidBtn;
     localStorage.setItem("bidBtn", JSON.stringify(isBid));
   }, [currentCart]);
-
-  console.log(bidBtn);
 
   return (
     <Layout header footer>
