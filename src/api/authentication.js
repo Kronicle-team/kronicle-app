@@ -34,13 +34,14 @@ const signUp = async (email, password, vrfPassword, navigate) => {
   }
 };
 
-const pushData = async (fname, lname, phoneNum, aboutMe, navigate) => {
+const pushData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
   await setDoc(doc(db, "users", auth.currentUser.uid), {
     fullName: fname + " " + lname,
     fname: fname,
     lname: lname,
     email: auth.currentUser.email,
     phoneNum: phoneNum,
+    address: address,
     aboutMe: aboutMe,
     cart: [],
     selling_product: "",

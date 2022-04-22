@@ -8,7 +8,7 @@ import { doc, getDoc } from "firebase/firestore";
 const MyAccount = () => {
   const [data, setData] = useState({});
   const fetchData = async () => {
-    getDoc(doc(db, "users", "5FrihL0CgOch4KffrjTvlKVKNOO2")).then((docSnap) => {
+    getDoc(doc(db, "users", "HxjkE2HdQMWmOYbVQCbPYtI817x2")).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {

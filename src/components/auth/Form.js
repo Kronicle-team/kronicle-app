@@ -8,6 +8,7 @@ const Form = () => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
+  const [address, setAddress] = useState("")
   const [aboutMe, setAboutMe] = useState("");
 
   const handleReset = () => {
@@ -30,7 +31,7 @@ const Form = () => {
             alt={"Kronicle logo"}
           />
 
-          <h1 className={style["h1"]}>Form</h1>
+          <h1 className={[style["h1"], style["extra-info"]].join(" ")}>Tell us more about yourself</h1>
 
           <div className={style["name-wrapper"]}>
             <div>
@@ -59,6 +60,13 @@ const Form = () => {
             onChange={(e) => setPhoneNum(e.target.value)}
             className={style["input"]}
           />
+          <label className={style["label"]}>Address</label>
+          <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className={style["input"]}
+          />
           <label className={style["label"]}>About Me</label>
           <input
             type="text"
@@ -70,7 +78,7 @@ const Form = () => {
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            pushData(fname, lname, phoneNum, aboutMe, navigate);
+            pushData(fname, lname, phoneNum, address, aboutMe, navigate);
           }}
         >
           <button className={style["register-btn"]}>SUBMIT</button>
