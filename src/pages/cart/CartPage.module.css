@@ -36,13 +36,13 @@
 }
 
 .btnPlaceOrder {
-    background: var(--orange);
-    border: solid 1px var(--orange);
+    background: var(--darker-peach);
+    border: solid 1px var(--darker-peach);
 }
 
 .btnPlaceOrder:hover {
     background: var(--white);
-    color: var(--orange);
+    color: var(--darkest-peach);
     cursor: pointer;
 }
 
