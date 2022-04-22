@@ -143,8 +143,9 @@ const ListingPage = () => {
               value={values[input.name]}
               // onChange={onChange}
               onChange={e => {
-                onChange(e);
-                handleChange(e);
+                {
+                  input.id === 3 ? handleChange(e) : onChange(e);
+                }
               }}
             />
           ))}

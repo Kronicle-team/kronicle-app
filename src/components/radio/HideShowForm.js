@@ -70,7 +70,7 @@ function Radio({ setCat, setPricing, setPrice }) {
           <div className={style["radio-align"]}>
             <label className={style["radio-label"]}>TRADING CARD</label>
             <input
-              value="photocard"
+              value="trading card"
               type="radio"
               name="category"
               onChange={(e) => setCat(e.target.value)}
@@ -97,7 +97,7 @@ function Radio({ setCat, setPricing, setPrice }) {
           <div className={style["radio-align"]}>
             <label className={style["radio-label"]}>BID NOW</label>
             <input
-              value="bid"
+              value="bid now"
               type="radio"
               name="product_pricing"
               checked={status === 2}
