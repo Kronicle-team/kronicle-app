@@ -20,7 +20,7 @@ const coupons = [
 ]
 
 const CartPage = () => {
-    const [bidBtn, setBidBtn] = useState(true)
+    const [bidBtn, setBidBtn] = useState( localStorage.getItem('bidBtn') === 'true' && localStorage.getItem('bidBtn') !== undefined)
     const [subTotal, setSubTotal] = useState(0)
     const [total, setTotal] = useState(subTotal)
     const [shippingFee, setShippingFee] = useState(0)
@@ -32,6 +32,7 @@ const CartPage = () => {
     const [temp, setTemp] = useState([])
     const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23"
     const couponInput = useRef()
+
     const fetchData = () => {
         onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
             const newCart = {}
@@ -81,8 +82,12 @@ const CartPage = () => {
             setDeposit(Math.round(subTotal * 0.1))
             setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
         } else setTotal(subTotal * (1 - couponValue) + shippingFee)
+
+        const isBid = bidBtn
+        localStorage.setItem( 'bidBtn', JSON.stringify(isBid));
     },[currentCart])
-    console.log("temp", temp)
+
+    console.log(bidBtn)
     return (
         <Layout header footer>
             <div className={style.container}>
