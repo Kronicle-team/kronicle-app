@@ -1,14 +1,24 @@
 .nav {
     width: 50%;
     justify-content: space-around;
-    padding: 1.25rem 3rem;
-
+    padding: 1.25rem 3rem
 }
 
-.nav .active-link {
-    border-bottom: 3px solid var(--darker-orange);
-    color: var(--darker-orange);
-    font-weight: 500;
+.links {
+    color: var(--background);
+}
+
+.links:hover, .active-link {
+    color: var(--darker-peach);
+    font-family: "Montserrat SemiBold", sans-serif;
+}
+
+.links:hover {
+    text-decoration: none;
+}
+
+.active-link {
+    border-bottom: 3px solid var(--darker-peach);
 }
 
 .nav .active-link:hover {

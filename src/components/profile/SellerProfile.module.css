@@ -88,7 +88,7 @@ table tr td:last-child {
     width: 150px;
     padding: 10px;
     color: var(--background);
-    background-color: var(--orange);
+    background-color: var(--darker-peach);
     border-radius: 5px;
     border-color: transparent;
     margin: 5px;
@@ -97,7 +97,7 @@ table tr td:last-child {
 }
 
 .follow-button:hover{
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
 }
 
 .message-button{
@@ -106,7 +106,7 @@ table tr td:last-child {
     color: #000000;
     background-color: transparent;
     border-radius: 5px;
-    border: 2px solid var(--orange);
+    border: 2px solid var(--darker-peach);
     margin: 5px;
     cursor: pointer;
     font-family: "Montserrat SemiBold", sans-serif;

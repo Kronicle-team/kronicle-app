@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import style from "./RegisterForm.module.css";
+import style from "./Form.module.css";
 import { useState } from "react";
 import { signUp } from "../../api/authentication";
 import { Link } from "react-router-dom";
@@ -91,7 +91,7 @@ const RegisterForm = () => {
             type="text"
             value={aboutMe}
             onChange={(e) => setAboutMe(e.target.value)}
-            className={style["input-aboutme"]}
+            className={style["input"]}
           />
 
           <label className={style["label"]}>Email or Phone number</label>

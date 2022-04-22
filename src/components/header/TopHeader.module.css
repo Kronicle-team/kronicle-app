@@ -32,18 +32,28 @@
     font-weight: 500;
 }
 
+.top-header-left .icon:hover {
+    color: var(--darker-peach);
+}
+
 .vertical-line {
-    border-right: 1px solid var(--black);
+    border-right: 1px solid var(--background);
     height: 70%;
     margin: 0 20px;
 }
 
-.top-header-right .register {
-    color: var(--darker-orange);
+.top-header-right .register,
+.top-header-right .login
+{
+    color: var(--background);
+    font-weight: 600;
 }
 
-.top-header-right .register:hover {
+.top-header-right .register:hover,
+.top-header-right .login:hover
+{
     text-decoration: underline;
+    color: var(--darker-peach);
 }
 
 .avatar {
@@ -56,4 +66,5 @@
     font-size: 30px;
     border: 0;
 }
+
 
