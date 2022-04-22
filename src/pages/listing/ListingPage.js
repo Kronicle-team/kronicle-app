@@ -7,6 +7,11 @@ import Radio from "../../components/radio/HideShowForm";
 import { auth, db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
+const [category, setCategory] = useState("");
+const [product_pricing, setProductPricing] = useState("");
+const [price, setPrice] = useState("");
+const [image, setImage] = useState(null);
+const [url, setUrl] = useState("");
 
 const ListingPage = () => {
   const [values, setValues] = useState({
@@ -14,14 +19,6 @@ const ListingPage = () => {
     product_status: "",
     product_image: "",
   });
-
-
-  const [category, setCategory] = useState("");
-  const [product_pricing, setProductPricing] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState(null);
-  const [url, setUrl] = useState("");
-
 
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -83,11 +80,12 @@ const ListingPage = () => {
         product_image: url,
         category: category,
         product_pricing: product_pricing,
-        price: price,
+        price: parseInt(price),
         availability: "available",
         date_time: Date().toLocaleString(),
       });
       console.log("Your form has been submitted!", docRef.id);
+      alert("Your form has been submitted!");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
