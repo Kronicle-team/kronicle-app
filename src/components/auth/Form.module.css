@@ -80,6 +80,11 @@
     box-sizing: border-box;
 }
 
+.input-aboutme {
+    resize: vertical;
+    max-height: 250px;
+}
+
 .button-wrapper{
     margin: 30px 0;
     display: flex;

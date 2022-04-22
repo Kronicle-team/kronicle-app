@@ -22,6 +22,7 @@ const formatTime = (hr, min, sec) => {
   hr = hr % 12;
   hr = hr ? hr : 12;
   min = min.toString().padStart(2, '0');
+  sec = sec.toString().padStart(2, '0');
   return hr + ':' + min + ':' + sec + ' ' + ampm;
 }
 

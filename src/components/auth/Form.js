@@ -70,11 +70,11 @@ const Form = () => {
             className={style["input"]}
           />
           <label className={style["label"]}>About Me</label>
-          <input
-            type="text"
-            value={aboutMe}
-            onChange={(e) => setAboutMe(e.target.value)}
-            className={style["input-aboutme"]}
+          <textarea
+              value={aboutMe}
+              onChange={(e) => setAboutMe(e.target.value)}
+              className={[style["input"], style["input-aboutme"]].join(" ")}
+              rows={5}
           />
         </form>
         <div

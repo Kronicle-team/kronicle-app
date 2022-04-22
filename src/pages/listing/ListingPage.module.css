@@ -36,7 +36,7 @@ input[type="file"] {
     height: 50px;
     padding: 10px;
     border: none;
-    background-color: var(--orange);
+    background-color: var(--darker-peach);
     color: white;
     border-radius: 10px;
     font-size: 16px;
@@ -47,7 +47,7 @@ input[type="file"] {
 }
 
 .listing-btn:hover {
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
 }
 
 .label-listing{
