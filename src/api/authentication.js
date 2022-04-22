@@ -49,4 +49,14 @@ const pushData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
     navigate("/");
   });
 };
-export { signIn, signUp, pushData };
+
+const logout = async () => {
+  try {
+    await auth.signOut();
+    console.log("Sign out successfully!");
+  } catch (err) {
+    console.log("err:", err);
+  }
+};
+
+export { signIn, signUp, pushData, logout };
