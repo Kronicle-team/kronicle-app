@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import style from "./RegisterForm.module.css";
+import style from "./Form.module.css";
 import { useState } from "react";
 import { signIn } from "../../api/authentication";
 import {Link} from "react-router-dom";
@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Layout className={style["register-container"]} header footer>
+    <Layout className={style["login-container"]} header footer>
       <div className={style["container"]}>
         <form className={style["form"]} onSubmit={handleSubmit}>
           <h1 className={style["h1"]}>Login</h1>
