@@ -21,7 +21,6 @@ const ListingPage = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
-  const [progress, setProgress] = useState(0);
 
   const handleChange = e => {
     if (e.target.files[0]) {
@@ -37,7 +36,6 @@ const ListingPage = () => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        setProgress(progress);
       },
       error => {
         console.log(error);
@@ -82,7 +80,7 @@ const ListingPage = () => {
         availability: "available",
         date_time: Date().toLocaleString(),
       });
-      console.log("Your review has been submitted!", docRef.id);
+      console.log("Your form has been submitted!", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -136,7 +134,8 @@ const ListingPage = () => {
               key={input.id}
               {...input}
               value={values[input.name]}
-              onChange={onChange}
+              // onChange={onChange}
+              onChange={e => { onChange(e); handleChange(e); }}
             />
           ))}
           <Radio
@@ -151,6 +150,7 @@ const ListingPage = () => {
           <button
             className={style["listing-btn"]}
             onClick={() => {
+              handleUpload();
               pushProduct().then(r => {
                 console.log(r);
               });
@@ -159,6 +159,10 @@ const ListingPage = () => {
             SUBMIT
           </button>
         </div>
+        <br />
+        {url}
+        <br />
+        <img src={url || "http://via.placeholder.com/300"} alt="firebase-image" />
       </div>
     </Layout>
   );
