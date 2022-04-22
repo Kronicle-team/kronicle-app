@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "../form/ListingForm.module.css";
 
 // Use React Hook
-function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunction }) {
+function Radio({ setCat, setPricing, setPrice }) {
   const [status, setStatus] = useState(0); // 0: no show, 1: show price, 2: show min price.
 
 
@@ -25,7 +25,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
             id="sellingPrice"
             required={true}
             placeholder="Selling Price"
-            onChange={(e) => setPriceFunction(e.target.value)}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
       );
@@ -46,7 +46,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
             id="minPrice"
             required={true}
             placeholder="Min Price"
-            onChange={(e) => setPriceFunction(e.target.value)}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
       );
@@ -64,7 +64,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
               value="album photocard"
               type="radio"
               name="category"
-              onChange={(e) => setCategoryFunction(e.target.value)}
+              onChange={(e) => setCat(e.target.value)}
             />
           </div>
           <div className={style["radio-align"]}>
@@ -73,7 +73,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
               value="photocard"
               type="radio"
               name="category"
-              onChange={(e) => setCategoryFunction(e.target.value)}
+              onChange={(e) => setCat(e.target.value)}
             />
           </div>
         </div>
@@ -91,7 +91,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
               name="product_pricing"
               checked={status === 1}
               onClick={(e) => radioHandler(1)}
-              onChange={(e) => setProductPricingFunction(e.target.value)}
+              onChange={(e) => setPricing(e.target.value)}
             />
           </div>
           <div className={style["radio-align"]}>
@@ -102,7 +102,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
               name="product_pricing"
               checked={status === 2}
               onClick={(e) => radioHandler(2)}
-              onChange={(e) => setProductPricingFunction(e.target.value)}
+              onChange={(e) => setPricing(e.target.value)}
             />
           </div>
         </div>

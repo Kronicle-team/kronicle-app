@@ -1,10 +1,10 @@
 import Layout from "../../components/Layout";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FormInput from "../../components/form/ListingForm";
 import style from "./ListingPage.module.css";
 import common from "../../styles/common.module.css";
 import Radio from "../../components/radio/HideShowForm";
-import { db } from "../../config/firebase.js";
+import { auth, db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
 
@@ -22,21 +22,10 @@ const ListingPage = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
 
-  const handleChange = e => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
 
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
-      "state_changed",
-      snapshot => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-      },
       error => {
         console.log(error);
       },
@@ -66,6 +55,24 @@ const ListingPage = () => {
     setPrice(price);
   };
 
+  const didMount = useRef(false);
+
+  useEffect(() => {
+    if (didMount.current) {
+      console.log("image: ", image);
+      handleUpload(
+      );
+    } else {
+      didMount.current = true;
+    }
+  }, [image]);
+
+  const handleChange = e => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
 
 
   const pushProduct = async () => {
@@ -73,7 +80,7 @@ const ListingPage = () => {
       const docRef = await addDoc(collection(db, "listing"), {
         product_name: values.product_name,
         product_status: values.product_status,
-        product_image: values.product_image,
+        product_image: url,
         category: category,
         product_pricing: product_pricing,
         price: price,
@@ -139,10 +146,9 @@ const ListingPage = () => {
             />
           ))}
           <Radio
-            name="radio"
-            value={values.radio}
-            onChange={onChange}
-            setRadio={setCategoryFunction}
+            setCat={setCategoryFunction}
+            setPricing={setProductPricingFunction}
+            setPrice={setPriceFunction}
 
           />
         </form>
@@ -159,10 +165,6 @@ const ListingPage = () => {
             SUBMIT
           </button>
         </div>
-        <br />
-        {url}
-        <br />
-        <img src={url || "http://via.placeholder.com/300"} alt="firebase-image" />
       </div>
     </Layout>
   );
