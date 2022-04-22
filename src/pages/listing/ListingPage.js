@@ -6,11 +6,7 @@ import common from "../../styles/common.module.css";
 import Radio from "../../components/radio/HideShowForm";
 import { db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
-
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(values);
-// };
+import { storage } from "../../config/firebase";
 
 const ListingPage = () => {
   const [values, setValues] = useState({
@@ -20,10 +16,45 @@ const ListingPage = () => {
   });
 
 
-
   const [category, setCategory] = useState("");
   const [product_pricing, setProductPricing] = useState("");
   const [price, setPrice] = useState("");
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+  const [progress, setProgress] = useState(0);
+
+  const handleChange = e => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            setUrl(url);
+          });
+      }
+    );
+  };
+
+  console.log("image: ", image);
 
   const setCategoryFunction = (category) => {
     setCategory(category);
@@ -37,14 +68,7 @@ const ListingPage = () => {
     setPrice(price);
   };
 
-  // Current state
-  const [curr , setCurr] = useState("");
 
-  // // Function to get time and date
-  // const getDate = () => {
-  //   const a = firestore.Timestamp.now().toDate().toString();
-  //   setCurr(a);
-  // }
 
   const pushProduct = async () => {
     try {
@@ -63,9 +87,6 @@ const ListingPage = () => {
       console.error("Error adding document: ", e);
     }
   };
-
-  const [fileUrl, setFileUrl] = useState(null);
-  const [listing, setUsers] = useState([]);
 
   const inputs = [
     {
@@ -122,9 +143,9 @@ const ListingPage = () => {
             name="radio"
             value={values.radio}
             onChange={onChange}
-            setRadio={[setCategoryFunction, setProductPricingFunction, setPriceFunction]}
+            setRadio={setCategoryFunction}
+
           />
-          <h1>{curr}</h1>
         </form>
         <div className={style["listing-btn-container"]}>
           <button
@@ -133,7 +154,6 @@ const ListingPage = () => {
               pushProduct().then(r => {
                 console.log(r);
               });
-              console.log();
             }}
           >
             SUBMIT

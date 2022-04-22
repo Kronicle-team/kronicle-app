@@ -10,10 +10,6 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
     setStatus(status);
   };
 
-  const [focused, setFocused] = useState(false);
-  const handleFocus = (e) => {
-    setFocused(true);
-  };
 
   function displaySellingPrice() {
     if (status === 1) {
@@ -85,7 +81,7 @@ function Radio({ setCategoryFunction, setProductPricingFunction, setPriceFunctio
       </div>
 
       <div className={style["form-input"]}>
-        <label className={style["label-listing"]}>Type of Pricing *</label>
+        <label className={style["label-listing"]}>Type of Pricing*</label>
         <div className={style["radio-container-listing"]}>
           <div className={style["radio-align"]}>
             <label className={style["radio-label"]}>BUY NOW</label>
