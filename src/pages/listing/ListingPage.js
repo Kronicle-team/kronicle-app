@@ -7,17 +7,19 @@ import Radio from "../../components/radio/HideShowForm";
 import { auth, db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
-const [category, setCategory] = useState("");
-const [product_pricing, setProductPricing] = useState("");
-const [price, setPrice] = useState("");
-const [image, setImage] = useState(null);
-const [url, setUrl] = useState("");
+
 
 const ListingPage = () => {
+  const [category, setCategory] = useState("");
+  const [product_pricing, setProductPricing] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+
   const [values, setValues] = useState({
     product_name: "",
     product_status: "",
-    product_image: "",
+    product_image: ""
   });
 
   const handleUpload = () => {
@@ -71,7 +73,6 @@ const ListingPage = () => {
   };
 
 
-
   const pushProduct = async () => {
     try {
       const docRef = await addDoc(collection(db, "listing"), {
@@ -83,6 +84,7 @@ const ListingPage = () => {
         price: parseInt(price),
         availability: "available",
         date_time: Date().toLocaleString(),
+        seller_id: auth.currentUser.uid
       });
       console.log("Your form has been submitted!", docRef.id);
       alert("Your form has been submitted!");
@@ -101,7 +103,7 @@ const ListingPage = () => {
         "Product name should be 3-16 characters and shouldn't include any special character!",
       label: "Product name*",
       pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
+      required: true
     },
     {
       id: 2,
@@ -112,7 +114,7 @@ const ListingPage = () => {
       errorMessage: "It should be a meaningful description of your products!",
       label: "Product status*",
       pattern: "^.{15,}$",
-      required: true,
+      required: true
     },
     {
       id: 3,
@@ -121,8 +123,8 @@ const ListingPage = () => {
       placeholder: "Enter the selling price for the product",
       label: "Upload the product's image*",
       errorMessage: "Please input your product's image'",
-      required: true,
-    },
+      required: true
+    }
   ];
 
   const onChange = (e) => {
@@ -140,7 +142,10 @@ const ListingPage = () => {
               {...input}
               value={values[input.name]}
               // onChange={onChange}
-              onChange={e => { onChange(e); handleChange(e); }}
+              onChange={e => {
+                onChange(e);
+                handleChange(e);
+              }}
             />
           ))}
           <Radio
