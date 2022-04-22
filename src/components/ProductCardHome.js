@@ -12,7 +12,7 @@ const ProductCardHome = (props) => {
   }
 
   cardName = words.join(" ");
-  const path = props.bid ? `/cards/bid/${props.id}` : `/cards/buy-now/${props.id}`
+  const path = props.product_pricing === "bid now" ? `/cards/bid/${props.id}` : `/cards/buy-now/${props.id}`
 
     return (
         <div className={style.card}>

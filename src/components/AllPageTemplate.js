@@ -37,7 +37,7 @@ const AllPageTemplate = ({fetchedData, title}) => {
                         console.log(card.id)
                         return (
                             <div className={style.cardSingleWrapper}>
-                                <ProductCardHome id={card.id} key={card.id} img={card.product_image} name={card.product_name} price={card.price}/>
+                                <ProductCardHome id={card.id} key={card.id} img={card.product_image} name={card.product_name} price={card.price} product_pricing={card.product_pricing}/>
                             </div>
                         )
                     })}
