@@ -72,7 +72,7 @@ const SellerProfile = () => {
           {products.map((product) => {
             if (product.seller_id === "HR6QlZUlyacmra6d3inTTrbw8sf2") {
               return (
-                <div className={style.card}>
+                <div key={product.id} className={style.card}>
                   <div>
                     <Link to={"/"}>
                       <div className={style.imgWrapper}>

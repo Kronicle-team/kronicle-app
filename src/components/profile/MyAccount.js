@@ -2,13 +2,13 @@ import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { db } from "../../config/firebase";
+import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 const MyAccount = () => {
   const [data, setData] = useState({});
   const fetchData = async () => {
-    getDoc(doc(db, "users", "HxjkE2HdQMWmOYbVQCbPYtI817x2")).then((docSnap) => {
+    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {

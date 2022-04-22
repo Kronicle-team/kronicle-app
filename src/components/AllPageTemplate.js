@@ -10,7 +10,6 @@ import {
 
 const AllPageTemplate = ({ fetchedData, title }) => {
   const [data, setData] = useState(fetchedData);
-  console.log(fetchedData);
 
   let maxItemsPerPage = 12;
   const [page, setPage] = useState(0);
@@ -38,10 +37,9 @@ const AllPageTemplate = ({ fetchedData, title }) => {
           .slice(page * maxItemsPerPage, maxItemsPerPage * (page + 1))
           .map((card) => {
             return (
-              <div className={style.cardSingleWrapper}>
+              <div key={card.id} className={style.cardSingleWrapper}>
                 <ProductCardHome
                   id={card.id}
-                  key={card.id}
                   img={card.product_image}
                   name={card.product_name}
                   price={card.price}

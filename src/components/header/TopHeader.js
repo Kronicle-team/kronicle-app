@@ -18,6 +18,7 @@ const TopHeader = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [hoverListing, setHoverListing] = useState(false);
   const [hoverCart, setHoverCart] = useState(false);
+  const [hoverUser, setHoverUser] = useState(false);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -67,20 +68,23 @@ const TopHeader = () => {
       <div className={[style["top-header-right"], common["flex"]].join(" ")}>
         {isLoggedIn ? (
           <>
-            <Link to="/my-account" className={style["avatar"]}>
-              <FontAwesomeIcon icon={faUserCircle} />
+            <Link to="/my-account" className={style["avatar"]}
+                  onMouseOver={() => setHoverUser(true)}
+                  onMouseLeave={() => setHoverUser(false)}>
+              <FontAwesomeIcon icon={faUserCircle}
+                               style={hoverUser ? { color: "#FFA092" } : { color: "#F2EEE7" }}/>
             </Link>
-            <Link to="/" onClick={() => logout()}>
+            <Link to="/" className={style["auth"]} onClick={() => logout()}>
               Logout
             </Link>
           </>
         ) : (
           <>
-            <Link to="/login" className={style["login"]}>
+            <Link to="/login" className={style["auth"]}>
               Login
             </Link>
             <div className={style["vertical-line"]} />
-            <Link to="/register" className={style["register"]}>
+            <Link to="/register" className={style["auth"]}>
               Register
             </Link>
           </>
