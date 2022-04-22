@@ -1,16 +1,9 @@
-import React, {useEffect} from "react";
 import style from "./ProductCardHome.module.css"
 import {Link} from "react-router-dom";
+import {capitalizeAllWords} from "../helper/formatData";
 
 const ProductCardHome = (props) => {
-  let cardName = props.name;
-  const words = cardName.split(" ");
-
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-  }
-
-  cardName = words.join(" ");
+  const cardName = capitalizeAllWords(props.name);
   const path = props.productLink
 
     return (

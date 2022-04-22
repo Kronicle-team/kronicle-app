@@ -17,7 +17,7 @@ const AllTradingCardsPage = () => {
     if (listing !== []) {
         let temp = []
         listing.map((card) => {
-            if (card.category === "trading card") temp.push(card)
+            if (card.category === "trading card" && card.availability !== "sold") temp.push(card)
         })
         return (
             <AllPageTemplate fetchedData={temp} title={"Trading Cards"}/>

@@ -1,30 +1,45 @@
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import {postBid} from "../../api/handleBid";
+import {capitalizeAllWords, formatDescription, formatTime} from "../../helper/formatData";
 
-const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
+const CardDetails = ({id, img, name, price, description, seller, date, buy, bid}) => {
+  const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
+
+  const uploadDate = new Date(date);
+  const period = 7;
+  const deadline = new Date(uploadDate.setDate(uploadDate.getDate() + period))
+  const datestring = formatTime(deadline.getHours(), deadline.getMinutes(), deadline.getSeconds())
+      + " - " + ("0" + deadline.getDate()).slice(-2) + " " +
+      (deadline.toLocaleString("en-us", { month: "short" })) + ", " +
+      deadline.getFullYear();
+
   const addToCart = () => {
     alert("Item has been added to cart.")
   }
 
+  const handleBuyNow = () => {
+    navigate('/check-out-1', { state: { id: id } });
+  }
+
   const handleBid = (e) => {
-    if (bidAmt <= price) {
+    if (!bidAmt) {
+      alert("Please enter a bid amount.");
+      e.preventDefault();
+    } else if (bidAmt <= price) {
       alert("Please bid a higher price.");
       e.preventDefault();
     } else {
-      alert("Bid successfully. You will be redirect to your cart.")
+      postBid(id, parseInt(bidAmt))
+      alert("Successful bid!")
     }
   }
 
-  let cardName = name;
-  const words = cardName.split(" ");
-
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-  }
-  cardName = words.join(" ");
+  const cardName = capitalizeAllWords(name);
+  const desc = formatDescription(description)
 
   return (
       <section className={[common["flex"], style["container"]].join(" ")}>
@@ -38,7 +53,7 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
           }
           <h1>{price.toLocaleString() + " VND"}</h1>
           <h4>Product Description</h4>
-          <div className={style["desc"]}>{description}</div>
+          <div className={style["desc"]}>{desc}</div>
 
           <h4>Seller</h4>
           <div className={[style["seller-container"], common["flex"]].join(" ")}>
@@ -51,16 +66,16 @@ const CardDetails = ({img, name, price, description, seller, buy, bid}) => {
           {buy
           ? <div className={[common["flex"], style["btn-container"]].join(" ")}>
                 <button className={style["cart-btn"]} onClick={() => addToCart()}>ADD TO CART</button>
-                <Link to="/check-out-1"><button className={style["buy-btn"]}>BUY NOW</button></Link>
+                <button className={style["buy-btn"]} onClick={() => handleBuyNow()}>BUY NOW</button>
               </div>
           : null
           }
           {bid
               ? <>
-                  <h6>Available until 23:59 April 1, 2022</h6>
+                  <h6>Available until {datestring}</h6>
                   <h4>Enter your bid amount</h4>
                 <div className={[common["flex"], style["input-container"]].join(" ")}>
-                  <input type="number" className={style["input"]} onChange={e => setBidAmt(e.target.value)}/>
+                  <input type="number" className={style["input"]} onChange={e => setBidAmt(parseInt(e.target.value))}/>
                   <div className={[style["currency"], common["text-center"]].join(" ")}>VND</div>
                 </div>
 

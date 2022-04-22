@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutOne.module.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 const CheckoutOne = () => {
   const [firstName, setFirstName] = useState("");
@@ -10,6 +10,14 @@ const CheckoutOne = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [postal, setPostal] = useState("");
+
+  const {state} = useLocation();
+  const { id } = state;
+  const navigate = useNavigate();
+  const handleCheckout = () => {
+    navigate('/check-out-2', { state: { id: id } });
+  }
+
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
@@ -94,9 +102,7 @@ const CheckoutOne = () => {
         </form>
 
         <div className={style["button-wrapper"]}>
-          <Link to="/check-out-2">
-            <button className={style["next-button"]}>NEXT</button>
-          </Link>
+          <button className={style["next-button"]} onClick={() => handleCheckout()}>NEXT</button>
           <Link to="/">
             <button className={style["cancel-button"]}>CANCEL</button>
           </Link>

@@ -31,7 +31,7 @@ const pages = {
   },
   all: {
     name: "All",
-    link: "/all",
+    link: "/cards/all",
     component: <AllPage />
   },
   login: {

@@ -17,7 +17,7 @@ const AllBidPage = () => {
     if (listing !== []) {
         let temp = []
         listing.map((card) => {
-            if (card.product_pricing === "bid now") temp.push(card)
+            if (card.product_pricing === "bid now" && card.availability !== "sold") temp.push(card)
         })
         return (
             <AllPageTemplate fetchedData={temp} title={"Bid now"}/>
