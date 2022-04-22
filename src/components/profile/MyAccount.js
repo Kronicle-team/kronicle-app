@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import {logout} from "../../api/authentication";
 
 const MyAccount = () => {
   const [data, setData] = useState({});
@@ -91,7 +92,7 @@ const MyAccount = () => {
                 alignItems: "center",
               }}
             >
-              <Link to="/login">
+              <Link to="/login" onClick={() => logout()}>
                 <button className={style["logout-button"]}>LOG OUT</button>
               </Link>
             </div>

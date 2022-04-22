@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { Link } from "react-router-dom";
+import {capitalizeAllWords} from "../../helper/formatData";
 
 const SellerProfile = () => {
   const [data, setData] = useState({});
@@ -85,9 +86,9 @@ const SellerProfile = () => {
                     </Link>
 
                     <Link to={"/"}>
-                      <h6 className={style.cardName}>{product.product_name}</h6>
+                      <h6 className={style.cardName}>{capitalizeAllWords(product.product_name)}</h6>
                     </Link>
-                    <div>{product.price + " VND"}</div>
+                    <div>{product.price.toLocaleString() + " VND"}</div>
                   </div>
                 </div>
               );

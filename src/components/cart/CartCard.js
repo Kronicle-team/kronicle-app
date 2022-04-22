@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import {capitalizeAllWords} from "../../helper/formatData";
 
 const CartCard = ({ cart, id, image, name, price, bid, highestBid }) => {
   const [winning, setWinning] = useState(true);
@@ -42,7 +43,7 @@ const CartCard = ({ cart, id, image, name, price, bid, highestBid }) => {
       <div className={style.cardContentContainer}>
         <div className={style.cardContent}>
           <Link className={style.cardNameWrapper} to={productLink}>
-            <h5 className={style.cardName}>{name}</h5>
+            <h5 className={style.cardName}>{capitalizeAllWords(name)}</h5>
           </Link>
           <div className={style.cardPriceWrapper}>
             <p className={style.cardPrice}>{price + " " + currency}</p>
