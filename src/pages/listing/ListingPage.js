@@ -1,54 +1,102 @@
 import Layout from "../../components/Layout";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FormInput from "../../components/form/ListingForm";
 import style from "./ListingPage.module.css";
 import common from "../../styles/common.module.css";
 import Radio from "../../components/radio/HideShowForm";
-import app from "../../App";
-import {db} from "../../config/firebase.js";
-
-
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(values);
-// };
+import { auth, db } from "../../config/firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+import { storage } from "../../config/firebase";
 
 
 const ListingPage = () => {
+  const [category, setCategory] = useState("");
+  const [product_pricing, setProductPricing] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+
   const [values, setValues] = useState({
-    productname: "",
-    productsatus: "",
-    file: ""
+    product_name: "",
+    product_status: "",
+    product_image: ""
   });
 
-  const [fileUrl, setFileUrl] = useState(null);
-  const [listing, setUsers] = useState([]);
-  const db = app.firestore();
-
-  const onFileChange = async (e) => {
-    const file = e.target.files[0];
-    const storageRef = app.storage().ref();
-    const fileRef = storageRef.child(file.name);
-    await fileRef.put(file);
-    setFileUrl(await fileRef.getDownloadURL());
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      error => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(url => {
+            setUrl(url);
+          });
+      }
+    );
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const values = e.target.values.value;
-    if (!values || !fileUrl) {
-      return;
+  console.log("image: ", image);
+
+  const setCategoryFunction = (category) => {
+    setCategory(category);
+  };
+
+  const setProductPricingFunction = (product_pricing) => {
+    setProductPricing(product_pricing);
+  };
+
+  const setPriceFunction = (price) => {
+    setPrice(price);
+  };
+
+  const didMount = useRef(false);
+
+  useEffect(() => {
+    if (didMount.current) {
+      console.log("image: ", image);
+      handleUpload(
+      );
+    } else {
+      didMount.current = true;
     }
-    await db.collection("listing").doc(values).set({
-      name: values,
-      avatar: fileUrl
-    });
+  }, [image]);
+
+  const handleChange = e => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+
+  const pushProduct = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "listing"), {
+        product_name: values.product_name,
+        product_status: values.product_status,
+        product_image: url,
+        category: category,
+        product_pricing: product_pricing,
+        price: parseInt(price),
+        availability: "available",
+        date_time: Date().toLocaleString(),
+        seller_id: auth.currentUser.uid
+      });
+      console.log("Your form has been submitted!", docRef.id);
+      alert("Your form has been submitted!");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   const inputs = [
     {
       id: 1,
-      name: "productname",
+      name: "product_name",
       type: "text",
       placeholder: "Please enter the product’s name",
       errorMessage:
@@ -59,17 +107,18 @@ const ListingPage = () => {
     },
     {
       id: 2,
-      name: "productsatus",
+      name: "product_status",
       type: "textarea",
-      placeholder: "Please describe product's status, and what users will receive more than 15 words",
+      placeholder:
+        "Please describe product's status, and what users will receive more than 15 characters",
       errorMessage: "It should be a meaningful description of your products!",
       label: "Product status*",
-      pattern: "^[A-Za-z0-9]{15,}$",
+      pattern: "^.{15,}$",
       required: true
     },
     {
       id: 3,
-      name: "file",
+      name: "product_image",
       type: "file",
       placeholder: "Enter the selling price for the product",
       label: "Upload the product's image*",
@@ -78,39 +127,51 @@ const ListingPage = () => {
     }
   ];
 
-
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-
   return (
     <Layout header footer>
       <div className={[style["app"], common["flex"]].join(" ")}>
-        <form onSubmit={onSubmit} className={style["listing-form"]} onChange={onFileChange}>
+        <form className={style["listing-form"]}>
           <h1 className={style["listing-title"]}>SELLER LISTING</h1>
-          {listing.inputs.map((input) => (
+          {inputs.map((input) => (
             <FormInput
               key={input.id}
               {...input}
               value={values[input.name]}
-              onChange={onChange}
-            />))}
+              // onChange={onChange}
+              onChange={e => {
+                {
+                  input.id === 3 ? handleChange(e) : onChange(e);
+                }
+              }}
+            />
+          ))}
           <Radio
-            name="radio"
-            value={values.radio}
-            onChange={onChange}
+            setCat={setCategoryFunction}
+            setPricing={setProductPricingFunction}
+            setPrice={setPriceFunction}
+
           />
-          <div className={style["listing-btn-container"]}>
-            <button className={style["listing-btn"]}>SUBMIT</button>
-          </div>
         </form>
+        <div className={style["listing-btn-container"]}>
+          <button
+            className={style["listing-btn"]}
+            onClick={() => {
+              handleUpload();
+              pushProduct().then(r => {
+                console.log(r);
+              });
+            }}
+          >
+            SUBMIT
+          </button>
+        </div>
       </div>
     </Layout>
   );
 };
 
 export default ListingPage;
-
-
-
