@@ -26,6 +26,10 @@
     margin: auto;
 }
 
+.extra-info {
+    margin-bottom: 2rem;
+}
+
 .logo{
     width: 100px;
     height: 100px;

@@ -4,42 +4,59 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-const signIn = async (email, password) => {
+
+const signIn = async (email, password, navigate) => {
+  await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("SignIn success");
+        navigate("/form");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+};
+
+const signUp = async (email, password, vrfPassword, navigate) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.alert("Sign In success");
+    if (password === vrfPassword) {
+      await createUserWithEmailAndPassword(auth, email, password).then(
+          (userCredentials) => {
+            const user = userCredentials.user;
+            console.log("Create user: ", email);
+            window.alert("Sign up successful!");
+            navigate("/login");
+          }
+      );
+    }
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
 
-const signUp = async (
-  uid,
-  fname,
-  lname,
-  email,
-  title,
-  aboutMe,
-  password,
-  vrfPassword
-) => {
+const pushData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
+  await setDoc(doc(db, "users", auth.currentUser.uid), {
+    fullName: fname + " " + lname,
+    fname: fname,
+    lname: lname,
+    email: auth.currentUser.email,
+    phoneNum: phoneNum,
+    address: address,
+    aboutMe: aboutMe,
+    cart: [],
+    selling_product: "",
+  }).then(() => {
+    navigate("/");
+  });
+};
+
+const logout = async () => {
   try {
-    if (password === vrfPassword) {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "users", auth.currentUser.uid), {
-        fullName: fname + lname,
-        fname: fname,
-        lname: lname,
-        email: email,
-        title: title,
-        aboutMe: aboutMe,
-      });
-      alert("Sign Up success");
-    }
+    await auth.signOut();
+    console.log("Sign out successfully!");
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.log("err:", err);
   }
 };
-export { signIn, signUp };
+
+export { signIn, signUp, pushData, logout };

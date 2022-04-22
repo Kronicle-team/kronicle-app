@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import style from "./Form.module.css";
 import { useState } from "react";
 import { signIn } from "../../api/authentication";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
   const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
@@ -13,17 +13,26 @@ const LoginForm = () => {
     alert("Form submitted");
   };
 
+  let navigate = useNavigate();
+
   return (
     <Layout className={style["login-container"]} header footer>
       <div className={style["container"]}>
         <form className={style["form"]} onSubmit={handleSubmit}>
-          <h1 className={style["h1"]}>Login</h1>
           <img
             src={"../../media/icons/logo.png"}
             className={style["logo"]}
             alt={"Kronicle logo"}
           />
-          <p className={style["p"]}>Not a member? <Link to="/register" className={style["a"]}>Register.</Link></p>    
+
+          <h1 className={style["h1"]}>Login</h1>
+
+          <p className={style["p"]}>
+            Not a member?{" "}
+            <Link to="/register" className={style["a"]}>
+              Register.
+            </Link>
+          </p>
           <label className={style["label"]}>Email or Phone number</label>
           <input
             type="text"
@@ -42,12 +51,10 @@ const LoginForm = () => {
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            signIn(emailOrPhoneNumber, password);
+            signIn(emailOrPhoneNumber, password, navigate);
           }}
         >
-          <Link to="/">
           <button className={style["register-btn"]}>SIGN IN</button>
-          </Link>
         </div>
       </div>
     </Layout>
