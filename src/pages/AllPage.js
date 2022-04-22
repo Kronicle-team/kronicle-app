@@ -1,9 +1,9 @@
-import AllPageTemplate from "../../components/AllPageTemplate";
-import { db } from "../../config/firebase"
+import AllPageTemplate from "../components/AllPageTemplate";
+import { db } from "../config/firebase"
 import {collection, getDocs} from "firebase/firestore";
 import { useState, useEffect } from "react"
 
-const AllTradingCardsPage = () => {
+const AllPage = () => {
     const listingRef = collection(db, "listing")
     const [listing, setListing] = useState([])
     const fetchedData = () => {
@@ -15,15 +15,11 @@ const AllTradingCardsPage = () => {
         fetchedData()
     }, [])
     if (listing !== []) {
-        let temp = []
-        listing.map((card) => {
-            if (card.category === "trading card") temp.push(card)
-        })
         return (
-            <AllPageTemplate fetchedData={temp} title={"Trading Cards"}/>
+            <AllPageTemplate fetchedData={listing} title={"All"}/>
         )
     }
 }
 
 
-export default AllTradingCardsPage
+export default AllPage

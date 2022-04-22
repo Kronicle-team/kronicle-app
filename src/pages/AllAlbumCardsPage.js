@@ -1,5 +1,5 @@
-import AllPageTemplate from "../../components/AllPageTemplate";
-import { db } from "../../config/firebase"
+import AllPageTemplate from "../components/AllPageTemplate";
+import { db } from "../config/firebase"
 import {collection, getDocs} from "firebase/firestore";
 import { useState, useEffect } from "react"
 
