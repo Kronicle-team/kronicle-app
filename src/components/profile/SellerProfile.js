@@ -1,13 +1,16 @@
 import Layout from "../../components/Layout";
 import style from "./SellerProfile.module.css";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import { Link } from "react-router-dom";
+import {capitalizeAllWords} from "../../helper/formatData";
 
 const SellerProfile = () => {
   const [data, setData] = useState({});
+  const [products, setProducts] = useState([]);
   const fetchData = async () => {
-    getDoc(doc(db, "users", "5FrihL0CgOch4KffrjTvlKVKNOO2")).then((docSnap) => {
+    getDoc(doc(db, "users", "HR6QlZUlyacmra6d3inTTrbw8sf2")).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -15,9 +18,30 @@ const SellerProfile = () => {
       }
     });
   };
+
+  const fetchProduct = async () => {
+    getDocs(collection(db, "listing"))
+      .then((querySnapshot) => {
+        const newUserDataArray = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setProducts(newUserDataArray);
+      })
+      .catch((err) => {
+        console.error("Failed to retrieve data", err);
+      });
+  };
+
   useEffect(() => {
-    fetchData();
+    fetchData().then(() => {});
   }, []);
+
+  useEffect(() => {
+    fetchProduct().then(() => console.log(products));
+  }, []);
+
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
@@ -29,14 +53,47 @@ const SellerProfile = () => {
           />
           <div className={style["name"]}>{data.fullName}</div>
           <div className={style["info"]}>
-            <p>100% new authenticated cards</p>
-            <p>I live in Korea</p>
+            <p>{data.aboutMe}</p>
           </div>
 
           <div className={style["button-wrapper"]}>
             <button className={style["follow-button"]}>Follow</button>
             <button className={style["message-button"]}>Message</button>
           </div>
+        </div>
+
+        <div className={style["sell-container"]}>
+          <nav className={style["nav"]}>
+            <Link to="/" className={style["active-link"]}>
+              Products
+            </Link>
+          </nav>
+        </div>
+        <div className={style["product-wrapper"]}>
+          {products.map((product) => {
+            if (product.seller_id === "HR6QlZUlyacmra6d3inTTrbw8sf2") {
+              return (
+                <div key={product.id} className={style.card}>
+                  <div>
+                    <Link to={"/"}>
+                      <div className={style.imgWrapper}>
+                        <img
+                          src={product.product_image}
+                          alt={"product"}
+                          className={style.cardImg}
+                        />
+                      </div>
+                    </Link>
+
+                    <Link to={"/"}>
+                      <h6 className={style.cardName}>{capitalizeAllWords(product.product_name)}</h6>
+                    </Link>
+                    <div>{product.price.toLocaleString() + " VND"}</div>
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </Layout>

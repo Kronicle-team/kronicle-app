@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 40px;
+    flex-direction: column;
 }
 
 .listing-form{
@@ -31,11 +32,11 @@ input[type="file"] {
 }
 
 .listing-btn{
-    width: 40%;
+    width: 20%;
     height: 50px;
     padding: 10px;
     border: none;
-    background-color: var(--orange);
+    background-color: var(--darker-peach);
     color: white;
     border-radius: 10px;
     font-size: 16px;
@@ -46,7 +47,7 @@ input[type="file"] {
 }
 
 .listing-btn:hover {
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
 }
 
 .label-listing{

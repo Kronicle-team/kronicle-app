@@ -10,6 +10,7 @@
 
 .details {
     margin-left: 5%;
+    width: 45%
 }
 
 .details h1, .details h3 {
@@ -17,7 +18,7 @@
 }
 
 .details h1 {
-    color: var(--orange);
+    color: var(--darker-peach);
     margin: 0 0 5px;
 }
 
@@ -74,11 +75,11 @@
 }
 
 .buy-btn {
-    background: var(--orange);
+    background: var(--darker-peach);
 }
 
 .buy-btn:hover {
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
 }
 
 .cart-btn {
@@ -120,7 +121,7 @@
 .bid-btn {
     padding: 15px 60px;
     border-radius: 10px;
-    background: var(--orange);
+    background: var(--darker-peach);
     outline: none;
     border: none;
     color: var(--white);
@@ -129,7 +130,7 @@
 
 .bid-btn:hover {
     cursor: pointer;
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
 }
 
 @media only screen and (min-width: 1500px) {

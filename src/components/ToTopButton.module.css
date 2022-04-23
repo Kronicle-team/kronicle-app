@@ -15,7 +15,7 @@
 }
 
 .btnWrapper:hover {
-    background: var(--orange);
+    background: var(--darker-peach);
     border-radius: 10px;
     cursor: pointer;
 }

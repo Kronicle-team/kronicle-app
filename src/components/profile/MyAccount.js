@@ -2,13 +2,14 @@ import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { db } from "../../config/firebase";
+import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import {logout} from "../../api/authentication";
 
 const MyAccount = () => {
   const [data, setData] = useState({});
   const fetchData = async () => {
-    getDoc(doc(db, "users", "5FrihL0CgOch4KffrjTvlKVKNOO2")).then((docSnap) => {
+    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -91,7 +92,7 @@ const MyAccount = () => {
                 alignItems: "center",
               }}
             >
-              <Link to="/login">
+              <Link to="/login" onClick={() => logout()}>
                 <button className={style["logout-button"]}>LOG OUT</button>
               </Link>
             </div>

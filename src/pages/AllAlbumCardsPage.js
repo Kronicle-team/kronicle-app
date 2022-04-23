@@ -17,7 +17,7 @@ const AllAlbumCardsPage = () => {
     if (listing !== []) {
         let temp = []
         listing.map((card) => {
-            if (card.category === "album photocard") temp.push(card)
+            if (card.category === "album photocard" && card.availability !== "sold") temp.push(card)
         })
         return (
             <AllPageTemplate fetchedData={temp} title={"Album photocards"}/>

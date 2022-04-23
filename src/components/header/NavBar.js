@@ -1,16 +1,21 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import style from "./NavBar.module.css";
-import common from "../../styles/common.module.css"
+import common from "../../styles/common.module.css";
+import {allPages} from "../../Pages";
 
 const NavBar = () => {
+  const navPages = allPages.navBar;
+  const location = useLocation();
+
   return (
       <nav className={[style["nav"], common["flex"]].join(" ")}>
-          <Link to="/" className={style["active-link"]}>Home</Link>
-          <Link to="/all">All</Link>
-          <Link to="/cards/album-cards">Album cards</Link>
-          <Link to="/cards/trading-cards">Trading cards</Link>
-          <Link to="/cards/buy-now">Buy now</Link>
-          <Link to="/cards/bid">Bid</Link>
+        {navPages.map((page, id) => {
+          return (
+              location.pathname === page.link
+              ? <Link key={id} to={page.link} className={[style["active-link"], style["links"]].join(" ")}>{page.name}</Link>
+              : <Link key={id} to={page.link} className={style["links"]}>{page.name}</Link>
+          )
+        })}
       </nav>
   )
 }

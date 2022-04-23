@@ -52,7 +52,7 @@ p {
   line-height: 1.5;
 }
 
-input[type="text"], input[type="number"] {
+input, textarea {
   font-family: var(--body-font);
 }
 

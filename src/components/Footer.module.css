@@ -45,8 +45,8 @@
 
 .contact-btn {
     border-radius: 10px;
-    background: var(--orange);
-    color: var(--white);
+    background: var(--darker-peach);
+    color: var(--background);
     font-family: var(--body-font);
     padding: 0.75rem;
     width: 100%;
@@ -54,12 +54,18 @@
     border: none;
     text-transform: uppercase;
     transition: background 200ms ease-out 0s;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .contact-btn:hover {
-    background: var(--darker-orange);
+    background: var(--darkest-peach);
+    color: var(--white);
     cursor: pointer;
+    font-weight: 600;
+
 }
+
 
 .copyright {
     align-items: center;

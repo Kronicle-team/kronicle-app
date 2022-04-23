@@ -1,180 +1,277 @@
 import Layout from "../../components/Layout";
 import style from "./CartPage.module.css";
 import CartCard from "../../components/cart/CartCard";
-import {useEffect, useRef, useState} from "react";
-const bid = [
-    {
-        "id": 0,
-        "name": "No. 0",
-        "img": "",
-        "price": 45000,
-        "bid": true,
-        "highestBid": 55000
-    },
-    {
-        "id": 1,
-        "name": "No. 1",
-        "img": "",
-        "price": 14000,
-        "bid": true,
-        "highestBid": 14000
-    },
-]
-
-const buy = [
-    {
-        "id": 2,
-        "name": "No. 2",
-        "img": "",
-        "price": 2000,
-        "bid": false,
-        "highestBid": null,
-    },
-    {
-        "id": 3,
-        "name": "No. 3",
-        "img": "",
-        "price": 24000,
-        "bid": false,
-        "highestBid": null,
-    },
-    {
-        "id": 4,
-        "name": "No. 4",
-        "img": "",
-        "price": 60000,
-        "bid": false,
-        "highestBid": null,
-    },
-]
+import { useEffect, useRef, useState } from "react";
+import { collection, doc, onSnapshot, query, where } from "firebase/firestore";
+import { db, auth } from "../../config/firebase";
+import { Link } from "react-router-dom";
 
 const coupons = [
-    {
-        "id": 0,
-        "name": "kronicle",
-        "value": 0.1,
-    },
-    {
-        "id": 1,
-        "name": "kronicle1",
-        "value": 0.2
-    },
-]
+  {
+    id: 0,
+    name: "kronicle",
+    value: 0.1,
+  },
+  {
+    id: 1,
+    name: "kronicle1",
+    value: 0.2,
+  },
+];
 
-const CartPage = () => {
-    const [bidBtn, setBidBtn] = useState(true)
-    const [temp, setTemp] = useState(bid)
-    const [subTotal, setSubTotal] = useState(0)
-    const [total, setTotal] = useState(subTotal)
-    const [shippingFee, setShippingFee] = useState(15000)
-    const [deposit, setDeposit] = useState(0)
-    const [serviceFee, setServiceFee] = useState(5000)
-    const [couponValue, setCouponValue] = useState(0)
-    const couponInput = useRef()
+const CartPage =  () => {
+  const [bidBtn, setBidBtn] = useState(
+    localStorage.getItem("bidBtn") === "true" &&
+      localStorage.getItem("bidBtn") !== undefined
+  );
+  const [subTotal, setSubTotal] = useState(0);
+  const [total, setTotal] = useState(subTotal);
+  const [shippingFee, setShippingFee] = useState(0);
+  const [deposit, setDeposit] = useState(0);
+  const [serviceFee, setServiceFee] = useState(0);
+  const [couponValue, setCouponValue] = useState(0);
+  const [currentCart, setCurrentCart] = useState({});
+  const [currentCartKeys, setCurrentCartKeys] = useState([]);
+  const [temp, setTemp] = useState([]);
+  const couponInput = useRef();
 
-    useEffect(() => {
+  const fetchData = (documentID) => {
+    onSnapshot(
+      doc(db, "users", documentID),
+      (docSnapshot) => {
+        const newCart = {};
+        const newCartKeys = [];
+        Object.entries(docSnapshot.data().cart).map((item) => {
+          newCart[item[0]] = item[1];
+          newCartKeys.push(item[0]);
+        });
+        setCurrentCart(newCart);
+        setCurrentCartKeys(newCartKeys);
+      },
+      (error) => console.log(error)
+    );
+
+    const q2 = query(
+      collection(db, "listing"),
+      where("product_pricing", "==", "bid now"),
+      where("availability", "==", "available")
+    );
+    onSnapshot(
+      q2,
+      (querySnapshot) => {
+        const bidCards = [];
+        querySnapshot.forEach((doc) => {
+          if (currentCartKeys.includes(doc.id))
+            bidCards.push({ ...doc.data(), id: doc.id });
+        });
         if (bidBtn === true) {
-            setTemp(bid)
-        } else {setTemp(buy)}
-        setSubTotal(0)
-        temp.map((card) => {
-            setSubTotal(prevState => prevState + parseInt(card.price))
-        })
-        if (bidBtn) {
-            setDeposit(subTotal * 0.1)
-            setTotal(subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee)
-        } else setTotal(subTotal * (1 - couponValue) + shippingFee)
-    })
+          setTemp(bidCards);
+        }
+      },
+      (error) => console.log(error)
+    );
 
-    return (
-        <Layout header footer>
-            <div className={style.container}>
-                <h1>Cart</h1>
-                <div className={style.bidOrBuyNowContainer}>
-                    <div>
-                        <button className={!bidBtn ? style.changeModeBtn : style.changeModeBtnSelected} disabled={bidBtn} onClick={() => {setBidBtn(true)}}>Bid</button>
-                    </div>
-                    <div>
-                        <button className={bidBtn ? style.changeModeBtn : style.changeModeBtnSelected}  disabled={!bidBtn} onClick={() => {setBidBtn(false)}}>Buy Now</button>
-                    </div>
-                </div>
-                <div className={style.contentContainer}>
-                    <div className={style.cartListing}>
-                        {
-                            temp.map((card) => {
-                                return (
-                                    <CartCard
-                                        image={card.img}
-                                        name={card.name}
-                                        price={card.price}
-                                        bid={card.bid}
-                                        highestBid={card.highestBid}
-                                    />
-                                )
-                            })
-                        }
+    const q3 = query(
+      collection(db, "listing"),
+      where("product_pricing", "==", "buy now"),
+      where("availability", "==", "available")
+    );
+    onSnapshot(
+      q3,
+      (querySnapshot) => {
+        const buyNowCards = [];
+        querySnapshot.forEach((doc) => {
+          if (currentCartKeys.includes(doc.id))
+            buyNowCards.push({ ...doc.data(), id: doc.id });
+        });
+        if (bidBtn === false) {
+          setTemp(buyNowCards);
+        }
+      },
+      (error) => console.log(error)
+    );
+  };
 
-                    </div>
-                    <div className={style.cartSummary}>
-                        <div className={style.summaryTitle}>
-                            <h3>SUMMARY</h3>
-                        </div>
-                        <div className={style.summaryRow}>
-                            <div className={style.summaryField}>
-                                <div className={style.summaryFieldHeading}>Subtotal</div>
-                                <div className={style.summaryFieldValue}>{subTotal}</div>
-                            </div>
-                            <div className={style.summaryField}>
-                                <div className={style.summaryFieldHeading}>Shipping charges</div>
-                                <div className={style.summaryFieldValue}>{shippingFee}</div>
-                            </div>
-                            {bidBtn ?
-                                <div className={style.summaryField}>
-                                    <div className={style.summaryFieldHeading}>Deposit</div>
-                                    <div className={style.summaryFieldValue}>{deposit}</div>
-                                </div>
-                            : null}
-                            {bidBtn ?
-                                <div className={style.summaryField}>
-                                    <div className={style.summaryFieldHeading}>Service Fee</div>
-                                    <div className={style.summaryFieldValue}>{serviceFee}</div>
-                                </div>
-                                : null}
-                        </div>
-                        <div className={style.summaryRow}>
-                            <div className={style.summaryField}>
-                                <div className={style.summaryFieldHeading}>Coupon</div>
-                                <div className={style.summaryFieldValueAsInput}>
-                                    <input className={style.summaryFieldCouponInput} type={"text"} ref={couponInput}/>
-                                    <button className={style.summaryFieldCouponBtn} onClick={() => {
-                                        let count = 0
-                                        coupons.map((coupon) => {
-                                           console.log(coupons.indexOf(coupon) - coupons.length)
-                                            if (coupon.name === couponInput.current.value && count === 0) {
-                                                setCouponValue(coupon.value)
-                                                count = 1
-                                            }
-                                            if (count === 0 && coupons.indexOf(coupon) === coupons.length - 1 ) {
-                                                setCouponValue(0)
-                                            }
-                                        })
-                                    }}>Apply</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={style.summaryTotal}>
-                            <h3 className={style.summaryFieldHeading + " " + style.summaryTotalHeading}>TOTAL</h3>
-                            <h3 className={style.summaryFieldValue + " " + style.summaryTotalValue}>{total}</h3>
-                        </div>
-                        <div className={style.cartBtnWrapper}>
-                            <button className={style.cartBtn + " " + style.btnContinueShopping}>CONTINUE SHOPPING</button>
-                            <button  className={style.cartBtn + " " + style.btnPlaceOrder}>PLACE ORDER</button>
-                        </div>
-                    </div>
-                </div>
+  useEffect(() => {
+    if (auth.currentUser) {
+      const documentID = auth.currentUser.uid
+      fetchData(documentID);
+    }
+    setSubTotal(0);
+    temp.map((card) => {
+      setSubTotal((prevState) => prevState + parseInt(card.price));
+    });
+    if (subTotal > 0) {
+      setShippingFee(15000);
+      setServiceFee(5000);
+    }
+    if (bidBtn) {
+      setDeposit(Math.round(subTotal * 0.1));
+      setTotal(
+        subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
+      );
+    } else setTotal(subTotal * (1 - couponValue) + shippingFee);
+    const isBid = bidBtn;
+    localStorage.setItem("bidBtn", JSON.stringify(isBid));
+  }, [currentCart]);
+
+  return (
+    <Layout header footer>
+      <div className={style.container}>
+        <h1>Cart</h1>
+        <div className={style.bidOrBuyNowContainer}>
+          <div>
+            <button
+              className={
+                !bidBtn ? style.changeModeBtn : style.changeModeBtnSelected
+              }
+              disabled={bidBtn}
+              onClick={() => {
+                setBidBtn(true);
+              }}
+            >
+              Bid
+            </button>
+          </div>
+          <div>
+            <button
+              className={
+                bidBtn ? style.changeModeBtn : style.changeModeBtnSelected
+              }
+              disabled={!bidBtn}
+              onClick={() => {
+                setBidBtn(false);
+              }}
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+        <div className={style.contentContainer}>
+          <div className={style.cartListing}>
+            {temp.map((card) => {
+              if (currentCart[card.id] !== undefined) {
+                return (
+                  <CartCard
+                    cart={currentCart}
+                    key={card.id}
+                    id={card.id}
+                    image={card.product_image}
+                    name={card.product_name}
+                    price={currentCart[card.id].toLocaleString()}
+                    bid={card.product_pricing}
+                    highestBid={card.price}
+                  />
+                );
+              }
+            })}
+          </div>
+          <div className={style.cartSummary}>
+            <div className={style.summaryTitle}>
+              <h3>SUMMARY</h3>
             </div>
-        </Layout>
-    )
-}
+            <div className={style.summaryRow}>
+              <div className={style.summaryField}>
+                <div className={style.summaryFieldHeading}>Subtotal</div>
+                <div className={style.summaryFieldValue}>
+                  {subTotal.toLocaleString()}
+                </div>
+              </div>
+              <div className={style.summaryField}>
+                <div className={style.summaryFieldHeading}>
+                  Shipping charges
+                </div>
+                <div className={style.summaryFieldValue}>
+                  {shippingFee.toLocaleString()}
+                </div>
+              </div>
+              {bidBtn ? (
+                <div className={style.summaryField}>
+                  <div className={style.summaryFieldHeading}>Deposit</div>
+                  <div className={style.summaryFieldValue}>
+                    {deposit.toLocaleString()}
+                  </div>
+                </div>
+              ) : null}
+              {bidBtn ? (
+                <div className={style.summaryField}>
+                  <div className={style.summaryFieldHeading}>Service Fee</div>
+                  <div className={style.summaryFieldValue}>
+                    {serviceFee.toLocaleString()}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+            <div className={style.summaryRow}>
+              <div className={style.summaryField}>
+                <div className={style.summaryFieldHeading}>Coupon</div>
+                <div className={style.summaryFieldValueAsInput}>
+                  <input
+                    className={style.summaryFieldCouponInput}
+                    type={"text"}
+                    ref={couponInput}
+                  />
+                  <button
+                    className={style.summaryFieldCouponBtn}
+                    onClick={() => {
+                      let count = 0;
+                      coupons.map((coupon) => {
+                        if (
+                          coupon.name === couponInput.current.value &&
+                          count === 0
+                        ) {
+                          setCouponValue(coupon.value);
+                          count = 1;
+                        }
+                        if (
+                          count === 0 &&
+                          coupons.indexOf(coupon) === coupons.length - 1
+                        ) {
+                          setCouponValue(0);
+                        }
+                      });
+                    }}
+                  >
+                    Apply
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className={style.summaryTotal}>
+              <h3
+                className={
+                  style.summaryFieldHeading + " " + style.summaryTotalHeading
+                }
+              >
+                TOTAL
+              </h3>
+              <h3
+                className={
+                  style.summaryFieldValue + " " + style.summaryTotalValue
+                }
+              >
+                {total.toLocaleString()}
+              </h3>
+            </div>
+            <div className={style.cartBtnWrapper}>
+              <Link to={"/"}>
+                <button
+                  className={style.cartBtn + " " + style.btnContinueShopping}
+                >
+                  CONTINUE SHOPPING
+                </button>
+              </Link>
+              <Link to={"/check-out-1"}>
+                <button className={style.cartBtn + " " + style.btnPlaceOrder}>
+                  PLACE ORDER
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
 
-export default CartPage
+export default CartPage;

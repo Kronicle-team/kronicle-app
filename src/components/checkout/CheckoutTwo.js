@@ -1,15 +1,22 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutTwo.module.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import {updateAvailability} from "../../api/handleBid";
 
 const CheckoutTwo = () => {
   const [cardNum, setCardNum] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [holderName, setHolderName] = useState("");
-
   const [visaSelected, setVisaSelected] = useState(false);
+
+  const {state} = useLocation();
+  const { id } = state;
+  const handleCheckout = () => {
+    updateAvailability(id, "sold");
+  }
+
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
@@ -28,7 +35,7 @@ const CheckoutTwo = () => {
           <div>
             <Link to="/check-out-2" className={style["icon-wrapper"]}>
               <img
-                src={"../../media/icons/checkout/CheckoutIcon2Orange.svg"}
+                src={"../../media/icons/checkout/CheckoutIcon2Peach.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
@@ -120,7 +127,7 @@ const CheckoutTwo = () => {
 
             <div className={style["button-wrapper"]}>
               <Link to={"/check-out-3"}>
-                <button className={style["next-button"]}>NEXT</button>{" "}
+                <button className={style["next-button"]} onClick={() => handleCheckout()}>NEXT</button>{" "}
               </Link>
 
               <Link to={"/check-out-1"}>

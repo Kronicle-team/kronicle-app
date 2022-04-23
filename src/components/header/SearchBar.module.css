@@ -44,7 +44,7 @@ input[type="search"] {
 
 .search-btn {
     background: inherit;
-    color: var(--orange);
+    color: var(--darker-peach);
     font-size: 20px;
     border-radius: 50%;
     padding: 8px;
@@ -54,7 +54,7 @@ input[type="search"] {
 
 .search-btn:hover {
     cursor: pointer;
-    background: var(--orange);
+    background: var(--darker-peach);
     color: var(--background);
 }
 
