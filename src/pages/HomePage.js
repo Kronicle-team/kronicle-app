@@ -15,7 +15,7 @@ const HomePage = () => {
       let q = query(collection(db, "listing"),
           where("product_pricing", "==", "buy now"),
           where("availability", "!=", "sold"),
-          orderBy("availability"), orderBy("date_time"), limit(6));
+          orderBy("availability"), orderBy("date_time", "desc"), limit(6));
 
       onSnapshot(q, (querySnapshot) => {
         const cards = [];
@@ -31,7 +31,7 @@ const HomePage = () => {
       const q2 = query(collection(db, "listing"),
           where("product_pricing", "==", "bid now"),
           where("availability", "!=", "sold"),
-          orderBy("availability"), orderBy("date_time"), limit(6));
+          orderBy("availability"), orderBy("date_time", "desc"), limit(6));
       onSnapshot(q2, (querySnapshot) => {
         const bidCards = [];
         querySnapshot.forEach((doc) => {

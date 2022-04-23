@@ -35,7 +35,7 @@ const CheckoutTwo = () => {
           <div>
             <Link to="/check-out-2" className={style["icon-wrapper"]}>
               <img
-                src={"../../media/icons/checkout/CheckoutIcon2Orange.svg"}
+                src={"../../media/icons/checkout/CheckoutIcon2Peach.svg"}
                 className={style["logo"]}
                 alt={"Logo"}
               />
