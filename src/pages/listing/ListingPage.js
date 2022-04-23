@@ -8,7 +8,6 @@ import { auth, db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
 
-
 const ListingPage = () => {
   const [category, setCategory] = useState("");
   const [product_pricing, setProductPricing] = useState("");
@@ -19,13 +18,13 @@ const ListingPage = () => {
   const [values, setValues] = useState({
     product_name: "",
     product_status: "",
-    product_image: ""
+    product_image: "",
   });
 
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
-      error => {
+      (error) => {
         console.log(error);
       },
       () => {
@@ -33,7 +32,7 @@ const ListingPage = () => {
           .ref("images")
           .child(image.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             setUrl(url);
           });
       }
@@ -59,19 +58,17 @@ const ListingPage = () => {
   useEffect(() => {
     if (didMount.current) {
       console.log("image: ", image);
-      handleUpload(
-      );
+      handleUpload();
     } else {
       didMount.current = true;
     }
   }, [image]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
-
 
   const pushProduct = async () => {
     try {
@@ -84,7 +81,7 @@ const ListingPage = () => {
         price: parseInt(price),
         availability: "available",
         date_time: Date().toLocaleString(),
-        seller_id: auth.currentUser.uid
+        seller_id: auth.currentUser.uid,
       });
       console.log("Your form has been submitted!", docRef.id);
       alert("Your form has been submitted!");
@@ -103,7 +100,7 @@ const ListingPage = () => {
         "Product name should be 3-16 characters and shouldn't include any special character!",
       label: "Product name*",
       pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true
+      required: true,
     },
     {
       id: 2,
@@ -114,7 +111,7 @@ const ListingPage = () => {
       errorMessage: "It should be a meaningful description of your products!",
       label: "Product status*",
       pattern: "^.{15,}$",
-      required: true
+      required: true,
     },
     {
       id: 3,
@@ -123,8 +120,8 @@ const ListingPage = () => {
       placeholder: "Enter the selling price for the product",
       label: "Upload the product's image*",
       errorMessage: "Please input your product's image'",
-      required: true
-    }
+      required: true,
+    },
   ];
 
   const onChange = (e) => {
@@ -142,7 +139,8 @@ const ListingPage = () => {
               {...input}
               value={values[input.name]}
               // onChange={onChange}
-              onChange={e => {
+              onChange={(e) => {
+                onChange(e);
                 {
                   input.id === 3 ? handleChange(e) : onChange(e);
                 }
@@ -153,7 +151,6 @@ const ListingPage = () => {
             setCat={setCategoryFunction}
             setPricing={setProductPricingFunction}
             setPrice={setPriceFunction}
-
           />
         </form>
         <div className={style["listing-btn-container"]}>
@@ -161,7 +158,7 @@ const ListingPage = () => {
             className={style["listing-btn"]}
             onClick={() => {
               handleUpload();
-              pushProduct().then(r => {
+              pushProduct().then((r) => {
                 console.log(r);
               });
             }}

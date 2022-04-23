@@ -26,6 +26,10 @@
     margin: auto;
 }
 
+.extra-info {
+    margin-bottom: 2rem;
+}
+
 .logo{
     width: 100px;
     height: 100px;
@@ -74,6 +78,11 @@
     border-radius: 15px;
     border: 1px solid gray;
     box-sizing: border-box;
+}
+
+.input-aboutme {
+    resize: vertical;
+    max-height: 250px;
 }
 
 .button-wrapper{

@@ -22,6 +22,7 @@ import AllBidPage from "./pages/AllBidPage";
 import AllBuyNowPage from "./pages/AllBuyNowPage";
 import AllAlbumCardsPage from "./pages/AllAlbumCardsPage";
 import AllTradingCardsPage from "./pages/AllTradingCardsPage";
+import Form from "./components/auth/Form";
 
 const pages = {
   home: {
@@ -143,8 +144,12 @@ const pages = {
     name: "Trading Cards",
     link: "/cards/trading-cards",
     component: <AllTradingCardsPage/>
-  }
-
+  },
+  form: {
+    name: "Form",
+    link: "/form",
+    component: <Form />,
+  },
 };
 
 export const allPages = {

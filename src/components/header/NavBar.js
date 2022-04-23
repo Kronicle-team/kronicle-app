@@ -9,11 +9,11 @@ const NavBar = () => {
 
   return (
       <nav className={[style["nav"], common["flex"]].join(" ")}>
-        {navPages.map(page => {
+        {navPages.map((page, id) => {
           return (
               location.pathname === page.link
-              ? <Link to={page.link} className={[style["active-link"], style["links"]].join(" ")}>{page.name}</Link>
-              : <Link to={page.link} className={style["links"]}>{page.name}</Link>
+              ? <Link key={id} to={page.link} className={[style["active-link"], style["links"]].join(" ")}>{page.name}</Link>
+              : <Link key={id} to={page.link} className={style["links"]}>{page.name}</Link>
           )
         })}
       </nav>

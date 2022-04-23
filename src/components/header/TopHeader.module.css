@@ -42,15 +42,13 @@
     margin: 0 20px;
 }
 
-.top-header-right .register,
-.top-header-right .login
+.top-header-right .auth
 {
     color: var(--background);
     font-weight: 600;
 }
 
-.top-header-right .register:hover,
-.top-header-right .login:hover
+.top-header-right .auth:hover
 {
     text-decoration: underline;
     color: var(--darker-peach);
@@ -58,7 +56,7 @@
 
 .avatar {
     font-size: 30px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 .menu {
