@@ -64,7 +64,7 @@ const CardDetails = ({
   };
 
   const handleBuyNow = () => {
-    navigate("/check-out-1", { state: { id: id } });
+    navigate("/check-out-1", { state: { id: [id] } });
   };
 
   const handleBid = async (e) => {

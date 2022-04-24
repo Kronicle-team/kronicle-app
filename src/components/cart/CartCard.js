@@ -57,16 +57,16 @@ const CartCard = ({ cart, id, image, name, price, bid, highestBid, currentUser }
             </div>
           ) : null}
         </div>
-        <div className={style.removeBtnWrapper}>
+        { (bid === "bid now" && !winning) || bid === "buy now" ? <div className={style.removeBtnWrapper}>
           <button
-            className={style.removeBtn}
-            onClick={async () => {
-              await removeItemFromCart();
-            }}
+              className={style.removeBtn}
+              onClick={async () => {
+                await removeItemFromCart();
+              }}
           >
             REMOVE
           </button>
-        </div>
+        </div> : null}
       </div>
     </div>
   );

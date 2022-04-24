@@ -4,7 +4,7 @@ import CartCard from "../../components/cart/CartCard";
 import { useEffect, useRef, useState } from "react";
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore";
 import { db, auth } from "../../config/firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const coupons = [
   {
@@ -20,6 +20,7 @@ const coupons = [
 ];
 
 const CartPage =  () => {
+  const navigate = useNavigate();
   const [bidBtn, setBidBtn] = useState(
     localStorage.getItem("bidBtn") === "true" &&
       localStorage.getItem("bidBtn") !== undefined
@@ -116,7 +117,24 @@ const CartPage =  () => {
     localStorage.setItem("bidBtn", JSON.stringify(isBid));
   }, [currentCart]);
 
-  console.log(currentCart)
+  const handleOrder = () => {
+    let checkout = []
+    if (!bidBtn) temp.forEach((item) => {
+      checkout.push(item.id)
+    })
+    if (bidBtn) temp.forEach((item) => {
+      console.log("winning ?", item.price === currentCart[item.id])
+      console.log("bid ends ?", item.date_time <= Date())
+      console.log(item.date_time)
+      if (item.price === currentCart[item.id] && item.date_time <= Date()) {
+        checkout.push(item.id)
+      }
+    })
+    if (checkout.length > 0)
+      navigate("/check-out-1", { state: { id: checkout } });
+    else alert("There are no items for checkout right now.")
+  };
+
   return (
     <Layout header footer>
       <div className={style.container}>
@@ -264,11 +282,9 @@ const CartPage =  () => {
                   CONTINUE SHOPPING
                 </button>
               </Link>
-              <Link to={"/check-out-1"}>
-                <button className={style.cartBtn + " " + style.btnPlaceOrder}>
+                <button className={style.cartBtn + " " + style.btnPlaceOrder} onClick={() => handleOrder()}>
                   PLACE ORDER
                 </button>
-              </Link>
             </div>
           </div>
         </div>

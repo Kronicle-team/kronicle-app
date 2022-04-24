@@ -23,8 +23,6 @@ const ProductTemplate = ({ buy, bid }) => {
       let documentID = auth.currentUser.uid
       onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
         setCurrentCart(docSnapshot.data().cart);
-        console.log(docSnapshot.data())
-        console.log(currentCart)
       });
     }
   }, [currentCart]);
