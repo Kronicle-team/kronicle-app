@@ -93,10 +93,11 @@ const CartPage =  () => {
   };
 
   useEffect(() => {
+    console.log(auth.currentUser)
     if (auth.currentUser) {
-      const documentID = auth.currentUser.uid
+      let documentID = auth.currentUser.uid
       fetchData(documentID);
-    }
+    } else setCurrentCart({})
     setSubTotal(0);
     temp.map((card) => {
       setSubTotal((prevState) => prevState + parseInt(card.price));
@@ -115,6 +116,7 @@ const CartPage =  () => {
     localStorage.setItem("bidBtn", JSON.stringify(isBid));
   }, [currentCart]);
 
+  console.log(currentCart)
   return (
     <Layout header footer>
       <div className={style.container}>
@@ -161,6 +163,7 @@ const CartPage =  () => {
                     price={currentCart[card.id].toLocaleString()}
                     bid={card.product_pricing}
                     highestBid={card.price}
+                    currentUser={auth.currentUser ? auth.currentUser.uid : ""}
                   />
                 );
               }

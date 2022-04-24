@@ -45,6 +45,8 @@ const CardDetails = ({
 
   const addItemToCart = async () => {
     const newCart = cart;
+    console.log(cart)
+    console.log(bidAmt)
     if (buy) newCart[id] = price;
     if (bid) newCart[id] = bidAmt;
     if (auth.currentUser) {
