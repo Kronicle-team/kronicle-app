@@ -1,14 +1,14 @@
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { postBid } from "../../api/handleBid";
 import {
   capitalizeAllWords,
   formatDescription,
   formatTime,
 } from "../../helper/formatData";
-import { doc, updateDoc } from "firebase/firestore";
+import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 
 const CardDetails = ({
@@ -18,13 +18,22 @@ const CardDetails = ({
   name,
   price,
   description,
-  seller,
+  sellerId,
   date,
   buy,
   bid,
 }) => {
   const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
+  const [seller, setSeller] = useState({})
+
+  useEffect(() => {
+    if (sellerId) {
+      onSnapshot(doc(db, "users", sellerId), (docSnapshot) => {
+        setSeller(docSnapshot.data());
+      });
+    }
+  }, [sellerId])
 
   const uploadDate = new Date(date);
   const period = 7;
@@ -72,7 +81,7 @@ const CardDetails = ({
     } else if (bidAmt <= price) {
       alert("Please bid a higher price.");
       e.preventDefault();
-    } else  if (auth.currentUser) {
+    } else if (auth.currentUser) {
       await postBid(id, parseInt(bidAmt));
       alert("Successful bid!");
     }
@@ -96,13 +105,13 @@ const CardDetails = ({
         <div className={[style["seller-container"], common["flex"]].join(" ")}>
           <Link to="/seller-profile">
             <img
-              src={seller.avatar}
+              src={"../../media/images/placeholder-612x612.jpg"}
               alt="seller-avatar"
               className={[style["seller-ava"], common["flex"]].join(" ")}
             />
           </Link>
           <Link to="/seller-profile">
-            <p>{seller.name}</p>
+            <p>{seller.fullName}</p>
           </Link>
         </div>
 
