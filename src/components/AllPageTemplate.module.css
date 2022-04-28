@@ -17,7 +17,7 @@
     grid-template-columns: 25% 25% 25% 25%;
     margin: auto;
     align-items: center;
-    width: 60vw;
+    width: 80vw;
 }
 
 .cardSingleWrapper {
@@ -62,31 +62,19 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 1610px) {
-    .cardWrapper {
-        width: 70vw;
-    }
-}
-
-@media only screen and (max-width: 1350px) {
-    .cardWrapper {
-        width: 80vw;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .cardWrapper {
-        width: 90vw;
-    }
-}
-
-@media only screen and (max-width: 1030px) {
+@media only screen and (max-width: 1600px) {
     .cardWrapper {
         grid-template-columns: 33% 33% 33%;
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1300px) {
+    .cardWrapper {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
     .cardWrapper {
         grid-template-columns: 50% 50%;
     }
