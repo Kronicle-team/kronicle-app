@@ -26,9 +26,11 @@ const CardDetails = ({
   const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
   const [seller, setSeller] = useState({})
+  const [path, setPath] = useState("")
 
   useEffect(() => {
     if (sellerId) {
+      setPath(`/seller-profile/${sellerId}`);
       onSnapshot(doc(db, "users", sellerId), (docSnapshot) => {
         setSeller(docSnapshot.data());
       });
@@ -75,15 +77,21 @@ const CardDetails = ({
   };
 
   const handleBid = async (e) => {
-    if (!bidAmt) {
-      alert("Please enter a bid amount.");
+    if (!auth.currentUser) {
       e.preventDefault();
-    } else if (bidAmt <= price) {
-      alert("Please bid a higher price.");
-      e.preventDefault();
-    } else if (auth.currentUser) {
-      await postBid(id, parseInt(bidAmt));
-      alert("Successful bid!");
+      alert("Please login or register if you want to bid.")
+      navigate("/login")
+    } else {
+      if (!bidAmt) {
+        alert("Please enter a bid amount.");
+        e.preventDefault();
+      } else if (bidAmt <= price) {
+        alert("Please bid a higher price.");
+        e.preventDefault();
+      } else {
+        alert("Successful bid!");
+        await postBid(id, parseInt(bidAmt));
+      }
     }
   };
 
@@ -110,7 +118,7 @@ const CardDetails = ({
               className={[style["seller-ava"], common["flex"]].join(" ")}
             />
           </Link>
-          <Link to="/seller-profile">
+          <Link to={path}>
             <p>{seller.fullName}</p>
           </Link>
         </div>
