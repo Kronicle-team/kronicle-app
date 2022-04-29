@@ -69,10 +69,12 @@ const MyAccount = () => {
               <div className={style["input"]}>{data.fname}</div>
               <label>Last Name</label>
               <div className={style["input"]}>{data.lname}</div>
-              <label>Title</label>
-              <div className={style["input"]}>{data.title}</div>
               <label>Email</label>
               <div className={style["input"]}>{data.email}</div>
+              <label>Phone Number</label>
+              <div className={style["input"]}>{data.phoneNum}</div>
+              <label>Address</label>
+              <div className={style["input"]}>{data.address}</div>
             </form>
             <div
               style={{
