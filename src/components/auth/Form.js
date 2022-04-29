@@ -8,10 +8,6 @@ import {
   faCamera
 } from "@fortawesome/free-solid-svg-icons";
 import {auth, db, storage} from "../../config/firebase";
-import {addDoc, collection, updateDoc} from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore";
-import { signUp } from "../../api/authentication";
-
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
@@ -21,20 +17,37 @@ const Form = () => {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [aboutMe, setAboutMe] = useState("");
-  const [avatar, setProfile] = useState(null);
+  const [avatar, setProfile] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
 
+  const didMount = useRef(false);
+
+  useEffect(() => {
+    if (didMount.current) {
+      console.log("avatar: ", avatar);
+      handleUpload();
+    } else {
+      didMount.current = true;
+    }
+  }, [avatar]);
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
   const handleUpload = () => {
-    const uploadTask = storage.ref(`avatar/${image.name}`).put(image);
+    const uploadTask = storage.ref(`avatar/${avatar.name}`).put(avatar);
     uploadTask.on(
         (error) => {
           console.log(error);
         },
         () => {
           storage
-              .ref("images")
-              .child(image.name)
+              .ref("avatar")
+              .child(avatar.name)
               .getDownloadURL()
               .then((url) => {
                 setUrl(url);
@@ -43,7 +56,7 @@ const Form = () => {
     );
   };
 
-  console.log("image: ", image);
+  console.log("avatar: ", avatar);
 
   const onChangePicture = e => {
     if (e.target.files[0]) {
@@ -70,36 +83,6 @@ const Form = () => {
   let navigate = useNavigate();
 
 
-  const didMount = useRef(false);
-
-  useEffect(() => {
-    if (didMount.current) {
-      console.log("image: ", image);
-      handleUpload();
-    } else {
-      didMount.current = true;
-    }
-  }, [image]);
-
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
-
-  const onChange = (e) => {
-    if (e.target.name === "fname") {
-      setFname(e.target.value);
-    } else if (e.target.name === "lname") {
-      setLname(e.target.value);
-    } else if (e.target.name === "phoneNum") {
-      setPhoneNum(e.target.value);
-    } else if (e.target.name === "address") {
-      setAddress(e.target.value);
-    } else if (e.target.name === "aboutMe") {
-      setAboutMe(e.target.value);
-    }
-  };
 
   function onChangeProfilePicture(e) {
     onChangePicture(e);
@@ -196,14 +179,17 @@ const Form = () => {
 
         <div
           className={style["button-wrapper"]}
-          onClick={() => {
-            handleUpload();
-            pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
-              console.log(r);
-            });
-          }}
         >
-          <button className={style["register-btn"]}>SUBMIT</button>
+          <button className={style["register-btn"]}
+                  onClick={() => {
+                    handleUpload();
+                    pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
+                      console.log(r);
+                      alert(r);
+                    });
+                  }}
+          >SUBMIT
+          </button>
           <button
             type="submit"
             className={style["clear-btn"]}
@@ -215,8 +201,7 @@ const Form = () => {
         ;
       </div>
     </Layout>
-  )
-    ;
+  );
 };
 
 export default Form;
