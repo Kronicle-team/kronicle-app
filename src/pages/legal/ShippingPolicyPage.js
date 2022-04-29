@@ -1,6 +1,10 @@
 import Layout from "../../components/Layout";
 import style from "../../components/support/Policy.module.css";
 import ToTopButton from "../../components/ToTopButton"
+/*
+Source:
+https://www.shopify.com/blog/shipping-policy
+*/
 
 const ShippingPolicyPage = () => {
     return (
