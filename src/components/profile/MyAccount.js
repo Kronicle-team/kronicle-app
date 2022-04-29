@@ -18,7 +18,7 @@ const MyAccount = () => {
     });
   };
   useEffect(() => {
-    fetchData();
+    fetchData().then(r => console.log(r));
   }, []);
   return (
     <Layout className={style["container"]} header footer>

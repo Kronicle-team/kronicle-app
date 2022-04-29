@@ -1,15 +1,19 @@
 import Layout from "../../components/Layout";
 import style from "./Form.module.css";
-import React, { useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { pushData } from "../../api/authentication";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCamera
 } from "@fortawesome/free-solid-svg-icons";
+import {auth, db, storage} from "../../config/firebase";
+import {addDoc, collection, updateDoc} from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import { signUp } from "../../api/authentication";
+
 
 const Form = () => {
-  const [image, setImage] = useState(null);
   const [isDisplayed, setDisplay] = useState(false);
   const [imageData, setImageData] = useState(null);
   const [fname, setFname] = useState("");
@@ -17,11 +21,34 @@ const Form = () => {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+  const [avatar, setProfile] = useState(null);
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
+
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`avatar/${image.name}`).put(image);
+    uploadTask.on(
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          storage
+              .ref("images")
+              .child(image.name)
+              .getDownloadURL()
+              .then((url) => {
+                setUrl(url);
+              });
+        }
+    );
+  };
+
+  console.log("image: ", image);
 
   const onChangePicture = e => {
     if (e.target.files[0]) {
       setDisplay(true);
-      setImage(e.target.files[0]);
+      setProfile(e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setImageData(reader.result);
@@ -41,6 +68,44 @@ const Form = () => {
     });
   };
   let navigate = useNavigate();
+
+
+  const didMount = useRef(false);
+
+  useEffect(() => {
+    if (didMount.current) {
+      console.log("image: ", image);
+      handleUpload();
+    } else {
+      didMount.current = true;
+    }
+  }, [image]);
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const onChange = (e) => {
+    if (e.target.name === "fname") {
+      setFname(e.target.value);
+    } else if (e.target.name === "lname") {
+      setLname(e.target.value);
+    } else if (e.target.name === "phoneNum") {
+      setPhoneNum(e.target.value);
+    } else if (e.target.name === "address") {
+      setAddress(e.target.value);
+    } else if (e.target.name === "aboutMe") {
+      setAboutMe(e.target.value);
+    }
+  };
+
+  function onChangeProfilePicture(e) {
+    onChangePicture(e);
+    handleChange(e);
+  }
+
 
   return (
     <Layout className={style["register-container"]} header footer>
@@ -75,10 +140,11 @@ const Form = () => {
 
             <input
               type="file"
+              value={avatar}
               name="profileImageUpload"
               id="profileImageUpload"
               className={style["input"]}
-              onChange={onChangePicture}
+              onChange={onChangeProfilePicture}
             />
 
           </div>
@@ -125,11 +191,16 @@ const Form = () => {
             className={[style["input"], style["input-aboutme"]].join(" ")}
             rows={5}
           />
+
         </form>
+
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            pushData(fname, lname, phoneNum, address, aboutMe, navigate);
+            handleUpload();
+            pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
+              console.log(r);
+            });
           }}
         >
           <button className={style["register-btn"]}>SUBMIT</button>
