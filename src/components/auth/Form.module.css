@@ -67,6 +67,14 @@
     padding: 0 150px;
 }
 
+.user-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
+
 .label {
     font-size: 1rem;
     font-weight: 500;
@@ -80,10 +88,22 @@
     box-sizing: border-box;
 }
 
+.input:focus {
+    border: 1px solid var(--darkest-peach);
+}
+
 .input-aboutme {
-    resize: vertical;
+    resize:none;
     max-height: 250px;
 }
+
+.user-input input[type="text"]:focus, .user-input input[type="password"]:focus {
+    width: 350px;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
 
 .button-wrapper{
     margin: 30px 0;
@@ -98,7 +118,7 @@
     color: var(--background);
     font-family: "Montserrat SemiBold", sans-serif;
     background-color: var(--darker-peach);
-    border-radius: 5px;
+    border-radius: 50px;
     border-color: transparent;
     margin: 5px 20px;
     cursor: pointer;
@@ -124,3 +144,79 @@
 .clear-btn:hover {
     background: #858585;
 }
+
+.imgUpload-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    margin: auto;
+    padding-bottom: 0.5rem;
+}
+
+.imgUpload-section>label {
+    padding-top: 1rem;
+    cursor: pointer;
+}
+
+.file-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--darker-peach);
+    color: var(--white);
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    margin-top: 2rem;
+}
+
+.file-input:hover {
+    background-color: var(--darkest-peach);
+}
+
+.upload-icon {
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+
+.upload-icon-display {
+    height: 1rem;
+    width: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    position: absolute;
+    bottom:0;
+    right:0;
+    color: var(--black);
+    background-color: var(--background);
+    border-radius: 50%;
+}
+
+.imgUpload-section input {
+    display: none;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+}
+
+.previewImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    position: relative;
+}
+
+.previewImage img {
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    display: block;
+}
+
