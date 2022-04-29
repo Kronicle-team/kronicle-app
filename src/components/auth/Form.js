@@ -17,8 +17,8 @@ const Form = () => {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [aboutMe, setAboutMe] = useState("");
-  const [avatar, setProfile] = useState("");
-  const [image, setImage] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
 
   const didMount = useRef(false);
@@ -34,7 +34,7 @@ const Form = () => {
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
-      setImage(e.target.files[0]);
+      setAvatar(e.target.files[0]);
     }
   };
 
