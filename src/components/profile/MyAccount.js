@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import {logout} from "../../api/authentication";
+import { logout } from "../../api/authentication";
 
 const MyAccount = () => {
   const [data, setData] = useState({});
@@ -17,86 +17,54 @@ const MyAccount = () => {
       }
     });
   };
+
   useEffect(() => {
-    fetchData();
+    fetchData().then(r => console.log(r));
   }, []);
+
   return (
-    <Layout className={style["container"]} header footer>
-      <div className={style["wrapper"]}>
-        <h1 style={{ textAlign: "center" }}>MY ACCOUNT</h1>
-        <div className={style["profile-and-info"]}>
-          <div className={style["profile-wrapper"]}>
+    <Layout className={style["myAccount-container"]} header footer>
+      <h1>MY ACCOUNT</h1>
+      <div className={style["myAccount-wrapper"]}>
+        {/*left container*/}
+        <div className={style["profile-left-container"]}>
+            <div className={style["name"]}>{data.fullName}</div>
             <img
               src={"../../media/images/profile/gdragon.jpg"}
-              className={style["avatar"]}
+              className={style["profile-pic"]}
               alt={"Avatar"}
             />
-            <div className={style["name"]}>{data.fullName}</div>
-            <div className={style["bio-p"]}>
-              <p>100% new authenticated cards</p>
-              <p>I live in Korea</p>
-            </div>
-            <button
-              className={style["button"]}
-              onClick={() => {
-                fetchData();
-              }}
-            >
-              Upload your avatar
+            <button className={style["uploadAvatar-btn"]}>
+              Upload your profile picture
             </button>
+            <button
+              className={style["updateProfile-btn"]}
+              onClick={() => {
+              fetchData();
+            }}>
+              Update profile
+            </button>
+
+        </div>
+
+        {/*right container*/}
+        <div className={style["profile-right-container"]}>
+          <div className={style["info-header"]}>
+            <h4>BASIC INFO</h4>
           </div>
 
-          <div className={style["vertical-line"]} />
-
-          <div className={style["info"]}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <h4>BASIC INFO</h4>
-              <div className={style["button-wrapper"]}>
-                <button className={style["cancel-button"]}>CANCEL</button>
-                <button className={style["save-button"]}>SAVE</button>
-              </div>
-            </div>
-            <hr style={{ border: "1px solid #858585" }} />
-            <form className={style["form"]}>
-              <label>First Name</label>
-              <div className={style["input"]}>{data.fname}</div>
-              <label>Last Name</label>
-              <div className={style["input"]}>{data.lname}</div>
-              <label>Title</label>
-              <div className={style["input"]}>{data.title}</div>
-              <label>Email</label>
-              <div className={style["input"]}>{data.email}</div>
-            </form>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
-              }}
-            >
-              <h4>ABOUT ME</h4>
-            </div>
-            <hr style={{ border: "1px solid #858585" }} />
+          <form className={style["form"]}>
+            <label>Full Name</label>
+            <div className={style["input"]}>{data.fullName}</div>
+            <label>Email</label>
+            <div className={style["input"]}>{data.email}</div>
+            <label>Phone Number</label>
+            <div className={style["input"]}>{data.phoneNum}</div>
+            <label>Address</label>
+            <div className={style["input"]}>{data.address}</div>
+            <label>About me</label>
             <div className={style["input"]}>{data.aboutMe}</div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Link to="/login" onClick={() => logout()}>
-                <button className={style["logout-button"]}>LOG OUT</button>
-              </Link>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </Layout>

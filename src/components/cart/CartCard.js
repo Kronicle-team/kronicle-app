@@ -5,11 +5,10 @@ import { doc, updateDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import {capitalizeAllWords} from "../../helper/formatData";
 
-const CartCard = ({ cart, id, image, name, price, bid, highestBid }) => {
+const CartCard = ({ cart, id, image, name, price, bid, highestBid, currentUser }) => {
   const [winning, setWinning] = useState(true);
   const [source, setSource] = useState(image);
   const currency = "VND";
-  const currentUser = "0UHcspYV2NOUc5yZTFkslMuYRD23";
   const productLink =
     bid === "bid now" ? "/cards/bid/" + id : "/cards/buy-now/" + id;
   const removeItemFromCart = async () => {
@@ -58,16 +57,16 @@ const CartCard = ({ cart, id, image, name, price, bid, highestBid }) => {
             </div>
           ) : null}
         </div>
-        <div className={style.removeBtnWrapper}>
+        { (bid === "bid now" && !winning) || bid === "buy now" ? <div className={style.removeBtnWrapper}>
           <button
-            className={style.removeBtn}
-            onClick={async () => {
-              await removeItemFromCart();
-            }}
+              className={style.removeBtn}
+              onClick={async () => {
+                await removeItemFromCart();
+              }}
           >
             REMOVE
           </button>
-        </div>
+        </div> : null}
       </div>
     </div>
   );
