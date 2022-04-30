@@ -39,12 +39,12 @@ This React Firebase app contains a few key features that all apps backed by Fire
 |Project Proposal|Final Report|
 
 #### Figma
-|<a href="https://www.figma.com/file/7s7EjKIwZ8p3CBTlv3RWVn/SEPM---Team-18?node-id=0%3A1"><img src="https://i.ibb.co/SnwGSRC/figma.jpg" alt="Illustration" width="700px"/></a>|
+|<a href="https://www.figma.com/file/9LdKX5MPWy8y1OQln0UqMf/BUILDING-IT-SYS?node-id=0%3A1"><img src="https://i.ibb.co/SnwGSRC/figma.jpg" alt="Illustration" width="700px"/></a>|
 |:--:|
 |Figma for design system and prototypes|
 
 #### Trello
-|<a href="https://trello.com/b/c85KQUtQ/team-18-melbourne-backpack-sepm"><img src="https://i.ibb.co/wyTvv4c/trello.jpg" alt="Illustration" width="700px"/></a>|
+|<a href="https://trello.com/b/lewZ5bMu/team-5-bits-kronicle"><img src="https://i.ibb.co/wyTvv4c/trello.jpg" alt="Illustration" width="700px"/></a>|
 |:--:|
 |collaboration tool that organizes our project into boards|
 
