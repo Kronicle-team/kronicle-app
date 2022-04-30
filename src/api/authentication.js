@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
+import {setDoc, doc, updateDoc, collection} from "firebase/firestore";
 
 const signIn = async (email, password, navigate) => {
   await signInWithEmailAndPassword(auth, email, password)
@@ -34,8 +34,9 @@ const signUp = async (email, password, vrfPassword, navigate) => {
   }
 };
 
-const pushData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
+const pushData = async (avatar, fname, lname, phoneNum, address, aboutMe, navigate) => {
   await setDoc(doc(db, "users", auth.currentUser.uid), {
+      avatar: avatar,
     fullName: fname + " " + lname,
     fname: fname,
     lname: lname,
@@ -49,6 +50,24 @@ const pushData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
     navigate("/");
   });
 };
+
+
+const updateData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
+    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+        fullName: fname + " " + lname,
+        fname: fname,
+        lname: lname,
+        email: auth.currentUser.email,
+        phoneNum: phoneNum,
+        address: address,
+        aboutMe: aboutMe,
+        cart: [],
+        selling_product: "",
+    }).then(() => {
+        navigate("/");
+    });
+};
+
 
 const logout = async () => {
   try {
