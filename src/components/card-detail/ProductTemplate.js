@@ -57,6 +57,7 @@ const ProductTemplate = ({ buy, bid }) => {
       />
       <CardDetails
         id={id}
+        availability={data["availability"]}
         cart={currentCart}
         name={data["product_name"]}
         price={data["price"]}

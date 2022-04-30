@@ -12,6 +12,7 @@ import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 
 const CardDetails = ({
+  availability,
   cart,
   id,
   img,
@@ -107,7 +108,7 @@ const CardDetails = ({
       <div className={style["details"]}>
         <h3>{cardName}</h3>
         {bid ? <h4>Minimum bid</h4> : null}
-        <h1>{price.toLocaleString() + " VND"}</h1>
+        <h1>{availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"}</h1>
         <h4>Product Description</h4>
         <div className={style["desc"]}>{desc}</div>
 
@@ -125,7 +126,7 @@ const CardDetails = ({
           </Link>
         </div>
 
-        {buy ? (
+        {buy && availability !== "sold" ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
               <button className={style["cart-btn"]} onClick={async () => {
