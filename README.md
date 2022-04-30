@@ -13,13 +13,13 @@
 </p>
 
 ## 📌Features
-This React Firebase app contains a few key features that all apps backed by Fireabase support:
+This React Firebase app contains a few key features that all apps backed by Firebase support:
 
 + Home Screen
 + Registration with E-mail & Password
 + Login with E-mail and Password
 + Handling persisted login credentials
-+ Navigation (react-native-navigation)
++ Navigation (react-router-dom)
 + Writing to Firestore Database
 + Reading from Firestore Database
 + Uploading images to Storage
