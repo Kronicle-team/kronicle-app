@@ -3,14 +3,16 @@ import style from "./SellerProfile.module.css";
 import { useEffect, useState } from "react";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {capitalizeAllWords} from "../../helper/formatData";
 
 const SellerProfile = () => {
   const [data, setData] = useState({});
   const [products, setProducts] = useState([]);
+  const {id} = useParams()
+
   const fetchData = async () => {
-    getDoc(doc(db, "users", "HR6QlZUlyacmra6d3inTTrbw8sf2")).then((docSnap) => {
+    getDoc(doc(db, "users", id)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -39,7 +41,7 @@ const SellerProfile = () => {
   }, []);
 
   useEffect(() => {
-    fetchProduct().then(() => console.log(products));
+    fetchProduct().then(() => {});
   }, []);
 
   return (
@@ -64,18 +66,24 @@ const SellerProfile = () => {
 
         <div className={style["sell-container"]}>
           <nav className={style["nav"]}>
-            <Link to="/" className={style["active-link"]}>
+            <h2 className={style["heading"]}>
               Products
-            </Link>
+            </h2>
           </nav>
         </div>
         <div className={style["product-wrapper"]}>
           {products.map((product) => {
-            if (product.seller_id === "HR6QlZUlyacmra6d3inTTrbw8sf2") {
+            if (product.seller_id === id) {
+              let path;
+              if (product.product_pricing === "bid now") {
+                path = `/cards/bid/${product.id}`
+              } else {
+                path = `/cards/buy-now/${product.id}`
+              }
               return (
                 <div key={product.id} className={style.card}>
                   <div>
-                    <Link to={"/"}>
+                    <Link to={path}>
                       <div className={style.imgWrapper}>
                         <img
                           src={product.product_image}
@@ -85,7 +93,7 @@ const SellerProfile = () => {
                       </div>
                     </Link>
 
-                    <Link to={"/"}>
+                    <Link to={path}>
                       <h6 className={style.cardName}>{capitalizeAllWords(product.product_name)}</h6>
                     </Link>
                     <div>{product.price.toLocaleString() + " VND"}</div>
