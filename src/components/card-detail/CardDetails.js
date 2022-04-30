@@ -56,6 +56,8 @@ const CardDetails = ({
 
   const addItemToCart = async () => {
     const newCart = cart;
+    console.log(cart)
+    console.log(bidAmt)
     if (buy) newCart[id] = price;
     if (bid) newCart[id] = bidAmt;
     if (auth.currentUser) {
@@ -73,7 +75,7 @@ const CardDetails = ({
   };
 
   const handleBuyNow = () => {
-    navigate("/check-out-1", { state: { id: id } });
+    navigate("/check-out-1", { state: { id: [id] } });
   };
 
   const handleBid = async (e) => {

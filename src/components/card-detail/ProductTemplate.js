@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CardShowCase from "../CardShowCase";
 import { useEffect, useState } from "react";
 
-import { db } from "../../config/firebase";
+import {auth, db} from "../../config/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 
 const ProductTemplate = ({ buy, bid }) => {
@@ -21,9 +21,12 @@ const ProductTemplate = ({ buy, bid }) => {
   const [currentCart, setCurrentCart] = useState({});
 
   useEffect(() => {
-    onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
-      setCurrentCart(docSnapshot.data().cart);
-    });
+    if (auth.currentUser) {
+      let documentID = auth.currentUser.uid
+      onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
+        setCurrentCart(docSnapshot.data().cart);
+      });
+    }
   }, [currentCart]);
 
   useEffect( () => {
