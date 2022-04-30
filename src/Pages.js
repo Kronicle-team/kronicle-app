@@ -112,7 +112,7 @@ const pages = {
   },
   sellerProfilePage: {
     name: "Seller Profile",
-    link: "/seller-profile",
+    link: "/seller-profile/:id",
     component: <SellerProfilePage />,
   },
   myAccount: {
