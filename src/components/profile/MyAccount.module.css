@@ -1,69 +1,48 @@
-.container{
+.myAccount-container{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 60px 0 0;
+    margin-top: 2rem;
     padding: 0;
 }
 
-.wrapper{
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-and-info{
+.myAccount-wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
-
+    width: 100%;
 }
 
-.profile-wrapper{
+.myAccount-wrapper>h1 {
+    text-align: center;
+}
+
+.profile-left-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    width: 500px;
-
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-right: 2rem;
+    width: 45%;
 }
 
-.avatar{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
 .name{
     font-family: "Montserrat SemiBold", sans-serif;
-    font-size: 30px;
-    margin: 30px 0;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--blue);
 }
 
-.bio-p{
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.profile-pic{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
 }
 
-.bio-p p{
-    margin: 0;
-}
-
-.info{
-    width: 500px;
-    border-left: 2px solid var(--darker-grey);
-    padding-left: 150px;
-}
-.button-wrapper{
-    margin: 30px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.button{
-    padding: 10px 40px;
+.uploadAvatar-btn{
+    padding: 10px 0;
     color: var(--background);
     background-color: var(--darker-peach);
     border-radius: 5px;
@@ -71,10 +50,69 @@
     cursor: pointer;
     font-family: "Montserrat SemiBold", sans-serif;
     margin: 30px 0 0;
+    width: 40%;
 }
 
-.button:hover{
+.uploadAvatar-btn:hover{
     background: var(--darkest-peach);
+}
+
+.updateProfile-btn{
+    padding: 10px 0;
+    color: var(--darker-peach);
+    border: 2px solid var(--darker-peach);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Montserrat SemiBold", sans-serif;
+    margin: 30px 0 0;
+    background-color: var(--background);
+    width: 40%;
+}
+
+.updateProfile-btn:hover{
+    color: var(--darkest-peach);
+    border: 3px solid var(--darkest-peach);
+}
+
+
+
+
+.profile-right-container{
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid var(--light-grey);
+    padding-left: 2rem;
+    width: 55%;
+    margin-right: 60px;
+}
+
+
+
+
+
+.vertical-line {
+    margin: 0 2rem;
+}
+
+
+
+.info-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--light-grey);
+    margin-bottom: 2rem;
+}
+
+.info-header h4 {
+    margin-bottom: 0;
+}
+
+.button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .save-button{
@@ -84,7 +122,6 @@
     background-color: var(--darker-peach);
     border-radius: 5px;
     border-color: transparent;
-    margin: 5px;
     cursor: pointer;
     font-family: "Montserrat SemiBold", sans-serif;
 }
@@ -92,20 +129,23 @@
 .save-button:hover{
     background: var(--darkest-peach);
 }
-.cancel-button{
+
+.edit-button{
     padding: 10px 0;
     width: 70px;
-    color: #000000;
     background-color: transparent;
     border-radius: 5px;
     border: 2px solid var(--darker-peach);
-    margin: 5px;
+    color: var(--darker-peach);
     cursor: pointer;
     font-family: "Montserrat SemiBold", sans-serif;
+    margin-right: 1em;
 }
 
-.cancel-button:hover{
+.edit-button:hover{
     background: var(--background);
+    color: var(--darkest-peach);
+    border: 3px solid var(--darkest-peach);
 }
 
 .form{
@@ -113,12 +153,12 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-
     width: 100%;
 }
+
 .input{
     width: 100%;
-    padding: 15px 5px;
+    padding: 10px 5px;
     margin: 5px 0 20px;
     border-radius: 15px;
     font-family: "Montserrat Bold", sans-serif;

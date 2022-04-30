@@ -1,17 +1,18 @@
 .card {
     border-radius: 10px;
     margin: 20px 10px;
+    width: 300px;
 }
 
 .cardImg {
     height: 300px;
-    width: 100%;
+    width: 300px;
     object-fit: cover;
 }
 
 .imgWrapper {
     height: 300px;
-    width: 100%;
+    width: 300px;
 }
 
 .cardName {
@@ -21,5 +22,17 @@
 @media only screen and (max-width: 520px) {
     .cardImg {
         height: 180px;
+    }
+}
+
+@media only screen and (min-width: 1720px) {
+    .imgWrapper {
+        height: 300px;
+        width: 300px;
+    }
+
+    .cardImg {
+        height: 300px;
+        width: 300px;
     }
 }

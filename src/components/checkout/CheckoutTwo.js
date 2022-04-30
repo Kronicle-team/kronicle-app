@@ -1,10 +1,13 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutTwo.module.css";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {updateAvailability} from "../../api/handleBid";
+import {auth, db} from "../../config/firebase";
+import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 
 const CheckoutTwo = () => {
+  const [currentCart, setCurrentCart] = useState({})
   const [cardNum, setCardNum] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvv, setCvv] = useState("");
@@ -13,8 +16,29 @@ const CheckoutTwo = () => {
 
   const {state} = useLocation();
   const { id } = state;
-  const handleCheckout = () => {
-    updateAvailability(id, "sold");
+
+  console.log(state)
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      let documentID = auth.currentUser.uid
+      onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
+        setCurrentCart(docSnapshot.data().cart);
+      });
+    }
+  }, [currentCart]);
+
+  const handleCheckout =  async () => {
+    const newCart = currentCart
+    id.forEach((id) => {
+      updateAvailability(id, "sold")
+      console.log("change item", id, "to 'sold'")
+      delete newCart[id]
+    })
+    const userRef = doc(db, "users", auth.currentUser.uid);
+    await updateDoc (userRef,  {
+      cart: newCart
+    })
   }
 
   return (

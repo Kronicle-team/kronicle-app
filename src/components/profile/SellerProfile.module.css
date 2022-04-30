@@ -129,10 +129,9 @@ table tr td:last-child {
     padding: 0;
 }
 
-.nav .active-link {
-    font-family: "Montserrat Bold", sans-serif;
+.nav .heading {
     font-size: 30px;
-
+    margin-bottom: 5px;
 }
 
 .nav .active-link:hover {
@@ -153,13 +152,13 @@ table tr td:last-child {
 
 .cardImg {
     height: 300px;
-    width: 100%;
+    width: 300px;
     object-fit: cover;
 }
 
 .imgWrapper {
     height: 300px;
-    width: 100%;
+    width: 300px;
 }
 
 .cardName {

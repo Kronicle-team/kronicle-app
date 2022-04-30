@@ -1,30 +1,42 @@
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { postBid } from "../../api/handleBid";
 import {
   capitalizeAllWords,
   formatDescription,
   formatTime,
 } from "../../helper/formatData";
-import { doc, updateDoc } from "firebase/firestore";
+import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 
 const CardDetails = ({
+  availability,
   cart,
   id,
   img,
   name,
   price,
   description,
-  seller,
+  sellerId,
   date,
   buy,
   bid,
 }) => {
   const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
+  const [seller, setSeller] = useState({})
+  const [path, setPath] = useState("")
+
+  useEffect(() => {
+    if (sellerId) {
+      setPath(`/seller-profile/${sellerId}`);
+      onSnapshot(doc(db, "users", sellerId), (docSnapshot) => {
+        setSeller(docSnapshot.data());
+      });
+    }
+  }, [sellerId])
 
   const uploadDate = new Date(date);
   const period = 7;
@@ -45,6 +57,8 @@ const CardDetails = ({
 
   const addItemToCart = async () => {
     const newCart = cart;
+    console.log(cart)
+    console.log(bidAmt)
     if (buy) newCart[id] = price;
     if (bid) newCart[id] = bidAmt;
     if (auth.currentUser) {
@@ -62,19 +76,25 @@ const CardDetails = ({
   };
 
   const handleBuyNow = () => {
-    navigate("/check-out-1", { state: { id: id } });
+    navigate("/check-out-1", { state: { id: [id] } });
   };
 
   const handleBid = async (e) => {
-    if (!bidAmt) {
-      alert("Please enter a bid amount.");
+    if (!auth.currentUser) {
       e.preventDefault();
-    } else if (bidAmt <= price) {
-      alert("Please bid a higher price.");
-      e.preventDefault();
-    } else  if (auth.currentUser) {
-      await postBid(id, parseInt(bidAmt));
-      alert("Successful bid!");
+      alert("Please login or register if you want to bid.")
+      navigate("/login")
+    } else {
+      if (!bidAmt) {
+        alert("Please enter a bid amount.");
+        e.preventDefault();
+      } else if (bidAmt <= price) {
+        alert("Please bid a higher price.");
+        e.preventDefault();
+      } else {
+        alert("Successful bid!");
+        await postBid(id, parseInt(bidAmt));
+      }
     }
   };
 
@@ -88,7 +108,7 @@ const CardDetails = ({
       <div className={style["details"]}>
         <h3>{cardName}</h3>
         {bid ? <h4>Minimum bid</h4> : null}
-        <h1>{price.toLocaleString() + " VND"}</h1>
+        <h1>{availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"}</h1>
         <h4>Product Description</h4>
         <div className={style["desc"]}>{desc}</div>
 
@@ -96,17 +116,17 @@ const CardDetails = ({
         <div className={[style["seller-container"], common["flex"]].join(" ")}>
           <Link to="/seller-profile">
             <img
-              src={seller.avatar}
+              src={"../../media/images/placeholder-612x612.jpg"}
               alt="seller-avatar"
               className={[style["seller-ava"], common["flex"]].join(" ")}
             />
           </Link>
-          <Link to="/seller-profile">
-            <p>{seller.name}</p>
+          <Link to={path}>
+            <p>{seller.fullName}</p>
           </Link>
         </div>
 
-        {buy ? (
+        {buy && availability !== "sold" ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
               <button className={style["cart-btn"]} onClick={async () => {

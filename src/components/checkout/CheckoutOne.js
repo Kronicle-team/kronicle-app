@@ -14,6 +14,7 @@ const CheckoutOne = () => {
   const {state} = useLocation();
   const { id } = state;
   const navigate = useNavigate();
+  console.log(id)
   const handleCheckout = () => {
     navigate('/check-out-2', { state: { id: id } });
   }

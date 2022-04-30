@@ -9,44 +9,36 @@ import { useNavigate, useParams } from "react-router-dom";
 import CardShowCase from "../CardShowCase";
 import { useEffect, useState } from "react";
 
-import { db } from "../../config/firebase";
+import {auth, db} from "../../config/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 
 const ProductTemplate = ({ buy, bid }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState();
+  const [sellerId, setSellerId] = useState();
   const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23";
   const [currentCart, setCurrentCart] = useState({});
 
   useEffect(() => {
-    onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
-      setCurrentCart(docSnapshot.data().cart);
-    });
+    if (auth.currentUser) {
+      let documentID = auth.currentUser.uid
+      onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
+        setCurrentCart(docSnapshot.data().cart);
+      });
+    }
   }, [currentCart]);
 
-  useEffect(() => {
+  useEffect( () => {
     const getData = () => {
       onSnapshot(doc(db, "listing", id), (doc) => {
         setData(doc.data());
+        setSellerId(doc.data().seller_id)
       });
     };
     getData();
     return () => getData();
-  }, []);
-
-  const card = {
-    name: "Han Sooyoung's fansign card",
-    price: "110,000 VND",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hahah ahahah Lorem ipsum dolor sit amet" +
-      " consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    img: "/media/images/placeholder-612x612.jpg",
-    seller: {
-      avatar: "/media/images/placeholder-612x612.jpg",
-      name: "Neyra Elena Darcy",
-    },
-  };
+  }, [data]);
 
   if (data === undefined) {
     return (
@@ -65,12 +57,13 @@ const ProductTemplate = ({ buy, bid }) => {
       />
       <CardDetails
         id={id}
+        availability={data["availability"]}
         cart={currentCart}
         name={data["product_name"]}
         price={data["price"]}
         img={data["product_image"]}
         description={data["product_status"]}
-        seller={card.seller}
+        sellerId={sellerId}
         date={data["date_time"]}
         buy={buy}
         bid={bid}

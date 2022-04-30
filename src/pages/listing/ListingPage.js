@@ -9,8 +9,8 @@ import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
 
 const ListingPage = () => {
-  const [category, setCategory] = useState("");
-  const [product_pricing, setProductPricing] = useState("");
+  const [category, setCategory] = useState("album photocard");
+  const [product_pricing, setProductPricing] = useState("buy now");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
@@ -97,9 +97,9 @@ const ListingPage = () => {
       type: "text",
       placeholder: "Please enter the product’s name",
       errorMessage:
-        "Product name should be 3-16 characters and shouldn't include any special character!",
+        "Product name should be at least 5 characters long",
       label: "Product name*",
-      pattern: "^[A-Za-z0-9]{3,16}$",
+      pattern: ".{5,}",
       required: true,
     },
     {
@@ -110,7 +110,7 @@ const ListingPage = () => {
         "Please describe product's status, and what users will receive more than 15 characters",
       errorMessage: "It should be a meaningful description of your products!",
       label: "Product status*",
-      pattern: "^.{15,}$",
+      pattern: ".{15,}",
       required: true,
     },
     {
@@ -127,6 +127,7 @@ const ListingPage = () => {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
 
   return (
     <Layout header footer>

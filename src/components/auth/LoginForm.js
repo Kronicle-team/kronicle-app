@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import style from "./Form.module.css";
 import { useState } from "react";
 import { signIn } from "../../api/authentication";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
@@ -33,20 +33,26 @@ const LoginForm = () => {
               Register.
             </Link>
           </p>
-          <label className={style["label"]}>Email or Phone number</label>
+
+          <span className={style["user-input"]}>
+             <label className={style["label"]}>Email</label>
           <input
             type="text"
             value={emailOrPhoneNumber}
             onChange={(e) => setEmailOrPhoneNumber(e.target.value)}
             className={style["input"]}
           />
-          <label className={style["label"]}>Password</label>
+          </span>
+          <span className={style["user-input"]}>
+            <label className={style["label"]}>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className={style["input"]}
           />
+         </span>
+
         </form>
         <div
           className={style["button-wrapper"]}
