@@ -17,13 +17,13 @@ const PrivacyPolicyPage = () => {
           privacy of our visitors. This Privacy Policy document contains types of information that is collected and
           recorded by Kronicle and how we use it.</p>
 
-        <p>If you have additional questions or require more information about our <Link to={"/privacy-policy"}>Privacy Policy</Link>, do not hesitate to
+        <p>If you have additional questions or require more information about our <Link className={style["link"]} to={"/privacy-policy"}>Privacy Policy</Link>, do not hesitate to
           contact us.</p>
 
         <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with
           regards to the information that they shared and/or collect in Kronicle. This policy is not applicable to any
           information collected offline or via channels other than this website. Our Privacy Policy was created with the
-          help of the <a href="https://www.generateprivacypolicy.com/">Free Privacy Policy Generator</a>.</p>
+          help of the <a className={style["link"]} href="https://www.generateprivacypolicy.com/">Free Privacy Policy Generator</a>.</p>
 
         <h2>Consent</h2>
 
@@ -72,7 +72,7 @@ const PrivacyPolicyPage = () => {
           used to optimize the users' experience by customizing our web page content based on visitors' browser type
           and/or other information.</p>
 
-        <p>For more general information on cookies, please read <a
+        <p>For more general information on cookies, please read <a className={style["link"]}
           href="https://www.generateprivacypolicy.com/#cookies">the Cookies article on Generate Privacy Policy
           website</a>.</p>
 

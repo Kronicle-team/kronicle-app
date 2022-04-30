@@ -15,4 +15,12 @@
     text-align: justify;
 }
 
+.link {
+    text-decoration: underline;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
 

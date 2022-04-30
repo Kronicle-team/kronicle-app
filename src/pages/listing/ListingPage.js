@@ -9,8 +9,8 @@ import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
 
 const ListingPage = () => {
-  const [category, setCategory] = useState("");
-  const [product_pricing, setProductPricing] = useState("");
+  const [category, setCategory] = useState("album photocard");
+  const [product_pricing, setProductPricing] = useState("buy now");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
