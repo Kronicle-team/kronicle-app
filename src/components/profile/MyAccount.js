@@ -19,7 +19,7 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData().then(r => console.log(r));
   }, []);
 
   return (
