@@ -3,7 +3,7 @@ import style from "../form/ListingForm.module.css";
 
 // Use React Hook
 function Radio({ setCat, setPricing, setPrice }) {
-  const [status, setStatus] = useState(0); // 0: no show, 1: show price, 2: show min price.
+  const [status, setStatus] = useState(1); // 0: no show, 1: show price, 2: show min price.
 
 
   const radioHandler = (status) => {
@@ -23,7 +23,6 @@ function Radio({ setCat, setPricing, setPrice }) {
             type="number"
             className={style["input-listing"]}
             id="sellingPrice"
-            required={true}
             placeholder="Selling Price"
             onChange={(e) => setPrice(e.target.value)}
           />
@@ -64,6 +63,7 @@ function Radio({ setCat, setPricing, setPrice }) {
               value="album photocard"
               type="radio"
               name="category"
+              defaultChecked={true}
               onChange={(e) => setCat(e.target.value)}
             />
           </div>
@@ -73,6 +73,7 @@ function Radio({ setCat, setPricing, setPrice }) {
               value="trading card"
               type="radio"
               name="category"
+              defaultChecked={false}
               onChange={(e) => setCat(e.target.value)}
             />
           </div>
@@ -89,7 +90,9 @@ function Radio({ setCat, setPricing, setPrice }) {
               value="buy now"
               type="radio"
               name="product_pricing"
+              required={true}
               checked={status === 1}
+              defaultChecked={true}
               onClick={(e) => radioHandler(1)}
               onChange={(e) => setPricing(e.target.value)}
             />
@@ -100,6 +103,8 @@ function Radio({ setCat, setPricing, setPrice }) {
               value="bid now"
               type="radio"
               name="product_pricing"
+              required={true}
+              defaultChecked={false}
               checked={status === 2}
               onClick={(e) => radioHandler(2)}
               onChange={(e) => setPricing(e.target.value)}

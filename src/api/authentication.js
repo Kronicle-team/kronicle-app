@@ -34,12 +34,10 @@ const signUp = async (email, password, vrfPassword, navigate) => {
     }
 };
 
-const pushData = async (avatar, fname, lname, phoneNum, address, aboutMe, navigate) => {
+const pushData = async (avatar, fullName, phoneNum, address, aboutMe, navigate) => {
     await setDoc(doc(db, "users", auth.currentUser.uid), {
         avatar: avatar,
-        fullName: fname + " " + lname,
-        fname: fname,
-        lname: lname,
+        fullName: fullName,
         email: auth.currentUser.email,
         phoneNum: phoneNum,
         address: address,
@@ -51,11 +49,9 @@ const pushData = async (avatar, fname, lname, phoneNum, address, aboutMe, naviga
 };
 
 
-const updateData = async (fname, lname, phoneNum, address, aboutMe, navigate) => {
+const updateData = async (fullName, phoneNum, address, aboutMe, navigate) => {
     await updateDoc(doc(db, "users", auth.currentUser.uid), {
-        fullName: fname + " " + lname,
-        fname: fname,
-        lname: lname,
+        fullName: fullName,
         email: auth.currentUser.email,
         phoneNum: phoneNum,
         address: address,
