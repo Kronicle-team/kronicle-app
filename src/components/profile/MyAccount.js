@@ -28,7 +28,6 @@ const MyAccount = () => {
       <div className={style["myAccount-wrapper"]}>
         {/*left container*/}
         <div className={style["profile-left-container"]}>
-
             <div className={style["name"]}>{data.fullName}</div>
             <img
               src={"../../media/images/profile/gdragon.jpg"}
@@ -52,17 +51,11 @@ const MyAccount = () => {
         <div className={style["profile-right-container"]}>
           <div className={style["info-header"]}>
             <h4>BASIC INFO</h4>
-            <div className={style["button-wrapper"]}>
-              <button className={style["edit-button"]}>EDIT</button>
-              <button className={style["save-button"]}>SAVE</button>
-            </div>
           </div>
 
           <form className={style["form"]}>
-            <label>First Name</label>
-            <div className={style["input"]}>{data.fname}</div>
-            <label>Last Name</label>
-            <div className={style["input"]}>{data.lname}</div>
+            <label>Full Name</label>
+            <div className={style["input"]}>{data.fullName}</div>
             <label>Email</label>
             <div className={style["input"]}>{data.email}</div>
             <label>Phone Number</label>
