@@ -75,7 +75,7 @@ const TosPage = () => {
 
         <h2>8. Your Privacy</h2>
 
-        <p>Please read our <Link to={"/privacy-policy"}>Privacy Policy</Link>.</p>
+        <p>Please read our <Link className={style["link"]} to={"/privacy-policy"}>Privacy Policy</Link>.</p>
 
         <h2>9. Governing Law</h2>
 

@@ -59,7 +59,7 @@ const RefundPolicyPage = () => {
             <p>By email: kronicle-support@gmail.com</p>
           </li>
           <li>
-            <p>By visiting this page on our website: <a href="https://github.com/Kronicle-team/kronicle-app"
+            <p>By visiting this page on our website: <a className={style["link"]} href="https://github.com/Kronicle-team/kronicle-app"
                                                         rel="external nofollow noopener"
                                                         target="_blank">https://github.com/Kronicle-team/kronicle-app</a>
             </p>
@@ -113,7 +113,7 @@ const RefundPolicyPage = () => {
             <p>By email: kronicle-support@gmail.com</p>
           </li>
           <li>
-            <p>By visiting this page on our website: <a href="https://github.com/Kronicle-team/kronicle-app"
+            <p>By visiting this page on our website: <a className={style["link"]} href="https://github.com/Kronicle-team/kronicle-app"
                                                         rel="external nofollow noopener"
                                                         target="_blank">https://github.com/Kronicle-team/kronicle-app</a>
             </p>
