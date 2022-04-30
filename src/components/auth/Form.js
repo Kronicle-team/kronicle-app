@@ -89,11 +89,16 @@ const Form = () => {
     handleChange(e);
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form submitted");
+  };
+
 
   return (
     <Layout className={style["register-container"]} header footer>
       <div className={style["container"]}>
-        <form className={style["form"]}>
+        <form className={style["form"]} onSubmit={handleSubmit}>
           <h1 className={[style["h1"], style["extra-info"]].join(" ")}>
             Tell us more about yourself
           </h1>
