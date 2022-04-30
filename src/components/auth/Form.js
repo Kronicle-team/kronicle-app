@@ -51,6 +51,7 @@ const Form = () => {
               .getDownloadURL()
               .then((url) => {
                 setUrl(url);
+                console.log(url);
               });
         }
     );

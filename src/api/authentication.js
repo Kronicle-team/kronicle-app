@@ -44,8 +44,7 @@ const pushData = async (avatar, fname, lname, phoneNum, address, aboutMe, naviga
         phoneNum: phoneNum,
         address: address,
         aboutMe: aboutMe,
-        cart: [],
-        selling_product: "",
+        cart: {},
     }).then(() => {
         navigate("/");
     });
@@ -61,8 +60,7 @@ const updateData = async (fname, lname, phoneNum, address, aboutMe, navigate) =>
         phoneNum: phoneNum,
         address: address,
         aboutMe: aboutMe,
-        cart: [],
-        selling_product: "",
+        cart: {},
     }).then(() => {
         navigate("/");
     });
