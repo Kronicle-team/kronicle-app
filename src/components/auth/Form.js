@@ -20,6 +20,7 @@ const Form = () => {
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
+  const required = [fname, lname, phoneNum, address, aboutMe]
 
   const didMount = useRef(false);
 
@@ -99,7 +100,7 @@ const Form = () => {
   return (
     <Layout className={style["register-container"]} header footer>
       <div className={style["container"]}>
-        <form className={style["form"]} onSubmit={handleSubmit}>
+        <form className={style["form"]} onSubmit={() => handleSubmit}>
           <h1 className={[style["h1"], style["extra-info"]].join(" ")}>
             Tell us more about yourself
           </h1>
@@ -187,19 +188,26 @@ const Form = () => {
           className={style["button-wrapper"]}
         >
           <button className={style["register-btn"]}
-                  onClick={() => {
+                  onClick={async () => {
                     handleUpload();
-                    pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
+                    let allRequiredFieldsFilled = true
+                    const notFilled = []
+                    required.map((field) => {
+                      if (field === "") {
+                        allRequiredFieldsFilled = false
+                      }
+                    })
+                    if (allRequiredFieldsFilled) await pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
                       console.log(r);
                       alert(r);
-                    });
+                    })
                   }}
           >SUBMIT
           </button>
           <button
             type="submit"
             className={style["clear-btn"]}
-            onClick={handleReset}
+            onClick={() => handleReset}
           >
             CLEAR
           </button>
