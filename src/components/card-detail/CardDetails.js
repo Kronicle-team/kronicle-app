@@ -57,8 +57,6 @@ const CardDetails = ({
 
   const addItemToCart = async () => {
     const newCart = cart;
-    console.log(cart)
-    console.log(bidAmt)
     if (buy) newCart[id] = price;
     if (bid) newCart[id] = bidAmt;
     if (auth.currentUser) {
@@ -71,12 +69,18 @@ const CardDetails = ({
   };
 
   const addToCart = async () => {
-    alert("Item has been added to cart.");
-    await addItemToCart();
+      alert("Item has been added to cart.");
+      await addItemToCart();
   };
 
-  const handleBuyNow = () => {
-    navigate("/check-out-1", { state: { id: [id] } });
+  const handleBuyNow = (e) => {
+    if (!auth.currentUser) {
+      e.preventDefault();
+      alert("Please login or register to purchase this item.")
+      navigate("/login")
+    } else {
+      navigate("/check-out-1", { state: { id: [id] } });
+    }
   };
 
   const handleBid = async (e) => {
@@ -129,16 +133,19 @@ const CardDetails = ({
         {buy && availability !== "sold" ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
-              <button className={style["cart-btn"]} onClick={async () => {
+              <button className={style["cart-btn"]} onClick={async (e) => {
                 if (auth.currentUser) {
-                  console.log(auth.currentUser)
-                  await addToCart()
+                  await addToCart(e)
+                } else {
+                  e.preventDefault();
+                  alert("Please login or register if you want to add this item to cart.")
+                  navigate("/login")
                 }
               }}>
                 ADD TO CART
               </button>
             </Link>
-            <button className={style["buy-btn"]} onClick={() => handleBuyNow()}>
+            <button className={style["buy-btn"]} onClick={(e) => handleBuyNow(e)}>
               BUY NOW
             </button>
           </div>
