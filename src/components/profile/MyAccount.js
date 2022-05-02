@@ -1,15 +1,17 @@
 import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { logout } from "../../api/authentication";
 
 const MyAccount = () => {
   const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
+
   const fetchData = async () => {
-    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
+    getDoc(doc(db, "users", auth?.currentUser?.uid)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -19,8 +21,20 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
-    fetchData().then(r => console.log(r));
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoading(false)
+        fetchData().then(() => {});
+      } else {
+        navigate("/")
+      }
+    });
+    unsub()
+
+    return () => unsub()
   }, []);
+
+  if (isLoading) {return <div/>}
 
   return (
     <Layout className={style["myAccount-container"]} header footer>
