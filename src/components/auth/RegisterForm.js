@@ -13,6 +13,9 @@ const RegisterForm = () => {
   const [checkedFirst, setCheckedFirst] = useState(false);
   const [checkedSecond, setCheckedSecond] = useState(false);
 
+  const required = [email, password, verifyPassword]
+
+
   let navigate = useNavigate();
   const handleChangeFirst = () => {
     setCheckedFirst(!checkedFirst);
@@ -101,7 +104,11 @@ const RegisterForm = () => {
         <div
           className={style["button-wrapper"]}
           onClick={() => {
-            signUp(email, password, verifyPassword, navigate);
+            let allRequiredFieldsFilled = true
+            required.map((field) => {
+              if (field === "") allRequiredFieldsFilled = false
+            })
+            if (allRequiredFieldsFilled) signUp(email, password, verifyPassword, navigate);
           }}
         >
           <button className={style["register-btn"]}>REGISTER</button>

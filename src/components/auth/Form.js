@@ -191,7 +191,6 @@ const Form = () => {
                   onClick={async () => {
                     handleUpload();
                     let allRequiredFieldsFilled = true
-                    const notFilled = []
                     required.map((field) => {
                       if (field === "") {
                         allRequiredFieldsFilled = false
