@@ -93,11 +93,10 @@ const CartPage =  () => {
     );
   };
 
+
   useEffect(() => {
-    console.log(auth.currentUser)
     if (auth.currentUser) {
-      let documentID = auth.currentUser.uid
-      fetchData(documentID);
+      fetchData(auth.currentUser.uid);
     } else setCurrentCart({})
     setSubTotal(0);
     temp.map((card) => {
@@ -110,12 +109,16 @@ const CartPage =  () => {
     if (bidBtn) {
       setDeposit(Math.round(subTotal * 0.1));
       setTotal(
-        subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
+          subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
       );
     } else setTotal(subTotal * (1 - couponValue) + shippingFee);
-    const isBid = bidBtn;
-    localStorage.setItem("bidBtn", JSON.stringify(isBid));
   }, [currentCart]);
+
+  useEffect(() => {
+    const isBid = bidBtn;
+    console.log(isBid)
+    localStorage.setItem("bidBtn", JSON.stringify(isBid));
+  }, [bidBtn])
 
   const handleOrder = () => {
     let checkout = []
