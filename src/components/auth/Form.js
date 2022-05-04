@@ -200,6 +200,7 @@ const Form = () => {
                       console.log(r);
                       alert(r);
                     })
+                    if (!allRequiredFieldsFilled) alert("Please fill in the required fields!")
                   }}
           >SUBMIT
           </button>
