@@ -20,7 +20,7 @@ const Form = () => {
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
-  const required = [fname, lname, phoneNum, address, aboutMe]
+  const required = [url, fname, lname, phoneNum, address, aboutMe]
 
   const didMount = useRef(false);
 
@@ -130,7 +130,6 @@ const Form = () => {
 
             <input
               type="file"
-              value={avatar}
               name="profileImageUpload"
               id="profileImageUpload"
               className={style["input"]}
@@ -196,7 +195,7 @@ const Form = () => {
                         allRequiredFieldsFilled = false
                       }
                     })
-                    if (allRequiredFieldsFilled) await pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
+                    if (allRequiredFieldsFilled) await pushData(url, fname + " " + lname, phoneNum, address, aboutMe, navigate).then((r) => {
                       console.log(r);
                       alert(r);
                     })

@@ -30,7 +30,7 @@ const MyAccount = () => {
         <div className={style["profile-left-container"]}>
             <div className={style["name"]}>{data.fullName}</div>
             <img
-              src={"../../media/images/profile/gdragon.jpg"}
+              src={data.avatar}
               className={style["profile-pic"]}
               alt={"Avatar"}
             />
