@@ -20,7 +20,7 @@ const Form = () => {
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
-  const required = [url, fname, lname, phoneNum, address, aboutMe]
+  const required = [avatar, fname, lname, phoneNum, address, aboutMe]
 
   const didMount = useRef(false);
 
