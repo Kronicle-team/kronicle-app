@@ -10,7 +10,7 @@ const MyAccount = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate()
 
-  const fetchData = async () => {
+  const fetchData = () => {
     getDoc(doc(db, "users", auth?.currentUser?.uid)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
@@ -24,7 +24,7 @@ const MyAccount = () => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
         setIsLoading(false)
-        fetchData().then(() => {});
+        fetchData();
       } else {
         navigate("/")
       }
