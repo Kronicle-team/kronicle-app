@@ -15,6 +15,8 @@ const ListingPage = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
 
+  const required = [category, product_pricing, price, image, url]
+
   const [values, setValues] = useState({
     product_name: "",
     product_status: "",
@@ -158,10 +160,19 @@ const ListingPage = () => {
           <button
             className={style["listing-btn"]}
             onClick={() => {
+              let allRequiredFieldsFilled = true
+              required.map((field) => {
+                if (field === "") {allRequiredFieldsFilled = false
+                }
+              })
+              if (allRequiredFieldsFilled) {
               handleUpload();
               pushProduct().then((r) => {
                 console.log(r);
               });
+              } else {
+                alert("Please fill in the required fields!")
+              }
             }}
           >
             SUBMIT
