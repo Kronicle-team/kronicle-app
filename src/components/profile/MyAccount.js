@@ -6,10 +6,13 @@ import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { logout } from "../../api/authentication";
 
+
 const MyAccount = () => {
   const [data, setData] = useState({});
-  const fetchData = async () => {
-    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
+  const [loaded, setLoaded] = useState(false)
+    const [loading, setLoading] = useState(false)
+  const fetchData = (documentID) => {
+    getDoc(doc(db, "users", documentID)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -18,8 +21,13 @@ const MyAccount = () => {
     });
   };
 
-  useEffect(() => {
-    fetchData().then(r => console.log(r));
+  useEffect(  () => {
+      auth.onAuthStateChanged( user => {
+          if (user) {
+              const userID = auth.currentUser.uid
+              fetchData(userID)
+          }
+      });
   }, []);
 
   return (
