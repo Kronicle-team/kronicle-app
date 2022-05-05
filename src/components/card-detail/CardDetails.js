@@ -112,7 +112,7 @@ const CardDetails = ({
       <div className={style["details"]}>
         <h3>{cardName}</h3>
         {bid ? <h4>Minimum bid</h4> : null}
-        <h1>{availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"}</h1>
+        <h1>{availability === "sold" ? "SOLD" : Date.now() > deadline ? "SOLD" : price.toLocaleString() + " VND"}</h1>
         <h4>Product Description</h4>
         <div className={style["desc"]}>{desc}</div>
 
@@ -153,34 +153,39 @@ const CardDetails = ({
         {bid ? (
           <>
             <h6>Available until {datestring}</h6>
-            <h4>Enter your bid amount</h4>
-            <div
-              className={[common["flex"], style["input-container"]].join(" ")}
-            >
-              <input
-                type="number"
-                className={style["input"]}
-                onChange={(e) => setBidAmt(parseInt(e.target.value))}
-              />
-              <div
-                className={[style["currency"], common["text-center"]].join(" ")}
-              >
-                VND
-              </div>
-            </div>
+            {Date.now() <= deadline
+                ?
+                <div>
+                  <h4>Enter your bid amount</h4>
+                  <div
+                      className={[common["flex"], style["input-container"]].join(" ")}
+                  >
+                    <input
+                        type="number"
+                        className={style["input"]}
+                        onChange={(e) => setBidAmt(parseInt(e.target.value))}
+                    />
+                    <div
+                        className={[style["currency"], common["text-center"]].join(" ")}
+                    >
+                      VND
+                    </div>
+                  </div>
 
-            <div
-              className={[common["flex"], style["bid-btn-container"]].join(" ")}
-            >
-              <Link to="/cart">
-                <button
-                  className={style["bid-btn"]}
-                  onClick={(e) => handleBid(e).then(() => addItemToCart())}
-                >
-                  PLACE A BID
-                </button>
-              </Link>
-            </div>
+                  <div
+                      className={[common["flex"], style["bid-btn-container"]].join(" ")}
+                  >
+                    <Link to="/cart">
+                      <button
+                          className={style["bid-btn"]}
+                          onClick={(e) => handleBid(e).then(() => addItemToCart())}
+                      >
+                        PLACE A BID
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+            : null}
           </>
         ) : null}
       </div>
