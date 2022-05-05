@@ -1,13 +1,20 @@
+/***************************************************************************************
+ *    Title: Upload files with Cloud Storage on Web
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/storage/web/upload-files
+ *
+ ***************************************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "./Form.module.css";
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { pushData } from "../../api/authentication";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCamera
-} from "@fortawesome/free-solid-svg-icons";
-import {auth, db, storage} from "../../config/firebase";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { auth, db, storage } from "../../config/firebase";
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
@@ -41,25 +48,25 @@ const Form = () => {
   const handleUpload = () => {
     const uploadTask = storage.ref(`avatar/${avatar.name}`).put(avatar);
     uploadTask.on(
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          storage
-              .ref("avatar")
-              .child(avatar.name)
-              .getDownloadURL()
-              .then((url) => {
-                setUrl(url);
-                console.log(url);
-              });
-        }
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("avatar")
+          .child(avatar.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+            console.log(url);
+          });
+      }
     );
   };
 
   console.log("avatar: ", avatar);
 
-  const onChangePicture = e => {
+  const onChangePicture = (e) => {
     if (e.target.files[0]) {
       setDisplay(true);
       setProfile(e.target.files[0]);
@@ -78,12 +85,10 @@ const Form = () => {
       (input) => (input.value = "")
     );
     this.setState({
-      itemValues: [{}]
+      itemValues: [{}],
     });
   };
   let navigate = useNavigate();
-
-
 
   function onChangeProfilePicture(e) {
     onChangePicture(e);
@@ -94,7 +99,6 @@ const Form = () => {
     e.preventDefault();
     alert("Form submitted");
   };
-
 
   return (
     <Layout className={style["register-container"]} header footer>
@@ -111,21 +115,25 @@ const Form = () => {
                   {/* eslint-disable-next-line jsx-a11y/alt-text */}
                   <img className={style["profileImage"]} src={imageData} />
                   <label htmlFor={"profileImageUpload"}>
-                    <FontAwesomeIcon icon={faCamera} className={style["upload-icon-display"]} />
+                    <FontAwesomeIcon
+                      icon={faCamera}
+                      className={style["upload-icon-display"]}
+                    />
                   </label>
                 </div>
-
               ) : (
                 <label htmlFor={"profileImageUpload"}>
-
-                  <FontAwesomeIcon icon={faCamera} className={style["upload-icon"]} />
-
-
+                  <FontAwesomeIcon
+                    icon={faCamera}
+                    className={style["upload-icon"]}
+                  />
                 </label>
               )}
             </div>
 
-            <label htmlFor={"profileImageUpload"} className={style["label"]}>Upload Profile Picture</label>
+            <label htmlFor={"profileImageUpload"} className={style["label"]}>
+              Upload Profile Picture
+            </label>
 
             <input
               type="file"
@@ -135,9 +143,7 @@ const Form = () => {
               className={style["input"]}
               onChange={onChangeProfilePicture}
             />
-
           </div>
-
 
           <div className={style["name-wrapper"]}>
             <div>
@@ -180,21 +186,27 @@ const Form = () => {
             className={[style["input"], style["input-aboutme"]].join(" ")}
             rows={5}
           />
-
         </form>
-
-        <div
-          className={style["button-wrapper"]}
-        >
-          <button className={style["register-btn"]}
-                  onClick={() => {
-                    handleUpload();
-                    pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
-                      console.log(r);
-                      alert(r);
-                    });
-                  }}
-          >SUBMIT
+        <div className={style["button-wrapper"]}>
+          <button
+            className={style["register-btn"]}
+            onClick={() => {
+              handleUpload();
+              pushData(
+                url,
+                fname,
+                lname,
+                phoneNum,
+                address,
+                aboutMe,
+                navigate
+              ).then((r) => {
+                console.log(r);
+                alert(r);
+              });
+            }}
+          >
+            SUBMIT
           </button>
           <button
             type="submit"
