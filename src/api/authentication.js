@@ -19,16 +19,37 @@
 import { auth, db } from "../config/firebase";
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword
 } from "firebase/auth";
-import { setDoc, doc, updateDoc, collection } from "firebase/firestore";
+import { setDoc, doc, updateDoc, collection, getDocs, query, where } from "firebase/firestore";
 
 const signIn = async (email, password, navigate) => {
   await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredentials) => {
+    .then(async (userCredentials) => {
       const user = userCredentials.user;
-      console.log("SignIn success");
-      navigate("/form");
+      const checkValidUser = []
+      const infoColRef = collection(db, "users");
+      const q = query(infoColRef);
+      const querySnapshot = await getDocs(q);
+      let check = false;
+      querySnapshot.forEach((doc) => {
+        console.log("All users after filter " + doc.id)
+        if (doc.id === auth.currentUser.uid) {
+          console.log(doc.id)
+          check = true
+        }
+      });
+      console.log(check)
+      if (!check) {
+        checkValidUser.push(doc.id)
+        navigate("/form")
+        console.log("An array that returns the user that match the filter " + checkValidUser)
+      }
+      else {
+        console.log("Successfully sign in");
+        navigate("/my-account")
+      }
+
     })
     .catch((error) => {
       alert(error.message);
@@ -43,7 +64,7 @@ const signUp = async (email, password, vrfPassword, navigate) => {
           const user = userCredentials.user;
           console.log("Create user: ", email);
           window.alert("Sign up successful!");
-          navigate("/login");
+          navigate("/form");
         }
       );
     }
@@ -60,6 +81,7 @@ const pushData = async (
   aboutMe,
   navigate
 ) => {
+
   await setDoc(doc(db, "users", auth.currentUser.uid), {
     avatar: avatar,
     fullName: fullName,
@@ -68,6 +90,7 @@ const pushData = async (
     address: address,
     aboutMe: aboutMe,
     cart: {},
+
   }).then(() => {
     navigate("/");
   });
@@ -80,7 +103,7 @@ const updateData = async (fullName, phoneNum, address, aboutMe, navigate) => {
     phoneNum: phoneNum,
     address: address,
     aboutMe: aboutMe,
-    cart: {},
+    cart: {}
   }).then(() => {
     navigate("/");
   });

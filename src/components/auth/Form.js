@@ -13,6 +13,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { pushData } from "../../api/authentication";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { auth, db, storage } from "../../config/firebase";
 
@@ -23,7 +24,7 @@ const Form = () => {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [aboutMe, setAboutMe] = useState("");
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState("");
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
   const required = [avatar, fname, phoneNum, address, aboutMe]
@@ -90,6 +91,7 @@ const Form = () => {
   };
   let navigate = useNavigate();
 
+
   function onChangeProfilePicture(e) {
     onChangePicture(e);
     handleChange(e);
@@ -123,6 +125,7 @@ const Form = () => {
                 </div>
               ) : (
                 <label htmlFor={"profileImageUpload"}>
+
                   <FontAwesomeIcon
                     icon={faCamera}
                     className={style["upload-icon"]}
@@ -159,6 +162,7 @@ const Form = () => {
             onChange={(e) => setPhoneNum(e.target.value)}
             className={style["input"]}
           />
+
           <label className={style["label"]}>Address</label>
           <input
             type="text"
@@ -182,6 +186,7 @@ const Form = () => {
           <button className={style["register-btn"]}
                   onClick={async () => {
                     handleUpload();
+
                     let allRequiredFieldsFilled = true
                     required.map((field) => {
                       if (field === "") {

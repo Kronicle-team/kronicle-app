@@ -10,10 +10,13 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  let navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Form submitted");
   };
+
 
   let navigate = useNavigate();
 
