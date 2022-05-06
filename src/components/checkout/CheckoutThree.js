@@ -1,8 +1,29 @@
 import Layout from "../../components/Layout";
 import style from "./CheckoutThree.module.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {auth} from "../../config/firebase";
+
 
 const CheckoutThree = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoading(false)
+      } else {
+        navigate("/")
+      }
+    });
+    unsub()
+
+    return () => unsub()
+  }, []);
+
+  if (isLoading) {return <div/>}
+
   return (
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>

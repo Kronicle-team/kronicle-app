@@ -1,15 +1,26 @@
+/***************************************************************************************
+ *    Title: DataSnapshot
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot
+ *
+ ***************************************************************************************/
+
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { postBid } from "../../api/handleBid";
 import {
   capitalizeAllWords,
   formatDescription,
   formatTime,
 } from "../../helper/formatData";
-import {doc, onSnapshot, updateDoc} from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 
 const CardDetails = ({
   availability,
@@ -26,8 +37,8 @@ const CardDetails = ({
 }) => {
   const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
-  const [seller, setSeller] = useState({})
-  const [path, setPath] = useState("")
+  const [seller, setSeller] = useState({});
+  const [path, setPath] = useState("");
 
   useEffect(() => {
     if (sellerId) {
@@ -36,7 +47,7 @@ const CardDetails = ({
         setSeller(docSnapshot.data());
       });
     }
-  }, [sellerId])
+  }, [sellerId]);
 
   const uploadDate = new Date(date);
   const period = 7;
@@ -54,15 +65,12 @@ const CardDetails = ({
     ", " +
     deadline.getFullYear();
 
-
   const addItemToCart = async () => {
     const newCart = cart;
-    console.log(cart)
-    console.log(bidAmt)
     if (buy) newCart[id] = price;
     if (bid) newCart[id] = bidAmt;
     if (auth.currentUser) {
-      const documentID = auth.currentUser.uid
+      const documentID = auth.currentUser.uid;
       const userRef = doc(db, "users", documentID);
       await updateDoc(userRef, {
         cart: newCart,
@@ -71,19 +79,25 @@ const CardDetails = ({
   };
 
   const addToCart = async () => {
-    alert("Item has been added to cart.");
-    await addItemToCart();
+      alert("Item has been added to cart.");
+      await addItemToCart();
   };
 
-  const handleBuyNow = () => {
-    navigate("/check-out-1", { state: { id: [id] } });
+  const handleBuyNow = (e) => {
+    if (!auth.currentUser) {
+      e.preventDefault();
+      alert("Please login or register to purchase this item.")
+      navigate("/login")
+    } else {
+      navigate("/check-out-1", { state: { id: [id] } });
+    }
   };
 
   const handleBid = async (e) => {
     if (!auth.currentUser) {
       e.preventDefault();
-      alert("Please login or register if you want to bid.")
-      navigate("/login")
+      alert("Please login or register if you want to bid.");
+      navigate("/login");
     } else {
       if (!bidAmt) {
         alert("Please enter a bid amount.");
@@ -108,19 +122,24 @@ const CardDetails = ({
       <div className={style["details"]}>
         <h3>{cardName}</h3>
         {bid ? <h4>Minimum bid</h4> : null}
-        <h1>{availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"}</h1>
+        <h1>{buy ? availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"
+            : Date.now() > deadline ? "SOLD" : price.toLocaleString() + " VND"}</h1>
         <h4>Product Description</h4>
         <div className={style["desc"]}>{desc}</div>
 
         <h4>Seller</h4>
         <div className={[style["seller-container"], common["flex"]].join(" ")}>
-          <Link to="/seller-profile">
-            <img
-              src={"../../media/images/placeholder-612x612.jpg"}
-              alt="seller-avatar"
-              className={[style["seller-ava"], common["flex"]].join(" ")}
-            />
+          <Link to={path}>
+            {seller.avatar
+                ? <img
+                    src={seller.avatar}
+                    className={[style["seller-ava"], common["flex"]].join(" ")}
+                    alt={"Seller avatar"}
+                />
+                : <FontAwesomeIcon icon={faUserCircle} className={style["seller-ava"]} />
+            }
           </Link>
+
           <Link to={path}>
             <p>{seller.fullName}</p>
           </Link>
@@ -129,16 +148,19 @@ const CardDetails = ({
         {buy && availability !== "sold" ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
-              <button className={style["cart-btn"]} onClick={async () => {
+              <button className={style["cart-btn"]} onClick={async (e) => {
                 if (auth.currentUser) {
-                  console.log(auth.currentUser)
-                  await addToCart()
+                  await addToCart(e)
+                } else {
+                  e.preventDefault();
+                  alert("Please login or register if you want to add this item to cart.")
+                  navigate("/login")
                 }
               }}>
                 ADD TO CART
               </button>
             </Link>
-            <button className={style["buy-btn"]} onClick={() => handleBuyNow()}>
+            <button className={style["buy-btn"]} onClick={(e) => handleBuyNow(e)}>
               BUY NOW
             </button>
           </div>
@@ -146,34 +168,39 @@ const CardDetails = ({
         {bid ? (
           <>
             <h6>Available until {datestring}</h6>
-            <h4>Enter your bid amount</h4>
-            <div
-              className={[common["flex"], style["input-container"]].join(" ")}
-            >
-              <input
-                type="number"
-                className={style["input"]}
-                onChange={(e) => setBidAmt(parseInt(e.target.value))}
-              />
-              <div
-                className={[style["currency"], common["text-center"]].join(" ")}
-              >
-                VND
-              </div>
-            </div>
+            {Date.now() <= deadline
+                ?
+                <div>
+                  <h4>Enter your bid amount</h4>
+                  <div
+                      className={[common["flex"], style["input-container"]].join(" ")}
+                  >
+                    <input
+                        type="number"
+                        className={style["input"]}
+                        onChange={(e) => setBidAmt(parseInt(e.target.value))}
+                    />
+                    <div
+                        className={[style["currency"], common["text-center"]].join(" ")}
+                    >
+                      VND
+                    </div>
+                  </div>
 
-            <div
-              className={[common["flex"], style["bid-btn-container"]].join(" ")}
-            >
-              <Link to="/cart">
-                <button
-                  className={style["bid-btn"]}
-                  onClick={(e) => handleBid(e).then(() => addItemToCart())}
-                >
-                  PLACE A BID
-                </button>
-              </Link>
-            </div>
+                  <div
+                      className={[common["flex"], style["bid-btn-container"]].join(" ")}
+                  >
+                    <Link to="/cart">
+                      <button
+                          className={style["bid-btn"]}
+                          onClick={(e) => handleBid(e).then(() => addItemToCart())}
+                      >
+                        PLACE A BID
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+            : null}
           </>
         ) : null}
       </div>

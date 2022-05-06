@@ -1,12 +1,14 @@
 import Layout from "../../components/Layout";
 import style from "./Form.module.css";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { signIn } from "../../api/authentication";
 import { Link, useNavigate } from "react-router-dom";
+import {auth} from "../../config/firebase";
 
 const LoginForm = () => {
   const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   let navigate = useNavigate();
 
@@ -14,6 +16,24 @@ const LoginForm = () => {
     e.preventDefault();
     alert("Form submitted");
   };
+
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        setIsLoading(false)
+      } else {
+        navigate("/")
+      }
+    });
+    unsub()
+
+    return () => unsub()
+  }, []);
+
+  if (isLoading) {return <div/>}
 
   return (
     <Layout className={style["login-container"]} header footer>

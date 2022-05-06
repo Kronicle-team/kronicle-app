@@ -1,24 +1,33 @@
+/***************************************************************************************
+ *    Title: Upload files with Cloud Storage on Web
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/storage/web/upload-files
+ *
+ ***************************************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "./Form.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import { pushData } from "../../api/authentication";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCamera
-} from "@fortawesome/free-solid-svg-icons";
-import { storage } from "../../config/firebase";
+
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { auth, db, storage } from "../../config/firebase";
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
-  const [imageData, setImageData] = useState("");
-  const [fullName, setFullName] = useState("");
+  const [imageData, setImageData] = useState(null);
+  const [fname, setFname] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [profile, setProfile] = useState("");
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
+  const required = [avatar, fname, phoneNum, address, aboutMe]
 
   const didMount = useRef(false);
 
@@ -58,7 +67,7 @@ const Form = () => {
 
   console.log("avatar: ", avatar);
 
-  const onChangePicture = e => {
+  const onChangePicture = (e) => {
     if (e.target.files[0]) {
       setDisplay(true);
       setProfile(e.target.files[0]);
@@ -77,7 +86,7 @@ const Form = () => {
       (input) => (input.value = "")
     );
     this.setState({
-      itemValues: [{}]
+      itemValues: [{}],
     });
   };
   let navigate = useNavigate();
@@ -93,11 +102,10 @@ const Form = () => {
     alert("Form submitted");
   };
 
-
   return (
     <Layout className={style["register-container"]} header footer>
       <div className={style["container"]}>
-        <form className={style["form"]} onSubmit={handleSubmit}>
+        <form className={style["form"]} onSubmit={() => handleSubmit}>
           <h1 className={[style["h1"], style["extra-info"]].join(" ")}>
             Tell us more about yourself
           </h1>
@@ -109,20 +117,29 @@ const Form = () => {
                   {/* eslint-disable-next-line jsx-a11y/alt-text */}
                   <img className={style["profileImage"]} src={imageData} />
                   <label htmlFor={"profileImageUpload"}>
-                    <FontAwesomeIcon icon={faCamera} className={style["upload-icon-display"]} />
+                    <FontAwesomeIcon
+                      icon={faCamera}
+                      className={style["upload-icon-display"]}
+                    />
                   </label>
                 </div>
               ) : (
                 <label htmlFor={"profileImageUpload"}>
-                  <FontAwesomeIcon icon={faCamera} className={style["upload-icon"]} />
+
+                  <FontAwesomeIcon
+                    icon={faCamera}
+                    className={style["upload-icon"]}
+                  />
                 </label>
               )}
             </div>
 
-            <label htmlFor={"profileImageUpload"} className={style["label"]}>Upload Profile Picture</label>
+            <label htmlFor={"profileImageUpload"} className={style["label"]}>
+              Upload Profile Picture
+            </label>
+
             <input
               type="file"
-              value={avatar}
               name="profileImageUpload"
               id="profileImageUpload"
               className={style["input"]}
@@ -130,13 +147,13 @@ const Form = () => {
             />
           </div>
 
-          <label className={style["label"]}>Full Name</label>
-          <input
-            type="text"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            className={style["input"]}
-          />
+              <label className={style["label"]}>Full Name</label>
+              <input
+                type="text"
+                value={fname}
+                onChange={(e) => setFname(e.target.value)}
+                className={style["input"]}
+              />
 
           <label className={style["label"]}>Phone Number</label>
           <input
@@ -162,22 +179,29 @@ const Form = () => {
           />
         </form>
 
+
         <div
           className={style["button-wrapper"]}
         >
           <button className={style["register-btn"]}
-                  onClick={() => {
+                  onClick={async () => {
                     handleUpload();
-                    pushData(url, fullName, phoneNum, address, aboutMe, navigate).then((r) => {
-                    });
-                    window.alert("Form Submitted")
+
+                    let allRequiredFieldsFilled = true
+                    required.map((field) => {
+                      if (field === "") {
+                        allRequiredFieldsFilled = false
+                      }
+                    })
+                    if (allRequiredFieldsFilled) await pushData(url, fname, phoneNum, address, aboutMe, navigate)
+                    if (!allRequiredFieldsFilled) alert("Please fill in the required fields!")
                   }}
           >SUBMIT
           </button>
           <button
             type="submit"
             className={style["clear-btn"]}
-            onClick={handleReset}
+            onClick={() => handleReset}
           >
             CLEAR
           </button>

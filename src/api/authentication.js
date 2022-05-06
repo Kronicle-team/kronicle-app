@@ -1,3 +1,21 @@
+/***************************************************************************************
+ *    Title: Get Started with Firebase Authentication on Websites
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/auth/web/start
+ *
+ ***************************************************************************************/
+
+/***************************************************************************************
+ *    Title: Introduction to the Admin Database API
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/database/admin/start
+ *
+ ***************************************************************************************/
+
 import { auth, db } from "../config/firebase";
 import {
   signInWithEmailAndPassword,
@@ -31,6 +49,7 @@ const signIn = async (email, password, navigate) => {
         console.log("Successfully sign in");
         navigate("/my-account")
       }
+
     })
     .catch((error) => {
       alert(error.message);
@@ -54,7 +73,15 @@ const signUp = async (email, password, vrfPassword, navigate) => {
   }
 };
 
-const pushData = async (avatar, fullName, phoneNum, address, aboutMe, navigate) => {
+const pushData = async (
+  avatar,
+  fullName,
+  phoneNum,
+  address,
+  aboutMe,
+  navigate
+) => {
+
   await setDoc(doc(db, "users", auth.currentUser.uid), {
     avatar: avatar,
     fullName: fullName,
@@ -62,12 +89,12 @@ const pushData = async (avatar, fullName, phoneNum, address, aboutMe, navigate) 
     phoneNum: phoneNum,
     address: address,
     aboutMe: aboutMe,
-    cart: {}
+    cart: {},
+
   }).then(() => {
     navigate("/");
   });
 };
-
 
 const updateData = async (fullName, phoneNum, address, aboutMe, navigate) => {
   await updateDoc(doc(db, "users", auth.currentUser.uid), {
@@ -82,14 +109,13 @@ const updateData = async (fullName, phoneNum, address, aboutMe, navigate) => {
   });
 };
 
-
 const logout = async () => {
-  try {
-    await auth.signOut();
-    console.log("Sign out successfully!");
-  } catch (err) {
-    console.log("err:", err);
-  }
+    try {
+        await auth.signOut();
+        alert("Logout successfully!");
+    } catch (err) {
+        console.log("err:", err);
+    }
 };
 
 export { signIn, signUp, pushData, logout };

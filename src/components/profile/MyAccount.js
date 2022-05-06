@@ -1,15 +1,27 @@
+/***************************************************************************************
+ *    Title: Get data with Cloud Firestore
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data
+ *
+ ***************************************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { logout } from "../../api/authentication";
+
 
 const MyAccount = () => {
   const [data, setData] = useState({});
-  const fetchData = async () => {
-    getDoc(doc(db, "users", auth.currentUser.uid)).then((docSnap) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
+
+  const fetchData = () => {
+    getDoc(doc(db, "users", auth?.currentUser?.uid)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -19,8 +31,20 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
-    fetchData().then(r => console.log(r));
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoading(false)
+        fetchData();
+      } else {
+        navigate("/")
+      }
+    });
+    unsub()
+
+    return () => unsub()
   }, []);
+
+  if (isLoading) {return <div/>}
 
   return (
     <Layout className={style["myAccount-container"]} header footer>
@@ -30,7 +54,7 @@ const MyAccount = () => {
         <div className={style["profile-left-container"]}>
             <div className={style["name"]}>{data.fullName}</div>
             <img
-              src={"../../media/images/profile/gdragon.jpg"}
+              src={data.avatar}
               className={style["profile-pic"]}
               alt={"Avatar"}
             />
@@ -41,10 +65,10 @@ const MyAccount = () => {
               className={style["updateProfile-btn"]}
               onClick={() => {
               fetchData();
-            }}>
-              Update profile
-            </button>
-
+            }}
+          >
+            Update profile
+          </button>
         </div>
 
         {/*right container*/}
