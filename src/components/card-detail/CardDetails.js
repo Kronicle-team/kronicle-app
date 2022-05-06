@@ -10,6 +10,8 @@ import {
 } from "../../helper/formatData";
 import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 
 const CardDetails = ({
   availability,
@@ -118,13 +120,17 @@ const CardDetails = ({
 
         <h4>Seller</h4>
         <div className={[style["seller-container"], common["flex"]].join(" ")}>
-          <Link to="/seller-profile">
-            <img
-              src={"../../media/images/placeholder-612x612.jpg"}
-              alt="seller-avatar"
-              className={[style["seller-ava"], common["flex"]].join(" ")}
-            />
+          <Link to={path}>
+            {seller.avatar
+                ? <img
+                    src={seller.avatar}
+                    className={[style["seller-ava"], common["flex"]].join(" ")}
+                    alt={"Seller avatar"}
+                />
+                : <FontAwesomeIcon icon={faUserCircle} className={style["seller-ava"]} />
+            }
           </Link>
+
           <Link to={path}>
             <p>{seller.fullName}</p>
           </Link>
