@@ -1,14 +1,13 @@
 import Layout from "../../components/Layout";
 import style from "./Form.module.css";
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { pushData } from "../../api/authentication";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCamera
 } from "@fortawesome/free-solid-svg-icons";
-import {auth, db, storage} from "../../config/firebase";
-import { Read } from "../../api/authentication"
+import { storage } from "../../config/firebase";
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
@@ -41,19 +40,19 @@ const Form = () => {
   const handleUpload = () => {
     const uploadTask = storage.ref(`avatar/${avatar.name}`).put(avatar);
     uploadTask.on(
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          storage
-              .ref("avatar")
-              .child(avatar.name)
-              .getDownloadURL()
-              .then((url) => {
-                setUrl(url);
-                console.log(url);
-              });
-        }
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("avatar")
+          .child(avatar.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+            console.log(url);
+          });
+      }
     );
   };
 
@@ -82,7 +81,6 @@ const Form = () => {
     });
   };
   let navigate = useNavigate();
-
 
 
   function onChangeProfilePicture(e) {
@@ -114,19 +112,14 @@ const Form = () => {
                     <FontAwesomeIcon icon={faCamera} className={style["upload-icon-display"]} />
                   </label>
                 </div>
-
               ) : (
                 <label htmlFor={"profileImageUpload"}>
-
                   <FontAwesomeIcon icon={faCamera} className={style["upload-icon"]} />
-
-
                 </label>
               )}
             </div>
 
             <label htmlFor={"profileImageUpload"} className={style["label"]}>Upload Profile Picture</label>
-
             <input
               type="file"
               value={avatar}
@@ -135,21 +128,16 @@ const Form = () => {
               className={style["input"]}
               onChange={onChangeProfilePicture}
             />
-
           </div>
 
+          <label className={style["label"]}>Full Name</label>
+          <input
+            type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            className={style["input"]}
+          />
 
-          <div className={style["name-wrapper"]}>
-            <div>
-              <label className={style["label"]}>Full Name</label>
-              <input
-                type="text"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className={style["input"]}
-              />
-            </div>
-          </div>
           <label className={style["label"]}>Phone Number</label>
           <input
             type="text"
@@ -157,6 +145,7 @@ const Form = () => {
             onChange={(e) => setPhoneNum(e.target.value)}
             className={style["input"]}
           />
+
           <label className={style["label"]}>Address</label>
           <input
             type="text"
@@ -171,7 +160,6 @@ const Form = () => {
             className={[style["input"], style["input-aboutme"]].join(" ")}
             rows={5}
           />
-
         </form>
 
         <div
@@ -184,6 +172,7 @@ const Form = () => {
                       console.log(r);
                       alert(r);
                     });
+                    window.alert("Form Submitted")
                   }}
           >SUBMIT
           </button>
