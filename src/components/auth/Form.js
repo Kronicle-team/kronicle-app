@@ -8,16 +8,16 @@ import {
   faCamera
 } from "@fortawesome/free-solid-svg-icons";
 import {auth, db, storage} from "../../config/firebase";
+import { Read } from "../../api/authentication"
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
   const [imageData, setImageData] = useState(null);
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
-  const [address, setAddress] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
-  const [profile, setProfile] = useState(null);
+  const [fullName, setFullName] = useState(null);
+  const [phoneNum, setPhoneNum] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [aboutMe, setAboutMe] = useState(null);
+  const [profile, setProfile] = useState("");
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
 
@@ -141,20 +141,11 @@ const Form = () => {
 
           <div className={style["name-wrapper"]}>
             <div>
-              <label className={style["label"]}>First Name</label>
+              <label className={style["label"]}>Full Name</label>
               <input
                 type="text"
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-                className={style["input"]}
-              />
-            </div>
-            <div>
-              <label className={style["label"]}>Last Name</label>
-              <input
-                type="text"
-                value={lname}
-                onChange={(e) => setLname(e.target.value)}
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 className={style["input"]}
               />
             </div>
@@ -189,7 +180,7 @@ const Form = () => {
           <button className={style["register-btn"]}
                   onClick={() => {
                     handleUpload();
-                    pushData(url, fname, lname, phoneNum, address, aboutMe, navigate).then((r) => {
+                    pushData(url, fullName, phoneNum, address, aboutMe, navigate).then((r) => {
                       console.log(r);
                       alert(r);
                     });

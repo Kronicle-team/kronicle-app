@@ -8,12 +8,12 @@ const LoginForm = () => {
   const [emailOrPhoneNumber, setEmailOrPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
+  let navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Form submitted");
   };
-
-  let navigate = useNavigate();
 
   return (
     <Layout className={style["login-container"]} header footer>
