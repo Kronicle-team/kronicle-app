@@ -12,11 +12,11 @@ import { Read } from "../../api/authentication"
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
-  const [imageData, setImageData] = useState(null);
-  const [fullName, setFullName] = useState(null);
-  const [phoneNum, setPhoneNum] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [aboutMe, setAboutMe] = useState(null);
+  const [imageData, setImageData] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [address, setAddress] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
   const [profile, setProfile] = useState("");
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
