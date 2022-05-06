@@ -94,6 +94,7 @@ const CartPage =  () => {
     );
   };
 
+
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {

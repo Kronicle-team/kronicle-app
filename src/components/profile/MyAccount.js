@@ -14,6 +14,7 @@ import {useNavigate} from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
+
 const MyAccount = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -51,18 +52,18 @@ const MyAccount = () => {
       <div className={style["myAccount-wrapper"]}>
         {/*left container*/}
         <div className={style["profile-left-container"]}>
-          <div className={style["name"]}>{data.fullName}</div>
-          <img
-            src={"../../media/images/profile/gdragon.jpg"}
-            className={style["profile-pic"]}
-            alt={"Avatar"}
-          />
-          <button className={style["uploadAvatar-btn"]}>
-            Upload your profile picture
-          </button>
-          <button
-            className={style["updateProfile-btn"]}
-            onClick={() => {
+            <div className={style["name"]}>{data.fullName}</div>
+            <img
+              src={data.avatar}
+              className={style["profile-pic"]}
+              alt={"Avatar"}
+            />
+            <button className={style["uploadAvatar-btn"]}>
+              Upload your profile picture
+            </button>
+            <button
+              className={style["updateProfile-btn"]}
+              onClick={() => {
               fetchData();
             }}
           >

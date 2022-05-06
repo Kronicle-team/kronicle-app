@@ -24,16 +24,16 @@ const RegisterForm = () => {
   };
   const Checkbox = ({ label, value, onChange }) => {
     return (
-      <label>
-        <input type="checkbox" checked={value} onChange={onChange} />
-        {label}
-      </label>
+        <label>
+          <input type="checkbox" checked={value} onChange={onChange} />
+          {label}
+        </label>
     );
   };
 
   const handleReset = () => {
     Array.from(document.querySelectorAll("input")).forEach(
-      (input) => (input.value = "")
+        (input) => (input.value = "")
     );
     this.setState({
       itemValues: [{}],
@@ -56,81 +56,81 @@ const RegisterForm = () => {
   if (isLoading) {return <div/>}
 
   return (
-    <Layout className={style["register-container"]} header footer>
-      <div className={style["container"]}>
-        <form className={style["form"]}>
-          <img
-            src={"../../media/icons/logo.png"}
-            className={style["logo"]}
-            alt={"Kronicle logo"}
-          />
-          <h1 className={style["h1"]}>Register</h1>
-          <p className={style["p"]}>
-            Already a member?{" "}
-            <Link to="/login" className={style["a"]}>
-              Sign in.
-            </Link>
-          </p>
+      <Layout className={style["register-container"]} header footer>
+        <div className={style["container"]}>
+          <form className={style["form"]}>
+            <img
+                src={"../../media/icons/logo.png"}
+                className={style["logo"]}
+                alt={"Kronicle logo"}
+            />
+            <h1 className={style["h1"]}>Register</h1>
+            <p className={style["p"]}>
+              Already a member?{" "}
+              <Link to="/login" className={style["a"]}>
+                Sign in.
+              </Link>
+            </p>
 
-          <label className={style["label"]}>Email</label>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={style["input"]}
-          />
+            <label className={style["label"]}>Email</label>
+            <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={style["input"]}
+            />
 
-          <label className={style["label"]}>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={style["input"]}
-          />
-          <label className={style["label"]}>Verify Password</label>
-          <input
-            type="password"
-            value={verifyPassword}
-            onChange={(e) => setVerifyPassword(e.target.value)}
-            className={style["input"]}
-          />
-          <Checkbox
-            label={
-              <label className={style["label"]}>
-                I agree to the &nbsp;
-                <Link to="/tos" className={style["a"]}>
-                  terms and conditions.
-                </Link>
-              </label>
-            }
-            value={checkedFirst}
-            onChange={handleChangeFirst}
-          />
-          <Checkbox
-            label={
-              <label className={style["label"]}>Send me the latest deal.</label>
-            }
-            value={checkedSecond}
-            onChange={handleChangeSecond}
-          />
-        </form>
-        <div
-          className={style["button-wrapper"]}
-          onClick={() => {
-            signUp(email, password, verifyPassword, navigate);
-          }}
-        >
-          <button className={style["register-btn"]}>REGISTER</button>
-          <button
-            type="submit"
-            className={style["clear-btn"]}
-            onClick={handleReset}
+            <label className={style["label"]}>Password</label>
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={style["input"]}
+            />
+            <label className={style["label"]}>Verify Password</label>
+            <input
+                type="password"
+                value={verifyPassword}
+                onChange={(e) => setVerifyPassword(e.target.value)}
+                className={style["input"]}
+            />
+            <Checkbox
+                label={
+                  <label className={style["label"]}>
+                    I agree to the &nbsp;
+                    <Link to="/tos" className={style["a"]}>
+                      terms and conditions.
+                    </Link>
+                  </label>
+                }
+                value={checkedFirst}
+                onChange={handleChangeFirst}
+            />
+            <Checkbox
+                label={
+                  <label className={style["label"]}>Send me the latest deal.</label>
+                }
+                value={checkedSecond}
+                onChange={handleChangeSecond}
+            />
+          </form>
+          <div
+              className={style["button-wrapper"]}
+              onClick={() => {
+                signUp(email, password, verifyPassword, navigate);
+              }}
           >
-            CLEAR
-          </button>
+            <button className={style["register-btn"]}>REGISTER</button>
+            <button
+                type="submit"
+                className={style["clear-btn"]}
+                onClick={handleReset}
+            >
+              CLEAR
+            </button>
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
   );
 };
 

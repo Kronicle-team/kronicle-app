@@ -20,13 +20,13 @@ const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
   const [imageData, setImageData] = useState(null);
   const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [profile, setProfile] = useState(null);
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
+  const required = [avatar, fname, phoneNum, address, aboutMe]
 
   const didMount = useRef(false);
 
@@ -103,7 +103,7 @@ const Form = () => {
   return (
     <Layout className={style["register-container"]} header footer>
       <div className={style["container"]}>
-        <form className={style["form"]} onSubmit={handleSubmit}>
+        <form className={style["form"]} onSubmit={() => handleSubmit}>
           <h1 className={[style["h1"], style["extra-info"]].join(" ")}>
             Tell us more about yourself
           </h1>
@@ -137,7 +137,6 @@ const Form = () => {
 
             <input
               type="file"
-              value={avatar}
               name="profileImageUpload"
               id="profileImageUpload"
               className={style["input"]}
@@ -145,26 +144,14 @@ const Form = () => {
             />
           </div>
 
-          <div className={style["name-wrapper"]}>
-            <div>
-              <label className={style["label"]}>First Name</label>
+              <label className={style["label"]}>Full Name</label>
               <input
                 type="text"
                 value={fname}
                 onChange={(e) => setFname(e.target.value)}
                 className={style["input"]}
               />
-            </div>
-            <div>
-              <label className={style["label"]}>Last Name</label>
-              <input
-                type="text"
-                value={lname}
-                onChange={(e) => setLname(e.target.value)}
-                className={style["input"]}
-              />
-            </div>
-          </div>
+
           <label className={style["label"]}>Phone Number</label>
           <input
             type="text"
@@ -187,31 +174,29 @@ const Form = () => {
             rows={5}
           />
         </form>
-        <div className={style["button-wrapper"]}>
-          <button
-            className={style["register-btn"]}
-            onClick={() => {
-              handleUpload();
-              pushData(
-                url,
-                fname,
-                lname,
-                phoneNum,
-                address,
-                aboutMe,
-                navigate
-              ).then((r) => {
-                console.log(r);
-                alert(r);
-              });
-            }}
-          >
-            SUBMIT
+
+
+        <div
+          className={style["button-wrapper"]}
+        >
+          <button className={style["register-btn"]}
+                  onClick={async () => {
+                    handleUpload();
+                    let allRequiredFieldsFilled = true
+                    required.map((field) => {
+                      if (field === "") {
+                        allRequiredFieldsFilled = false
+                      }
+                    })
+                    if (allRequiredFieldsFilled) await pushData(url, fname, phoneNum, address, aboutMe, navigate)
+                    if (!allRequiredFieldsFilled) alert("Please fill in the required fields!")
+                  }}
+          >SUBMIT
           </button>
           <button
             type="submit"
             className={style["clear-btn"]}
-            onClick={handleReset}
+            onClick={() => handleReset}
           >
             CLEAR
           </button>
