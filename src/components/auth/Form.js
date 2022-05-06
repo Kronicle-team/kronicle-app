@@ -169,8 +169,6 @@ const Form = () => {
                   onClick={() => {
                     handleUpload();
                     pushData(url, fullName, phoneNum, address, aboutMe, navigate).then((r) => {
-                      console.log(r);
-                      alert(r);
                     });
                     window.alert("Form Submitted")
                   }}
