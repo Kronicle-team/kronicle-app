@@ -1,14 +1,23 @@
+/***************************************************************************************
+ *    Title: DataSnapshot
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot
+ *
+ ***************************************************************************************/
+
 import common from "../../../src/styles/common.module.css";
 import style from "./CardDetails.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { postBid } from "../../api/handleBid";
 import {
   capitalizeAllWords,
   formatDescription,
   formatTime,
 } from "../../helper/formatData";
-import {doc, onSnapshot, updateDoc} from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
@@ -28,8 +37,8 @@ const CardDetails = ({
 }) => {
   const navigate = useNavigate();
   const [bidAmt, setBidAmt] = useState();
-  const [seller, setSeller] = useState({})
-  const [path, setPath] = useState("")
+  const [seller, setSeller] = useState({});
+  const [path, setPath] = useState("");
 
   useEffect(() => {
     if (sellerId) {
@@ -38,7 +47,7 @@ const CardDetails = ({
         setSeller(docSnapshot.data());
       });
     }
-  }, [sellerId])
+  }, [sellerId]);
 
   const uploadDate = new Date(date);
   const period = 7;
@@ -56,13 +65,12 @@ const CardDetails = ({
     ", " +
     deadline.getFullYear();
 
-
   const addItemToCart = async () => {
     const newCart = cart;
     if (buy) newCart[id] = price;
     if (bid) newCart[id] = bidAmt;
     if (auth.currentUser) {
-      const documentID = auth.currentUser.uid
+      const documentID = auth.currentUser.uid;
       const userRef = doc(db, "users", documentID);
       await updateDoc(userRef, {
         cart: newCart,
@@ -88,8 +96,8 @@ const CardDetails = ({
   const handleBid = async (e) => {
     if (!auth.currentUser) {
       e.preventDefault();
-      alert("Please login or register if you want to bid.")
-      navigate("/login")
+      alert("Please login or register if you want to bid.");
+      navigate("/login");
     } else {
       if (!bidAmt) {
         alert("Please enter a bid amount.");

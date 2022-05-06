@@ -1,3 +1,12 @@
+/***************************************************************************************
+ *    Title: Get data with Cloud Firestore
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data
+ *
+ ***************************************************************************************/
+
 import Layout from "../Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +18,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CardShowCase from "../CardShowCase";
 import { useEffect, useState } from "react";
 
-import {auth, db} from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 
 const ProductTemplate = ({ buy, bid }) => {
@@ -22,18 +31,18 @@ const ProductTemplate = ({ buy, bid }) => {
 
   useEffect(() => {
     if (auth.currentUser) {
-      let documentID = auth.currentUser.uid
+      let documentID = auth.currentUser.uid;
       onSnapshot(doc(db, "users", documentID), (docSnapshot) => {
         setCurrentCart(docSnapshot.data().cart);
       });
     }
   }, [currentCart]);
 
-  useEffect( () => {
+  useEffect(() => {
     const getData = () => {
       onSnapshot(doc(db, "listing", id), (doc) => {
         setData(doc.data());
-        setSellerId(doc.data().seller_id)
+        setSellerId(doc.data().seller_id);
       });
     };
     getData();

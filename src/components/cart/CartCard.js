@@ -1,11 +1,29 @@
+/***************************************************************************************
+ *    Title: Add data to Cloud Firestore
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/firestore/manage-data/add-data
+ *
+ ***************************************************************************************/
+
 import style from "./CartCard.module.css";
 import { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import {capitalizeAllWords} from "../../helper/formatData";
+import { capitalizeAllWords } from "../../helper/formatData";
 
-const CartCard = ({ cart, id, image, name, price, bid, highestBid, currentUser }) => {
+const CartCard = ({
+  cart,
+  id,
+  image,
+  name,
+  price,
+  bid,
+  highestBid,
+  currentUser,
+}) => {
   const [winning, setWinning] = useState(true);
   const [source, setSource] = useState(image);
   const currency = "VND";
@@ -18,7 +36,7 @@ const CartCard = ({ cart, id, image, name, price, bid, highestBid, currentUser }
     await updateDoc(userRef, {
       cart: newCart,
     });
-    console.log("remove item succesfully")
+    console.log("remove item succesfully");
     window.location.reload();
   };
   useEffect(() => {
@@ -57,16 +75,18 @@ const CartCard = ({ cart, id, image, name, price, bid, highestBid, currentUser }
             </div>
           ) : null}
         </div>
-        { (bid === "bid now" && !winning) || bid === "buy now" ? <div className={style.removeBtnWrapper}>
-          <button
+        {(bid === "bid now" && !winning) || bid === "buy now" ? (
+          <div className={style.removeBtnWrapper}>
+            <button
               className={style.removeBtn}
               onClick={async () => {
                 await removeItemFromCart();
               }}
-          >
-            REMOVE
-          </button>
-        </div> : null}
+            >
+              REMOVE
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
