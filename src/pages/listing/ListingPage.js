@@ -7,6 +7,7 @@ import Radio from "../../components/radio/HideShowForm";
 import { auth, db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
+import {useNavigate} from "react-router-dom";
 
 const ListingPage = () => {
   const [category, setCategory] = useState("album photocard");
@@ -14,6 +15,8 @@ const ListingPage = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
 
   const required = [category, product_pricing, price, image, url]
 
@@ -58,13 +61,26 @@ const ListingPage = () => {
   const didMount = useRef(false);
 
   useEffect(() => {
-    if (didMount.current) {
-      console.log("image: ", image);
-      handleUpload();
-    } else {
-      didMount.current = true;
-    }
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoading(false)
+        if (didMount.current) {
+          console.log("image: ", image);
+          handleUpload();
+        } else {
+          didMount.current = true;
+        }
+      } else {
+        navigate("/")
+        alert("Please login to upload a product.")
+      }
+    });
+    unsub()
+
+    return () => unsub()
   }, [image]);
+
+  if (isLoading) {return <div/>}
 
   const handleChange = (e) => {
     if (e.target.files[0]) {

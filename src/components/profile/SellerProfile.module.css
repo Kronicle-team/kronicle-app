@@ -30,12 +30,18 @@
     margin: 30px 0;
 }
 
+.info-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
 .info {
     margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .info p {

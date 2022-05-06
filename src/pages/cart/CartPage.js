@@ -20,6 +20,7 @@ const coupons = [
 ];
 
 const CartPage =  () => {
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const [bidBtn, setBidBtn] = useState(
     localStorage.getItem("bidBtn") === "true" &&
@@ -95,30 +96,40 @@ const CartPage =  () => {
 
 
   useEffect(() => {
-    if (auth.currentUser) {
-      fetchData(auth.currentUser.uid);
-    } else setCurrentCart({})
-    setSubTotal(0);
-    temp.map((card) => {
-      setSubTotal((prevState) => prevState + parseInt(card.price));
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoading(false)
+        if (auth.currentUser) {
+          let documentID = auth.currentUser.uid
+          fetchData(documentID);
+        } else setCurrentCart({})
+        setSubTotal(0);
+        temp.map((card) => {
+          setSubTotal((prevState) => prevState + parseInt(card.price));
+        });
+        if (subTotal > 0) {
+          setShippingFee(15000);
+          setServiceFee(5000);
+        }
+        if (bidBtn) {
+          setDeposit(Math.round(subTotal * 0.1));
+          setTotal(
+              subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
+          );
+        } else setTotal(subTotal * (1 - couponValue) + shippingFee);
+        const isBid = bidBtn;
+        localStorage.setItem("bidBtn", JSON.stringify(isBid));
+      } else {
+        navigate("/")
+        alert("Please login to access your cart.")
+      }
     });
-    if (subTotal > 0) {
-      setShippingFee(15000);
-      setServiceFee(5000);
-    }
-    if (bidBtn) {
-      setDeposit(Math.round(subTotal * 0.1));
-      setTotal(
-          subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
-      );
-    } else setTotal(subTotal * (1 - couponValue) + shippingFee);
+    unsub()
+
+    return () => unsub()
   }, [currentCart]);
 
-  useEffect(() => {
-    const isBid = bidBtn;
-    console.log(isBid)
-    localStorage.setItem("bidBtn", JSON.stringify(isBid));
-  }, [bidBtn])
+  if (isLoading) {return <div/>}
 
   const handleOrder = () => {
     let checkout = []

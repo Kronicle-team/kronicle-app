@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import style from "./Form.module.css";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { signUp } from "../../api/authentication";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
@@ -12,6 +12,7 @@ const RegisterForm = () => {
 
   const [checkedFirst, setCheckedFirst] = useState(false);
   const [checkedSecond, setCheckedSecond] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   let navigate = useNavigate();
   const handleChangeFirst = () => {
@@ -38,6 +39,21 @@ const RegisterForm = () => {
       itemValues: [{}],
     });
   };
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        setIsLoading(false)
+      } else {
+        navigate("/")
+      }
+    });
+    unsub()
+
+    return () => unsub()
+  }, []);
+
+  if (isLoading) {return <div/>}
 
   return (
       <Layout className={style["register-container"]} header footer>

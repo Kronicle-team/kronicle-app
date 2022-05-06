@@ -1,18 +1,18 @@
 import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { logout } from "../../api/authentication";
 
 
 const MyAccount = () => {
   const [data, setData] = useState({});
-  const [loaded, setLoaded] = useState(false)
-    const [loading, setLoading] = useState(false)
-  const fetchData = (documentID) => {
-    getDoc(doc(db, "users", documentID)).then((docSnap) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
+
+  const fetchData = () => {
+    getDoc(doc(db, "users", auth?.currentUser?.uid)).then((docSnap) => {
       if (docSnap.exists()) {
         setData(docSnap.data());
       } else {
@@ -21,14 +21,21 @@ const MyAccount = () => {
     });
   };
 
-  useEffect(  () => {
-      auth.onAuthStateChanged( user => {
-          if (user) {
-              const userID = auth.currentUser.uid
-              fetchData(userID)
-          }
-      });
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoading(false)
+        fetchData();
+      } else {
+        navigate("/")
+      }
+    });
+    unsub()
+
+    return () => unsub()
   }, []);
+
+  if (isLoading) {return <div/>}
 
   return (
     <Layout className={style["myAccount-container"]} header footer>

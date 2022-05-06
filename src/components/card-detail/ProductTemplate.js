@@ -68,15 +68,6 @@ const ProductTemplate = ({ buy, bid }) => {
         buy={buy}
         bid={bid}
       />
-
-      {/*<section className="recommendation">*/}
-      {/*  <h3>RECOMMENDATION</h3>*/}
-      {/*  <div className={[common["flex"], style["card-showcase"]].join(" ")}>*/}
-
-      {/*          <CardShowCase name={"Recommendation"} data={cards} link={""}/>*/}
-
-      {/*  </div>*/}
-      {/*</section>*/}
     </Layout>
   );
 };
