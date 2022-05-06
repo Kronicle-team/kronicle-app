@@ -87,12 +87,12 @@ const updateData = async (fullName, phoneNum, address, aboutMe, navigate) => {
 };
 
 const logout = async () => {
-  try {
-    await auth.signOut();
-    console.log("Sign out successfully!");
-  } catch (err) {
-    console.log("err:", err);
-  }
+    try {
+        await auth.signOut();
+        alert("Logout successfully!");
+    } catch (err) {
+        console.log("err:", err);
+    }
 };
 
 export { signIn, signUp, pushData, logout };
