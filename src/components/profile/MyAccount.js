@@ -1,3 +1,12 @@
+/***************************************************************************************
+ *    Title: Get data with Cloud Firestore
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data
+ *
+ ***************************************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "./MyAccount.module.css";
 import {useEffect, useState} from "react";
@@ -56,10 +65,10 @@ const MyAccount = () => {
               className={style["updateProfile-btn"]}
               onClick={() => {
               fetchData();
-            }}>
-              Update profile
-            </button>
-
+            }}
+          >
+            Update profile
+          </button>
         </div>
 
         {/*right container*/}
