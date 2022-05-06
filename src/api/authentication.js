@@ -11,22 +11,26 @@ const signIn = async (email, password, navigate) => {
       const user = userCredentials.user;
       const checkValidUser = []
       const infoColRef = collection(db, "users");
-      const q = query(infoColRef, where("address", "==", ""));
+      const q = query(infoColRef);
       const querySnapshot = await getDocs(q);
+      let check = false;
       querySnapshot.forEach((doc) => {
         console.log("All users after filter " + doc.id)
         if (doc.id === auth.currentUser.uid) {
-          checkValidUser.push(doc.id)
-          console.log("An array that returns the user that match the filter " + checkValidUser)
-        }
-        if (checkValidUser[0] === auth.currentUser.uid) {
-          navigate("/form")
-        }
-        else {
-          console.log("Successfully sign in");
-          navigate("/my-account")
+          console.log(doc.id)
+          check = true
         }
       });
+      console.log(check)
+      if (!check) {
+        checkValidUser.push(doc.id)
+        navigate("/form")
+        console.log("An array that returns the user that match the filter " + checkValidUser)
+      }
+      else {
+        console.log("Successfully sign in");
+        navigate("/my-account")
+      }
     })
     .catch((error) => {
       alert(error.message);
