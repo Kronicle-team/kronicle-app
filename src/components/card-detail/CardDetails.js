@@ -114,7 +114,8 @@ const CardDetails = ({
       <div className={style["details"]}>
         <h3>{cardName}</h3>
         {bid ? <h4>Minimum bid</h4> : null}
-        <h1>{availability === "sold" ? "SOLD" : Date.now() > deadline ? "SOLD" : price.toLocaleString() + " VND"}</h1>
+        <h1>{buy ? availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"
+            : Date.now() > deadline ? "SOLD" : price.toLocaleString() + " VND"}</h1>
         <h4>Product Description</h4>
         <div className={style["desc"]}>{desc}</div>
 
