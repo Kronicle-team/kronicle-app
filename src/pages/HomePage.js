@@ -1,10 +1,26 @@
+/***************************************************************************************
+ *    Title: Perform simple and compound queries in Cloud Firestore
+ *    Author: Firebase
+ *    Date: May 6, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/queries
+ *
+ ***************************************************************************************/
+
 import Layout from "../components/Layout";
 import style from "./HomePage.module.css";
 import { useEffect, useState } from "react";
 import React from "react";
 import CardShowCase from "../components/CardShowCase";
-import { collection, query, where, onSnapshot, orderBy, limit } from "firebase/firestore";
-import { db } from "../config/firebase"
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  orderBy,
+  limit,
+} from "firebase/firestore";
+import { db } from "../config/firebase";
 
 const HomePage = () => {
   const [latestBuyNow, setLatestBuyNow] = useState([]);
@@ -12,42 +28,49 @@ const HomePage = () => {
 
   useEffect(() => {
     const getBuyNowCards = () => {
-      let q = query(collection(db, "listing"),
-          where("product_pricing", "==", "buy now"),
-          where("availability", "!=", "sold"),
-          orderBy("availability"), orderBy("date_time", "desc"), limit(6));
+      let q = query(
+        collection(db, "listing"),
+        where("product_pricing", "==", "buy now"),
+        where("availability", "!=", "sold"),
+        orderBy("availability"),
+        orderBy("date_time", "desc"),
+        limit(6)
+      );
 
       onSnapshot(q, (querySnapshot) => {
         const cards = [];
         querySnapshot.forEach((doc) => {
-
-          cards.push({...doc.data(), id: doc.id});
+          cards.push({ ...doc.data(), id: doc.id });
         });
         setLatestBuyNow(cards);
       });
-    }
+    };
 
     const getBidCards = () => {
-      const q2 = query(collection(db, "listing"),
-          where("product_pricing", "==", "bid now"),
-          where("availability", "!=", "sold"),
-          orderBy("availability"), orderBy("date_time", "desc"), limit(6));
+      const q2 = query(
+        collection(db, "listing"),
+        where("product_pricing", "==", "bid now"),
+        where("availability", "!=", "sold"),
+        orderBy("availability"),
+        orderBy("date_time", "desc"),
+        limit(6)
+      );
       onSnapshot(q2, (querySnapshot) => {
         const bidCards = [];
         querySnapshot.forEach((doc) => {
-          bidCards.push({...doc.data(), id: doc.id});
+          bidCards.push({ ...doc.data(), id: doc.id });
         });
         setLatestBid(bidCards);
       });
-    }
+    };
 
-    getBuyNowCards()
-    getBidCards()
+    getBuyNowCards();
+    getBidCards();
 
     return () => {
-      getBuyNowCards()
-      getBidCards()
-    }
+      getBuyNowCards();
+      getBidCards();
+    };
   }, []);
 
   if (latestBuyNow === undefined) {
@@ -78,12 +101,23 @@ const HomePage = () => {
         </div>
       </div>
 
-<div className={style.latestBidsContainer}>
-                <CardShowCase name={"Latest Bids"} data={latestBid} link={"/cards/bid"} useText={true} bid/>
-            </div>
+      <div className={style.latestBidsContainer}>
+        <CardShowCase
+          name={"Latest Bids"}
+          data={latestBid}
+          link={"/cards/bid"}
+          useText={true}
+          bid
+        />
+      </div>
 
-        <div className={style.latestProductsContainer}>
-              <CardShowCase name={"Latest Products"} data={latestBuyNow} link={"/cards/buy-now"} useText={true} />
+      <div className={style.latestProductsContainer}>
+        <CardShowCase
+          name={"Latest Products"}
+          data={latestBuyNow}
+          link={"/cards/buy-now"}
+          useText={true}
+        />
       </div>
     </Layout>
   );

@@ -1,3 +1,12 @@
+/***************************************************************************************
+ *    Title: Upload files with Cloud Storage on Web
+ *    Author: Firebase
+ *    Date: May 4, 2022
+ *    Code version: <code version>
+ *    Availability: https://firebase.google.com/docs/storage/web/upload-files
+ *
+ ***************************************************************************************/
+
 import Layout from "../../components/Layout";
 import { useEffect, useRef, useState } from "react";
 import FormInput from "../../components/form/ListingForm";
@@ -7,7 +16,7 @@ import Radio from "../../components/radio/HideShowForm";
 import { auth, db } from "../../config/firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { storage } from "../../config/firebase";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ListingPage = () => {
   const [category, setCategory] = useState("album photocard");
@@ -16,9 +25,9 @@ const ListingPage = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const required = [category, product_pricing, price, image, url]
+  const required = [category, product_pricing, price, image, url];
 
   const [values, setValues] = useState({
     product_name: "",
@@ -63,7 +72,7 @@ const ListingPage = () => {
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoading(false)
+        setIsLoading(false);
         if (didMount.current) {
           console.log("image: ", image);
           handleUpload();
@@ -71,16 +80,18 @@ const ListingPage = () => {
           didMount.current = true;
         }
       } else {
-        navigate("/")
-        alert("Please login to upload a product.")
+        navigate("/");
+        alert("Please login to upload a product.");
       }
     });
-    unsub()
+    unsub();
 
-    return () => unsub()
+    return () => unsub();
   }, [image]);
 
-  if (isLoading) {return <div/>}
+  if (isLoading) {
+    return <div />;
+  }
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -114,8 +125,7 @@ const ListingPage = () => {
       name: "product_name",
       type: "text",
       placeholder: "Please enter the product’s name",
-      errorMessage:
-        "Product name should be at least 5 characters long",
+      errorMessage: "Product name should be at least 5 characters long",
       label: "Product name*",
       pattern: ".{5,}",
       required: true,
@@ -146,7 +156,6 @@ const ListingPage = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-
   return (
     <Layout header footer>
       <div className={[style["app"], common["flex"]].join(" ")}>
@@ -176,18 +185,19 @@ const ListingPage = () => {
           <button
             className={style["listing-btn"]}
             onClick={() => {
-              let allRequiredFieldsFilled = true
+              let allRequiredFieldsFilled = true;
               required.map((field) => {
-                if (field === "") {allRequiredFieldsFilled = false
+                if (field === "") {
+                  allRequiredFieldsFilled = false;
                 }
-              })
-              if (allRequiredFieldsFilled) {
-              handleUpload();
-              pushProduct().then((r) => {
-                console.log(r);
               });
+              if (allRequiredFieldsFilled) {
+                handleUpload();
+                pushProduct().then((r) => {
+                  console.log(r);
+                });
               } else {
-                alert("Please fill in the required fields!")
+                alert("Please fill in the required fields!");
               }
             }}
           >
