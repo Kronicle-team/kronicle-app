@@ -1,16 +1,25 @@
 <h1 align="center" style="color:#fd8477;font-size:70px;font-family:Georgia;text-align:center;">
-    KRONICLE
+    KRONICLE - Website for Selling and Bidding K-pop Photocards
 </h1>
 
 <p align="center">
   <strong>React + Firebase solution for Buy, Bid, and Classify K-pop photocards</strong>
 </p>
 
-# [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
+<p align="center">
+  <a href="https://github.com/facebook/react/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Kronicle is released under the MIT license." />
+  </a>
+  <a href="https://www.npmjs.com/package/react">
+    <img src="https://img.shields.io/npm/v/react.svg?style=flat" alt="Current npm package version" />
+  </a>
+</p>
 
 <p align="center">
   <a href="#" target="_blank">Demo Web</a>
 </p>
+
+----------------
 
 ## 📌Features
 This React Firebase app contains a few key features that all apps backed by Firebase support:
