@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { capitalizeAllWords } from "../../helper/formatData";
 
 const CartCard = ({
+                    availability,
   cart,
   id,
   image,
@@ -63,14 +64,14 @@ const CartCard = ({
             <h5 className={style.cardName}>{capitalizeAllWords(name)}</h5>
           </Link>
           <div className={style.cardPriceWrapper}>
-            <p className={style.cardPrice}>{price + " " + currency}</p>
+            <p className={style.cardPrice}>{price.toLocaleString() + " " + currency}</p>
           </div>
           {bid === "bid now" ? (
             <div className={style.cardStatusWrapper}>
               <p className={winning ? style.winningCard : style.overBiddenCard}>
-                {winning
-                  ? "WINNING"
-                  : "HIGHEST BID: " + highestBid + " " + currency}
+                {winning && availability === "available"
+                  ? "WON" : !winning ?
+                  "HIGHEST BID: " + highestBid + " " + currency : "WINNING"}
               </p>
             </div>
           ) : null}

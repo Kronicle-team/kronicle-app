@@ -56,7 +56,6 @@ const CartPage =  () => {
     const q2 = query(
       collection(db, "listing"),
       where("product_pricing", "==", "bid now"),
-      where("availability", "==", "available")
     );
     onSnapshot(
       q2,
@@ -187,12 +186,13 @@ const CartPage =  () => {
               if (currentCart[card.id] !== undefined) {
                 return (
                   <CartCard
+                      availability={card.availability}
                     cart={currentCart}
                     key={card.id}
                     id={card.id}
                     image={card.product_image}
                     name={card.product_name}
-                    price={currentCart[card.id].toLocaleString()}
+                    price={currentCart[card.id]}
                     bid={card.product_pricing}
                     highestBid={card.price}
                     currentUser={auth.currentUser ? auth.currentUser.uid : ""}
