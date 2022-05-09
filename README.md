@@ -24,7 +24,6 @@
 ## 📌Features
 This React Firebase app contains a few key features that all apps backed by Firebase support:
 
-+ Home Screen
 + Registration with E-mail & Password
 + Login with E-mail and Password
 + Handling persisted login credentials
@@ -32,6 +31,13 @@ This React Firebase app contains a few key features that all apps backed by Fire
 + Writing to Firestore Database
 + Reading from Firestore Database
 + Uploading images to Storage
++ Listing selling products on Firestore
++ Buying now products
++ Biding now products
++ Calculating shipping and coupon amount
++ Checkout products
++ Viewing seller's profile
++ Logout
 
 #### 💻 Screen shots
 |<a href="#"><img src="https://i.ibb.co/x1Qbt1k/web.png" alt="Illustration" width="400px"/></a>|<a href="#"><img src="https://i.ibb.co/x1Qbt1k/web.png" alt="Illustration" width="400px"/></a>|<a href="#"><img src="https://i.ibb.co/x1Qbt1k/web.png" alt="Illustration" width="400px"/></a>|
@@ -60,12 +66,7 @@ This React Firebase app contains a few key features that all apps backed by Fire
 
 -----------------------------------
 
-## 🧑‍🤝‍🧑Authors👭
-- Tran Ngoc Anh Thu [@tnathu-ai](https://github.com/tnathu-ai)
-- Doan Yen Nhi [@doanyennhi](https://github.com/doanyennhi)
-- Du Duc Manh [@rider3458](https://github.com/rider3458)
-- Nguyen Hoang Linh [@hlinh88](https://github.com/hlinh88)
-- Hua Minh Thu [@minhthuhua72](https://github.com/minhthuhua72)
+## 🫂 Authors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
