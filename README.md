@@ -48,12 +48,28 @@ This React Firebase app contains a few key features that all apps backed by Fire
 |:--:|
 |collaboration tool that organizes our project into boards|
 
+
+-----------------------------------
+
 ## 🧑‍🤝‍🧑Authors👭
 - Tran Ngoc Anh Thu [@tnathu-ai](https://github.com/tnathu-ai)
 - Doan Yen Nhi [@doanyennhi](https://github.com/doanyennhi)
 - Du Duc Manh [@rider3458](https://github.com/rider3458)
 - Nguyen Hoang Linh [@hlinh88](https://github.com/hlinh88)
 - Hua Minh Thu [@minhthuhua72](https://github.com/minhthuhua72)
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/tnathu-ai"><img src="https://i.ibb.co/zZKb9g9/Thu.jpg" width="100px;" alt=""/><br /><sub><b>Tran Ngoc Anh Thu</b></sub></a><br /><sub><b>Machine Learning Engineer, Designer, Full Stack Developer</b></sub></td>
+    <td align="center"><a href="https://github.com/doanyennhi"><img src="https://i.ibb.co/r7nm18b/Nhi.jpg" width="100px;" alt=""/><br /><sub><b>Doan Yen Nhi</b></sub></a><br /><sub><b>Project Manager, Full Stack Developer</b></sub></td>
+    <td align="center"><a href="https://github.com/rider3458"><img src="https://i.ibb.co/LhzjHQC/manh.jpg" width="100px;" alt=""/><br /><sub><b>Du Duc Manh</b></sub></a><br /><sub><b>Full Stack Developer, Github Administrator</b></sub></td>
+    <td align="center"><a href="https://github.com/hlinh88"><img src="https://i.ibb.co/qCmg569/Linh.jpg" width="100px;" alt=""/><br /><sub><b>Nguyen Hoang Linh</b></sub></a><br /><sub><b>Full Stack Developer, Github Administrator</b></sub></td>
+      <td align="center"><a href="https://github.com/minhthuhua72"><img src="https://i.ibb.co/sw1FF9V/Thu-Hua.jpg" width="100px;" alt=""/><br /><sub><b>Hua Minh Thu</b></sub></a><br /><sub><b>Designer, Full Stack Developer, Meeting Minutes Taker</b></sub></td>
+        </tr>
+</table>
 
 ***
 
@@ -74,21 +90,16 @@ The Machine Learning web app files that you gave us can be found in `https://git
 
 ## 📄 License
 
-This mobile application is MIT licensed, as found in the [LICENSE][l] file.
-
-React Native documentation is Creative Commons licensed, as found in the [LICENSE-docs][ld] file.
-
-[l]: #
-[ld]: #
+React is [MIT licensed](#https://github.com/facebook/react/blob/main/LICENSE).
 
 
 
 <!-- /*************************************************************** 
-*Title: An Example 
-*Author: Smith M 
-*Date: 10 December 2001 
-* Code version: V1 
-*Availability: www.examples.com/sourcecode (Accessed 1 December 2021) 
+*Title: react/LICENSE 
+*Author: Facebook
+*Date: 8 September 2018
+* Code version: V0.14.1 
+*Availability: https://github.com/facebook/react/blob/main/LICENSE (Accessed 9 May 2022) 
 ****************************************************************/  -->
 
 
