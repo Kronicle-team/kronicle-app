@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Kronicle is released under the MIT license." />
   </a>
   <a href="https://www.npmjs.com/package/react">
-    <img src="https://img.shields.io/npm/v/react.svg?style=flat" alt="Current npm package version" />
+    <img src="https://img.shields.io/npm/v/react.svg?style=flat" alt="Current npm package version - npm v18.1.0" />
   </a>
 </p>
 
@@ -86,7 +86,7 @@ This React Firebase app contains a few key features that all apps backed by Fire
 
 ## 🎉Local Environment Setup
 
-Please make sure that you have **node** `v16.13.1`,  installed on your system. No other software or libraries required.
+Please make sure that you have **node** `v18.1.0`,  installed on your system. No other software or libraries required.
 
 * Step 1: `git clone https://github.com/Kronicle-team/kronicle-app.git` OR Download ZIP & Unzip .zip file to a location of your choice.
 * Step 2: Use the command line to navigate to the aforementioned folder E.g. `cd kronicle-app/`
@@ -96,6 +96,7 @@ Please make sure that you have **node** `v16.13.1`,  installed on your system. N
 
 The Machine Learning web app files that you gave us can be found in `https://github.com/Kronicle-team/demo-web-app.git` in our organization
 
+-------------
 
 ## 📄 License
 
