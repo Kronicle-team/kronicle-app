@@ -83,4 +83,14 @@ React Native documentation is Creative Commons licensed, as found in the [LICENS
 
 
 
+<!-- /*************************************************************** 
+*Title: An Example 
+*Author: Smith M 
+*Date: 10 December 2001 
+* Code version: V1 
+*Availability: www.examples.com/sourcecode (Accessed 1 December 2021) 
+****************************************************************/  -->
+
+
+
 
