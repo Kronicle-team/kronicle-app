@@ -145,7 +145,7 @@ const CardDetails = ({
           </Link>
         </div>
 
-        {buy && availability !== "sold" && sellerId !== auth.currentUser.uid ? (
+        {buy && availability !== "sold" && auth.currentUser && sellerId !== auth.currentUser.uid ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
               <button className={style["cart-btn"]} onClick={async (e) => {
@@ -168,7 +168,7 @@ const CardDetails = ({
         {bid ? (
           <>
             <h6>Available until {datestring}</h6>
-            {Date.now() <= deadline && sellerId !== auth.currentUser.uid
+            {Date.now() <= deadline && auth.currentUser && sellerId !== auth.currentUser.uid
                 ?
                 <div>
                   <h4>Enter your bid amount</h4>
