@@ -1,3 +1,10 @@
+/***************************************************************
+ *Title: Website Terms and Conditions of Use
+ *Author: Terms of Service Generator
+ *Date: 11 May 2022
+ *Availability: https://www.termsofservicegenerator.net/live.php?token=vP0nnkOZCu5HHmlVJO6iKydHc5ct9nGl (Accessed 11 May 2022)
+ ****************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "../../components/support/Policy.module.css";
 import ToTopButton from "../../components/ToTopButton";
