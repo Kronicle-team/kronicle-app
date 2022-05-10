@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { capitalizeAllWords } from "../../helper/formatData";
 
 const CartCard = ({
-                    availability,
+                    date_time,
   cart,
   id,
   image,
@@ -69,7 +69,7 @@ const CartCard = ({
           {bid === "bid now" ? (
             <div className={style.cardStatusWrapper}>
               <p className={winning ? style.winningCard : style.overBiddenCard}>
-                {winning && availability === "available"
+                {winning && new Date(date_time).getTime() >= new Date().getTime()
                   ? "WON" : !winning ?
                   "HIGHEST BID: " + highestBid + " " + currency : "WINNING"}
               </p>

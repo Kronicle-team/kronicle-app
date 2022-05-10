@@ -139,7 +139,7 @@ const CartPage =  () => {
       console.log("winning ?", item.price === currentCart[item.id])
       console.log("bid ends ?", item.date_time <= Date())
       console.log(item.date_time)
-      if (item.price === currentCart[item.id] && item.date_time <= Date()) {
+      if (item.price === currentCart[item.id] && new Date(item.date_time).getTime() >= new Date().getTime()) {
         checkout.push(item.id)
       }
     })
@@ -186,7 +186,7 @@ const CartPage =  () => {
               if (currentCart[card.id] !== undefined) {
                 return (
                   <CartCard
-                      availability={card.availability}
+                    date_time={card.date_time}
                     cart={currentCart}
                     key={card.id}
                     id={card.id}
