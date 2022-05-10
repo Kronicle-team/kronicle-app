@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Get data with Cloud Firestore
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 

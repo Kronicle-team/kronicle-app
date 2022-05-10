@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Upload files with Cloud Storage on Web
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/storage/web/upload-files
+ *    Date: 6 May 2022
+ *    Availability: https://firebase.google.com/docs/storage/web/upload-files (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 

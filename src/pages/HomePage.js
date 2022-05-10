@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Perform simple and compound queries in Cloud Firestore
  *    Author: Firebase
- *    Date: May 6, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/query-data/queries
+ *    Date: 6 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/queries (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 

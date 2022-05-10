@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Saving Data
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/database/admin/save-data
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/database/admin/save-data (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
