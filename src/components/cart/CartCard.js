@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Add data to Cloud Firestore
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/manage-data/add-data
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/manage-data/add-data (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 

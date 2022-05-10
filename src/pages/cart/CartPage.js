@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Get realtime updates with Cloud Firestore
  *    Author: Firebase
- *    Date: May 6, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/query-data/listen
+ *    Date: 6 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/listen (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
