@@ -97,6 +97,8 @@ Please make sure that you have **node** `v18.1.0`,  installed on your system. No
 
 The Machine Learning web app files that you gave us can be found in `https://github.com/Kronicle-team/demo-web-app.git` in our organization
 
+Modify the environment variables files in root folder `.env` file
+
 -------------
 
 ## 📄 License
