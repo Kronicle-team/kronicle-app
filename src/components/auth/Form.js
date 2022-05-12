@@ -32,7 +32,7 @@ const Form = () => {
 
   useEffect(() => {
     if (didMount.current) {
-      console.log("avatar: ", avatar);
+      // console.log("avatar: ", avatar);
       handleUpload();
     } else {
       didMount.current = true;
@@ -58,13 +58,13 @@ const Form = () => {
           .getDownloadURL()
           .then((url) => {
             setUrl(url);
-            console.log(url);
+            // console.log(url);
           });
       }
     );
   };
 
-  console.log("avatar: ", avatar);
+  // console.log("avatar: ", avatar);
 
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
@@ -81,12 +81,15 @@ const Form = () => {
   };
 
   const handleReset = () => {
-    Array.from(document.querySelectorAll("input")).forEach(
-      (input) => (input.value = "")
-    );
-    this.setState({
-      itemValues: [{}],
-    });
+    setDisplay(false)
+   setImageData(null);
+   setFname("");
+   setPhoneNum("");
+   setAddress("");
+   setAboutMe("");
+   setProfile("");
+   setAvatar("");
+   setUrl("");
   };
   let navigate = useNavigate();
 
@@ -205,7 +208,7 @@ const Form = () => {
           <button
             type="submit"
             className={style["clear-btn"]}
-            onClick={() => handleReset}
+            onClick={handleReset}
           >
             CLEAR
           </button>
