@@ -158,67 +158,62 @@ const CardDetails = ({
         </div>
 
         {buy && availability !== "sold" && auth.currentUser && sellerId !== auth.currentUser.uid ? (
-          <div className={[common["flex"], style["btn-container"]].join(" ")}>
-            <Link to={"/cart"}>
-              <button
-                className={style["cart-btn"]}
-                onClick={async (e) => {
+            <div className={[common["flex"], style["btn-container"]].join(" ")}>
+              <Link to={"/cart"}>
+                <button className={style["cart-btn"]} onClick={async (e) => {
                   if (auth.currentUser) {
-                    await addToCart(e);
+                    await addToCart(e)
                   } else {
                     e.preventDefault();
-                    alert(
-                      "Please login or register if you want to add this item to cart."
-                    );
-                    navigate("/login");
+                    alert("Please login or register if you want to add this item to cart.")
+                    navigate("/login")
                   }
-                }}
-              >
-                ADD TO CART
+                }}>
+                  ADD TO CART
+                </button>
+              </Link>
+              <button className={style["buy-btn"]} onClick={(e) => handleBuyNow(e)}>
+                BUY NOW
               </button>
-            </Link>
-            <button
-              className={style["buy-btn"]}
-              onClick={(e) => handleBuyNow(e)}
-            >
-              BUY NOW
-            </button>
-          </div>
+            </div>
         ) : null}
         {bid ? (
-          <>
-            <h6>Available until {datestring}</h6>
-
-            {Date.now() <= deadline && auth.currentUser && sellerId !== auth.currentUser.uid
-                ?
-                <div>
-                  <h4>Enter your bid amount</h4>
-                  <div
-                    className={[style["currency"], common["text-center"]].join(
-                      " "
-                    )}
-                  >
-                    VND
-                  </div>
-                </div>
-
-                <div
-                  className={[common["flex"], style["bid-btn-container"]].join(
-                    " "
-                  )}
-                >
-                  <Link to="/cart">
-                    <button
-                      className={style["bid-btn"]}
-                      onClick={(e) => handleBid(e).then(() => addItemToCart())}
+            <>
+              <h6>Available until {datestring}</h6>
+              {Date.now() <= deadline && auth.currentUser && sellerId !== auth.currentUser.uid
+                  ?
+                  <div>
+                    <h4>Enter your bid amount</h4>
+                    <div
+                        className={[common["flex"], style["input-container"]].join(" ")}
                     >
-                      PLACE A BID
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            ) : null}
-          </>
+                      <input
+                          type="number"
+                          className={style["input"]}
+                          onChange={(e) => setBidAmt(parseInt(e.target.value))}
+                      />
+                      <div
+                          className={[style["currency"], common["text-center"]].join(" ")}
+                      >
+                        VND
+                      </div>
+                    </div>
+
+                    <div
+                        className={[common["flex"], style["bid-btn-container"]].join(" ")}
+                    >
+                      <Link to="/cart">
+                        <button
+                            className={style["bid-btn"]}
+                            onClick={(e) => handleBid(e).then(() => addItemToCart())}
+                        >
+                          PLACE A BID
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                  : null}
+            </>
         ) : null}
       </div>
     </section>
