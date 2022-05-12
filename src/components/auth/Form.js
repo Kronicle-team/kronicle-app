@@ -82,13 +82,11 @@ const Form = () => {
 
   const handleReset = () => {
     setDisplay(false)
-   setImageData(null);
    setFname("");
    setPhoneNum("");
    setAddress("");
    setAboutMe("");
    setProfile("");
-   setAvatar("");
    setUrl("");
   };
   let navigate = useNavigate();
