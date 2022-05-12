@@ -112,6 +112,8 @@ const CardDetails = ({
     }
   };
 
+  console.log(Date.now(), deadline)
+
   const cardName = capitalizeAllWords(name);
   const desc = formatDescription(description);
 
@@ -145,7 +147,7 @@ const CardDetails = ({
           </Link>
         </div>
 
-        {buy && availability !== "sold" ? (
+        {buy && availability !== "sold" && auth.currentUser && sellerId !== auth.currentUser.uid ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
               <button className={style["cart-btn"]} onClick={async (e) => {
@@ -168,7 +170,7 @@ const CardDetails = ({
         {bid ? (
           <>
             <h6>Available until {datestring}</h6>
-            {Date.now() <= deadline
+            {Date.now() <= deadline && auth.currentUser && sellerId !== auth.currentUser.uid
                 ?
                 <div>
                   <h4>Enter your bid amount</h4>
