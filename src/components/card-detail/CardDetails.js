@@ -112,6 +112,8 @@ const CardDetails = ({
     }
   };
 
+  console.log(Date.now(), deadline)
+
   const cardName = capitalizeAllWords(name);
   const desc = formatDescription(description);
 

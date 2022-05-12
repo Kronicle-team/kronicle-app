@@ -136,10 +136,10 @@ const CartPage =  () => {
       checkout.push(item.id)
     })
     if (bidBtn) temp.forEach((item) => {
-      console.log("winning ?", item.price === currentCart[item.id])
-      console.log("bid ends ?", item.date_time <= Date())
-      console.log(item.date_time)
-      if (item.price === currentCart[item.id] && new Date(item.date_time).getTime() >= new Date().getTime()) {
+      const uploadDate = new Date(item.date_time);
+      const period = 7;
+      const deadline = new Date(uploadDate.setDate(uploadDate.getDate() + period));
+      if (item.price === currentCart[item.id] && deadline.getTime() >= new Date().getTime()) {
         checkout.push(item.id)
       }
     })
@@ -184,9 +184,12 @@ const CartPage =  () => {
           <div className={style.cartListing}>
             {temp.map((card) => {
               if (currentCart[card.id] !== undefined) {
+                const uploadDate = new Date(card.date_time);
+                const period = 7;
+                const deadline = new Date(uploadDate.setDate(uploadDate.getDate() + period));
                 return (
                   <CartCard
-                    date_time={card.date_time}
+                    date_time={deadline}
                     cart={currentCart}
                     key={card.id}
                     id={card.id}
