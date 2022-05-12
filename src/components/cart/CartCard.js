@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Add data to Cloud Firestore
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/manage-data/add-data
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/manage-data/add-data (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
@@ -15,6 +14,7 @@ import { Link } from "react-router-dom";
 import { capitalizeAllWords } from "../../helper/formatData";
 
 const CartCard = ({
+                    date_time,
   cart,
   id,
   image,
@@ -25,7 +25,6 @@ const CartCard = ({
   currentUser,
 }) => {
   const [winning, setWinning] = useState(true);
-  const [source, setSource] = useState(image);
   const currency = "VND";
   const productLink =
     bid === "bid now" ? "/cards/bid/" + id : "/cards/buy-now/" + id;
@@ -52,31 +51,28 @@ const CartCard = ({
           src={image ? image : "../media/icons/logo.png"}
           className={style.cardImg}
           alt={"product"}
-          onError={() => {
-            setSource("/public/media/images/product-card-placeholder.png");
-          }}
         />
       </Link>
       <div className={style.cardContentContainer}>
         <div className={style.cardContent}>
-          <Link className={style.cardNameWrapper} to={productLink}>
+          <Link to={productLink}>
             <h5 className={style.cardName}>{capitalizeAllWords(name)}</h5>
           </Link>
-          <div className={style.cardPriceWrapper}>
-            <p className={style.cardPrice}>{price + " " + currency}</p>
+          <div>
+            <p className={style.cardPrice}>{price.toLocaleString() + " " + currency}</p>
           </div>
           {bid === "bid now" ? (
-            <div className={style.cardStatusWrapper}>
+            <div>
               <p className={winning ? style.winningCard : style.overBiddenCard}>
-                {winning
-                  ? "WINNING"
-                  : "HIGHEST BID: " + highestBid + " " + currency}
+                {winning && Date.parse(date_time) <= new Date().getTime()
+                  ? "WON" : !winning ?
+                  "HIGHEST BID: " + highestBid + " " + currency : "WINNING"}
               </p>
             </div>
           ) : null}
         </div>
         {(bid === "bid now" && !winning) || bid === "buy now" ? (
-          <div className={style.removeBtnWrapper}>
+          <div>
             <button
               className={style.removeBtn}
               onClick={async () => {

@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Get data with Cloud Firestore
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
@@ -12,9 +11,15 @@ import style from "./SellerProfile.module.css";
 import { useEffect, useState } from "react";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import {Link, useParams} from "react-router-dom";
-import {capitalizeAllWords} from "../../helper/formatData";
-import {faEnvelope, faHouse, faIdCard, faPhone, faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import { Link, useParams } from "react-router-dom";
+import { capitalizeAllWords } from "../../helper/formatData";
+import {
+  faEnvelope,
+  faHouse,
+  faIdCard,
+  faPhone,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SellerProfile = () => {
@@ -59,21 +64,30 @@ const SellerProfile = () => {
     <Layout className={style["container"]} header footer>
       <div className={style["wrapper"]}>
         <div className={style["profile-header"]}>
-          {data.avatar
-              ? <img
-                  src={data.avatar}
-                  className={style["avatar"]}
-                  alt={"Avatar"}
-              />
-              : <FontAwesomeIcon icon={faUserCircle} className={style["avatar"]} />
-          }
+          {data.avatar ? (
+            <img src={data.avatar} className={style["avatar"]} alt={"Avatar"} />
+          ) : (
+            <FontAwesomeIcon icon={faUserCircle} className={style["avatar"]} />
+          )}
 
           <div className={style["name"]}>{data.fullName}</div>
           <div className={style["info-container"]}>
-            <div className={style["info"]}><FontAwesomeIcon icon={faEnvelope} style={{marginRight: 10}} /> {data.email}</div>
-            <div className={style["info"]}><FontAwesomeIcon icon={faPhone} style={{marginRight: 10}} /> {data.phoneNum}</div>
-            <div className={style["info"]}><FontAwesomeIcon icon={faHouse} style={{marginRight: 10}} />{data.address}</div>
-            <div className={style["info"]}><FontAwesomeIcon icon={faIdCard} style={{marginRight: 10}} />{data.aboutMe}</div>
+            <div className={style["info"]}>
+              <FontAwesomeIcon icon={faEnvelope} style={{ marginRight: 10 }} />{" "}
+              {data.email}
+            </div>
+            <div className={style["info"]}>
+              <FontAwesomeIcon icon={faPhone} style={{ marginRight: 10 }} />{" "}
+              {data.phoneNum}
+            </div>
+            <div className={style["info"]}>
+              <FontAwesomeIcon icon={faHouse} style={{ marginRight: 10 }} />
+              {data.address}
+            </div>
+            <div className={style["info"]}>
+              <FontAwesomeIcon icon={faIdCard} style={{ marginRight: 10 }} />
+              {data.aboutMe}
+            </div>
           </div>
         </div>
 

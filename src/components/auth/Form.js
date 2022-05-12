@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Upload files with Cloud Storage on Web
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/storage/web/upload-files
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/storage/web/upload-files (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
@@ -15,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { auth, db, storage } from "../../config/firebase";
+import { storage } from "../../config/firebase";
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
@@ -27,13 +26,13 @@ const Form = () => {
   const [profile, setProfile] = useState("");
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
-  const required = [avatar, fname, phoneNum, address, aboutMe]
+  const required = [avatar, fname, phoneNum, address, aboutMe];
 
   const didMount = useRef(false);
 
   useEffect(() => {
     if (didMount.current) {
-      console.log("avatar: ", avatar);
+      // console.log("avatar: ", avatar);
       handleUpload();
     } else {
       didMount.current = true;
@@ -59,13 +58,13 @@ const Form = () => {
           .getDownloadURL()
           .then((url) => {
             setUrl(url);
-            console.log(url);
+            // console.log(url);
           });
       }
     );
   };
 
-  console.log("avatar: ", avatar);
+  // console.log("avatar: ", avatar);
 
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
@@ -82,15 +81,20 @@ const Form = () => {
   };
 
   const handleReset = () => {
+    setDisplay(false)
+   setFname("");
+   setPhoneNum("");
+   setAddress("");
+   setAboutMe("");
+   setProfile("");
+   setAvatar("");
+   setImageData("");
+   setAvatar("")
     Array.from(document.querySelectorAll("input")).forEach(
-      (input) => (input.value = "")
+        (input) => (input.value = "")
     );
-    this.setState({
-      itemValues: [{}],
-    });
   };
   let navigate = useNavigate();
-
 
   function onChangeProfilePicture(e) {
     onChangePicture(e);
@@ -125,7 +129,6 @@ const Form = () => {
                 </div>
               ) : (
                 <label htmlFor={"profileImageUpload"}>
-
                   <FontAwesomeIcon
                     icon={faCamera}
                     className={style["upload-icon"]}
@@ -147,13 +150,13 @@ const Form = () => {
             />
           </div>
 
-              <label className={style["label"]}>Full Name</label>
-              <input
-                type="text"
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-                className={style["input"]}
-              />
+          <label className={style["label"]}>Full Name</label>
+          <input
+            type="text"
+            value={fname}
+            onChange={(e) => setFname(e.target.value)}
+            className={style["input"]}
+          />
 
           <label className={style["label"]}>Phone Number</label>
           <input
@@ -178,35 +181,41 @@ const Form = () => {
             rows={5}
           />
         </form>
+        <div className={style["button-wrapper"]}>
+          <button
+            className={style["register-btn"]}
+            onClick={async () => {
+              handleUpload();
 
-
-        <div
-          className={style["button-wrapper"]}
-        >
-          <button className={style["register-btn"]}
-                  onClick={async () => {
-                    handleUpload();
-
-                    let allRequiredFieldsFilled = true
-                    required.map((field) => {
-                      if (field === "") {
-                        allRequiredFieldsFilled = false
-                      }
-                    })
-                    if (allRequiredFieldsFilled) await pushData(url, fname, phoneNum, address, aboutMe, navigate)
-                    if (!allRequiredFieldsFilled) alert("Please fill in the required fields!")
-                  }}
-          >SUBMIT
+              let allRequiredFieldsFilled = true;
+              required.map((field) => {
+                if (field === "") {
+                  allRequiredFieldsFilled = false;
+                }
+              });
+              if (allRequiredFieldsFilled)
+                await pushData(
+                  url,
+                  fname,
+                  phoneNum,
+                  address,
+                  aboutMe,
+                  navigate
+                );
+              if (!allRequiredFieldsFilled)
+                alert("Please fill in the required fields!");
+            }}
+          >
+            SUBMIT
           </button>
           <button
             type="submit"
             className={style["clear-btn"]}
-            onClick={() => handleReset}
+            onClick={handleReset}
           >
             CLEAR
           </button>
         </div>
-        ;
       </div>
     </Layout>
   );

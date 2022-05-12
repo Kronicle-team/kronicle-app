@@ -19,13 +19,4 @@
     --lighter-black: #333333;
     --white-grey: #E5E5E5;
     --blue: #435892;
-
-    /* Border radius */
-    --border-radius-xxs: 6px;
-    --border-radius-xs: 8px;
-    --border-radius-s: 12px;
-    --border-radius-m: 24px;
-    --border-radius-l: 32px;
-    --border-radius-xl: 42px;
-    --border-radius-xxl: 54px;
 }

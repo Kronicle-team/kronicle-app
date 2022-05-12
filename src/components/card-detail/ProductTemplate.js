@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Get data with Cloud Firestore
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/get-data (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
@@ -13,9 +12,8 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import CardDetails from "./CardDetails";
 
 import style from "./ProductTemplate.module.css";
-import common from "../../styles/common.module.css";
+
 import { useNavigate, useParams } from "react-router-dom";
-import CardShowCase from "../CardShowCase";
 import { useEffect, useState } from "react";
 
 import { auth, db } from "../../config/firebase";
@@ -26,7 +24,6 @@ const ProductTemplate = ({ buy, bid }) => {
   const { id } = useParams();
   const [data, setData] = useState();
   const [sellerId, setSellerId] = useState();
-  const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23";
   const [currentCart, setCurrentCart] = useState({});
 
   useEffect(() => {

@@ -1,9 +1,13 @@
+/***************************************************************
+ *Title: Return and Refund Policy for Kronicle
+ *Author:  TermsFeed
+ *Date: 11 May 2022
+ *Availability: https://www.termsfeed.com/live/11db0351-a7d8-4786-88f1-ac1194ca6c61 (Accessed 10 May 2022)
+ ****************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "../../components/support/Policy.module.css";
-/*
-Source:
-https://www.termsfeed.com/live/11db0351-a7d8-4786-88f1-ac1194ca6c61
-*/
+
 const RefundPolicyPage = () => {
   return (
     <Layout className={style["policy-container"]} header footer>
