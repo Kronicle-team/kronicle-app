@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import style from "./AboutUsCard.module.css";
 
 const AboutUsCard = ({member}) => {

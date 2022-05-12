@@ -26,13 +26,13 @@ const ListingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const required = [category, product_pricing, price, image, url];
-
   const [values, setValues] = useState({
     product_name: "",
     product_status: "",
     product_image: "",
   });
+
+  const required = [values.product_name, values.product_status, category, product_pricing, price, image, url];
 
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);

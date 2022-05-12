@@ -25,7 +25,6 @@ const CartCard = ({
   currentUser,
 }) => {
   const [winning, setWinning] = useState(true);
-  const [source, setSource] = useState(image);
   const currency = "VND";
   const productLink =
     bid === "bid now" ? "/cards/bid/" + id : "/cards/buy-now/" + id;
@@ -45,7 +44,6 @@ const CartCard = ({
     }
   }, [price, highestBid]);
 
-  console.log(id, Date.parse(date_time), date_time)
   return (
     <div className={style.cardWrapper}>
       <Link className={style.cardImgWrapper} to={productLink}>
@@ -53,23 +51,20 @@ const CartCard = ({
           src={image ? image : "../media/icons/logo.png"}
           className={style.cardImg}
           alt={"product"}
-          onError={() => {
-            setSource("/public/media/images/product-card-placeholder.png");
-          }}
         />
       </Link>
       <div className={style.cardContentContainer}>
         <div className={style.cardContent}>
-          <Link className={style.cardNameWrapper} to={productLink}>
+          <Link to={productLink}>
             <h5 className={style.cardName}>{capitalizeAllWords(name)}</h5>
           </Link>
-          <div className={style.cardPriceWrapper}>
+          <div>
             <p className={style.cardPrice}>{price.toLocaleString() + " " + currency}</p>
           </div>
           {bid === "bid now" ? (
-            <div className={style.cardStatusWrapper}>
+            <div>
               <p className={winning ? style.winningCard : style.overBiddenCard}>
-                {winning && Date.parse(date_time) >= new Date().getTime()
+                {winning && Date.parse(date_time) <= new Date().getTime()
                   ? "WON" : !winning ?
                   "HIGHEST BID: " + highestBid + " " + currency : "WINNING"}
               </p>
@@ -77,7 +72,7 @@ const CartCard = ({
           ) : null}
         </div>
         {(bid === "bid now" && !winning) || bid === "buy now" ? (
-          <div className={style.removeBtnWrapper}>
+          <div>
             <button
               className={style.removeBtn}
               onClick={async () => {

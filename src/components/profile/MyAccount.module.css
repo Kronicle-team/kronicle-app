@@ -37,8 +37,9 @@
 
 .profile-pic{
     width: 15rem;
-    height: 15rem;
+    aspect-ratio: 1;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .uploadAvatar-btn{

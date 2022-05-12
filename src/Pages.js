@@ -149,6 +149,6 @@ const pages = {
 export const allPages = {
   all: Object.values(pages),
   auth: [pages.login, pages.register],
-  legal: [pages.copyright, pages.privacyPolicy, pages.tos],
+  legal: [pages.privacyPolicy, pages.tos],
   navBar: [pages.home, pages.all, pages.allAlbumCards, pages.allTradingCards, pages.allBuyNow, pages.allBid]
 };

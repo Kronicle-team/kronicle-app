@@ -12,9 +12,8 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import CardDetails from "./CardDetails";
 
 import style from "./ProductTemplate.module.css";
-import common from "../../styles/common.module.css";
+
 import { useNavigate, useParams } from "react-router-dom";
-import CardShowCase from "../CardShowCase";
 import { useEffect, useState } from "react";
 
 import { auth, db } from "../../config/firebase";
@@ -25,7 +24,6 @@ const ProductTemplate = ({ buy, bid }) => {
   const { id } = useParams();
   const [data, setData] = useState();
   const [sellerId, setSellerId] = useState();
-  const documentID = "0UHcspYV2NOUc5yZTFkslMuYRD23";
   const [currentCart, setCurrentCart] = useState({});
 
   useEffect(() => {
