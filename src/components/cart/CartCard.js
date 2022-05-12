@@ -45,7 +45,6 @@ const CartCard = ({
     }
   }, [price, highestBid]);
 
-  console.log(id, Date.parse(date_time), date_time)
   return (
     <div className={style.cardWrapper}>
       <Link className={style.cardImgWrapper} to={productLink}>
@@ -69,7 +68,7 @@ const CartCard = ({
           {bid === "bid now" ? (
             <div className={style.cardStatusWrapper}>
               <p className={winning ? style.winningCard : style.overBiddenCard}>
-                {winning && Date.parse(date_time) >= new Date().getTime()
+                {winning && Date.parse(date_time) <= new Date().getTime()
                   ? "WON" : !winning ?
                   "HIGHEST BID: " + highestBid + " " + currency : "WINNING"}
               </p>
