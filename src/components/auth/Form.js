@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { auth, db, storage } from "../../config/firebase";
+import { storage } from "../../config/firebase";
 
 const Form = () => {
   const [isDisplayed, setDisplay] = useState(false);
@@ -210,7 +210,6 @@ const Form = () => {
             CLEAR
           </button>
         </div>
-        ;
       </div>
     </Layout>
   );
