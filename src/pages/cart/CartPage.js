@@ -1,3 +1,11 @@
+/***************************************************************************************
+ *    Title: Get realtime updates with Cloud Firestore
+ *    Author: Firebase
+ *    Date: 6 May 2022
+ *    Availability: https://firebase.google.com/docs/firestore/query-data/listen (Accessed 4 April 2022)
+ *
+ ***************************************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "./CartPage.module.css";
 import CartCard from "../../components/cart/CartCard";
@@ -19,7 +27,7 @@ const coupons = [
   },
 ];
 
-const CartPage =  () => {
+const CartPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const [bidBtn, setBidBtn] = useState(
@@ -93,15 +101,14 @@ const CartPage =  () => {
     );
   };
 
-
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoading(false)
+        setIsLoading(false);
         if (auth.currentUser) {
-          let documentID = auth.currentUser.uid
+          let documentID = auth.currentUser.uid;
           fetchData(documentID);
-        } else setCurrentCart({})
+        } else setCurrentCart({});
         setSubTotal(0);
         temp.map((card) => {
           setSubTotal((prevState) => prevState + parseInt(card.price));
@@ -113,22 +120,24 @@ const CartPage =  () => {
         if (bidBtn) {
           setDeposit(Math.round(subTotal * 0.1));
           setTotal(
-              subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
+            subTotal * (1 - couponValue) + deposit + shippingFee + serviceFee
           );
         } else setTotal(subTotal * (1 - couponValue) + shippingFee);
         const isBid = bidBtn;
         localStorage.setItem("bidBtn", JSON.stringify(isBid));
       } else {
-        navigate("/")
-        alert("Please login to access your cart.")
+        navigate("/");
+        alert("Please login to access your cart.");
       }
     });
-    unsub()
+    unsub();
 
-    return () => unsub()
+    return () => unsub();
   }, [currentCart]);
 
-  if (isLoading) {return <div/>}
+  if (isLoading) {
+    return <div />;
+  }
 
   const handleOrder = () => {
     let checkout = []
@@ -145,7 +154,7 @@ const CartPage =  () => {
     })
     if (checkout.length > 0)
       navigate("/check-out-1", { state: { id: checkout } });
-    else alert("There are no items for checkout right now.")
+    else alert("There are no items for checkout right now.");
   };
 
   return (
@@ -299,9 +308,12 @@ const CartPage =  () => {
                   CONTINUE SHOPPING
                 </button>
               </Link>
-                <button className={style.cartBtn + " " + style.btnPlaceOrder} onClick={() => handleOrder()}>
-                  PLACE ORDER
-                </button>
+              <button
+                className={style.cartBtn + " " + style.btnPlaceOrder}
+                onClick={() => handleOrder()}
+              >
+                PLACE ORDER
+              </button>
             </div>
           </div>
         </div>

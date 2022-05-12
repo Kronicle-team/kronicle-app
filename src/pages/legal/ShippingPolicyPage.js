@@ -1,3 +1,10 @@
+/***************************************************************
+ *Title: How to Create and Communicate Your Shipping Policy (With a Template and Examples)
+ *Author:  Braveen Kumar
+ *Date: 11 May 2022
+ *Availability: https://www.shopify.com/blog/shipping-policy (Accessed 10 May 2022)
+ ****************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "../../components/support/Policy.module.css";
 import ToTopButton from "../../components/ToTopButton"

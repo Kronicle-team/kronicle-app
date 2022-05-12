@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: Upload files with Cloud Storage on Web
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/storage/web/upload-files
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/storage/web/upload-files (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
@@ -27,7 +26,7 @@ const Form = () => {
   const [profile, setProfile] = useState("");
   const [avatar, setAvatar] = useState("");
   const [url, setUrl] = useState("");
-  const required = [avatar, fname, phoneNum, address, aboutMe]
+  const required = [avatar, fname, phoneNum, address, aboutMe];
 
   const didMount = useRef(false);
 
@@ -91,7 +90,6 @@ const Form = () => {
   };
   let navigate = useNavigate();
 
-
   function onChangeProfilePicture(e) {
     onChangePicture(e);
     handleChange(e);
@@ -125,7 +123,6 @@ const Form = () => {
                 </div>
               ) : (
                 <label htmlFor={"profileImageUpload"}>
-
                   <FontAwesomeIcon
                     icon={faCamera}
                     className={style["upload-icon"]}
@@ -147,13 +144,13 @@ const Form = () => {
             />
           </div>
 
-              <label className={style["label"]}>Full Name</label>
-              <input
-                type="text"
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-                className={style["input"]}
-              />
+          <label className={style["label"]}>Full Name</label>
+          <input
+            type="text"
+            value={fname}
+            onChange={(e) => setFname(e.target.value)}
+            className={style["input"]}
+          />
 
           <label className={style["label"]}>Phone Number</label>
           <input
@@ -178,25 +175,32 @@ const Form = () => {
             rows={5}
           />
         </form>
+        <div className={style["button-wrapper"]}>
+          <button
+            className={style["register-btn"]}
+            onClick={async () => {
+              handleUpload();
 
-
-        <div
-          className={style["button-wrapper"]}
-        >
-          <button className={style["register-btn"]}
-                  onClick={async () => {
-                    handleUpload();
-
-                    let allRequiredFieldsFilled = true
-                    required.map((field) => {
-                      if (field === "") {
-                        allRequiredFieldsFilled = false
-                      }
-                    })
-                    if (allRequiredFieldsFilled) await pushData(url, fname, phoneNum, address, aboutMe, navigate)
-                    if (!allRequiredFieldsFilled) alert("Please fill in the required fields!")
-                  }}
-          >SUBMIT
+              let allRequiredFieldsFilled = true;
+              required.map((field) => {
+                if (field === "") {
+                  allRequiredFieldsFilled = false;
+                }
+              });
+              if (allRequiredFieldsFilled)
+                await pushData(
+                  url,
+                  fname,
+                  phoneNum,
+                  address,
+                  aboutMe,
+                  navigate
+                );
+              if (!allRequiredFieldsFilled)
+                alert("Please fill in the required fields!");
+            }}
+          >
+            SUBMIT
           </button>
           <button
             type="submit"

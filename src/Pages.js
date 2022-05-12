@@ -4,7 +4,6 @@ import ListingPage from "./pages/listing/ListingPage";
 import HomePage from "./pages/HomePage";
 import FaqPage from "./pages/support/FaqPage";
 import AboutUsPage from "./pages/support/AboutUsPage";
-import CopyrightPage from "./pages/legal/CopyrightPage";
 import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
 import ShippingPolicyPage from "./pages/legal/ShippingPolicyPage";
 import RefundPolicyPage from "./pages/legal/RefundPolicyPage";
@@ -69,11 +68,6 @@ const pages = {
     name: "About Us",
     link: "/about-us",
     component: <AboutUsPage />,
-  },
-  copyright: {
-    name: "Copyright",
-    link: "/copyright",
-    component: <CopyrightPage />,
   },
   privacyPolicy: {
     name: "Privacy Policy",

@@ -1,9 +1,8 @@
 /***************************************************************************************
  *    Title: DataSnapshot
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
@@ -19,8 +18,8 @@ import {
 } from "../../helper/formatData";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const CardDetails = ({
   availability,
@@ -79,15 +78,15 @@ const CardDetails = ({
   };
 
   const addToCart = async () => {
-      alert("Item has been added to cart.");
-      await addItemToCart();
+    alert("Item has been added to cart.");
+    await addItemToCart();
   };
 
   const handleBuyNow = (e) => {
     if (!auth.currentUser) {
       e.preventDefault();
-      alert("Please login or register to purchase this item.")
-      navigate("/login")
+      alert("Please login or register to purchase this item.");
+      navigate("/login");
     } else {
       navigate("/check-out-1", { state: { id: [id] } });
     }
@@ -124,22 +123,33 @@ const CardDetails = ({
       <div className={style["details"]}>
         <h3>{cardName}</h3>
         {bid ? <h4>Minimum bid</h4> : null}
-        <h1>{buy ? availability === "sold" ? "SOLD" : price.toLocaleString() + " VND"
-            : Date.now() > deadline ? "SOLD" : price.toLocaleString() + " VND"}</h1>
+        <h1>
+          {buy
+            ? availability === "sold"
+              ? "SOLD"
+              : price.toLocaleString() + " VND"
+            : Date.now() > deadline
+            ? "SOLD"
+            : price.toLocaleString() + " VND"}
+        </h1>
         <h4>Product Description</h4>
         <div className={style["desc"]}>{desc}</div>
 
         <h4>Seller</h4>
         <div className={[style["seller-container"], common["flex"]].join(" ")}>
           <Link to={path}>
-            {seller.avatar
-                ? <img
-                    src={seller.avatar}
-                    className={[style["seller-ava"], common["flex"]].join(" ")}
-                    alt={"Seller avatar"}
-                />
-                : <FontAwesomeIcon icon={faUserCircle} className={style["seller-ava"]} />
-            }
+            {seller.avatar ? (
+              <img
+                src={seller.avatar}
+                className={[style["seller-ava"], common["flex"]].join(" ")}
+                alt={"Seller avatar"}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faUserCircle}
+                className={style["seller-ava"]}
+              />
+            )}
           </Link>
 
           <Link to={path}>
@@ -150,19 +160,27 @@ const CardDetails = ({
         {buy && availability !== "sold" && auth.currentUser && sellerId !== auth.currentUser.uid ? (
           <div className={[common["flex"], style["btn-container"]].join(" ")}>
             <Link to={"/cart"}>
-              <button className={style["cart-btn"]} onClick={async (e) => {
-                if (auth.currentUser) {
-                  await addToCart(e)
-                } else {
-                  e.preventDefault();
-                  alert("Please login or register if you want to add this item to cart.")
-                  navigate("/login")
-                }
-              }}>
+              <button
+                className={style["cart-btn"]}
+                onClick={async (e) => {
+                  if (auth.currentUser) {
+                    await addToCart(e);
+                  } else {
+                    e.preventDefault();
+                    alert(
+                      "Please login or register if you want to add this item to cart."
+                    );
+                    navigate("/login");
+                  }
+                }}
+              >
                 ADD TO CART
               </button>
             </Link>
-            <button className={style["buy-btn"]} onClick={(e) => handleBuyNow(e)}>
+            <button
+              className={style["buy-btn"]}
+              onClick={(e) => handleBuyNow(e)}
+            >
               BUY NOW
             </button>
           </div>
@@ -170,39 +188,36 @@ const CardDetails = ({
         {bid ? (
           <>
             <h6>Available until {datestring}</h6>
+
             {Date.now() <= deadline && auth.currentUser && sellerId !== auth.currentUser.uid
                 ?
                 <div>
                   <h4>Enter your bid amount</h4>
                   <div
-                      className={[common["flex"], style["input-container"]].join(" ")}
+                    className={[style["currency"], common["text-center"]].join(
+                      " "
+                    )}
                   >
-                    <input
-                        type="number"
-                        className={style["input"]}
-                        onChange={(e) => setBidAmt(parseInt(e.target.value))}
-                    />
-                    <div
-                        className={[style["currency"], common["text-center"]].join(" ")}
-                    >
-                      VND
-                    </div>
-                  </div>
-
-                  <div
-                      className={[common["flex"], style["bid-btn-container"]].join(" ")}
-                  >
-                    <Link to="/cart">
-                      <button
-                          className={style["bid-btn"]}
-                          onClick={(e) => handleBid(e).then(() => addItemToCart())}
-                      >
-                        PLACE A BID
-                      </button>
-                    </Link>
+                    VND
                   </div>
                 </div>
-            : null}
+
+                <div
+                  className={[common["flex"], style["bid-btn-container"]].join(
+                    " "
+                  )}
+                >
+                  <Link to="/cart">
+                    <button
+                      className={style["bid-btn"]}
+                      onClick={(e) => handleBid(e).then(() => addItemToCart())}
+                    >
+                      PLACE A BID
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            ) : null}
           </>
         ) : null}
       </div>

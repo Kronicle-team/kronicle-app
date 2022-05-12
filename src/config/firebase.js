@@ -1,3 +1,11 @@
+/***************************************************************************************
+ *    Title: Add Firebase to your JavaScript project
+ *    Author: Firebase
+ *    Date: 6 May 2022
+ *    Availability: https://firebase.google.com/docs/web/setup (Accessed 4 April 2022)
+ *
+ ***************************************************************************************/
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";

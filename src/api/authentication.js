@@ -1,55 +1,63 @@
 /***************************************************************************************
  *    Title: Get Started with Firebase Authentication on Websites
  *    Author: Firebase
- *    Date: May 4, 2022
+ *    Date: 4 May 2022
  *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/auth/web/start
+ *    Availability: https://firebase.google.com/docs/auth/web/start (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
 /***************************************************************************************
  *    Title: Introduction to the Admin Database API
  *    Author: Firebase
- *    Date: May 4, 2022
- *    Code version: <code version>
- *    Availability: https://firebase.google.com/docs/database/admin/start
+ *    Date: 4 May 2022
+ *    Availability: https://firebase.google.com/docs/database/admin/start (Accessed 4 April 2022)
  *
  ***************************************************************************************/
 
 import { auth, db } from "../config/firebase";
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { setDoc, doc, updateDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  updateDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const signIn = async (email, password, navigate) => {
   await signInWithEmailAndPassword(auth, email, password)
     .then(async (userCredentials) => {
       const user = userCredentials.user;
-      const checkValidUser = []
+      const checkValidUser = [];
       const infoColRef = collection(db, "users");
       const q = query(infoColRef);
       const querySnapshot = await getDocs(q);
       let check = false;
       querySnapshot.forEach((doc) => {
-        console.log("All users after filter " + doc.id)
+        console.log("All users after filter " + doc.id);
         if (doc.id === auth.currentUser.uid) {
-          console.log(doc.id)
-          check = true
+          console.log(doc.id);
+          check = true;
         }
       });
-      console.log(check)
+      console.log(check);
       if (!check) {
-        checkValidUser.push(doc.id)
-        navigate("/form")
-        console.log("An array that returns the user that match the filter " + checkValidUser)
-      }
-      else {
+        checkValidUser.push(doc.id);
+        navigate("/form");
+        console.log(
+          "An array that returns the user that match the filter " +
+            checkValidUser
+        );
+      } else {
         console.log("Successfully sign in");
-        navigate("/my-account")
+        navigate("/my-account");
       }
-
     })
     .catch((error) => {
       alert(error.message);
@@ -81,7 +89,6 @@ const pushData = async (
   aboutMe,
   navigate
 ) => {
-
   await setDoc(doc(db, "users", auth.currentUser.uid), {
     avatar: avatar,
     fullName: fullName,
@@ -90,7 +97,6 @@ const pushData = async (
     address: address,
     aboutMe: aboutMe,
     cart: {},
-
   }).then(() => {
     navigate("/");
   });
@@ -103,19 +109,19 @@ const updateData = async (fullName, phoneNum, address, aboutMe, navigate) => {
     phoneNum: phoneNum,
     address: address,
     aboutMe: aboutMe,
-    cart: {}
+    cart: {},
   }).then(() => {
     navigate("/");
   });
 };
 
 const logout = async () => {
-    try {
-        await auth.signOut();
-        alert("Logout successfully!");
-    } catch (err) {
-        console.log("err:", err);
-    }
+  try {
+    await auth.signOut();
+    alert("Logout successfully!");
+  } catch (err) {
+    console.log("err:", err);
+  }
 };
 
 export { signIn, signUp, pushData, logout };

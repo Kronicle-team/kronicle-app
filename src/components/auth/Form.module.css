@@ -98,7 +98,6 @@
 }
 
 .user-input input[type="text"]:focus, .user-input input[type="password"]:focus {
-    width: 350px;
     transition: 0.5s;
     cursor: pointer;
 

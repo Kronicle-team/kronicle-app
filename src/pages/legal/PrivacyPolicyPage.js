@@ -1,11 +1,14 @@
+/***************************************************************
+ *Title: Privacy Policy for Kronicle
+ *Author: Privacy Policy Generator
+ * Date: 11 May 2022
+ *Availability: https://www.privacypolicygenerator.info/live.php?token=oeg00ZL6Noq13DRaIX7klVhvzEqhgRn1 (Accessed 10 May 2022)
+ ****************************************************************/
+
 import Layout from "../../components/Layout";
 import style from "../../components/support/Policy.module.css";
 import ToTopButton from "../../components/ToTopButton";
 import { Link } from "react-router-dom";
-/*
-Source:
-https://www.privacypolicygenerator.info/live.php?token=oeg00ZL6Noq13DRaIX7klVhvzEqhgRn1
-*/
 
 const PrivacyPolicyPage = () => {
   return (
