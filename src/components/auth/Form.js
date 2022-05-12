@@ -87,7 +87,12 @@ const Form = () => {
    setAddress("");
    setAboutMe("");
    setProfile("");
-   setUrl("");
+   setAvatar("");
+   setImageData("");
+   setAvatar("")
+    Array.from(document.querySelectorAll("input")).forEach(
+        (input) => (input.value = "")
+    );
   };
   let navigate = useNavigate();
 
