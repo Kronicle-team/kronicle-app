@@ -148,7 +148,8 @@ const CartPage = () => {
       const uploadDate = new Date(item.date_time);
       const period = 7;
       const deadline = new Date(uploadDate.setDate(uploadDate.getDate() + period));
-      if (item.price === currentCart[item.id] && deadline.getTime() >= new Date().getTime()) {
+      console.log(deadline.getTime(), new Date().getTime())
+      if (item.price === currentCart[item.id] && deadline.getTime() <= new Date().getTime()) {
         checkout.push(item.id)
       }
     })
