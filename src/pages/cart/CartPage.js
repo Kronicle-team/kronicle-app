@@ -111,7 +111,7 @@ const CartPage = () => {
         } else setCurrentCart({});
         setSubTotal(0);
         temp.map((card) => {
-          setSubTotal((prevState) => prevState + parseInt(card.price));
+          if (card.price < currentCart[card.id]) setSubTotal((prevState) => prevState + parseInt(card.price));
         });
         if (subTotal > 0) {
           setShippingFee(15000);
